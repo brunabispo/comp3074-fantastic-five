@@ -1,67 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    tools:context=".SuggestionsActivity">
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fillViewport="true"
+    android:padding="16dp">
 
-
-    <TextView
-        android:id="@+id/textView2"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Mind Manager app"
-        android:textColor="#FF9800"
-        android:textSize="24sp" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Here are your suggestions"
-        android:textSize="36sp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="71dp"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:id="@+id/imageButton3"
-            android:layout_width="59dp"
-            android:layout_height="69dp"
-            android:layout_marginHorizontal="40dp"
-            android:textAlignment="textStart"
-            app:srcCompat="@android:drawable/arrow_down_float" />
+        android:layout_height="match_parent"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        tools:context=".SuggestionsActivity">
 
 
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="69dp"
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mind Manager app"
+            android:textColor="#FF9800"
+            android:textSize="24sp" />
 
-            android:layout_marginHorizontal="40dp"
-            android:textAlignment="center"
-            app:srcCompat="@android:drawable/ic_menu_mylocation" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Here are your suggestions"
+            android:textSize="36sp" />
 
-        <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="69dp"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="71dp"
+            android:orientation="horizontal">
 
-            android:layout_marginHorizontal="40dp"
-            android:textAlignment="viewEnd"
-            app:srcCompat="@android:drawable/ic_dialog_email" />
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="59dp"
+                android:layout_height="69dp"
+                android:layout_marginHorizontal="40dp"
+                android:textAlignment="textStart"
+                app:srcCompat="@android:drawable/arrow_down_float" />
 
 
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="69dp"
+
+                android:layout_marginHorizontal="40dp"
+                android:textAlignment="center"
+                app:srcCompat="@android:drawable/ic_menu_mylocation" />
+
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="69dp"
+
+                android:layout_marginHorizontal="40dp"
+                android:textAlignment="viewEnd"
+                app:srcCompat="@android:drawable/ic_dialog_email" />
+
+
+        </LinearLayout>
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </ListView>
     </LinearLayout>
-    <ListView
-        android:id="@+id/listView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </ListView>
-
-
-</LinearLayout>
+</ScrollView>
