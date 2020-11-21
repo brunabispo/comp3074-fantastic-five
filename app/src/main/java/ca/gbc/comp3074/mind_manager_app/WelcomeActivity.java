@@ -24,12 +24,28 @@ public class WelcomeActivity extends AppCompatActivity {
             }
         });
 
+        Button btnGo = findViewById(R.id.btnGo);
+
+        //Button Go goes to the suggestions page (SuggestionsActivity)
+        btnGo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openSuggestions();
+            }
+        });
+
 
     }
 
     //function to start QuestionsActivity
     private void openIDontKnow(){
         Intent start = new Intent(getApplicationContext(), QuestionsActivity.class);
+        startActivity(start);
+    }
+
+    // Open the Suggestions Page
+    private void openSuggestions(){
+        Intent start = new Intent(getApplicationContext(), SuggestionsActivity.class);
         startActivity(start);
     }
 
