@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,5 +30,38 @@ public class QuestionsActivity extends AppCompatActivity {
     private void openSuggestions(){
         Intent start = new Intent(getApplicationContext(), SuggestionsActivity.class);
         startActivity(start);
+    }
+
+    public void onRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Logic to still be implemented
+        switch(view.getId()) {
+            case R.id.rbtn_q1_1:
+                break;
+            case R.id.rbtn_q1_2:
+                break;
+            case R.id.rbtn_q1_3:
+                break;
+            case R.id.rbtn_q2_1:
+                break;
+            case R.id.rbtn_q2_2:
+                break;
+            case R.id.rbtn_q2_3:
+                break;
+            case R.id.rbtn_q3_1:
+                break;
+            case R.id.rbtn_q3_2:
+                break;
+            case R.id.rbtn_q3_3:
+                break;
+            case R.id.rbtn_q4_1:
+                break;
+            case R.id.rbtn_q4_2:
+                break;
+            case R.id.rbtn_q4_3:
+                break;
+        }
     }
 }
