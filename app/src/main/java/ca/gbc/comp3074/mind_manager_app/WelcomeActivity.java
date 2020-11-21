@@ -16,6 +16,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
         Button btnIdk = findViewById(R.id.btnIdk);
 
+        //Button "I don't know" goes to questionnaire page answer questions to determine their mood(QuestionActivity)
         btnIdk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -26,6 +27,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
     }
 
+    //function to start QuestionsActivity
     private void openIDontKnow(){
         Intent start = new Intent(getApplicationContext(), QuestionsActivity.class);
         startActivity(start);

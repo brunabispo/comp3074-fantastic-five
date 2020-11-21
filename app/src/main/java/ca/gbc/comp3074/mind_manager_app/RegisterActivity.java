@@ -18,9 +18,9 @@ public class RegisterActivity extends AppCompatActivity {
         TextView lblConfirmPass = findViewById(R.id.lblConfirmPass);
         lblConfirmPass.setText("Confirm\nPassword");
 
-        Button btnSubmit = findViewById(R.id.btnSubmit);
+        Button btnLogin = findViewById(R.id.btnLogin);
 
-        btnSubmit.setOnClickListener(new View.OnClickListener() {
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 backToLogin();
@@ -30,16 +30,18 @@ public class RegisterActivity extends AppCompatActivity {
 
         Button btnCancel = findViewById(R.id.btnCancel);
 
-        btnSubmit.setOnClickListener(new View.OnClickListener() {
+        //Button Cancel goes back to the login page(MainActivity)
+        btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 backToLogin();
             }
         });
 
+
     }
 
-
+    //function to start MainActivity
     private void backToLogin(){
         Intent start = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(start);

@@ -14,9 +14,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btnSubmit = findViewById(R.id.btnSubmit);
+        Button btnLogin = findViewById(R.id.btnLogin);
 
-        btnSubmit.setOnClickListener(new View.OnClickListener() {
+        //Button Login goes to welcome page to choose a mood(WelcomeActivity)
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openWelcome();
@@ -24,9 +25,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
         Button btnRegister = findViewById(R.id.btnRegister);
 
+        //Button Register goes to registration page(RegisterActivity)
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,13 +38,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+    //function to start WelcomeActivity
     private void openWelcome(){
         Intent start = new Intent(getApplicationContext(), WelcomeActivity.class);
         startActivity(start);
     }
 
-
+    //function to start RegisterActivity
     private void openRegister(){
         Intent start = new Intent(getApplicationContext(), RegisterActivity.class);
         startActivity(start);
