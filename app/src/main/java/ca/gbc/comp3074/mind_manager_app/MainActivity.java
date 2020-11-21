@@ -6,16 +6,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
-
-
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    // Testing login functionality
+    String user = "benjeff";
+    String pass = "123_Ben";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        final EditText username = findViewById(R.id.editUsername);
+
+        final EditText password = findViewById(R.id.editPassword);
 
         Button btnLogin = findViewById(R.id.btnLogin);
 
@@ -23,10 +30,17 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openWelcome();
+                if(username.getText().toString().equals(user) &&
+                        password.getText().toString().equals(pass)){
+                    openWelcome();
+                }
+                else{
+                    backToLogin();
+                    Toast.makeText(MainActivity.this, "Incorrect Username or Password",
+                            Toast.LENGTH_LONG).show();
+                }
             }
         });
-
 
         Button btnRegister = findViewById(R.id.btnRegister);
 
@@ -37,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
                 openRegister();
             }
         });
-
 
     }
 
@@ -50,6 +63,11 @@ public class MainActivity extends AppCompatActivity {
     //function to start RegisterActivity
     private void openRegister(){
         Intent start = new Intent(getApplicationContext(), RegisterActivity.class);
+        startActivity(start);
+    }
+
+    private void backToLogin(){
+        Intent start = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(start);
     }
 }
