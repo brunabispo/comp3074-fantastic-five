@@ -35,7 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
         final String getConfirmPassword = editConfirmPassword.getText().toString();
 
         //Insert
-        realm.beginTransaction();
+        //realm.beginTransaction();
         final User user = new User (getFirstName,getUsername,getPassword);
 
         final RealmQuery<User> users =  realm.where(User.class);

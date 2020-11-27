@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(username.getText().toString().equals(resultUsername.getUserName()) &&
                         password.getText().toString().equals(resultUsername.getPassword())){
-                    realm.close();
+                    //realm.close();
                     openWelcome();
                 }
                 else{
@@ -60,13 +60,13 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-//dfadfsadfasdfasdf
+
         Button btnRegister = findViewById(R.id.btnRegister);
         //Button Register goes to Registration page(RegisterActivity)
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                realm.close();
+                //realm.close();
                 openRegister();
             }
         });
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         btnAbout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                realm.close();
+                //realm.close();
                 openAbout();
             }
         });
