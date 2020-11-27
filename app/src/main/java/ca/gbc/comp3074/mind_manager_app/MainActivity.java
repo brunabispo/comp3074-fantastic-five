@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
+//dfadfsadfasdfasdf
         Button btnRegister = findViewById(R.id.btnRegister);
         //Button Register goes to Registration page(RegisterActivity)
         btnRegister.setOnClickListener(new View.OnClickListener() {
