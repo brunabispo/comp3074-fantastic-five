@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         Realm.init(this);
 
         // Get a Realm instance for this thread
-        Realm realm = Realm.getDefaultInstance();
+        final Realm realm = Realm.getDefaultInstance();
 
         //Insert
         realm.beginTransaction();
@@ -37,10 +37,11 @@ public class MainActivity extends AppCompatActivity {
         RealmQuery<User> users =  realm.where(User.class);
 
         final EditText username = findViewById(R.id.editUsername);
+        final String getUsername = username.getText().toString();
         final EditText password = findViewById(R.id.editPassword);
 
         //Execute the query
-        final User resultUsername = users.equalTo("userName","benjeff").findFirst();
+        final User resultUsername = users.equalTo("userName", getUsername).findFirst();
 
         Button btnLogin = findViewById(R.id.btnLogin);
         //Button Login goes to welcome page to choose a mood(WelcomeActivity)
@@ -49,9 +50,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(username.getText().toString().equals(resultUsername.getUserName()) &&
                         password.getText().toString().equals(resultUsername.getPassword())){
+                    realm.close();
                     openWelcome();
                 }
                 else{
+                    realm.close();
                     backToLogin();
                     Toast.makeText(MainActivity.this, "Incorrect Username or Password",
                             Toast.LENGTH_LONG).show();
@@ -64,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                realm.close();
                 openRegister();
             }
         });
@@ -73,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         btnAbout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                realm.close();
                 openAbout();
             }
         });
