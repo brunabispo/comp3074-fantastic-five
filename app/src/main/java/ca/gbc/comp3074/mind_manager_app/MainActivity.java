@@ -11,12 +11,8 @@ import android.widget.Toast;
 
 import io.realm.Realm;
 import io.realm.RealmQuery;
-import io.realm.RealmResults;
 
 public class MainActivity extends AppCompatActivity {
-
-    private String adminUsername;
-    private String adminPass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
