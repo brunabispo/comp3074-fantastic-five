@@ -9,29 +9,50 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import io.realm.Realm;
+import io.realm.RealmQuery;
+import io.realm.RealmResults;
+
 public class MainActivity extends AppCompatActivity {
 
-    // Testing login functionality
-    String user = "benjeff";
-    String pass = "123_Ben";
+    private String adminUsername;
+    private String adminPass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final EditText username = findViewById(R.id.editUsername);
+        // Initialize Realm
+        Realm.init(this);
 
+        // Get a Realm instance for this thread
+        Realm realm = Realm.getDefaultInstance();
+
+        //Insert
+        realm.beginTransaction();
+        User user = new User ("Ben","benjeff","123_Ben");
+
+        //Write in data base
+        realm.copyToRealm(user);
+        realm.commitTransaction();
+
+        //Query looking for all users
+        RealmQuery<User> users =  realm.where(User.class);
+
+        final EditText username = findViewById(R.id.editUsername);
         final EditText password = findViewById(R.id.editPassword);
 
-        Button btnLogin = findViewById(R.id.btnLogin);
+        //Execute the query
+        final User resultUsername = users.equalTo("userName","benjeff").findFirst();
 
+        Button btnLogin = findViewById(R.id.btnLogin);
         //Button Login goes to welcome page to choose a mood(WelcomeActivity)
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(username.getText().toString().equals(user) &&
-                        password.getText().toString().equals(pass)){
+                if(username.getText().toString().equals(resultUsername.getUserName()) &&
+                        password.getText().toString().equals(resultUsername.getPassword())){
                     openWelcome();
                 }
                 else{
