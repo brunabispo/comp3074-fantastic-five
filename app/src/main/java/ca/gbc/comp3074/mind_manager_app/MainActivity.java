@@ -43,12 +43,20 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button btnRegister = findViewById(R.id.btnRegister);
-
-        //Button Register goes to registration page(RegisterActivity)
+        //Button Register goes to Registration page(RegisterActivity)
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openRegister();
+            }
+        });
+
+        Button btnAbout = findViewById(R.id.btnAbout);
+        //Button About goes to About page(AboutActivity)
+        btnAbout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openAbout();
             }
         });
 
@@ -63,6 +71,12 @@ public class MainActivity extends AppCompatActivity {
     //function to start RegisterActivity
     private void openRegister(){
         Intent start = new Intent(getApplicationContext(), RegisterActivity.class);
+        startActivity(start);
+    }
+
+    //function to start AboutActivity
+    private void openAbout(){
+        Intent start = new Intent(getApplicationContext(), AboutActivity.class);
         startActivity(start);
     }
 
