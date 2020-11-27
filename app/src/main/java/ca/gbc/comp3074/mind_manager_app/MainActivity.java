@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import io.realm.Realm;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         final EditText username = findViewById(R.id.editUsername);
         final String getUsername = username.getText().toString();
         final EditText password = findViewById(R.id.editPassword);
+        final TextView lblError = findViewById(R.id.lblerrorlogin);
 
         //Execute the query
         final User resultUsername = users.equalTo("userName", getUsername).findFirst();
@@ -54,10 +56,7 @@ public class MainActivity extends AppCompatActivity {
                     openWelcome();
                 }
                 else{
-                    realm.close();
-                    backToLogin();
-                    Toast.makeText(MainActivity.this, "Incorrect Username or Password",
-                            Toast.LENGTH_LONG).show();
+                  lblError.setText("User name or password invalid");
                 }
             }
         });
