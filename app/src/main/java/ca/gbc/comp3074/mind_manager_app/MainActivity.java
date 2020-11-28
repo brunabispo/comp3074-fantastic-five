@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import io.realm.Realm;
 import io.realm.RealmQuery;
@@ -24,35 +23,28 @@ public class MainActivity extends AppCompatActivity {
         Realm.init(this);
 
         // Get a Realm instance for this thread
-        final Realm realm = Realm.getDefaultInstance();
+        Realm realm = Realm.getDefaultInstance();
 
-        //Insert
-        realm.beginTransaction();
-        User user = new User ("Ben","benjeff","123_Ben");
-
-        //Write in data base
-        realm.copyToRealm(user);
-        realm.commitTransaction();
+        //admin`s login and password
+        //User user = new User ("Ben","benjeff","123_Ben");
 
         //Query looking for all users
-        RealmQuery<User> users =  realm.where(User.class);
+        RealmQuery <User> users =  realm.where(User.class);
 
         final EditText username = findViewById(R.id.editUsername);
-        final String getUsername = username.getText().toString();
         final EditText password = findViewById(R.id.editPassword);
         final TextView lblError = findViewById(R.id.lblerrorlogin);
 
-        //Execute the query
-        final User resultUsername = users.equalTo("userName", getUsername).findFirst();
+        //Execute the query, find if username input from user is existing in data base
+        final User resultUsername = users.equalTo("userName", "benjeff").findFirst();
 
-        Button btnLogin = findViewById(R.id.btnLogin);
         //Button Login goes to welcome page to choose a mood(WelcomeActivity)
+        Button btnLogin = findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(username.getText().toString().equals(resultUsername.getUserName()) &&
                         password.getText().toString().equals(resultUsername.getPassword())){
-                    //realm.close();
                     openWelcome();
                 }
                 else{
@@ -61,26 +53,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button btnRegister = findViewById(R.id.btnRegister);
         //Button Register goes to Registration page(RegisterActivity)
+        Button btnRegister = findViewById(R.id.btnRegister);
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //realm.close();
                 openRegister();
             }
         });
 
-        Button btnAbout = findViewById(R.id.btnAbout);
         //Button About goes to About page(AboutActivity)
+        Button btnAbout = findViewById(R.id.btnAbout);
         btnAbout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //realm.close();
                 openAbout();
             }
         });
-
     }
 
     //function to start WelcomeActivity
@@ -98,11 +87,6 @@ public class MainActivity extends AppCompatActivity {
     //function to start AboutActivity
     private void openAbout(){
         Intent start = new Intent(getApplicationContext(), AboutActivity.class);
-        startActivity(start);
-    }
-
-    private void backToLogin(){
-        Intent start = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(start);
     }
 }

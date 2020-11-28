@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,69 +21,52 @@ public class RegisterActivity extends AppCompatActivity {
         // Get a Realm instance for this thread
         final Realm realm = Realm.getDefaultInstance();
 
-        TextView editFirstName = findViewById(R.id.editName);
-        String getFirstName = editFirstName.getText().toString();
-
-        TextView editUsername = findViewById(R.id.editUsername);
-        final String getUsername = editUsername.getText().toString();
-
-        TextView editPassword = findViewById(R.id.editPassword);
-        final String getPassword = editPassword.getText().toString();
-
-        TextView editConfirmPassword = findViewById(R.id.editConfirmPass);
-        final String getConfirmPassword = editConfirmPassword.getText().toString();
-
-        //Insert
-        //realm.beginTransaction();
-        final User user = new User (getFirstName,getUsername,getPassword);
-
-        final RealmQuery<User> users =  realm.where(User.class);
-
-        TextView lblConfirmPass = findViewById(R.id.lblConfirmPass);
-        lblConfirmPass.setText("Confirm\nPassword");
-
+        final TextView editFirstName = findViewById(R.id.editName);
+        final TextView editUsername = findViewById(R.id.editUsername);
+        final TextView editPassword = findViewById(R.id.editPassword);
+        final TextView editConfirmPassword = findViewById(R.id.editConfirmPass);
         final TextView lblError = findViewById(R.id.lblError);
 
-        final User userTest = new User(getFirstName, getUsername, getPassword);
+        //Query looking for all users
+        RealmQuery <User> users =  realm.where(User.class);
+
+        //Execute the query, find if username input from user is existing in data base
+        final User resultUsername = users.equalTo("userName", ""+editUsername.getText().toString()).findFirst();
 
         Button btnLogin = findViewById(R.id.btnLogin);
-
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final User checkUsername = users.equalTo("userName",getUsername).findFirst();
+                if (!editPassword.getText().toString().equals(editConfirmPassword.getText().toString())){
+                    lblError.setText("Password and Confirm Password not match");
+                }
+                if(resultUsername == null && (editPassword.getText().toString().equals(editConfirmPassword.getText().toString()))){
+                    //Insert
+                    realm.beginTransaction();
+                    final User user = new User (""+editFirstName.getText().toString()+"",
+                            ""+editUsername.getText().toString()+"", ""+editPassword.getText().toString()+"");
 
-                if(checkUsername != null && getPassword.equals(getConfirmPassword)){
                     //Write in data base
                     realm.copyToRealm(user);
                     realm.commitTransaction();
-                    Toast.makeText(RegisterActivity.this, userTest.toString(),
-                            Toast.LENGTH_LONG).show();
-                    realm.close();
-                    backToLogin();
+                    backToRegistration();
+                    lblError.setText("This user name is new one");
                 }
-                if(checkUsername == null){
-                    lblError.setText("This user name is already taken");
-                }
-                if (!getPassword.equals(getConfirmPassword)){
-                    lblError.setText("The passwords does not match");
+                if(resultUsername != null){
+                    backToRegistration();
+                    lblError.setText("This user name is already exist"+ resultUsername.getUserName());
                 }
             }
         });
 
-
-        Button btnCancel = findViewById(R.id.btnCancel);
-
         //Button Cancel goes back to the login page(MainActivity)
+        Button btnCancel = findViewById(R.id.btnCancel);
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                realm.close();
                 backToLogin();
             }
         });
-
-
     }
 
     //function to start MainActivity
@@ -93,6 +75,7 @@ public class RegisterActivity extends AppCompatActivity {
         startActivity(start);
     }
 
+    //function to start MainActivity
     private void backToRegistration(){
         Intent start = new Intent(getApplicationContext(), RegisterActivity.class);
         startActivity(start);
