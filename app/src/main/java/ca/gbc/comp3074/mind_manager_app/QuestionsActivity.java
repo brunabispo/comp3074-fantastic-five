@@ -98,11 +98,22 @@ public class QuestionsActivity extends AppCompatActivity {
                     openSuggestions();
                 }
                 break;
-
-            default:
-                openQuestions();
-                Toast.makeText(QuestionsActivity.this, "Please answer all questions.",
-                        Toast.LENGTH_LONG).show();
+            case R.id.rbtn_q1_2:
+                break;
+            case R.id.rbtn_q1_3:
+                break;
+            case R.id.rbtn_q2_2:
+                break;
+            case R.id.rbtn_q2_3:
+                break;
+            case R.id.rbtn_q3_2:
+                break;
+            case R.id.rbtn_q3_3:
+                break;
+            case R.id.rbtn_q4_2:
+                break;
+            case R.id.rbtn_q4_3:
+                break;
 
         }
     }
