@@ -25,25 +25,24 @@ public class MainActivity extends AppCompatActivity {
         // Get a Realm instance for this thread
         Realm realm = Realm.getDefaultInstance();
 
-        //admin`s login and password
-        //User user = new User ("Ben","benjeff","123_Ben");
-
-        //Query looking for all users
-        RealmQuery <User> users =  realm.where(User.class);
+        // Query looking for all users
+        final RealmQuery<User> users = realm.where(User.class);
 
         final EditText username = findViewById(R.id.editUsername);
         final EditText password = findViewById(R.id.editPassword);
         final TextView lblError = findViewById(R.id.lblerrorlogin);
 
-        //Execute the query, find if username input from user is existing in data base
-        final User resultUsername = users.equalTo("userName", "benjeff").findFirst();
+        //admin`s login/password (benjeff/123_Ben)
 
         //Button Login goes to welcome page to choose a mood(WelcomeActivity)
         Button btnLogin = findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(username.getText().toString().equals(resultUsername.getUserName()) &&
+                //Execute the query, find if username input from user is existing in data base
+                final User resultUsername = users.equalTo("userName", username.getText().toString()).findFirst();
+
+                if(resultUsername != null && username.getText().toString().equals(resultUsername.getUserName()) &&
                         password.getText().toString().equals(resultUsername.getPassword())){
                     openWelcome();
                 }

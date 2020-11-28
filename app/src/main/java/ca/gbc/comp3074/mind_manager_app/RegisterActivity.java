@@ -28,10 +28,10 @@ public class RegisterActivity extends AppCompatActivity {
         final TextView lblError = findViewById(R.id.lblError);
 
         //Query looking for all users
-        RealmQuery <User> users =  realm.where(User.class);
+        RealmQuery<User> users =  realm.where(User.class);
 
         //Execute the query, find if username input from user is existing in data base
-        final User resultUsername = users.equalTo("userName", ""+editUsername.getText().toString()).findFirst();
+        final User resultUsername = users.equalTo("userName", editUsername.getText().toString()+"").findFirst();
 
         Button btnLogin = findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -40,7 +40,11 @@ public class RegisterActivity extends AppCompatActivity {
                 if (!editPassword.getText().toString().equals(editConfirmPassword.getText().toString())){
                     lblError.setText("Password and Confirm Password not match");
                 }
-                if(resultUsername == null && (editPassword.getText().toString().equals(editConfirmPassword.getText().toString()))){
+                else if(resultUsername != null){
+                    backToRegistration();
+                    lblError.setText("This user name is already exist"+ resultUsername.getUserName());
+                }
+                else if(resultUsername == null && (editPassword.getText().toString().equals(editConfirmPassword.getText().toString()))){
                     //Insert
                     realm.beginTransaction();
                     final User user = new User (""+editFirstName.getText().toString()+"",
@@ -52,10 +56,7 @@ public class RegisterActivity extends AppCompatActivity {
                     backToRegistration();
                     lblError.setText("This user name is new one");
                 }
-                if(resultUsername != null){
-                    backToRegistration();
-                    lblError.setText("This user name is already exist"+ resultUsername.getUserName());
-                }
+
             }
         });
 
