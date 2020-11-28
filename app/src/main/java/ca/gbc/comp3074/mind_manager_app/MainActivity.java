@@ -65,14 +65,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Button About goes to About page(AboutActivity)
-        Button btnAbout = findViewById(R.id.btnAbout);
-        btnAbout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openAbout();
-            }
-        });
     }
 
     //function to start WelcomeActivity
