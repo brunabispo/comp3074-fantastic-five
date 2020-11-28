@@ -42,7 +42,8 @@
                 android:background="#C5DDE8"
                 android:textAlignment="textStart"
                 android:tint="#1DB5C8"
-                app:srcCompat="@drawable/ic_filter" />
+                app:srcCompat="@drawable/ic_filter"
+                android:contentDescription="Filter" />
 
 
             <ImageButton
@@ -54,7 +55,8 @@
                 android:background="#C5DDE8"
                 android:textAlignment="center"
                 android:tint="#1DB5C8"
-                app:srcCompat="@drawable/ic_location" />
+                app:srcCompat="@drawable/ic_location"
+                android:contentDescription="Location" />
 
             <ImageButton
                 android:id="@+id/imageButton2"
@@ -65,14 +67,15 @@
                 android:background="#C5DDE8"
                 android:textAlignment="viewEnd"
                 android:tint="#1DB5C8"
-                app:srcCompat="@drawable/ic_randomize" />
-
+                app:srcCompat="@drawable/ic_randomize"
+                android:contentDescription="Random" />
 
         </LinearLayout>
 
         <ListView
             android:id="@android:id/list"
             android:layout_width="match_parent"
-            android:layout_height="471dp"></ListView>
+            android:layout_height="471dp"
+            tools:ignore="NestedScrolling" />
     </LinearLayout>
 </ScrollView>

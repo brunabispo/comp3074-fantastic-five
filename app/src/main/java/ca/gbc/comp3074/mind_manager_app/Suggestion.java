@@ -2,7 +2,7 @@ package ca.gbc.comp3074.mind_manager_app;
 
 import io.realm.RealmObject;
 
-public class Suggestion extends RealmObject {
+public class Suggestion {
 
     private String categoryName;
     private String suggestionName;

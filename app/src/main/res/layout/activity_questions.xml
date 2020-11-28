@@ -28,7 +28,7 @@
             android:textSize="36sp" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/lblq1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Question 1"
@@ -56,7 +56,7 @@
         </RadioGroup>
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/lblq2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Question 2"
@@ -84,7 +84,7 @@
         </RadioGroup>
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/lblq3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Question 3"
@@ -112,7 +112,7 @@
         </RadioGroup>
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/lblq4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Question 4"

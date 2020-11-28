@@ -23,20 +23,20 @@ public class SuggestionsActivity extends ListActivity {
 
         list = new ArrayList<Suggestion>();
 
-        // Get a Realm instance for this thread
-        final Realm realm = Realm.getDefaultInstance();
+//        // Get a Realm instance for this thread
+//        final Realm realm = Realm.getDefaultInstance();
 
-        //Query looking for all users
-        final RealmQuery<Suggestion> suggestions =  realm.where(Suggestion.class);
+//        //Query looking for all suggestions
+//        final RealmQuery<Suggestion> suggestions =  realm.where(Suggestion.class);
 
-        realm.beginTransaction();
+//        realm.beginTransaction();
         final Suggestion musicSuggestion = new Suggestion ("Music", "feel good");
         final Suggestion sportSuggestion = new Suggestion ("Sport", "push-ups");
 
-        //Write in data base
-        realm.copyToRealm(musicSuggestion);
-        realm.copyToRealm(sportSuggestion);
-        realm.commitTransaction();
+//        //Write in data base
+//        realm.copyToRealm(musicSuggestion);
+//        realm.copyToRealm(sportSuggestion);
+//        realm.commitTransaction();
 
         list.add(musicSuggestion);
         list.add(sportSuggestion);
