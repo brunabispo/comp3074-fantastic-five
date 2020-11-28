@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -80,24 +81,28 @@ public class QuestionsActivity extends AppCompatActivity {
         startActivity(start);
     }
 
+    private void openQuestions(){
+        Intent start = new Intent(getApplicationContext(), QuestionsActivity.class);
+        startActivity(start);
+    }
+
     public void onRadioButtonClicked(View view) {
         // Is the button now checked?
         boolean checked = ((RadioButton) view).isChecked();
 
         // Logic to still be implemented
         switch(view.getId()) {
-            case R.id.rbtn_q1_1:
 
+            case R.id.rbtn_q1_1 & R.id.rbtn_q2_1 & R.id.rbtn_q3_1 & R.id.rbtn_q4_1:
+                if(checked){
+                    openSuggestions();
+                }
                 break;
 
-            case R.id.rbtn_q2_1:
-                break;
-
-            case R.id.rbtn_q3_1:
-                break;
-
-            case R.id.rbtn_q4_1:
-                break;
+            default:
+                openQuestions();
+                Toast.makeText(QuestionsActivity.this, "Please answer all questions.",
+                        Toast.LENGTH_LONG).show();
 
         }
     }
