@@ -49,7 +49,7 @@ public class SuggestionArrayAdapter extends ArrayAdapter<Suggestion> {
 
         TextView category = rowView.findViewById(this.categoryNameId);
 
-        category.setText(this.values.get(position).getCategotyName());
+        category.setText(this.values.get(position).getCategoryName());
 
         return rowView;
     }

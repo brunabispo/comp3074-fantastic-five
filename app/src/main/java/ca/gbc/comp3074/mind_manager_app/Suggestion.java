@@ -1,21 +1,26 @@
 package ca.gbc.comp3074.mind_manager_app;
 
-public class Suggestion {
+import io.realm.RealmObject;
 
-    private String categotyName;
+public class Suggestion extends RealmObject {
+
+    private String categoryName;
     private String suggestionName;
 
-    public Suggestion(String categotyName, String suggestionName) {
-        this.categotyName = categotyName;
+    public Suggestion(String categoryName, String suggestionName) {
+        this.categoryName = categoryName;
         this.suggestionName = suggestionName;
     }
 
-    public String getCategotyName() {
-        return categotyName;
+    public Suggestion() {
     }
 
-    public void setCategotyName(String categotyName) {
-        this.categotyName = categotyName;
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     public String getSuggestionName() {

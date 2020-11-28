@@ -9,6 +9,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.realm.Realm;
+import io.realm.RealmQuery;
+
 public class SuggestionsActivity extends ListActivity {
 
     List<Suggestion> list; // List of suggestions
@@ -19,10 +22,24 @@ public class SuggestionsActivity extends ListActivity {
         setContentView(R.layout.activity_suggestions);
 
         list = new ArrayList<Suggestion>();
-        list.add(new Suggestion("Music", "Playlist"));
-        list.add(new Suggestion("Poetry", "1 poem"));
-        list.add(new Suggestion("Sport", "1 sport"));
-        list.add(new Suggestion("Outside Activity", "1 outside activity"));
+
+        // Get a Realm instance for this thread
+        final Realm realm = Realm.getDefaultInstance();
+
+        //Query looking for all users
+        final RealmQuery<Suggestion> suggestions =  realm.where(Suggestion.class);
+
+        realm.beginTransaction();
+        final Suggestion musicSuggestion = new Suggestion ("Music", "feel good");
+        final Suggestion sportSuggestion = new Suggestion ("Sport", "push-ups");
+
+        //Write in data base
+        realm.copyToRealm(musicSuggestion);
+        realm.copyToRealm(sportSuggestion);
+        realm.commitTransaction();
+
+        list.add(musicSuggestion);
+        list.add(sportSuggestion);
 
         ArrayAdapter<Suggestion> adapter = new SuggestionArrayAdapter(this,
                 R.layout.row_layout_suggestions, R.id.lblCategory, R.id.lblSuggestion, list);
