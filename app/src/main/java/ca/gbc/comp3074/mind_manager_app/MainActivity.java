@@ -1,9 +1,13 @@
 package ca.gbc.comp3074.mind_manager_app;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -87,5 +91,20 @@ public class MainActivity extends AppCompatActivity {
     private void openAbout(){
         Intent start = new Intent(getApplicationContext(), AboutActivity.class);
         startActivity(start);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inf = getMenuInflater();
+        inf.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.menu_about) {
+            openAbout();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
