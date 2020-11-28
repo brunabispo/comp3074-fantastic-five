@@ -28,33 +28,31 @@ public class RegisterActivity extends AppCompatActivity {
         final TextView lblError = findViewById(R.id.lblError);
 
         //Query looking for all users
-        RealmQuery<User> users =  realm.where(User.class);
-
-        //Execute the query, find if username input from user is existing in data base
-        final User resultUsername = users.equalTo("userName", editUsername.getText().toString()+"").findFirst();
+        final RealmQuery<User> users =  realm.where(User.class);
 
         Button btnLogin = findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Execute the query, find if username input from user is existing in data base
+                final User resultUsername = users.equalTo("userName", editUsername.getText().toString()).findFirst();
+
                 if (!editPassword.getText().toString().equals(editConfirmPassword.getText().toString())){
                     lblError.setText("Password and Confirm Password not match");
                 }
-                else if(resultUsername != null){
-                    backToRegistration();
-                    lblError.setText("This user name is already exist"+ resultUsername.getUserName());
+                if(resultUsername != null){
+                    lblError.setText("This user name is already exist");
                 }
-                else if(resultUsername == null && (editPassword.getText().toString().equals(editConfirmPassword.getText().toString()))){
+                if(resultUsername == null && (editPassword.getText().toString().equals(editConfirmPassword.getText().toString()))){
                     //Insert
                     realm.beginTransaction();
-                    final User user = new User (""+editFirstName.getText().toString()+"",
-                            ""+editUsername.getText().toString()+"", ""+editPassword.getText().toString()+"");
+                    final User user = new User (editFirstName.getText().toString()+"",
+                            editUsername.getText().toString()+"", editPassword.getText().toString()+"");
 
                     //Write in data base
                     realm.copyToRealm(user);
                     realm.commitTransaction();
-                    backToRegistration();
-                    lblError.setText("This user name is new one");
+                    backToLogin();
                 }
 
             }
@@ -73,12 +71,6 @@ public class RegisterActivity extends AppCompatActivity {
     //function to start MainActivity
     private void backToLogin(){
         Intent start = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(start);
-    }
-
-    //function to start MainActivity
-    private void backToRegistration(){
-        Intent start = new Intent(getApplicationContext(), RegisterActivity.class);
         startActivity(start);
     }
 }
