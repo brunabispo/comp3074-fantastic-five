@@ -27,11 +27,11 @@ public class SuggestionsActivityEnergetic extends ListActivity {
 //        final RealmQuery<Suggestion> suggestions =  realm.where(Suggestion.class);
 
 //        realm.beginTransaction();
-        final Suggestion musicSuggestion = new Suggestion ("Music", "feel good");
-        final Suggestion sportSuggestion = new Suggestion ("Sport", "push-ups");
-        final Suggestion outDoorSuggestion = new Suggestion("Outdoors", "Walk in Park");
-        final Suggestion gameSuggestion = new Suggestion ("Games", "Chess");
-        final Suggestion poetrySuggestion = new Suggestion ("Poetry", "I see the world, but it doesnt see me. I want to be seen, but I fear its gaze. I am nothing.");
+        final Suggestion musicSuggestion = new Suggestion ("Music", "Play Hard - David Guetta");
+        final Suggestion sportSuggestion = new Suggestion ("Sport", "Lazer-Tag");
+        final Suggestion outDoorSuggestion = new Suggestion("Outdoors", "Go for a Run");
+        final Suggestion gameSuggestion = new Suggestion ("Games", "Just Dance");
+        final Suggestion poetrySuggestion = new Suggestion ("Reading", "Hunger Games");
 //        //Write in data base
 //        realm.copyToRealm(musicSuggestion);
 //        realm.copyToRealm(sportSuggestion);

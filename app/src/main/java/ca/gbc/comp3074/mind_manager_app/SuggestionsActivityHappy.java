@@ -27,11 +27,11 @@ public class SuggestionsActivityHappy extends ListActivity {
 //        final RealmQuery<Suggestion> suggestions =  realm.where(Suggestion.class);
 
 //        realm.beginTransaction();
-        final Suggestion musicSuggestion = new Suggestion ("Music", "feel good");
-        final Suggestion sportSuggestion = new Suggestion ("Sport", "push-ups");
-        final Suggestion outDoorSuggestion = new Suggestion("Outdoors", "Walk in Park");
-        final Suggestion gameSuggestion = new Suggestion ("Games", "Chess");
-        final Suggestion poetrySuggestion = new Suggestion ("Poetry", "I see the world, but it doesnt see me. I want to be seen, but I fear its gaze. I am nothing.");
+        final Suggestion musicSuggestion = new Suggestion ("Music", "I Feel Good - James Brown");
+        final Suggestion sportSuggestion = new Suggestion ("Sport", "Paint-Ball");
+        final Suggestion outDoorSuggestion = new Suggestion("Outdoors", "Meet with friends");
+        final Suggestion gameSuggestion = new Suggestion ("Games", "Fortnight");
+        final Suggestion poetrySuggestion = new Suggestion ("Reading", "Diary of a Wimpy Kid");
 //        //Write in data base
 //        realm.copyToRealm(musicSuggestion);
 //        realm.copyToRealm(sportSuggestion);

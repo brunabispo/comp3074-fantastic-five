@@ -31,7 +31,7 @@ public class SuggestionsActivitySad extends ListActivity {
         final Suggestion sportSuggestion = new Suggestion ("Sport", "Walk in park");
         final Suggestion outDoorSuggestion = new Suggestion("Outdoors", "Go outside and buy something for yourself");
         final Suggestion gameSuggestion = new Suggestion ("Games", "Chess");
-        final Suggestion poetrySuggestion = new Suggestion ("Poetry",
+        final Suggestion poetrySuggestion = new Suggestion ("Reading",
                 "There are two sides on every coin,\n" +
                                 "The heads and the tails.\n" +
                                  "So must it be with all in this life,\n" +
