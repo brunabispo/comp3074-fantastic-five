@@ -37,6 +37,7 @@ public class SuggestionsActivityEnergetic extends ListActivity {
 //        realm.copyToRealm(sportSuggestion);
 //        realm.commitTransaction();
 
+
         list.add(musicSuggestion);
         list.add(sportSuggestion);
         list.add(outDoorSuggestion);
