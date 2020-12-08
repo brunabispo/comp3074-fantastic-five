@@ -24,13 +24,48 @@ public class WelcomeActivity extends AppCompatActivity {
             }
         });
 
-        Button btnGo = findViewById(R.id.btnGo);
-
-        //Button Go goes to the suggestions page (SuggestionsActivity)
-        btnGo.setOnClickListener(new View.OnClickListener() {
+        //Button Sad goes to the suggestions page (SuggestionsActivitySad)
+        Button Sad = findViewById(R.id.btnSad);
+        Sad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openSuggestions();
+                openSad();
+            }
+        });
+
+        //Button Happy goes to the suggestions page (SuggestionsActivityHappy)
+        Button Happy = findViewById(R.id.btnHappy);
+        Happy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openHappy();
+            }
+        });
+
+        //Button Energetic goes to the suggestions page (SuggestionsActivityEnergetic)
+        Button Energetic = findViewById(R.id.btnEnergetic);
+        Energetic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openEnergetic();
+            }
+        });
+
+        //Button Bored goes to the suggestions page (SuggestionsActivityBored)
+        Button Bored = findViewById(R.id.btnBored);
+        Bored.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openBored();
+            }
+        });
+
+        //Button Tired goes to the suggestions page (SuggestionsActivityTired)
+        Button Tired = findViewById(R.id.btnTired);
+        Tired.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openTired();
             }
         });
 
@@ -43,11 +78,36 @@ public class WelcomeActivity extends AppCompatActivity {
         startActivity(start);
     }
 
-    // Open the Suggestions Page
-    private void openSuggestions(){
-        Intent start = new Intent(getApplicationContext(), SuggestionsActivity.class);
+    // Open Sad suggestions
+    private void openSad(){
+        Intent start = new Intent(getApplicationContext(), SuggestionsActivitySad.class);
         startActivity(start);
     }
+
+    // Open Happy suggestions
+    private void openHappy(){
+        Intent start = new Intent(getApplicationContext(), SuggestionsActivityHappy.class);
+        startActivity(start);
+    }
+
+    // Open Energetic suggestions
+    private void openEnergetic(){
+        Intent start = new Intent(getApplicationContext(), SuggestionsActivityEnergetic.class);
+        startActivity(start);
+    }
+
+    // Open Bored suggestions
+    private void openBored(){
+        Intent start = new Intent(getApplicationContext(), SuggestionsActivityBored.class);
+        startActivity(start);
+    }
+
+    // Open Tired suggestions
+    private void openTired(){
+        Intent start = new Intent(getApplicationContext(), SuggestionsActivityTired.class);
+        startActivity(start);
+    }
+    
 
 
 

@@ -6,15 +6,10 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.RadioButton;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import io.realm.Realm;
-import io.realm.RealmQuery;
-
-public class SuggestionsActivity extends ListActivity {
+public class SuggestionsActivitySad extends ListActivity {
 
     List<Suggestion> list; // List of suggestions
 
@@ -32,11 +27,15 @@ public class SuggestionsActivity extends ListActivity {
 //        final RealmQuery<Suggestion> suggestions =  realm.where(Suggestion.class);
 
 //        realm.beginTransaction();
-        final Suggestion musicSuggestion = new Suggestion ("Music", "feel good");
-        final Suggestion sportSuggestion = new Suggestion ("Sport", "push-ups");
-        final Suggestion outDoorSuggestion = new Suggestion("Outdoors", "Walk in Park");
+        final Suggestion musicSuggestion = new Suggestion ("Music", "Summertime Sadness - Lana Del Rey");
+        final Suggestion sportSuggestion = new Suggestion ("Sport", "Walk in park");
+        final Suggestion outDoorSuggestion = new Suggestion("Outdoors", "Go outside and buy something for yourself");
         final Suggestion gameSuggestion = new Suggestion ("Games", "Chess");
-        final Suggestion poetrySuggestion = new Suggestion ("Poetry", "I see the world, but it doesnt see me. I want to be seen, but I fear its gaze. I am nothing.");
+        final Suggestion poetrySuggestion = new Suggestion ("Poetry",
+                "There are two sides on every coin,\n" +
+                                "The heads and the tails.\n" +
+                                 "So must it be with all in this life,\n" +
+                                "Duality and perfect balance, all entails.");
 //        //Write in data base
 //        realm.copyToRealm(musicSuggestion);
 //        realm.copyToRealm(sportSuggestion);

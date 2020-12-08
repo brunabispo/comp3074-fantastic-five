@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -66,7 +65,7 @@ public class QuestionsActivity extends AppCompatActivity {
 
         Button btnSubmit = findViewById(R.id.btn_submit);
 
-        //Button Submit goes to the suggestions page (SuggestionsActivity)
+        //Button Submit goes to the suggestions page (SuggestionsActivitySad)
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,7 +76,7 @@ public class QuestionsActivity extends AppCompatActivity {
 
     // Open the Suggestions Page
     private void openSuggestions(){
-        Intent start = new Intent(getApplicationContext(), SuggestionsActivity.class);
+        Intent start = new Intent(getApplicationContext(), SuggestionsActivitySad.class);
         startActivity(start);
     }
 
