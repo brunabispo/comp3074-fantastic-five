@@ -27,11 +27,11 @@ public class SuggestionsActivityBored extends ListActivity {
 //        final RealmQuery<Suggestion> suggestions =  realm.where(Suggestion.class);
 
 //        realm.beginTransaction();
-        final Suggestion musicSuggestion = new Suggestion ("Music", "feel good");
-        final Suggestion sportSuggestion = new Suggestion ("Sport", "push-ups");
-        final Suggestion outDoorSuggestion = new Suggestion("Outdoors", "Walk in Park");
-        final Suggestion gameSuggestion = new Suggestion ("Games", "Chess");
-        final Suggestion poetrySuggestion = new Suggestion ("Poetry", "I see the world, but it doesnt see me. I want to be seen, but I fear its gaze. I am nothing.");
+        final Suggestion musicSuggestion = new Suggestion ("Music", "Lemon Tree - Fools Garden");
+        final Suggestion sportSuggestion = new Suggestion ("Sport", "Yoga");
+        final Suggestion outDoorSuggestion = new Suggestion("Outdoors", "Go for fishing");
+        final Suggestion gameSuggestion = new Suggestion ("Games", "Bubble shooter");
+        final Suggestion poetrySuggestion = new Suggestion ("Reading", "Of all bodily functions that could be contagious, thank God it's THE YAWN - Unknown");
 //        //Write in data base
 //        realm.copyToRealm(musicSuggestion);
 //        realm.copyToRealm(sportSuggestion);
