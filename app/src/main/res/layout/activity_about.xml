@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/ic_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:text="About"
+        android:textColor="@color/browser_actions_title_color"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,6 +26,7 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="32dp"
         android:text="Name:"
+        android:textColor="@color/browser_actions_title_color"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,6 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Student ID:"
+        android:textColor="@color/browser_actions_title_color"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,6 +65,7 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="48dp"
         android:text="Bruna Bispo"
+        android:textColor="@color/cardview_dark_background"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView15" />
@@ -73,6 +77,7 @@
         android:layout_marginTop="48dp"
         android:layout_marginEnd="36dp"
         android:text="101200299"
+        android:textColor="@color/cardview_dark_background"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
@@ -84,6 +89,7 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="36dp"
         android:text="Evgeniya Zhukova"
+        android:textColor="@color/cardview_dark_background"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView27" />
@@ -95,6 +101,7 @@
         android:layout_marginTop="36dp"
         android:layout_marginEnd="36dp"
         android:text="101239316"
+        android:textColor="@color/cardview_dark_background"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView28" />
@@ -106,6 +113,7 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="36dp"
         android:text="Gordon Wells"
+        android:textColor="@color/cardview_dark_background"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView29" />
@@ -117,6 +125,7 @@
         android:layout_marginTop="36dp"
         android:layout_marginEnd="36dp"
         android:text="100708985"
+        android:textColor="@color/cardview_dark_background"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView30" />
@@ -128,6 +137,7 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="36dp"
         android:text="Karin Zigdon"
+        android:textColor="@color/cardview_dark_background"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView31" />
@@ -139,6 +149,7 @@
         android:layout_marginTop="36dp"
         android:layout_marginEnd="36dp"
         android:text="101229316"
+        android:textColor="@color/cardview_dark_background"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView32" />
@@ -150,6 +161,7 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="36dp"
         android:text="Marina Savochkina"
+        android:textColor="@color/cardview_dark_background"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView33" />
@@ -161,6 +173,7 @@
         android:layout_marginTop="36dp"
         android:layout_marginEnd="36dp"
         android:text=" 101174725"
+        android:textColor="@color/cardview_dark_background"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView34" />

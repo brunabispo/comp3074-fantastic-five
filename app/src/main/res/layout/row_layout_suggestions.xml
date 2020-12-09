@@ -10,13 +10,14 @@
         android:layout_height="wrap_content"
         android:text="CategoryName"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="#000000" />
+        android:textColor="@color/browser_actions_title_color" />
 
     <TextView
         android:id="@+id/lblSuggestion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="SuggestionName"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/cardview_dark_background" />
 
 </LinearLayout>
