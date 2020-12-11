@@ -8,6 +8,9 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.view.View;
+import android.widget.Button;
+
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -27,6 +30,14 @@ public class MapActivity  extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+
+        Button btnApply = findViewById(R.id.btnApply);
+        btnApply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                backToWelcome();
+            }
+        });
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -83,5 +94,10 @@ public class MapActivity  extends FragmentActivity implements OnMapReadyCallback
         LatLng casaloma = new LatLng(43.6705, -79.3936);
         mMap.addMarker(new MarkerOptions().position(casaloma).title("Marker in Casa Loma"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(casaloma, 14));
+    }
+
+    private void backToWelcome(){
+        Intent start = new Intent(getApplicationContext(), WelcomeActivity.class);
+        startActivity(start);
     }
 }
