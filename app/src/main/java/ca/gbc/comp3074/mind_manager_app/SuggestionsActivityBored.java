@@ -5,10 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,9 +19,6 @@ public class SuggestionsActivityBored extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suggestions);
 
-        list = new ArrayList<Suggestion>();
-
-        /*
         ImageButton btnMap = findViewById(R.id.btn_map);
         btnMap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,7 +26,8 @@ public class SuggestionsActivityBored extends ListActivity {
                 openMap();
             }
         });
-        */
+
+        list = new ArrayList<Suggestion>();
 
 //        // Get a Realm instance for this thread
 //        final Realm realm = Realm.getDefaultInstance();
@@ -90,7 +86,6 @@ public class SuggestionsActivityBored extends ListActivity {
 
             case R.id.rbtn_q4_1:
                 break;
-
         }
     }
 }

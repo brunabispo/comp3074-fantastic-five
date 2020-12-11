@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 public class WelcomeActivity extends AppCompatActivity {
@@ -68,8 +67,6 @@ public class WelcomeActivity extends AppCompatActivity {
                 openTired();
             }
         });
-
-
     }
 
     //function to start QuestionsActivity
@@ -107,9 +104,4 @@ public class WelcomeActivity extends AppCompatActivity {
         Intent start = new Intent(getApplicationContext(), SuggestionsActivityTired.class);
         startActivity(start);
     }
-    
-
-
-
-
 }

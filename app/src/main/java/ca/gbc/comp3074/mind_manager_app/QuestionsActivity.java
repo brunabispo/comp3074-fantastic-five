@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 public class QuestionsActivity extends AppCompatActivity {
@@ -110,7 +109,6 @@ public class QuestionsActivity extends AppCompatActivity {
                 break;
             case R.id.rbtn_q4_3:
                 break;
-
         }
     }
 }

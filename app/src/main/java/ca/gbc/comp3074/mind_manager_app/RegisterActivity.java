@@ -5,9 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import io.realm.Realm;
 import io.realm.RealmQuery;
 
@@ -54,7 +52,6 @@ public class RegisterActivity extends AppCompatActivity {
                     realm.commitTransaction();
                     backToLogin();
                 }
-
             }
         });
 
@@ -74,5 +71,3 @@ public class RegisterActivity extends AppCompatActivity {
         startActivity(start);
     }
 }
-
-
