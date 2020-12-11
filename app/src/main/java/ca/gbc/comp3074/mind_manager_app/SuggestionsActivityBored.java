@@ -21,7 +21,15 @@ public class SuggestionsActivityBored extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suggestions);
 
-
+        /*
+        ImageButton btnMap = findViewById(R.id.btn_map);
+        btnMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openMap();
+            }
+        });
+        */
 
         list = new ArrayList<Suggestion>();
 
