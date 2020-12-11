@@ -21,6 +21,8 @@ public class SuggestionsActivityBored extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suggestions);
 
+        list = new ArrayList<Suggestion>();
+
         /*
         ImageButton btnMap = findViewById(R.id.btn_map);
         btnMap.setOnClickListener(new View.OnClickListener() {
@@ -30,8 +32,6 @@ public class SuggestionsActivityBored extends ListActivity {
             }
         });
         */
-
-        list = new ArrayList<Suggestion>();
 
 //        // Get a Realm instance for this thread
 //        final Realm realm = Realm.getDefaultInstance();
