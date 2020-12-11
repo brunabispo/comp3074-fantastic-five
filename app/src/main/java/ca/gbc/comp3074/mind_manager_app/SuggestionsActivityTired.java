@@ -38,11 +38,14 @@ public class SuggestionsActivityTired extends ListActivity {
 //        final RealmQuery<Suggestion> suggestions =  realm.where(Suggestion.class);
 
 //        realm.beginTransaction();
-        final Suggestion musicSuggestion = new Suggestion ("Music", "feel good");
-        final Suggestion sportSuggestion = new Suggestion ("Sport", "push-ups");
-        final Suggestion outDoorSuggestion = new Suggestion("Outdoors", "Walk in Park");
-        final Suggestion gameSuggestion = new Suggestion ("Games", "Chess");
-        final Suggestion poetrySuggestion = new Suggestion ("Poetry", "I see the world, but it doesnt see me. I want to be seen, but I fear its gaze. I am nothing.");
+        final Suggestion musicSuggestion = new Suggestion ("Music", "Weightless - Macaroni Union");
+        final Suggestion sportSuggestion = new Suggestion ("Sport", "None");
+        final Suggestion outDoorSuggestion = new Suggestion("Outdoors", "Massage therapy");
+        final Suggestion gameSuggestion = new Suggestion ("Games", "Monopoly One");
+        final Suggestion poetrySuggestion = new Suggestion ("Poetry", "Time says “Let there be”\n" +
+                "every moment and instantly\n" +
+                "there is space and the radiance\n" +
+                "of each bright galaxy.");
 //        //Write in data base
 //        realm.copyToRealm(musicSuggestion);
 //        realm.copyToRealm(sportSuggestion);
