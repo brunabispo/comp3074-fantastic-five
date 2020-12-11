@@ -1,9 +1,12 @@
 package ca.gbc.comp3074.mind_manager_app;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 
 import java.util.ArrayList;
@@ -43,14 +46,17 @@ public class SuggestionsActivityBored extends ListActivity {
         list.add(gameSuggestion);
         list.add(poetrySuggestion);
 
-
-
         ArrayAdapter<Suggestion> adapter = new SuggestionArrayAdapter(this,
                 R.layout.row_layout_suggestions, R.id.lblCategory, R.id.lblSuggestion, list);
 
         setListAdapter(adapter);
     }
 
+    // Open the Map Page
+    private void openMap(){
+        Intent start = new Intent(getApplicationContext(), MapActivity.class);
+        startActivity(start);
+    }
 
     public void onRadioButtonClicked(View view) {
         // Is the button now checked?

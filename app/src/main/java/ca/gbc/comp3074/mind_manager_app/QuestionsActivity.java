@@ -61,10 +61,7 @@ public class QuestionsActivity extends AppCompatActivity {
         q4_a2.setText("No");
         q4_a3.setText("Yes, but I'm lazy");
 
-
-
         Button btnSubmit = findViewById(R.id.btn_submit);
-
         //Button Submit goes to the suggestions page (SuggestionsActivitySad)
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override

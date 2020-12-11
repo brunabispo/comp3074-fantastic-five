@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ca.gbc.comp3074.mind_manager_app">
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,6 +17,7 @@
         <activity android:name=".WelcomeActivity" android:parentActivityName=".MainActivity"/>
         <activity android:name=".RegisterActivity" android:parentActivityName=".MainActivity"/>
         <activity android:name=".MainActivity" android:parentActivityName=".SplashActivity"/>
+        <activity android:name=".MapActivity" android:parentActivityName=".WelcomeActivity"/>
         <activity android:name=".SuggestionsActivitySad" android:parentActivityName=".WelcomeActivity"/>
         <activity android:name=".SuggestionsActivityHappy" android:parentActivityName=".WelcomeActivity"/>
         <activity android:name=".SuggestionsActivityBored" android:parentActivityName=".WelcomeActivity"/>
@@ -26,9 +30,11 @@
             </intent-filter>
         </activity>
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/map_key"/>
         <provider android:authorities="com.facebook.app.FacebookContentProvider200717484986995"
             android:name = "com.facebook.FacebookContentProvider"
             android:exported="true" />
     </application>
-    <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>

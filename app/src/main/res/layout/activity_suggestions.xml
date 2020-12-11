@@ -50,7 +50,7 @@
 
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/btn_map"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:background="#C5DDE8"
