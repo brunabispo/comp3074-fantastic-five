@@ -38,39 +38,39 @@
 
             <ImageButton
                 android:id="@+id/imageButton3"
-                android:layout_width="59dp"
-                android:layout_height="58dp"
-                android:layout_marginHorizontal="30dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:background="#C5DDE8"
                 android:textAlignment="textStart"
                 android:tint="#1DB5C8"
-                app:srcCompat="@drawable/ic_filter"
-                android:contentDescription="Filter" />
+                android:src="@drawable/ic_filter"
+                android:layout_marginEnd="16dp"
+                android:contentDescription="Filter"
+                android:layout_weight="1"/>
 
 
             <ImageButton
                 android:id="@+id/imageButton"
-                android:layout_width="56dp"
-                android:layout_height="57dp"
-
-                android:layout_marginHorizontal="40dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:background="#C5DDE8"
                 android:textAlignment="center"
                 android:tint="#1DB5C8"
-                app:srcCompat="@drawable/ic_location"
-                android:contentDescription="Location" />
+                android:src="@drawable/ic_location"
+                android:contentDescription="Location"
+                android:layout_weight="1"/>
 
             <ImageButton
                 android:id="@+id/imageButton2"
-                android:layout_width="54dp"
-                android:layout_height="58dp"
-
-                android:layout_marginHorizontal="40dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:background="#C5DDE8"
                 android:textAlignment="viewEnd"
                 android:tint="#1DB5C8"
-                app:srcCompat="@drawable/ic_randomize"
-                android:contentDescription="Random" />
+                android:src="@drawable/ic_randomize"
+                android:layout_marginStart="16dp"
+                android:contentDescription="Random"
+                android:layout_weight="1"/>
 
         </LinearLayout>
 
