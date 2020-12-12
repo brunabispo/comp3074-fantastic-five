@@ -46,7 +46,7 @@ public class MapActivity  extends FragmentActivity implements OnMapReadyCallback
 
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED){
-            //getLocation();
+            getLocation();
         }else{
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},1);
         }
@@ -58,7 +58,7 @@ public class MapActivity  extends FragmentActivity implements OnMapReadyCallback
         if(requestCode == 1 && permissions.length == 1
                 && permissions[0] == Manifest.permission.ACCESS_FINE_LOCATION
                 && grantResults [0] == PackageManager.PERMISSION_GRANTED){
-            //getLocation();
+            getLocation();
         }
     }
 
