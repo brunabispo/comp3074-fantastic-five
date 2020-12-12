@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,31 +38,32 @@ public class SuggestionsActivityBored extends ListActivity {
         final Suggestion gameSuggestion = new Suggestion ("Games", "Bubble shooter");
         final Suggestion poetrySuggestion = new Suggestion ("Reading", "Of all bodily functions that could be contagious, thank God it's THE YAWN - Unknown");
 
-//        ImageButton btnRandom = findViewById(R.id.btnRandom);
-//        btnRandom.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                final Suggestion musicSuggestion = new Suggestion ("Music", "Lost & Found - MacKenzie Bourg");
-//                final Suggestion sportSuggestion = new Suggestion ("Sport", "Swimming");
-//                final Suggestion outDoorSuggestion = new Suggestion("Outdoors", "Ride a Bike");
-//                final Suggestion gameSuggestion = new Suggestion ("Games", "Tetris");
-//                final Suggestion poetrySuggestion = new Suggestion ("Reading", "Of all bodily functions that could be contagious, " +
-//                        "thank God it's THE YAWN - Unknown");
-//
-//                list.add(musicSuggestion);
-//                list.add(sportSuggestion);
-//                list.add(outDoorSuggestion);
-//                list.add(gameSuggestion);
-//                list.add(poetrySuggestion);
-//
-//                ArrayAdapter<Suggestion> adapter = new SuggestionArrayAdapter(SuggestionsActivityBored.this,
-//                        R.layout.row_layout_suggestions, R.id.lblCategory, R.id.lblSuggestion, list);
-//
-//                setListAdapter(adapter);
-//
-//            }
-//        });
+        ImageButton btnRandom = findViewById(R.id.btnRandom);
+        btnRandom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final Suggestion musicSuggestion = new Suggestion ("Music", "Lost & Found - MacKenzie Bourg");
+                final Suggestion sportSuggestion = new Suggestion ("Sport", "Swimming");
+                final Suggestion outDoorSuggestion = new Suggestion("Outdoors", "Ride a Bike");
+                final Suggestion gameSuggestion = new Suggestion ("Games", "Tetris");
+                final Suggestion poetrySuggestion = new Suggestion ("Reading", "Of all bodily functions that could be contagious, " +
+                        "thank God it's THE YAWN - Unknown");
+
+//                list.clear();
+                list.add(musicSuggestion);
+                list.add(sportSuggestion);
+                list.add(outDoorSuggestion);
+                list.add(gameSuggestion);
+                list.add(poetrySuggestion);
+
+                ArrayAdapter<Suggestion> adapter = new SuggestionArrayAdapter(SuggestionsActivityBored.this,
+                        R.layout.row_layout_suggestions, R.id.lblCategory, R.id.lblSuggestion, list);
+
+                setListAdapter(adapter);
+
+            }
+        });
 
         list.add(musicSuggestion);
         list.add(sportSuggestion);
