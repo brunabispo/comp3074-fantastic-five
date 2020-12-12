@@ -45,6 +45,37 @@ public class SuggestionsActivitySad extends ListActivity {
         list.add(gameSuggestion);
         list.add(poetrySuggestion);
 
+        ImageButton btnRandom = findViewById(R.id.btnRandom);
+        btnRandom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                list.remove(musicSuggestion);
+                list.remove(sportSuggestion);
+                list.remove(outDoorSuggestion);
+                list.remove(gameSuggestion);
+                list.remove(poetrySuggestion);
+
+                final Suggestion musicSuggestion1 = new Suggestion ("Music", "Exile - Taylor Swift");
+                final Suggestion sportSuggestion1 = new Suggestion ("Sport", "Swimming");
+                final Suggestion outDoorSuggestion1 = new Suggestion("Outdoors", "Walk in the park");
+                final Suggestion gameSuggestion1 = new Suggestion ("Games", "The Sims");
+                final Suggestion poetrySuggestion1 = new Suggestion ("Reading", "The Fault in Our Starts - John Green");
+
+                list.add(musicSuggestion1);
+                list.add(sportSuggestion1);
+                list.add(outDoorSuggestion1);
+                list.add(gameSuggestion1);
+                list.add(poetrySuggestion1);
+
+                ArrayAdapter<Suggestion> adapter = new SuggestionArrayAdapter(SuggestionsActivitySad.this,
+                        R.layout.row_layout_suggestions, R.id.lblCategory, R.id.lblSuggestion, list);
+
+                setListAdapter(adapter);
+
+            }
+        });
+
         ArrayAdapter<Suggestion> adapter = new SuggestionArrayAdapter(this,
                 R.layout.row_layout_suggestions, R.id.lblCategory, R.id.lblSuggestion, list);
 

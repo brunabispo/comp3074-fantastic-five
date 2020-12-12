@@ -41,6 +41,37 @@ public class SuggestionsActivityHappy extends ListActivity {
         list.add(gameSuggestion);
         list.add(poetrySuggestion);
 
+        ImageButton btnRandom = findViewById(R.id.btnRandom);
+        btnRandom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                list.remove(musicSuggestion);
+                list.remove(sportSuggestion);
+                list.remove(outDoorSuggestion);
+                list.remove(gameSuggestion);
+                list.remove(poetrySuggestion);
+
+                final Suggestion musicSuggestion1 = new Suggestion ("Music", "Who's Laughing Now - Ava Max");
+                final Suggestion sportSuggestion1 = new Suggestion ("Sport", "Laser Tag");
+                final Suggestion outDoorSuggestion1 = new Suggestion("Outdoors", "Go to the park");
+                final Suggestion gameSuggestion1 = new Suggestion ("Games", "UNO");
+                final Suggestion poetrySuggestion1 = new Suggestion ("Reading", "Happiness is a direction, not a place.");
+
+                list.add(musicSuggestion1);
+                list.add(sportSuggestion1);
+                list.add(outDoorSuggestion1);
+                list.add(gameSuggestion1);
+                list.add(poetrySuggestion1);
+
+                ArrayAdapter<Suggestion> adapter = new SuggestionArrayAdapter(SuggestionsActivityHappy.this,
+                        R.layout.row_layout_suggestions, R.id.lblCategory, R.id.lblSuggestion, list);
+
+                setListAdapter(adapter);
+
+            }
+        });
+
         ArrayAdapter<Suggestion> adapter = new SuggestionArrayAdapter(this,
                 R.layout.row_layout_suggestions, R.id.lblCategory, R.id.lblSuggestion, list);
 

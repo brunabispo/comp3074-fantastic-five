@@ -43,19 +43,24 @@ public class SuggestionsActivityBored extends ListActivity {
             @Override
             public void onClick(View v) {
 
-                final Suggestion musicSuggestion = new Suggestion ("Music", "Lost & Found - MacKenzie Bourg");
-                final Suggestion sportSuggestion = new Suggestion ("Sport", "Swimming");
-                final Suggestion outDoorSuggestion = new Suggestion("Outdoors", "Ride a Bike");
-                final Suggestion gameSuggestion = new Suggestion ("Games", "Tetris");
-                final Suggestion poetrySuggestion = new Suggestion ("Reading", "Of all bodily functions that could be contagious, " +
+                list.remove(musicSuggestion);
+                list.remove(sportSuggestion);
+                list.remove(outDoorSuggestion);
+                list.remove(gameSuggestion);
+                list.remove(poetrySuggestion);
+
+                final Suggestion musicSuggestion1 = new Suggestion ("Music", "Lost & Found - MacKenzie Bourg");
+                final Suggestion sportSuggestion1 = new Suggestion ("Sport", "Swimming");
+                final Suggestion outDoorSuggestion1 = new Suggestion("Outdoors", "Ride a Bike");
+                final Suggestion gameSuggestion1 = new Suggestion ("Games", "Tetris");
+                final Suggestion poetrySuggestion1 = new Suggestion ("Reading", "Of all bodily functions that could be contagious, " +
                         "thank God it's THE YAWN - Unknown");
 
-//                list.clear();
-                list.add(musicSuggestion);
-                list.add(sportSuggestion);
-                list.add(outDoorSuggestion);
-                list.add(gameSuggestion);
-                list.add(poetrySuggestion);
+                list.add(musicSuggestion1);
+                list.add(sportSuggestion1);
+                list.add(outDoorSuggestion1);
+                list.add(gameSuggestion1);
+                list.add(poetrySuggestion1);
 
                 ArrayAdapter<Suggestion> adapter = new SuggestionArrayAdapter(SuggestionsActivityBored.this,
                         R.layout.row_layout_suggestions, R.id.lblCategory, R.id.lblSuggestion, list);

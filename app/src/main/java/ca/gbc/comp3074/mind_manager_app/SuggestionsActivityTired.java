@@ -29,13 +29,6 @@ public class SuggestionsActivityTired extends ListActivity {
 
         list = new ArrayList<Suggestion>();
 
-//        // Get a Realm instance for this thread
-//        final Realm realm = Realm.getDefaultInstance();
-
-//        //Query looking for all suggestions
-//        final RealmQuery<Suggestion> suggestions =  realm.where(Suggestion.class);
-
-//        realm.beginTransaction();
         final Suggestion musicSuggestion = new Suggestion ("Music", "Weightless - Macaroni Union");
         final Suggestion sportSuggestion = new Suggestion ("Sport", "None");
         final Suggestion outDoorSuggestion = new Suggestion("Outdoors", "Massage therapy");
@@ -44,16 +37,49 @@ public class SuggestionsActivityTired extends ListActivity {
                 "every moment and instantly\n" +
                 "there is space and the radiance\n" +
                 "of each bright galaxy.");
-//        //Write in data base
-//        realm.copyToRealm(musicSuggestion);
-//        realm.copyToRealm(sportSuggestion);
-//        realm.commitTransaction();
 
         list.add(musicSuggestion);
         list.add(sportSuggestion);
         list.add(outDoorSuggestion);
         list.add(gameSuggestion);
         list.add(poetrySuggestion);
+
+        ImageButton btnRandom = findViewById(R.id.btnRandom);
+        btnRandom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                list.remove(musicSuggestion);
+                list.remove(sportSuggestion);
+                list.remove(outDoorSuggestion);
+                list.remove(gameSuggestion);
+                list.remove(poetrySuggestion);
+
+                final Suggestion musicSuggestion1 = new Suggestion ("Music", "Broken Hands of Mine - Joe Brooks");
+                final Suggestion sportSuggestion1 = new Suggestion ("Sport", "Yoga");
+                final Suggestion outDoorSuggestion1 = new Suggestion("Outdoors", "Sit on a bench in the park");
+                final Suggestion gameSuggestion1 = new Suggestion ("Games", "Bubble Shooter");
+                final Suggestion poetrySuggestion1 = new Suggestion ("Reading", "Well God knows my feet, they aching\n" +
+                        "And I've got a mountains ahead to climb\n" +
+                        "One way at a time\n" +
+                        "I will try\n" +
+                        "To let these broken hands of mine\n" +
+                        "Give me strength, be my light... - Broken Hands of Mine");
+
+
+                list.add(musicSuggestion1);
+                list.add(sportSuggestion1);
+                list.add(outDoorSuggestion1);
+                list.add(gameSuggestion1);
+                list.add(poetrySuggestion1);
+
+                ArrayAdapter<Suggestion> adapter = new SuggestionArrayAdapter(SuggestionsActivityTired.this,
+                        R.layout.row_layout_suggestions, R.id.lblCategory, R.id.lblSuggestion, list);
+
+                setListAdapter(adapter);
+
+            }
+        });
 
         ArrayAdapter<Suggestion> adapter = new SuggestionArrayAdapter(this,
                 R.layout.row_layout_suggestions, R.id.lblCategory, R.id.lblSuggestion, list);
@@ -67,28 +93,4 @@ public class SuggestionsActivityTired extends ListActivity {
         startActivity(start);
     }
 
-    public void onRadioButtonClicked(View view) {
-        // Is the button now checked?
-        boolean checked = ((RadioButton) view).isChecked();
-
-        // Logic to still be implemented
-        switch(view.getId()) {
-            case R.id.rbtn_q1_1:
-                if (checked)  {
-                    ArrayAdapter<Suggestion> adapter = new SuggestionArrayAdapter(this,
-                            R.layout.row_layout_suggestions, R.id.lblCategory, R.id.lblSuggestion, list);
-
-                    setListAdapter(adapter);
-                }
-                    break;
-            case R.id.rbtn_q2_1:
-                break;
-
-            case R.id.rbtn_q3_1:
-                break;
-
-            case R.id.rbtn_q4_1:
-                break;
-        }
-    }
 }
