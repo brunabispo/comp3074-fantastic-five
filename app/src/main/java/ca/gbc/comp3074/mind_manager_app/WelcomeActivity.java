@@ -78,30 +78,40 @@ public class WelcomeActivity extends AppCompatActivity {
     // Open Sad suggestions
     private void openSad(){
         Intent start = new Intent(getApplicationContext(), SuggestionsActivitySad.class);
+        String mood = "";
+        start.putExtra("Sad", mood);
         startActivity(start);
     }
 
     // Open Happy suggestions
     private void openHappy(){
         Intent start = new Intent(getApplicationContext(), SuggestionsActivityHappy.class);
+        String mood = "";
+        start.putExtra("Happy", mood);
         startActivity(start);
     }
 
     // Open Energetic suggestions
     private void openEnergetic(){
         Intent start = new Intent(getApplicationContext(), SuggestionsActivityEnergetic.class);
+        String mood = "";
+        start.putExtra("Energetic", mood);
         startActivity(start);
     }
 
     // Open Bored suggestions
     private void openBored(){
         Intent start = new Intent(getApplicationContext(), SuggestionsActivityBored.class);
+        String mood = "";
+        start.putExtra("Bored", mood);
         startActivity(start);
     }
 
     // Open Tired suggestions
     private void openTired(){
         Intent start = new Intent(getApplicationContext(), SuggestionsActivityTired.class);
+        String mood = "";
+        start.putExtra("Tired", mood);
         startActivity(start);
     }
 }

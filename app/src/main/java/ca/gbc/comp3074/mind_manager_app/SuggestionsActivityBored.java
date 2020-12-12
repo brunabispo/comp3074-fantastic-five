@@ -1,5 +1,6 @@
 package ca.gbc.comp3074.mind_manager_app;
 
+import android.annotation.SuppressLint;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +10,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.TextView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +19,7 @@ public class SuggestionsActivityBored extends ListActivity {
 
     List<Suggestion> list; // List of suggestions
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +32,10 @@ public class SuggestionsActivityBored extends ListActivity {
                 openMap();
             }
         });
+
+        TextView title = findViewById(R.id.lblTitle);
+        String moodTitle = getIntent().getStringExtra("Bored");
+        title.setText("Here are your suggestions for " + moodTitle);
 
         list = new ArrayList<Suggestion>();
 
