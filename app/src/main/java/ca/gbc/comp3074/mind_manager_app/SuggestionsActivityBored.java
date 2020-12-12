@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import java.util.ArrayList;
@@ -29,22 +30,38 @@ public class SuggestionsActivityBored extends ListActivity {
 
         list = new ArrayList<Suggestion>();
 
-//        // Get a Realm instance for this thread
-//        final Realm realm = Realm.getDefaultInstance();
 
-//        //Query looking for all suggestions
-//        final RealmQuery<Suggestion> suggestions =  realm.where(Suggestion.class);
-
-//        realm.beginTransaction();
         final Suggestion musicSuggestion = new Suggestion ("Music", "Lemon Tree - Fools Garden");
         final Suggestion sportSuggestion = new Suggestion ("Sport", "Yoga");
         final Suggestion outDoorSuggestion = new Suggestion("Outdoors", "Go for fishing");
         final Suggestion gameSuggestion = new Suggestion ("Games", "Bubble shooter");
         final Suggestion poetrySuggestion = new Suggestion ("Reading", "Of all bodily functions that could be contagious, thank God it's THE YAWN - Unknown");
-//        //Write in data base
-//        realm.copyToRealm(musicSuggestion);
-//        realm.copyToRealm(sportSuggestion);
-//        realm.commitTransaction();
+
+//        ImageButton btnRandom = findViewById(R.id.btnRandom);
+//        btnRandom.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                final Suggestion musicSuggestion = new Suggestion ("Music", "Lost & Found - MacKenzie Bourg");
+//                final Suggestion sportSuggestion = new Suggestion ("Sport", "Swimming");
+//                final Suggestion outDoorSuggestion = new Suggestion("Outdoors", "Ride a Bike");
+//                final Suggestion gameSuggestion = new Suggestion ("Games", "Tetris");
+//                final Suggestion poetrySuggestion = new Suggestion ("Reading", "Of all bodily functions that could be contagious, " +
+//                        "thank God it's THE YAWN - Unknown");
+//
+//                list.add(musicSuggestion);
+//                list.add(sportSuggestion);
+//                list.add(outDoorSuggestion);
+//                list.add(gameSuggestion);
+//                list.add(poetrySuggestion);
+//
+//                ArrayAdapter<Suggestion> adapter = new SuggestionArrayAdapter(SuggestionsActivityBored.this,
+//                        R.layout.row_layout_suggestions, R.id.lblCategory, R.id.lblSuggestion, list);
+//
+//                setListAdapter(adapter);
+//
+//            }
+//        });
 
         list.add(musicSuggestion);
         list.add(sportSuggestion);
@@ -56,6 +73,7 @@ public class SuggestionsActivityBored extends ListActivity {
                 R.layout.row_layout_suggestions, R.id.lblCategory, R.id.lblSuggestion, list);
 
         setListAdapter(adapter);
+
     }
 
     // Open the Map Page
@@ -64,28 +82,4 @@ public class SuggestionsActivityBored extends ListActivity {
         startActivity(start);
     }
 
-    public void onRadioButtonClicked(View view) {
-        // Is the button now checked?
-        boolean checked = ((RadioButton) view).isChecked();
-
-        // Logic to still be implemented
-        switch(view.getId()) {
-            case R.id.rbtn_q1_1:
-                if (checked)  {
-                    ArrayAdapter<Suggestion> adapter = new SuggestionArrayAdapter(this,
-                            R.layout.row_layout_suggestions, R.id.lblCategory, R.id.lblSuggestion, list);
-
-                    setListAdapter(adapter);
-                }
-                    break;
-            case R.id.rbtn_q2_1:
-                break;
-
-            case R.id.rbtn_q3_1:
-                break;
-
-            case R.id.rbtn_q4_1:
-                break;
-        }
-    }
 }

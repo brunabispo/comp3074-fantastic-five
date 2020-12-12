@@ -40,7 +40,7 @@ public class SuggestionsActivityTired extends ListActivity {
         final Suggestion sportSuggestion = new Suggestion ("Sport", "None");
         final Suggestion outDoorSuggestion = new Suggestion("Outdoors", "Massage therapy");
         final Suggestion gameSuggestion = new Suggestion ("Games", "Monopoly One");
-        final Suggestion poetrySuggestion = new Suggestion ("Poetry", "Time says “Let there be”\n" +
+        final Suggestion poetrySuggestion = new Suggestion ("Reading", "Time says “Let there be”\n" +
                 "every moment and instantly\n" +
                 "there is space and the radiance\n" +
                 "of each bright galaxy.");
