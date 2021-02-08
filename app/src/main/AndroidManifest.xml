@@ -19,6 +19,12 @@
         <activity android:name=".MainActivity" android:parentActivityName=".SplashActivity"/>
         <activity android:name=".MapActivity" android:parentActivityName=".WelcomeActivity"/>
         <activity android:name=".SuggestionsActivity" android:parentActivityName=".WelcomeActivity"/>
+        <activity android:name=".AdminHomeActivity"/>
+        <activity android:name=".AdminCurrentUsersActivity" android:parentActivityName=".AdminHomeActivity"/>
+        <activity android:name=".AdminQuestionnaireActivity" android:parentActivityName=".AdminHomeActivity"/>
+        <activity android:name=".AdminQuestionOneActivity" android:parentActivityName=".AdminQuestionnaireActivity"/>
+        <activity android:name=".AdminMoodOptionsActivity" android:parentActivityName=".AdminHomeActivity"/>
+        <activity android:name=".AdminCategoriesActivity" android:parentActivityName=".AdminHomeActivity"/>
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
