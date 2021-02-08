@@ -18,11 +18,7 @@
         <activity android:name=".RegisterActivity" android:parentActivityName=".MainActivity"/>
         <activity android:name=".MainActivity" android:parentActivityName=".SplashActivity"/>
         <activity android:name=".MapActivity" android:parentActivityName=".WelcomeActivity"/>
-        <activity android:name=".SuggestionsActivitySad" android:parentActivityName=".WelcomeActivity"/>
-        <activity android:name=".SuggestionsActivityHappy" android:parentActivityName=".WelcomeActivity"/>
-        <activity android:name=".SuggestionsActivityBored" android:parentActivityName=".WelcomeActivity"/>
-        <activity android:name=".SuggestionsActivityEnergetic" android:parentActivityName=".WelcomeActivity"/>
-        <activity android:name=".SuggestionsActivityTired" android:parentActivityName=".WelcomeActivity"/>
+        <activity android:name=".SuggestionsActivity" android:parentActivityName=".WelcomeActivity"/>
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

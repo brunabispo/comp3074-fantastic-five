@@ -61,7 +61,7 @@ public class QuestionsActivity extends AppCompatActivity {
         q4_a3.setText("Yes, but I'm lazy");
 
         Button btnSubmit = findViewById(R.id.btn_submit);
-        //Button Submit goes to the suggestions page (SuggestionsActivitySad)
+        //Button Submit goes to the suggestions page (SuggestionsActivity)
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,7 +72,9 @@ public class QuestionsActivity extends AppCompatActivity {
 
     // Open the Suggestions Page
     private void openSuggestions(){
-        Intent start = new Intent(getApplicationContext(), SuggestionsActivitySad.class);
+        Intent start = new Intent(getApplicationContext(), SuggestionsActivity.class);
+        String mood = "Sad";
+        start.putExtra("Mood", mood);
         startActivity(start);
     }
 
