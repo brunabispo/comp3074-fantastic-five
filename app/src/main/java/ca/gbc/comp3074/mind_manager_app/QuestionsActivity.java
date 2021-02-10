@@ -6,7 +6,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
 
 public class QuestionsActivity extends AppCompatActivity {
 
@@ -15,7 +18,7 @@ public class QuestionsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
 
-        TextView question1 = findViewById(R.id.lblq1);
+        //TextView question1 = findViewById(R.id.lblq1);
         TextView question2 = findViewById(R.id.lblq2);
         TextView question3 = findViewById(R.id.lblq3);
         TextView question4 = findViewById(R.id.lblq4);
@@ -36,11 +39,37 @@ public class QuestionsActivity extends AppCompatActivity {
         RadioButton q4_a2 = findViewById(R.id.rbtn_q4_2);
         RadioButton q4_a3 = findViewById(R.id.rbtn_q4_3);
 
-        // Question 1
-        question1.setText("Do I feel like I want to be alone right now?");
-        q1_a1.setText("Yes");
-        q1_a2.setText("No");
-        q1_a3.setText("I'm fine either way");
+        //question 1 - "Do I feel like I want to be alone right now?"
+        Answer answer1 = new Answer();
+        answer1.setText("Yes");
+        answer1.setEnergeticRating(0);
+        answer1.setBoredRating(5);
+        answer1.setHappyRating(3);
+        answer1.setSadRating(8);
+        answer1.setTiredRating(10);
+
+        Answer answer2 = new Answer();
+        answer2.setText("No");
+        answer2.setEnergeticRating(10);
+        answer2.setBoredRating(5);
+        answer2.setHappyRating(8);
+        answer2.setSadRating(1);
+        answer2.setTiredRating(0);
+
+        Answer answer3 = new Answer();
+        answer3.setText("I'm fine either way");
+        answer3.setEnergeticRating(10);
+        answer3.setBoredRating(5);
+        answer3.setHappyRating(8);
+        answer3.setSadRating(1);
+        answer3.setTiredRating(0);
+
+        ArrayList<Answer> answers = new ArrayList<>();
+        answers.add(answer1);
+        answers.add(answer2);
+
+        Question question1 = new Question();
+        question1.setAnswers(answers);
 
         // Question 2
         question2.setText("Did someone get on my nerves today?");
@@ -60,8 +89,11 @@ public class QuestionsActivity extends AppCompatActivity {
         q4_a2.setText("No");
         q4_a3.setText("Yes, but I'm lazy");
 
+
+
         Button btnSubmit = findViewById(R.id.btn_submit);
-        //Button Submit goes to the suggestions page (SuggestionsActivity)
+
+        //Button Submit goes to the suggestions page (SuggestionsActivitySad)
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,10 +104,8 @@ public class QuestionsActivity extends AppCompatActivity {
 
     // Open the Suggestions Page
     private void openSuggestions(){
-        Intent start = new Intent(getApplicationContext(), SuggestionsActivity.class);
-        String mood = "Sad";
-        start.putExtra("Mood", mood);
-        startActivity(start);
+        //Intent start = new Intent(getApplicationContext(), SuggestionsActivitySad.class);
+        //startActivity(start);
     }
 
     private void openQuestions(){
@@ -111,6 +141,7 @@ public class QuestionsActivity extends AppCompatActivity {
                 break;
             case R.id.rbtn_q4_3:
                 break;
+
         }
     }
 }
