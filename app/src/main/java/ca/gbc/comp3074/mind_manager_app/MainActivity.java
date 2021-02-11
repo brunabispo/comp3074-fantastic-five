@@ -2,6 +2,7 @@ package ca.gbc.comp3074.mind_manager_app;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -11,8 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import io.realm.Realm;
-import io.realm.RealmQuery;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,32 +21,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Initialize Realm
-        Realm.init(this);
-
-        // Get a Realm instance for this thread
-        Realm realm = Realm.getDefaultInstance();
-
-        // Query looking for all users
-        final RealmQuery<User> users = realm.where(User.class);
+        //Database instance
+        final DatabaseHandler db = new DatabaseHandler(this);
 
         final EditText username = findViewById(R.id.editUsername);
         final EditText password = findViewById(R.id.editPassword);
         final TextView lblError = findViewById(R.id.lblerrorlogin);
 
-        //admin`s login/password (benjeff/123_Ben)
-
         //Button Login goes to welcome page to choose a mood(WelcomeActivity)
-        Button btnLogin = findViewById(R.id.btnLogin);
+        Button btnLogin = findViewById(R.id.btnSubmit);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Execute the query, find if username input from user is existing in data base
-                final User resultUsername = users.equalTo("userName", username.getText().toString()).findFirst();
+                final User userExist = db.getUser(username.getText().toString());
 
-                if(resultUsername != null && username.getText().toString().equals(resultUsername.getUserName()) &&
-                        password.getText().toString().equals(resultUsername.getPassword())){
-                    openWelcome();
+                if(userExist != null && username.getText().toString().equals(userExist.getUserName()) &&
+                        password.getText().toString().equals(userExist.getPassword())){
+                    //login: 'benjeff', password: '123_Ben'
+                    if((userExist.getRole()).equals("admin")){
+                        openAdminHome();
+                    } else {
+                        openWelcome();
+                    }
                 }
                 else{
                   lblError.setText("User name or password invalid");
@@ -62,7 +59,12 @@ public class MainActivity extends AppCompatActivity {
                 openRegister();
             }
         });
+    }
 
+    //function to start WelcomeActivity
+    private void openAdminHome(){
+        Intent start = new Intent(getApplicationContext(), AdminHomeActivity.class);
+        startActivity(start);
     }
 
     //function to start WelcomeActivity

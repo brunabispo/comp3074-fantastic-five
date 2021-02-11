@@ -32,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.462"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
+        app:layout_constraintTop_toBottomOf="@+id/btnSubmit"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -97,7 +97,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnSubmit"
         android:layout_width="117dp"
         android:layout_height="42dp"
         android:layout_marginTop="28dp"

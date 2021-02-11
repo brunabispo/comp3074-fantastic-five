@@ -2,12 +2,13 @@ package ca.gbc.comp3074.mind_manager_app;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import io.realm.Realm;
-import io.realm.RealmQuery;
+
+import java.util.List;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -16,40 +17,35 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        // Get a Realm instance for this thread
-        final Realm realm = Realm.getDefaultInstance();
+        //Database instance
+        final DatabaseHandler db = new DatabaseHandler(this);
+        //User admin = new User("admin","benjeff", "Ben", "123_Ben");
 
         final TextView editFirstName = findViewById(R.id.editName);
-        final TextView editUsername = findViewById(R.id.editUsername);
+        final TextView editUserName = findViewById(R.id.editUsername);
         final TextView editPassword = findViewById(R.id.editPassword);
         final TextView editConfirmPassword = findViewById(R.id.editConfirmPass);
         final TextView lblError = findViewById(R.id.lblError);
 
-        //Query looking for all users
-        final RealmQuery<User> users =  realm.where(User.class);
-
-        Button btnLogin = findViewById(R.id.btnLogin);
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+        Button btnSubmit = findViewById(R.id.btnSubmit);
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Execute the query, find if username input from user is existing in data base
-                final User resultUsername = users.equalTo("userName", editUsername.getText().toString()).findFirst();
+                User userExist = db.getUser(editUserName.getText().toString());
 
-                if (!editPassword.getText().toString().equals(editConfirmPassword.getText().toString())){
-                    lblError.setText("Password and Confirm Password not match");
-                }
-                if(resultUsername != null){
+                if(userExist != null){
                     lblError.setText("This user name is already exist");
                 }
-                if(resultUsername == null && (editPassword.getText().toString().equals(editConfirmPassword.getText().toString()))){
-                    //Insert
-                    realm.beginTransaction();
-                    final User user = new User (editFirstName.getText().toString()+"",
-                            editUsername.getText().toString()+"", editPassword.getText().toString()+"");
-
-                    //Write in data base
-                    realm.copyToRealm(user);
-                    realm.commitTransaction();
+                else if (!editPassword.getText().toString().equals(editConfirmPassword.getText().toString())){
+                    lblError.setText("Password and Confirm Password not match");
+                }
+                //if(userExist == null && (editPassword.getText().toString().equals(editConfirmPassword.getText().toString()))){
+                else{
+                    //Insert new user
+                    User user = new User("user", editUserName.getText().toString()+"",
+                            editFirstName.getText().toString()+"", editPassword.getText().toString()+"");
+                    db.addUser(user);
                     backToLogin();
                 }
             }
