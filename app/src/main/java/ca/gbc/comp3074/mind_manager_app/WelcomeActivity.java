@@ -23,21 +23,21 @@ public class WelcomeActivity extends AppCompatActivity {
             }
         });
 
-        //Button Sad goes to the suggestions page (SuggestionsActivity)
-        Button Sad = findViewById(R.id.btnSad);
-        Sad.setOnClickListener(new View.OnClickListener() {
+        //Button Moody goes to the suggestions page (SuggestionsActivity)
+        Button Moody = findViewById(R.id.btnMoody);
+        Moody.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openSad();
+                openMoody();
             }
         });
 
-        //Button Happy goes to the suggestions page (SuggestionsActivity)
-        Button Happy = findViewById(R.id.btnHappy);
-        Happy.setOnClickListener(new View.OnClickListener() {
+        //Button Happier goes to the suggestions page (SuggestionsActivity)
+        Button Happier = findViewById(R.id.btnHappier);
+        Happier.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openHappy();
+                openHappier();
             }
         });
 
@@ -50,12 +50,12 @@ public class WelcomeActivity extends AppCompatActivity {
             }
         });
 
-        //Button Bored goes to the suggestions page (SuggestionsActivity)
-        Button Bored = findViewById(R.id.btnBored);
-        Bored.setOnClickListener(new View.OnClickListener() {
+        //Button Calmer goes to the suggestions page (SuggestionsActivity)
+        Button Calmer = findViewById(R.id.btnCalmer); //
+        Calmer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openBored();
+                openCalmer();
             }
         });
 
@@ -75,10 +75,10 @@ public class WelcomeActivity extends AppCompatActivity {
         startActivity(start);
     }
 
-    // Open Bored suggestions
-    private void openBored(){
+    // Open Calmer suggestions
+    private void openCalmer(){
         Intent start = new Intent(getApplicationContext(), SuggestionsActivity.class);
-        String mood = "Bored";
+        String mood = "Calmer";
         start.putExtra("Mood", mood);
         startActivity(start);
     }
@@ -91,18 +91,18 @@ public class WelcomeActivity extends AppCompatActivity {
         startActivity(start);
     }
 
-    // Open Happy suggestions
-    private void openHappy(){
+    // Open Happier suggestions
+    private void openHappier(){
         Intent start = new Intent(getApplicationContext(), SuggestionsActivity.class);
-        String mood = "Happy";
+        String mood = "Happier";
         start.putExtra("Mood", mood);
         startActivity(start);
     }
 
-    // Open Sad suggestions
-    private void openSad(){
+    // Open Moody suggestions
+    private void openMoody(){
         Intent start = new Intent(getApplicationContext(), SuggestionsActivity.class);
-        String mood = "Sad";
+        String mood = "Moody";
         start.putExtra("Mood", mood);
         startActivity(start);
     }

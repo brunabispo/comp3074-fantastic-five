@@ -48,7 +48,7 @@ public class SuggestionsActivity extends ListActivity {
         gameSuggestion.setCategoryName("Games");
         poetrySuggestion.setCategoryName("Reading");
 
-        if (moodTitle.equals("Bored")) {
+        if (moodTitle.equals("Calmer")) {
             musicSuggestion.setSuggestionName("Lemon Tree - Fools Garden");
             sportSuggestion.setSuggestionName("Yoga");
             outDoorSuggestion.setSuggestionName("Go for fishing");
@@ -63,7 +63,7 @@ public class SuggestionsActivity extends ListActivity {
             gameSuggestion.setSuggestionName("Just Dance");
             poetrySuggestion.setSuggestionName("Hunger Games");
         }
-        if (moodTitle.equals("Happy"))
+        if (moodTitle.equals("Happier"))
         {
             musicSuggestion.setSuggestionName("I Feel Good - James Brown");
             sportSuggestion.setSuggestionName("Paint-Ball");
@@ -71,7 +71,7 @@ public class SuggestionsActivity extends ListActivity {
             gameSuggestion.setSuggestionName("Fortnight");
             poetrySuggestion.setSuggestionName("Diary of a Wimpy Kid");
         }
-        if (moodTitle.equals("Sad"))
+        if (moodTitle.equals("Moody"))
         {
             musicSuggestion.setSuggestionName("Summertime Sadness - Lana Del Rey");
             sportSuggestion.setSuggestionName("Walk in park");
@@ -105,7 +105,7 @@ public class SuggestionsActivity extends ListActivity {
                 list.remove(gameSuggestion);
                 list.remove(poetrySuggestion);
 
-                if (moodTitle.equals("Bored")) {
+                if (moodTitle.equals("Calmer")) {
                     musicSuggestion.setSuggestionName("Lost & Found - MacKenzie Bourg");
                     sportSuggestion.setSuggestionName("Swimming");
                     outDoorSuggestion.setSuggestionName("Ride a Bike");
@@ -121,7 +121,7 @@ public class SuggestionsActivity extends ListActivity {
                     gameSuggestion.setSuggestionName("Hide and Seek");
                     poetrySuggestion.setSuggestionName("Harry Potter and The Goblet of Fire");
                 }
-                if (moodTitle.equals("Happy"))
+                if (moodTitle.equals("Happier"))
                 {
                     musicSuggestion.setSuggestionName("Who's Laughing Now - Ava Max");
                     sportSuggestion.setSuggestionName("Laser Tag");
@@ -129,7 +129,7 @@ public class SuggestionsActivity extends ListActivity {
                     gameSuggestion.setSuggestionName("UNO");
                     poetrySuggestion.setSuggestionName("Happiness is a direction, not a place.");
                 }
-                if (moodTitle.equals("Sad"))
+                if (moodTitle.equals("Moody"))
                 {
                     musicSuggestion.setSuggestionName("Exile - Taylor Swift");
                     sportSuggestion.setSuggestionName("Swimming");
