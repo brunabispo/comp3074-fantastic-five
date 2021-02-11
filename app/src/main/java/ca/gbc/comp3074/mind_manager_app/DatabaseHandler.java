@@ -34,6 +34,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     //private ArrayList<Answer> answers;
 
     // SUGGESTIONS Table - column names
+    private static final String KEY_MOOD = "mood";
     private static final String KEY_CATEGORY = "category_name";
     private static final String KEY_SUGGESTION = "suggestion_name";
 
@@ -52,7 +53,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + KEY_ID + " INTEGER PRIMARY KEY," + KEY_QUESTION_TEXT + " TEXT" + ")";
 
     private static final String CREATE_SUGGESTIONS_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_SUGGESTIONS + "("
-            + KEY_ID + " INTEGER PRIMARY KEY," + KEY_CATEGORY + " TEXT," + KEY_SUGGESTION + " TEXT" + ")";
+            + KEY_ID + " INTEGER PRIMARY KEY," + KEY_MOOD + " TEXT," + KEY_CATEGORY + " TEXT," + KEY_SUGGESTION + " TEXT" + ")";
 
     private static final String CREATE_USERS_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_USERS + "("
             + KEY_ID + " INTEGER PRIMARY KEY," + KEY_ROLE + " TEXT," + KEY_USER_NAME + " TEXT," +
@@ -63,6 +64,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String ADD_Q2 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('1', 'Did someone get on my nerves today?');";
     private static final String ADD_Q3 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('2', 'I am full of energy.');";
     private static final String ADD_Q4 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('3', 'I feel like going outside.');";
+
+    private static final String ADD_SUGG_BORED1 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('0', 'Bored', 'Music', 'Lemon Tree - Fools Garden');";
+    private static final String ADD_SUGG_BORED2 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('1', 'Bored', 'Sport', 'Yoga');";
+    private static final String ADD_SUGG_BORED3 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('2', 'Bored', 'Outdoors', 'Go for fishing');";
+    private static final String ADD_SUGG_BORED4 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('3', 'Bored', 'Games', 'Bubble shooter');";
+    private static final String ADD_SUGG_BORED5 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('4', 'Bored', 'Reading', 'Of all bodily functions that could be contagious, thank God it is THE YAWN - Unknown');";
+    private static final String ADD_SUGG_BORED6 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('5', 'Bored', 'Music', 'Lost & Found - MacKenzie Bourg');";
+    private static final String ADD_SUGG_BORED7 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('6', 'Bored', 'Sport', 'Swimming');";
+    private static final String ADD_SUGG_BORED8 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('7', 'Bored', 'Outdoors', 'Ride a Bike');";
+    private static final String ADD_SUGG_BORED9 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('8', 'Bored', 'Games', 'Tetris');";
+
     private static final String ADD_ADMIN = "INSERT INTO " + TABLE_USERS + " VALUES('0', 'admin', 'benjeff', 'Ben', '123_Ben');";
 
     public DatabaseHandler(Context context) {
@@ -77,10 +89,22 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_QUESTIONS_TABLE);
         db.execSQL(CREATE_SUGGESTIONS_TABLE);
         db.execSQL(CREATE_USERS_TABLE);
+
         db.execSQL(ADD_Q1);
         db.execSQL(ADD_Q2);
         db.execSQL(ADD_Q3);
         db.execSQL(ADD_Q4);
+
+        db.execSQL(ADD_SUGG_BORED1);
+        db.execSQL(ADD_SUGG_BORED2);
+        db.execSQL(ADD_SUGG_BORED3);
+        db.execSQL(ADD_SUGG_BORED4);
+        db.execSQL(ADD_SUGG_BORED5);
+        db.execSQL(ADD_SUGG_BORED6);
+        db.execSQL(ADD_SUGG_BORED7);
+        db.execSQL(ADD_SUGG_BORED8);
+        db.execSQL(ADD_SUGG_BORED9);
+
         db.execSQL(ADD_ADMIN);
     }
 
@@ -117,23 +141,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     User getUser(String userName) {
         SQLiteDatabase db = this.getReadableDatabase();
         User userExist = null;
-        Cursor cursor = db.query(TABLE_USERS, new String[] { KEY_ID, KEY_ROLE,
-                        KEY_USER_NAME, KEY_FIRST_NAME, KEY_PASSWORD }, KEY_USER_NAME + "=?",
-                new String[] { String.valueOf(userName) }, null, null, null, null);
-        try{
-        while(cursor.moveToNext())
-        {
-            if(cursor.isFirst())
-            {
-                userExist = new User(Integer.parseInt(cursor.getString(0)),
-                        cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
-            }
-        }}
-        finally
-        {
-            if(cursor!= null)
-            {
-                cursor.close();
+        try (Cursor cursor = db.query(TABLE_USERS, new String[]{KEY_ID, KEY_ROLE,
+                        KEY_USER_NAME, KEY_FIRST_NAME, KEY_PASSWORD}, KEY_USER_NAME + "=?",
+                new String[]{String.valueOf(userName)}, null, null, null, null)) {
+            while (cursor.moveToNext()) {
+                if (cursor.isFirst()) {
+                    userExist = new User(Integer.parseInt(cursor.getString(0)),
+                            cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
+                }
             }
         }
         // return user
