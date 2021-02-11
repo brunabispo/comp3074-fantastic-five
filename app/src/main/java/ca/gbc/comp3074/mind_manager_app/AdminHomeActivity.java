@@ -1,5 +1,6 @@
 package ca.gbc.comp3074.mind_manager_app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,14 +18,7 @@ public class AdminHomeActivity extends AppCompatActivity {
         Button btnMoodOptions = findViewById(R.id.btnMoodOptions);
         Button btnQuestionnaire = findViewById(R.id.btnQuestionnaire);
         Button btnCategories = findViewById(R.id.btnCategories);
-        Button btnLogout = findViewById(R.id.btnLogoutAdminHome);
-
-        btnCurrentUsers.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openCurrentUsers();
-            }
-        });
+        Button btnLogOut = findViewById(R.id.btnLogoutAdminHome);
 
         btnCurrentUsers.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,21 +47,37 @@ public class AdminHomeActivity extends AppCompatActivity {
                 openCategories();
             }
         });
+
+        btnLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openLogOut();
+            }
+        });
     }
 
     private void openCurrentUsers(){
-
+        Intent start = new Intent(getApplicationContext(), AdminCurrentUsersActivity.class);
+        startActivity(start);
     }
 
     private void openMoodOptions(){
-
+        Intent start = new Intent(getApplicationContext(), AdminMoodOptionsActivity.class);
+        startActivity(start);
     }
 
     private void openQuestionnaire(){
-
+        Intent start = new Intent(getApplicationContext(), AdminQuestionnaireActivity.class);
+        startActivity(start);
     }
 
     private void openCategories(){
+        Intent start = new Intent(getApplicationContext(), AdminCategoriesActivity.class);
+        startActivity(start);
+    }
 
+    private void openLogOut(){
+        Intent start = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(start);
     }
 }

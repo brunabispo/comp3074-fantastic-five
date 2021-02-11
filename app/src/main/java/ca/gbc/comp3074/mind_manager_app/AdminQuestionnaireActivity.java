@@ -1,5 +1,6 @@
 package ca.gbc.comp3074.mind_manager_app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,7 +19,7 @@ public class AdminQuestionnaireActivity extends AppCompatActivity {
         Button btnViewQuestionThree = findViewById(R.id.btnViewQuestionThree);
         Button btnViewQuestionFour = findViewById(R.id.btnViewQuestionFour);
         Button btnAddNewQuestion = findViewById(R.id.btnAddQuestion);
-        Button btnLogout = findViewById(R.id.btnLogoutAdminHome);
+        Button btnLogOut = findViewById(R.id.btnLogoutAdminQuestionnaire);
 
         btnViewQuestionOne.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +48,20 @@ public class AdminQuestionnaireActivity extends AppCompatActivity {
                 openQuestionFour();
             }
         });
+
+        btnAddNewQuestion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addNewQuestion();
+            }
+        });
+
+        btnLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openLogOut();
+            }
+        });
     }
 
     private void openQuestionOne(){
@@ -65,4 +80,12 @@ public class AdminQuestionnaireActivity extends AppCompatActivity {
 
     }
 
+    private void addNewQuestion(){
+
+    }
+
+    private void openLogOut(){
+        Intent start = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(start);
+    }
 }

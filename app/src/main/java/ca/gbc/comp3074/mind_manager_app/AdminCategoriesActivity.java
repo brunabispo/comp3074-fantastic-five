@@ -1,5 +1,6 @@
 package ca.gbc.comp3074.mind_manager_app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +18,7 @@ public class AdminCategoriesActivity extends AppCompatActivity {
         Button btnViewCategoryTwo = findViewById(R.id.btnAdminViewCategoryTwo);
         Button btnViewCategoryThree = findViewById(R.id.btnAdminViewCategoryThree);
         Button btnAddNewCategory = findViewById(R.id.btnAddCategory);
-        Button btnLogout = findViewById(R.id.btnLogoutAdminCategories);
+        Button btnLogOut = findViewById(R.id.btnLogoutAdminCategories);
 
         btnViewCategoryOne.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +47,13 @@ public class AdminCategoriesActivity extends AppCompatActivity {
                 openNewCategory();
             }
         });
+
+        btnLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openLogOut();
+            }
+        });
     }
 
     private void openQuestionOne(){
@@ -64,4 +72,8 @@ public class AdminCategoriesActivity extends AppCompatActivity {
 
     }
 
+    private void openLogOut(){
+        Intent start = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(start);
+    }
 }
