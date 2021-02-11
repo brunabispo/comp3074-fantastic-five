@@ -16,7 +16,7 @@
         <activity android:name=".QuestionsActivity" android:parentActivityName=".WelcomeActivity"/>
         <activity android:name=".WelcomeActivity" android:parentActivityName=".MainActivity"/>
         <activity android:name=".RegisterActivity" android:parentActivityName=".MainActivity"/>
-        <activity android:name=".MainActivity" android:parentActivityName=".SplashActivity"/>
+        <activity android:name=".MainActivity"/>
         <activity android:name=".MapActivity" android:parentActivityName=".WelcomeActivity"/>
         <activity android:name=".SuggestionsActivity" android:parentActivityName=".WelcomeActivity"/>
         <activity android:name=".AdminHomeActivity"/>
