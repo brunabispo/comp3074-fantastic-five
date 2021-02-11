@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Question{
+
+    private int _id;
     private String questionText;
     private ArrayList<Answer> answers;
 
@@ -13,6 +15,20 @@ public class Question{
     public Question(String questionText, ArrayList answers) {
         this.questionText = questionText;
         this.answers = answers;
+    }
+
+    public Question(int id, String questionText, ArrayList answers) {
+        this._id = id;
+        this.questionText = questionText;
+        this.answers = answers;
+    }
+
+    public int getID() {
+        return _id;
+    }
+
+    public void setID(int _id) {
+        this._id = _id;
     }
 
     public String getQuestionText() {

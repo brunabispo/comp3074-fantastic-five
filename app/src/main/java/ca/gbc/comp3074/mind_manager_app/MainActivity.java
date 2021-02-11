@@ -2,7 +2,6 @@ package ca.gbc.comp3074.mind_manager_app;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -12,7 +11,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 

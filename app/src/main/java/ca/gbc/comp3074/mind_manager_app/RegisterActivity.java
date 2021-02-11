@@ -2,13 +2,10 @@ package ca.gbc.comp3074.mind_manager_app;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.util.List;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -19,7 +16,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         //Database instance
         final DatabaseHandler db = new DatabaseHandler(this);
-        //User admin = new User("admin","benjeff", "Ben", "123_Ben");
 
         final TextView editFirstName = findViewById(R.id.editName);
         final TextView editUserName = findViewById(R.id.editUsername);
@@ -39,9 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
                 else if (!editPassword.getText().toString().equals(editConfirmPassword.getText().toString())){
                     lblError.setText("Password and Confirm Password not match");
-                }
-                //if(userExist == null && (editPassword.getText().toString().equals(editConfirmPassword.getText().toString()))){
-                else{
+                } else{
                     //Insert new user
                     User user = new User("user", editUserName.getText().toString()+"",
                             editFirstName.getText().toString()+"", editPassword.getText().toString()+"");

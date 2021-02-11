@@ -89,8 +89,6 @@ public class QuestionsActivity extends AppCompatActivity {
         q4_a2.setText("No");
         q4_a3.setText("Yes, but I'm lazy");
 
-
-
         Button btnSubmit = findViewById(R.id.btn_submit);
 
         //Button Submit goes to the suggestions page (SuggestionsActivitySad)
@@ -104,12 +102,9 @@ public class QuestionsActivity extends AppCompatActivity {
 
     // Open the Suggestions Page
     private void openSuggestions(){
-        //Intent start = new Intent(getApplicationContext(), SuggestionsActivitySad.class);
-        //startActivity(start);
-    }
-
-    private void openQuestions(){
-        Intent start = new Intent(getApplicationContext(), QuestionsActivity.class);
+        Intent start = new Intent(getApplicationContext(), SuggestionsActivity.class);
+        String mood = "Sad";
+        start.putExtra("Mood", mood);
         startActivity(start);
     }
 
@@ -141,7 +136,6 @@ public class QuestionsActivity extends AppCompatActivity {
                 break;
             case R.id.rbtn_q4_3:
                 break;
-
         }
     }
 }

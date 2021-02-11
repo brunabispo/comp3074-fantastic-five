@@ -2,7 +2,7 @@ package ca.gbc.comp3074.mind_manager_app;
 
 public class User {
 
-    int _id;
+    private int _id;
     private String role;
     private String userName;
     private String firstName;

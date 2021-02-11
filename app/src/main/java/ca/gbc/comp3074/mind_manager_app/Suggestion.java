@@ -2,15 +2,30 @@ package ca.gbc.comp3074.mind_manager_app;
 
 public class Suggestion {
 
+    private int _id;
     private String categoryName;
     private String suggestionName;
+
+    public Suggestion() {
+    }
 
     public Suggestion(String categoryName, String suggestionName) {
         this.categoryName = categoryName;
         this.suggestionName = suggestionName;
     }
 
-    public Suggestion() {
+    public Suggestion(int id, String categoryName, String suggestionName) {
+        this._id = id;
+        this.categoryName = categoryName;
+        this.suggestionName = suggestionName;
+    }
+
+    public int getID() {
+        return _id;
+    }
+
+    public void setID(int _id) {
+        this._id = _id;
     }
 
     public String getCategoryName() {

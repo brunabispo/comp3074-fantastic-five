@@ -1,14 +1,43 @@
 package ca.gbc.comp3074.mind_manager_app;
 
 public class Answer{
-    String text;
-    int boredRating;
-    int energeticRating;
-    int happyRating;
-    int sadRating;
-    int tiredRating;
+
+    private int _id;
+    private String text;
+    private int boredRating;
+    private int energeticRating;
+    private int happyRating;
+    private int sadRating;
+    private int tiredRating;
 
     public Answer() {
+    }
+
+    public Answer(String text, int boredRating, int energeticRating, int happyRating, int sadRating, int tiredRating) {
+        this.text = text;
+        this.boredRating = boredRating;
+        this.energeticRating = energeticRating;
+        this.happyRating = happyRating;
+        this.sadRating = sadRating;
+        this.tiredRating = tiredRating;
+    }
+
+    public Answer(int id, String text, int boredRating, int energeticRating, int happyRating, int sadRating, int tiredRating) {
+        this._id = id;
+        this.text = text;
+        this.boredRating = boredRating;
+        this.energeticRating = energeticRating;
+        this.happyRating = happyRating;
+        this.sadRating = sadRating;
+        this.tiredRating = tiredRating;
+    }
+
+    public int getID() {
+        return _id;
+    }
+
+    public void setID(int _id) {
+        this._id = _id;
     }
 
     public String getText() {
@@ -59,5 +88,3 @@ public class Answer{
         this.tiredRating = tiredRating;
     }
 }
-
-
