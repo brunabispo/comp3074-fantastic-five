@@ -59,11 +59,11 @@ public class SuggestionsActivity extends ListActivity {
         }
         if (moodTitle.equals("Energetic"))
         {
-            musicSuggestion.setSuggestionName("Play Hard - David Guetta");
-            sportSuggestion.setSuggestionName("Lazer-Tag");
-            outDoorSuggestion.setSuggestionName("Go for a Run");
-            gameSuggestion.setSuggestionName("Just Dance");
-            poetrySuggestion.setSuggestionName("Hunger Games");
+            musicSuggestion.setSuggestionName(db.getSuggestion("Energetic", "Music").getSuggestionName());
+            sportSuggestion.setSuggestionName(db.getSuggestion("Energetic", "Sport").getSuggestionName());
+            outDoorSuggestion.setSuggestionName(db.getSuggestion("Energetic", "Outdoors").getSuggestionName());
+            gameSuggestion.setSuggestionName(db.getSuggestion("Energetic", "Games").getSuggestionName());
+            poetrySuggestion.setSuggestionName(db.getSuggestion("Energetic", "Reading").getSuggestionName());
         }
         if (moodTitle.equals("Happier"))
         {
@@ -116,11 +116,11 @@ public class SuggestionsActivity extends ListActivity {
                 }
                 if (moodTitle.equals("Energetic"))
                 {
-                    musicSuggestion.setSuggestionName("Don't Say Goodbye - Alok");
-                    sportSuggestion.setSuggestionName("Running");
-                    outDoorSuggestion.setSuggestionName("Paint-ball");
-                    gameSuggestion.setSuggestionName("Hide and Seek");
-                    poetrySuggestion.setSuggestionName("Harry Potter and The Goblet of Fire");
+                    musicSuggestion.setSuggestionName(db.getSuggestion("Energetic", "Music").getSuggestionName());
+                    sportSuggestion.setSuggestionName(db.getSuggestion("Energetic", "Sport").getSuggestionName());
+                    outDoorSuggestion.setSuggestionName(db.getSuggestion("Energetic", "Outdoors").getSuggestionName());
+                    gameSuggestion.setSuggestionName(db.getSuggestion("Energetic", "Games").getSuggestionName());
+                    poetrySuggestion.setSuggestionName(db.getSuggestion("Energetic", "Reading").getSuggestionName());
                 }
                 if (moodTitle.equals("Happier"))
                 {

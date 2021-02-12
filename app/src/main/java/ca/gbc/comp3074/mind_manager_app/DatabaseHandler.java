@@ -60,11 +60,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             KEY_FIRST_NAME + " TEXT," + KEY_PASSWORD + " TEXT" + ")";
 
     //Create starting rows
+    //Add questions
     private static final String ADD_Q1 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('0', 'Do I feel like I want to be alone right now?');";
     private static final String ADD_Q2 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('1', 'Did someone get on my nerves today?');";
     private static final String ADD_Q3 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('2', 'I am full of energy.');";
     private static final String ADD_Q4 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('3', 'I feel like going outside.');";
 
+    //add Calmer Suggestions
     private static final String ADD_SUGG_CALMER1 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('0', 'Calmer', 'Music', 'Lemon Tree - Fools Garden');";
     private static final String ADD_SUGG_CALMER2 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('1', 'Calmer', 'Sport', 'Yoga');";
     private static final String ADD_SUGG_CALMER3 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('2', 'Calmer', 'Outdoors', 'Go for fishing');";
@@ -74,6 +76,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String ADD_SUGG_CALMER7 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('6', 'Calmer', 'Sport', 'Swimming');";
     private static final String ADD_SUGG_CALMER8 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('7', 'Calmer', 'Outdoors', 'Ride a Bike');";
     private static final String ADD_SUGG_CALMER9 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('8', 'Calmer', 'Games', 'Tetris');";
+
+    private static final String ADD_SUGG_ENERGETIC1 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('9', 'Energetic', 'Music', 'Play Hard - David Guetta');";
+    private static final String ADD_SUGG_ENERGETIC2 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('10', 'Energetic', 'Sport', 'Lazer-Tag');";
+    private static final String ADD_SUGG_ENERGETIC3 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('11', 'Energetic', 'Outdoors', 'Go for a Run');";
+    private static final String ADD_SUGG_ENERGETIC4 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('12', 'Energetic', 'Games', 'Just Dance');";
+    private static final String ADD_SUGG_ENERGETIC5 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('13', 'Energetic', 'Reading', 'Hunger Games');";
+    private static final String ADD_SUGG_ENERGETIC6 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('14', 'Energetic', 'Music', 'Don`t Say Goodbye - Alok');";
+    private static final String ADD_SUGG_ENERGETIC7 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('15', 'Energetic', 'Sport', 'Running');";
+    private static final String ADD_SUGG_ENERGETIC8 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('16', 'Energetic', 'Outdoors', 'Paint-ball');";
+    private static final String ADD_SUGG_ENERGETIC9 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('17', 'Energetic', 'Games', 'Hide and Seek');";
+    private static final String ADD_SUGG_ENERGETIC10 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('18', 'Energetic', 'Reading', 'Harry Potter and The Goblet of Fire');";
 
     private static final String ADD_ADMIN = "INSERT INTO " + TABLE_USERS + " VALUES('0', 'admin', 'benjeff', 'Ben', '123_Ben');";
     private static final String ADD_USER = "INSERT INTO " + TABLE_USERS + " VALUES('1', 'user', 'evgeniya', 'Evgeniya', '123_Ben');";
@@ -105,6 +118,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(ADD_SUGG_CALMER7);
         db.execSQL(ADD_SUGG_CALMER8);
         db.execSQL(ADD_SUGG_CALMER9);
+
+        db.execSQL(ADD_SUGG_ENERGETIC1);
+        db.execSQL(ADD_SUGG_ENERGETIC2);
+        db.execSQL(ADD_SUGG_ENERGETIC3);
+        db.execSQL(ADD_SUGG_ENERGETIC4);
+        db.execSQL(ADD_SUGG_ENERGETIC5);
+        db.execSQL(ADD_SUGG_ENERGETIC6);
+        db.execSQL(ADD_SUGG_ENERGETIC7);
+        db.execSQL(ADD_SUGG_ENERGETIC8);
+        db.execSQL(ADD_SUGG_ENERGETIC9);
+        db.execSQL(ADD_SUGG_ENERGETIC10);
 
         db.execSQL(ADD_ADMIN);
         db.execSQL(ADD_USER);
