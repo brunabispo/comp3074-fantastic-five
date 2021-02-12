@@ -103,7 +103,7 @@ public class QuestionsActivity extends AppCompatActivity {
     // Open the Suggestions Page
     private void openSuggestions(){
         Intent start = new Intent(getApplicationContext(), SuggestionsActivity.class);
-        String mood = "Sad";
+        String mood = "Moody";
         start.putExtra("Mood", mood);
         startActivity(start);
     }
