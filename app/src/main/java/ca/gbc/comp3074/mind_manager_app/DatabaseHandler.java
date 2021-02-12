@@ -30,7 +30,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     // QUESTIONS Table - column names
     private static final String KEY_QUESTION_TEXT = "question_text";
-    //private static final String KEY_ANSWER = "user_name";
+    private static final String KEY_ANSWER1 = "answer1";
+    private static final String KEY_ANSWER2 = "answer2";
+    private static final String KEY_ANSWER3 = "answer3";
     //private ArrayList<Answer> answers;
 
     // SUGGESTIONS Table - column names
@@ -50,7 +52,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             KEY_ENERGETIC + " TEXT," + KEY_HAPPY + " TEXT," + KEY_SAD + " TEXT," + KEY_TIRED + " TEXT" + ")";
 
     private static final String CREATE_QUESTIONS_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_QUESTIONS + "("
-            + KEY_ID + " INTEGER PRIMARY KEY," + KEY_QUESTION_TEXT + " TEXT" + ")";
+            + KEY_ID + " INTEGER PRIMARY KEY," + KEY_QUESTION_TEXT + " TEXT," + KEY_ANSWER1 + " TEXT," + KEY_ANSWER2 + " TEXT,"+ KEY_ANSWER3 + " TEXT" + ")";
 
     private static final String CREATE_SUGGESTIONS_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_SUGGESTIONS + "("
             + KEY_ID + " INTEGER PRIMARY KEY," + KEY_MOOD + " TEXT," + KEY_CATEGORY + " TEXT," + KEY_SUGGESTION + " TEXT" + ")";
@@ -61,10 +63,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     //Create starting rows
     //Add questions
-    private static final String ADD_Q1 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('0', 'Do I feel like I want to be alone right now?');";
-    private static final String ADD_Q2 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('1', 'Did someone get on my nerves today?');";
-    private static final String ADD_Q3 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('2', 'I am full of energy.');";
-    private static final String ADD_Q4 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('3', 'I feel like going outside.');";
+    private static final String ADD_Q1 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('0', 'Do I feel like I want to be alone right now?', 'Yes', 'No', 'I`m fine either way');";
+    private static final String ADD_Q2 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('1', 'Did someone get on my nerves today?', 'Yes', 'No', 'A little bit');";
+    private static final String ADD_Q3 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('2', 'I am full of energy.', 'Yes', 'No', 'I feel like I could literally bounce off the walls');";
+    private static final String ADD_Q4 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('3', 'I feel like going outside.', 'Yes', 'No', 'Yes, but I`m lazy');";
 
     //Calmer Suggestions
     private static final String ADD_SUGG_CALMER1 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('0', 'Calmer', 'Music', 'Lemon Tree - Fools Garden');";
@@ -233,7 +235,25 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close(); // Closing database connection
     }
 
-    // code to get the single user
+    // code to get the single suggestion
+    Question getQuestion() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Question questionExist = null;
+        try (Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_QUESTIONS +
+                " ORDER BY RANDOM() LIMIT 1", null);) {
+            while (cursor.moveToNext()) {
+                if (cursor.isFirst()) {
+                    questionExist = new Question(Integer.parseInt(cursor.getString(0)),
+                            cursor.getString(1), cursor.getString(2),
+                            cursor.getString(3), cursor.getString(4));
+                }
+            }
+        }
+        // return user
+        return questionExist;
+    }
+
+    // code to get the single suggestion
     Suggestion getSuggestion(String mood, String category) {
         SQLiteDatabase db = this.getReadableDatabase();
         Suggestion suggestionExist = null;
@@ -247,7 +267,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 }
             }
         }
-        // return user
+        // return suggestion
         return suggestionExist;
     }
 

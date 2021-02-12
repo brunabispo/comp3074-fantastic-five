@@ -18,7 +18,10 @@ public class QuestionsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
 
-        //TextView question1 = findViewById(R.id.lblq1);
+        //Database instance
+        final DatabaseHandler db = new DatabaseHandler(this);
+
+        TextView question1 = findViewById(R.id.lblq1);
         TextView question2 = findViewById(R.id.lblq2);
         TextView question3 = findViewById(R.id.lblq3);
         TextView question4 = findViewById(R.id.lblq4);
@@ -39,6 +42,7 @@ public class QuestionsActivity extends AppCompatActivity {
         RadioButton q4_a2 = findViewById(R.id.rbtn_q4_2);
         RadioButton q4_a3 = findViewById(R.id.rbtn_q4_3);
 
+        /*
         //question 1 - "Do I feel like I want to be alone right now?"
         Answer answer1 = new Answer();
         answer1.setText("Yes");
@@ -70,24 +74,44 @@ public class QuestionsActivity extends AppCompatActivity {
 
         Question question1 = new Question();
         question1.setAnswers(answers);
+        */
+
+        // Question 1
+        Question q1 = db.getQuestion();
+        question1.setText(q1.getQuestionText());
+        q1_a1.setText(q1.getAnswer1());
+        q1_a2.setText(q1.getAnswer2());
+        q1_a3.setText(q1.getAnswer3());
 
         // Question 2
-        question2.setText("Did someone get on my nerves today?");
-        q2_a1.setText("Yes");
-        q2_a2.setText("No");
-        q2_a3.setText("A little bit");
+        Question q2;
+        do {
+           q2 = db.getQuestion();
+        }while(q2.getID() == q1.getID());
+        question2.setText(q2.getQuestionText());
+        q2_a1.setText(q2.getAnswer1());
+        q2_a2.setText(q2.getAnswer2());
+        q2_a3.setText(q2.getAnswer3());
 
         // Question 3
-        question3.setText("I am full of energy.");
-        q3_a1.setText("Yes");
-        q3_a2.setText("No");
-        q3_a3.setText("I feel like I could literally bounce off the walls.");
+        Question q3;
+        do {
+            q3 = db.getQuestion();
+        }while(q3.getID() == q1.getID() || q3.getID() == q2.getID());
+        question3.setText(q3.getQuestionText());
+        q3_a1.setText(q3.getAnswer1());
+        q3_a2.setText(q3.getAnswer2());
+        q3_a3.setText(q3.getAnswer3());
 
         // Question 4
-        question4.setText("I feel like going outside.");
-        q4_a1.setText("Yes");
-        q4_a2.setText("No");
-        q4_a3.setText("Yes, but I'm lazy");
+        Question q4;
+        do {
+            q4 = db.getQuestion();
+        }while(q4.getID() == q1.getID() || q4.getID() == q2.getID() || q4.getID() == q3.getID());
+        question4.setText(q4.getQuestionText());
+        q4_a1.setText(q4.getAnswer1());
+        q4_a2.setText(q4.getAnswer2());
+        q4_a3.setText(q4.getAnswer3());
 
         Button btnSubmit = findViewById(R.id.btn_submit);
 

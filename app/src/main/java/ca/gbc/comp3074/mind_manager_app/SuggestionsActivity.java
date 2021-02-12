@@ -33,7 +33,7 @@ public class SuggestionsActivity extends ListActivity {
         TextView title = findViewById(R.id.lblTitle);
         Intent intent = getIntent();
         final String moodTitle = intent.getStringExtra("Mood");
-        title.setText("Here are your suggestions for " + moodTitle);
+        title.setText("Here are your suggestions for being more " + moodTitle);
 
         //Database instance
         final DatabaseHandler db = new DatabaseHandler(this);
