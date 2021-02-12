@@ -101,6 +101,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String ADD_SUGG_HAPPIER9 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('27', 'Happier', 'Games', 'UNO');";
     private static final String ADD_SUGG_HAPPIER10 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('28', 'Happier', 'Reading', 'Happiness is a direction, not a place.');";
 
+    //Moody Suggestions
+    private static final String ADD_SUGG_MOODY1 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('29', 'Moody', 'Music', 'Summertime Sadness - Lana Del Rey');";
+    private static final String ADD_SUGG_MOODY2 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('30', 'Moody', 'Sport', 'Walk in park');";
+    private static final String ADD_SUGG_MOODY3 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('31', 'Moody', 'Outdoors', 'Go outside and buy something for yourself');";
+    private static final String ADD_SUGG_MOODY4 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('32', 'Moody', 'Games', 'Chess');";
+    private static final String ADD_SUGG_MOODY5 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('33', 'Moody', 'Reading', 'There are two sides on every coin,\nThe heads and the tails.\nSo must it be with all in this life,\nDuality and perfect balance, all entails.');";
+    private static final String ADD_SUGG_MOODY6 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('34', 'Moody', 'Music', 'Exile - Taylor Swift');";
+    private static final String ADD_SUGG_MOODY7 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('35', 'Moody', 'Sport', 'Swimming');";
+    private static final String ADD_SUGG_MOODY8 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('36', 'Moody', 'Outdoors', 'Walk in the park');";
+    private static final String ADD_SUGG_MOODY9 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('37', 'Moody', 'Games', 'The Sims');";
+    private static final String ADD_SUGG_MOODY10 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('38', 'Moody', 'Reading', 'The Fault in Our Starts - John Green');";
+
     private static final String ADD_ADMIN = "INSERT INTO " + TABLE_USERS + " VALUES('0', 'admin', 'benjeff', 'Ben', '123_Ben');";
     private static final String ADD_USER = "INSERT INTO " + TABLE_USERS + " VALUES('1', 'user', 'evgeniya', 'Evgeniya', '123_Ben');";
 
@@ -153,6 +165,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(ADD_SUGG_HAPPIER8);
         db.execSQL(ADD_SUGG_HAPPIER9);
         db.execSQL(ADD_SUGG_HAPPIER10);
+
+        db.execSQL(ADD_SUGG_MOODY1);
+        db.execSQL(ADD_SUGG_MOODY2);
+        db.execSQL(ADD_SUGG_MOODY3);
+        db.execSQL(ADD_SUGG_MOODY4);
+        db.execSQL(ADD_SUGG_MOODY5);
+        db.execSQL(ADD_SUGG_MOODY6);
+        db.execSQL(ADD_SUGG_MOODY7);
+        db.execSQL(ADD_SUGG_MOODY8);
+        db.execSQL(ADD_SUGG_MOODY9);
+        db.execSQL(ADD_SUGG_MOODY10);
 
         db.execSQL(ADD_ADMIN);
         db.execSQL(ADD_USER);

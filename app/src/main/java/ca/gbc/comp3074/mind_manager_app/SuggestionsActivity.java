@@ -76,14 +76,11 @@ public class SuggestionsActivity extends ListActivity {
         }
         if (moodTitle.equals("Moody"))
         {
-            musicSuggestion.setSuggestionName("Summertime Sadness - Lana Del Rey");
-            sportSuggestion.setSuggestionName("Walk in park");
-            outDoorSuggestion.setSuggestionName("Go outside and buy something for yourself");
-            gameSuggestion.setSuggestionName("Chess");
-            poetrySuggestion.setSuggestionName("There are two sides on every coin,\n" +
-                                "The heads and the tails.\n" +
-                                "So must it be with all in this life,\n" +
-                                "Duality and perfect balance, all entails.");
+            musicSuggestion.setSuggestionName(db.getSuggestion("Moody", "Music").getSuggestionName());
+            sportSuggestion.setSuggestionName(db.getSuggestion("Moody", "Sport").getSuggestionName());
+            outDoorSuggestion.setSuggestionName(db.getSuggestion("Moody", "Outdoors").getSuggestionName());
+            gameSuggestion.setSuggestionName(db.getSuggestion("Moody", "Games").getSuggestionName());
+            poetrySuggestion.setSuggestionName(db.getSuggestion("Moody", "Reading").getSuggestionName());
         }
         if (moodTitle.equals("Tired"))
         {
@@ -133,11 +130,11 @@ public class SuggestionsActivity extends ListActivity {
                 }
                 if (moodTitle.equals("Moody"))
                 {
-                    musicSuggestion.setSuggestionName("Exile - Taylor Swift");
-                    sportSuggestion.setSuggestionName("Swimming");
-                    outDoorSuggestion.setSuggestionName("Walk in the park");
-                    gameSuggestion.setSuggestionName("The Sims");
-                    poetrySuggestion.setSuggestionName("The Fault in Our Starts - John Green");
+                    musicSuggestion.setSuggestionName(db.getSuggestion("Moody", "Music").getSuggestionName());
+                    sportSuggestion.setSuggestionName(db.getSuggestion("Moody", "Sport").getSuggestionName());
+                    outDoorSuggestion.setSuggestionName(db.getSuggestion("Moody", "Outdoors").getSuggestionName());
+                    gameSuggestion.setSuggestionName(db.getSuggestion("Moody", "Games").getSuggestionName());
+                    poetrySuggestion.setSuggestionName(db.getSuggestion("Moody", "Reading").getSuggestionName());
                 }
                 if (moodTitle.equals("Tired"))
                 {
