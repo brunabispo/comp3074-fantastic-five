@@ -82,16 +82,13 @@ public class SuggestionsActivity extends ListActivity {
             gameSuggestion.setSuggestionName(db.getSuggestion("Moody", "Games").getSuggestionName());
             poetrySuggestion.setSuggestionName(db.getSuggestion("Moody", "Reading").getSuggestionName());
         }
-        if (moodTitle.equals("Tired"))
+        if (moodTitle.equals("Relaxed"))
         {
-            musicSuggestion.setSuggestionName("Weightless - Macaroni Uniony");
-            sportSuggestion.setSuggestionName("None");
-            outDoorSuggestion.setSuggestionName("Massage therapy");
-            gameSuggestion.setSuggestionName("Monopoly One");
-            poetrySuggestion.setSuggestionName("Time says “Let there be”\n" +
-                                "every moment and instantly\n" +
-                                "there is space and the radiance\n" +
-                                "of each bright galaxy.");
+            musicSuggestion.setSuggestionName(db.getSuggestion("Relaxed", "Music").getSuggestionName());
+            sportSuggestion.setSuggestionName(db.getSuggestion("Relaxed", "Sport").getSuggestionName());
+            outDoorSuggestion.setSuggestionName(db.getSuggestion("Relaxed", "Outdoors").getSuggestionName());
+            gameSuggestion.setSuggestionName(db.getSuggestion("Relaxed", "Games").getSuggestionName());
+            poetrySuggestion.setSuggestionName(db.getSuggestion("Relaxed", "Reading").getSuggestionName());
         }
 
         ImageButton btnRandom = findViewById(R.id.btnRandom);
@@ -136,18 +133,13 @@ public class SuggestionsActivity extends ListActivity {
                     gameSuggestion.setSuggestionName(db.getSuggestion("Moody", "Games").getSuggestionName());
                     poetrySuggestion.setSuggestionName(db.getSuggestion("Moody", "Reading").getSuggestionName());
                 }
-                if (moodTitle.equals("Tired"))
+                if (moodTitle.equals("Relaxed"))
                 {
-                    musicSuggestion.setSuggestionName("Broken Hands of Mine - Joe Brooks");
-                    sportSuggestion.setSuggestionName("Yoga");
-                    outDoorSuggestion.setSuggestionName("Sit on a bench in the park");
-                    gameSuggestion.setSuggestionName("Bubble Shooter");
-                    poetrySuggestion.setSuggestionName("Well God knows my feet, they aching\n" +
-                            "And I've got a mountains ahead to climb\n" +
-                            "One way at a time\n" +
-                            "I will try\n" +
-                            "To let these broken hands of mine\n" +
-                            "Give me strength, be my light... - Broken Hands of Mine");
+                    musicSuggestion.setSuggestionName(db.getSuggestion("Relaxed", "Music").getSuggestionName());
+                    sportSuggestion.setSuggestionName(db.getSuggestion("Relaxed", "Sport").getSuggestionName());
+                    outDoorSuggestion.setSuggestionName(db.getSuggestion("Relaxed", "Outdoors").getSuggestionName());
+                    gameSuggestion.setSuggestionName(db.getSuggestion("Relaxed", "Games").getSuggestionName());
+                    poetrySuggestion.setSuggestionName(db.getSuggestion("Relaxed", "Reading").getSuggestionName());
                 }
 
                 list.add(musicSuggestion);

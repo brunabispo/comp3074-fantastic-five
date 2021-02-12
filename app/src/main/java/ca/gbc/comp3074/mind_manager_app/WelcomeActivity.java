@@ -59,12 +59,12 @@ public class WelcomeActivity extends AppCompatActivity {
             }
         });
 
-        //Button Tired goes to the suggestions page (SuggestionsActivity)
-        Button Tired = findViewById(R.id.btnTired);
-        Tired.setOnClickListener(new View.OnClickListener() {
+        //Button Relaxed goes to the suggestions page (SuggestionsActivity)
+        Button Relaxed = findViewById(R.id.btnRelaxed);
+        Relaxed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openTired();
+                openRelaxed();
             }
         });
     }
@@ -108,9 +108,9 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     // Open Tired suggestions
-    private void openTired(){
+    private void openRelaxed(){
         Intent start = new Intent(getApplicationContext(), SuggestionsActivity.class);
-        String mood = "Tired";
+        String mood = "Relaxed";
         start.putExtra("Mood", mood);
         startActivity(start);
     }

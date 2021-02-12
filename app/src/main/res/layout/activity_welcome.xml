@@ -101,11 +101,12 @@
             android:layout_width="match_parent"
             android:layout_height="71dp"
             android:orientation="horizontal">
+
             <Button
-                android:id="@+id/btnTired"
+                android:id="@+id/btnRelaxed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TIRED" />
+                android:text="I WANT TO FEEL MORE RELAXED" />
 
         </LinearLayout>
 

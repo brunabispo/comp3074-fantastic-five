@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String DATABASE_NAME = "mindManager";
 
     // Table Names
@@ -113,6 +113,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String ADD_SUGG_MOODY9 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('37', 'Moody', 'Games', 'The Sims');";
     private static final String ADD_SUGG_MOODY10 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('38', 'Moody', 'Reading', 'The Fault in Our Starts - John Green');";
 
+    //Relaxed Suggestions
+    private static final String ADD_SUGG_RELAXED1 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('39', 'Relaxed', 'Music', 'Weightless - Macaroni Uniony');";
+    private static final String ADD_SUGG_RELAXED2 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('40', 'Relaxed', 'Sport', 'None');";
+    private static final String ADD_SUGG_RELAXED3 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('41', 'Relaxed', 'Outdoors', 'Massage therapy');";
+    private static final String ADD_SUGG_RELAXED4 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('42', 'Relaxed', 'Games', 'Monopoly One');";
+    private static final String ADD_SUGG_RELAXED5 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('43', 'Relaxed', 'Reading', 'Time says “Let there be”\nevery moment and instantly\nthere is space and the radiance\nof each bright galaxy.');";
+    private static final String ADD_SUGG_RELAXED6 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('44', 'Relaxed', 'Music', 'Broken Hands of Mine - Joe Brooks');";
+    private static final String ADD_SUGG_RELAXED7 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('45', 'Relaxed', 'Sport', 'Yoga');";
+    private static final String ADD_SUGG_RELAXED8 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('46', 'Relaxed', 'Outdoors', 'Sit on a bench in the park');";
+    private static final String ADD_SUGG_RELAXED9 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('47', 'Relaxed', 'Games', 'Bubble Shooter');";
+    private static final String ADD_SUGG_RELAXED10 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('48', 'Relaxed', 'Reading', 'Well God knows my feet, they aching\nAnd I`ve got a mountains ahead to climb\nOne way at a time\nI will try\nTo let these broken hands of mine\nGive me strength, be my light... - Broken Hands of Mine');";
+
     private static final String ADD_ADMIN = "INSERT INTO " + TABLE_USERS + " VALUES('0', 'admin', 'benjeff', 'Ben', '123_Ben');";
     private static final String ADD_USER = "INSERT INTO " + TABLE_USERS + " VALUES('1', 'user', 'evgeniya', 'Evgeniya', '123_Ben');";
 
@@ -176,6 +188,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(ADD_SUGG_MOODY8);
         db.execSQL(ADD_SUGG_MOODY9);
         db.execSQL(ADD_SUGG_MOODY10);
+
+        db.execSQL(ADD_SUGG_RELAXED1);
+        db.execSQL(ADD_SUGG_RELAXED2);
+        db.execSQL(ADD_SUGG_RELAXED3);
+        db.execSQL(ADD_SUGG_RELAXED4);
+        db.execSQL(ADD_SUGG_RELAXED5);
+        db.execSQL(ADD_SUGG_RELAXED6);
+        db.execSQL(ADD_SUGG_RELAXED7);
+        db.execSQL(ADD_SUGG_RELAXED8);
+        db.execSQL(ADD_SUGG_RELAXED9);
+        db.execSQL(ADD_SUGG_RELAXED10);
 
         db.execSQL(ADD_ADMIN);
         db.execSQL(ADD_USER);
