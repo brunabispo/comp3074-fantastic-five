@@ -35,6 +35,8 @@ public class SuggestionsActivity extends ListActivity {
         final String moodTitle = intent.getStringExtra("Mood");
         title.setText("Here are your suggestions for " + moodTitle);
 
+        //Database instance
+        final DatabaseHandler db = new DatabaseHandler(this);
         list = new ArrayList<Suggestion>();
 
         final Suggestion musicSuggestion = new Suggestion();
@@ -49,11 +51,11 @@ public class SuggestionsActivity extends ListActivity {
         poetrySuggestion.setCategoryName("Reading");
 
         if (moodTitle.equals("Calmer")) {
-            musicSuggestion.setSuggestionName("Lemon Tree - Fools Garden");
-            sportSuggestion.setSuggestionName("Yoga");
-            outDoorSuggestion.setSuggestionName("Go for fishing");
-            gameSuggestion.setSuggestionName("Bubble shooter");
-            poetrySuggestion.setSuggestionName("Of all bodily functions that could be contagious, thank God it's THE YAWN - Unknown");
+            musicSuggestion.setSuggestionName(db.getSuggestion("Calmer", "Music").getSuggestionName());
+            sportSuggestion.setSuggestionName(db.getSuggestion("Calmer", "Sport").getSuggestionName());
+            outDoorSuggestion.setSuggestionName(db.getSuggestion("Calmer", "Outdoors").getSuggestionName());
+            gameSuggestion.setSuggestionName(db.getSuggestion("Calmer", "Games").getSuggestionName());
+            poetrySuggestion.setSuggestionName(db.getSuggestion("Calmer", "Reading").getSuggestionName());
         }
         if (moodTitle.equals("Energetic"))
         {
@@ -106,12 +108,11 @@ public class SuggestionsActivity extends ListActivity {
                 list.remove(poetrySuggestion);
 
                 if (moodTitle.equals("Calmer")) {
-                    musicSuggestion.setSuggestionName("Lost & Found - MacKenzie Bourg");
-                    sportSuggestion.setSuggestionName("Swimming");
-                    outDoorSuggestion.setSuggestionName("Ride a Bike");
-                    gameSuggestion.setSuggestionName("Tetris");
-                    poetrySuggestion.setSuggestionName("Of all bodily functions that could be contagious, " +
-                            "thank God it's THE YAWN - Unknown");
+                    musicSuggestion.setSuggestionName(db.getSuggestion("Calmer", "Music").getSuggestionName());
+                    sportSuggestion.setSuggestionName(db.getSuggestion("Calmer", "Sport").getSuggestionName());
+                    outDoorSuggestion.setSuggestionName(db.getSuggestion("Calmer", "Outdoors").getSuggestionName());
+                    gameSuggestion.setSuggestionName(db.getSuggestion("Calmer", "Games").getSuggestionName());
+                    poetrySuggestion.setSuggestionName(db.getSuggestion("Calmer", "Reading").getSuggestionName());
                 }
                 if (moodTitle.equals("Energetic"))
                 {

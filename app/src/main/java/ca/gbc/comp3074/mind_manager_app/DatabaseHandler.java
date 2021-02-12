@@ -65,17 +65,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String ADD_Q3 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('2', 'I am full of energy.');";
     private static final String ADD_Q4 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('3', 'I feel like going outside.');";
 
-    private static final String ADD_SUGG_BORED1 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('0', 'Bored', 'Music', 'Lemon Tree - Fools Garden');";
-    private static final String ADD_SUGG_BORED2 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('1', 'Bored', 'Sport', 'Yoga');";
-    private static final String ADD_SUGG_BORED3 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('2', 'Bored', 'Outdoors', 'Go for fishing');";
-    private static final String ADD_SUGG_BORED4 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('3', 'Bored', 'Games', 'Bubble shooter');";
-    private static final String ADD_SUGG_BORED5 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('4', 'Bored', 'Reading', 'Of all bodily functions that could be contagious, thank God it is THE YAWN - Unknown');";
-    private static final String ADD_SUGG_BORED6 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('5', 'Bored', 'Music', 'Lost & Found - MacKenzie Bourg');";
-    private static final String ADD_SUGG_BORED7 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('6', 'Bored', 'Sport', 'Swimming');";
-    private static final String ADD_SUGG_BORED8 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('7', 'Bored', 'Outdoors', 'Ride a Bike');";
-    private static final String ADD_SUGG_BORED9 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('8', 'Bored', 'Games', 'Tetris');";
+    private static final String ADD_SUGG_CALMER1 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('0', 'Calmer', 'Music', 'Lemon Tree - Fools Garden');";
+    private static final String ADD_SUGG_CALMER2 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('1', 'Calmer', 'Sport', 'Yoga');";
+    private static final String ADD_SUGG_CALMER3 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('2', 'Calmer', 'Outdoors', 'Go for fishing');";
+    private static final String ADD_SUGG_CALMER4 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('3', 'Calmer', 'Games', 'Bubble shooter');";
+    private static final String ADD_SUGG_CALMER5 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('4', 'Calmer', 'Reading', 'Of all bodily functions that could be contagious, thank God it is THE YAWN - Unknown');";
+    private static final String ADD_SUGG_CALMER6 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('5', 'Calmer', 'Music', 'Lost & Found - MacKenzie Bourg');";
+    private static final String ADD_SUGG_CALMER7 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('6', 'Calmer', 'Sport', 'Swimming');";
+    private static final String ADD_SUGG_CALMER8 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('7', 'Calmer', 'Outdoors', 'Ride a Bike');";
+    private static final String ADD_SUGG_CALMER9 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('8', 'Calmer', 'Games', 'Tetris');";
 
     private static final String ADD_ADMIN = "INSERT INTO " + TABLE_USERS + " VALUES('0', 'admin', 'benjeff', 'Ben', '123_Ben');";
+    private static final String ADD_USER = "INSERT INTO " + TABLE_USERS + " VALUES('1', 'user', 'evgeniya', 'Evgeniya', '123_Ben');";
 
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -95,17 +96,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(ADD_Q3);
         db.execSQL(ADD_Q4);
 
-        db.execSQL(ADD_SUGG_BORED1);
-        db.execSQL(ADD_SUGG_BORED2);
-        db.execSQL(ADD_SUGG_BORED3);
-        db.execSQL(ADD_SUGG_BORED4);
-        db.execSQL(ADD_SUGG_BORED5);
-        db.execSQL(ADD_SUGG_BORED6);
-        db.execSQL(ADD_SUGG_BORED7);
-        db.execSQL(ADD_SUGG_BORED8);
-        db.execSQL(ADD_SUGG_BORED9);
+        db.execSQL(ADD_SUGG_CALMER1);
+        db.execSQL(ADD_SUGG_CALMER2);
+        db.execSQL(ADD_SUGG_CALMER3);
+        db.execSQL(ADD_SUGG_CALMER4);
+        db.execSQL(ADD_SUGG_CALMER5);
+        db.execSQL(ADD_SUGG_CALMER6);
+        db.execSQL(ADD_SUGG_CALMER7);
+        db.execSQL(ADD_SUGG_CALMER8);
+        db.execSQL(ADD_SUGG_CALMER9);
 
         db.execSQL(ADD_ADMIN);
+        db.execSQL(ADD_USER);
     }
 
     // Upgrading database
@@ -135,6 +137,24 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.insert(TABLE_USERS, null, values);
         //2nd argument is String containing nullColumnHack
         db.close(); // Closing database connection
+    }
+
+    // code to get the single user
+    Suggestion getSuggestion(String mood, String category) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Suggestion suggestionExist = null;
+        try (Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_SUGGESTIONS + " WHERE " +
+                KEY_MOOD + " IN ('" + mood + "') " + " AND " + KEY_CATEGORY + " IN ('" + category +
+                "') ORDER BY RANDOM() LIMIT 1", null);) {
+            while (cursor.moveToNext()) {
+                if (cursor.isFirst()) {
+                    suggestionExist = new Suggestion(Integer.parseInt(cursor.getString(0)),
+                            cursor.getString(1), cursor.getString(2), cursor.getString(3));
+                }
+            }
+        }
+        // return user
+        return suggestionExist;
     }
 
     // code to get the single user
