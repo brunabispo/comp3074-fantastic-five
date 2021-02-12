@@ -66,17 +66,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String ADD_Q3 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('2', 'I am full of energy.');";
     private static final String ADD_Q4 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('3', 'I feel like going outside.');";
 
-    //add Calmer Suggestions
+    //Calmer Suggestions
     private static final String ADD_SUGG_CALMER1 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('0', 'Calmer', 'Music', 'Lemon Tree - Fools Garden');";
     private static final String ADD_SUGG_CALMER2 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('1', 'Calmer', 'Sport', 'Yoga');";
     private static final String ADD_SUGG_CALMER3 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('2', 'Calmer', 'Outdoors', 'Go for fishing');";
     private static final String ADD_SUGG_CALMER4 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('3', 'Calmer', 'Games', 'Bubble shooter');";
-    private static final String ADD_SUGG_CALMER5 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('4', 'Calmer', 'Reading', 'Of all bodily functions that could be contagious, thank God it is THE YAWN - Unknown');";
+    private static final String ADD_SUGG_CALMER5 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('4', 'Calmer', 'Reading', 'Of all bodily functions that could be contagious, thank God it`s THE YAWN - Unknown');";
     private static final String ADD_SUGG_CALMER6 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('5', 'Calmer', 'Music', 'Lost & Found - MacKenzie Bourg');";
     private static final String ADD_SUGG_CALMER7 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('6', 'Calmer', 'Sport', 'Swimming');";
     private static final String ADD_SUGG_CALMER8 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('7', 'Calmer', 'Outdoors', 'Ride a Bike');";
     private static final String ADD_SUGG_CALMER9 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('8', 'Calmer', 'Games', 'Tetris');";
 
+    //Energetic Suggestions
     private static final String ADD_SUGG_ENERGETIC1 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('9', 'Energetic', 'Music', 'Play Hard - David Guetta');";
     private static final String ADD_SUGG_ENERGETIC2 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('10', 'Energetic', 'Sport', 'Lazer-Tag');";
     private static final String ADD_SUGG_ENERGETIC3 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('11', 'Energetic', 'Outdoors', 'Go for a Run');";
@@ -87,6 +88,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String ADD_SUGG_ENERGETIC8 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('16', 'Energetic', 'Outdoors', 'Paint-ball');";
     private static final String ADD_SUGG_ENERGETIC9 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('17', 'Energetic', 'Games', 'Hide and Seek');";
     private static final String ADD_SUGG_ENERGETIC10 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('18', 'Energetic', 'Reading', 'Harry Potter and The Goblet of Fire');";
+
+    //Happier Suggestions
+    private static final String ADD_SUGG_HAPPIER1 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('19', 'Happier', 'Music', 'I Feel Good - James Brown');";
+    private static final String ADD_SUGG_HAPPIER2 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('20', 'Happier', 'Sport', 'Paint-Ball');";
+    private static final String ADD_SUGG_HAPPIER3 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('21', 'Happier', 'Outdoors', 'Meet with friends');";
+    private static final String ADD_SUGG_HAPPIER4 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('22', 'Happier', 'Games', 'Fortnight');";
+    private static final String ADD_SUGG_HAPPIER5 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('23', 'Happier', 'Reading', 'Diary of a Wimpy Kid');";
+    private static final String ADD_SUGG_HAPPIER6 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('24', 'Happier', 'Music', 'Who`s Laughing Now - Ava Max');";
+    private static final String ADD_SUGG_HAPPIER7 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('25', 'Happier', 'Sport', 'Laser Tag');";
+    private static final String ADD_SUGG_HAPPIER8 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('26', 'Happier', 'Outdoors', 'Go to the park');";
+    private static final String ADD_SUGG_HAPPIER9 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('27', 'Happier', 'Games', 'UNO');";
+    private static final String ADD_SUGG_HAPPIER10 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('28', 'Happier', 'Reading', 'Happiness is a direction, not a place.');";
 
     private static final String ADD_ADMIN = "INSERT INTO " + TABLE_USERS + " VALUES('0', 'admin', 'benjeff', 'Ben', '123_Ben');";
     private static final String ADD_USER = "INSERT INTO " + TABLE_USERS + " VALUES('1', 'user', 'evgeniya', 'Evgeniya', '123_Ben');";
@@ -129,6 +142,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(ADD_SUGG_ENERGETIC8);
         db.execSQL(ADD_SUGG_ENERGETIC9);
         db.execSQL(ADD_SUGG_ENERGETIC10);
+
+        db.execSQL(ADD_SUGG_HAPPIER1);
+        db.execSQL(ADD_SUGG_HAPPIER2);
+        db.execSQL(ADD_SUGG_HAPPIER3);
+        db.execSQL(ADD_SUGG_HAPPIER4);
+        db.execSQL(ADD_SUGG_HAPPIER5);
+        db.execSQL(ADD_SUGG_HAPPIER6);
+        db.execSQL(ADD_SUGG_HAPPIER7);
+        db.execSQL(ADD_SUGG_HAPPIER8);
+        db.execSQL(ADD_SUGG_HAPPIER9);
+        db.execSQL(ADD_SUGG_HAPPIER10);
 
         db.execSQL(ADD_ADMIN);
         db.execSQL(ADD_USER);
