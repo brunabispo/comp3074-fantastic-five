@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
     private static final String DATABASE_NAME = "mindManager";
 
     // Table Names
@@ -22,11 +22,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     // ANSWERS Table - column names
     private static final String KEY_ANSWER_TEXT = "answer_text";
-    private static final String KEY_BORED = "bored_rating";
-    private static final String KEY_ENERGETIC = "energetic_rating";
-    private static final String KEY_HAPPY = "happy_rating";
-    private static final String KEY_SAD = "sad_rating";
-    private static final String KEY_TIRED = "tired_rating";
 
     // QUESTIONS Table - column names
     private static final String KEY_QUESTION_TEXT = "question_text";
@@ -48,8 +43,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     //Create tables
     private static final String CREATE_ANSWERS_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_ANSWERS + "("
-            + KEY_ID + " INTEGER PRIMARY KEY," + KEY_ANSWER_TEXT + " TEXT," + KEY_BORED + " TEXT," +
-            KEY_ENERGETIC + " TEXT," + KEY_HAPPY + " TEXT," + KEY_SAD + " TEXT," + KEY_TIRED + " TEXT" + ")";
+            + KEY_ID + " INTEGER PRIMARY KEY," + KEY_ANSWER_TEXT + " TEXT" + ")";
 
     private static final String CREATE_QUESTIONS_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_QUESTIONS + "("
             + KEY_ID + " INTEGER PRIMARY KEY," + KEY_QUESTION_TEXT + " TEXT," + KEY_ANSWER1 + " TEXT," + KEY_ANSWER2 + " TEXT,"+ KEY_ANSWER3 + " TEXT" + ")";
@@ -67,6 +61,23 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String ADD_Q2 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('1', 'Did someone get on my nerves today?', 'Yes', 'No', 'A little bit');";
     private static final String ADD_Q3 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('2', 'I am full of energy.', 'Yes', 'No', 'I feel like I could literally bounce off the walls');";
     private static final String ADD_Q4 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('3', 'I feel like going outside.', 'Yes', 'No', 'Yes, but I`m lazy');";
+    private static final String ADD_Q5 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('4', 'I feel so tired right now.', 'Yes', 'No', 'Yes but I want to do SOMETHING');";
+    private static final String ADD_Q6 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('5', 'Have I cried today?', 'Yes, don`t get me started again', 'why? this quiz isn`t THAT bad', 'Nop');";
+    private static final String ADD_Q7 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('6', 'Imagine this: You`re walking down the street and a stranger says hello to you, you will:', 'I will greet them back!', 'I couldn`t care less right now', 'I don`t really know');";
+    private static final String ADD_Q8 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('7', 'I am fed up with people', 'YES!', 'Not really?', 'Well, sometimes');";
+    private static final String ADD_Q9 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('8', 'Do I feel playful right now?', 'Yes!', 'No', 'maybe');";
+    private static final String ADD_Q10 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('9', 'Am I emotional right now?', 'Yes..', 'Not really', 'I am like usual self');";
+    private static final String ADD_Q11 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('10', 'How was my day so far?', 'I had a bad day', 'Great!', 'nothing special much');";
+    private static final String ADD_Q12 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('11', 'Am I looking for adventures?', 'Yes, let`s go!', 'Not really.', 'hmm what do you have in mind?');";
+    private static final String ADD_Q13 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('12', 'How much patience do I have for this questionnaire?', 'I want it to be accurate so I am doing it the right way', '0 patience', 'I am okay');";
+    private static final String ADD_Q14 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('13', 'Am I looking for something new to do?', 'Yes!', 'No', 'hmm.. whatcha got?');";
+    private static final String ADD_Q15 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('14', 'Imagine this: Someone you know asks you to do an EASY favour for them, would you do it: ', 'If it easy, sure why not', 'No.', 'depends how easy it is');";
+    private static final String ADD_Q16 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('15', 'Do you feel sportive right now?', 'Yes!!', 'No', 'depends what kind of sport');";
+    private static final String ADD_Q17 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('16', 'Imagine this: You missed a phone call. What would you do?', 'I will get back to them', 'I don`t feel like taking calls right now', 'it depends on who it is');";
+    private static final String ADD_Q18 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('17', 'Am I concentrated to do whatever right now?', 'Yes, bring it on', 'No, I don`t really care right now', 'Maybe, what is it?');";
+    private static final String ADD_Q19 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('18', 'Do I want mindlessly browse in the internet or watch TV?', 'Sounds good', 'No', 'Don`t mind either way');";
+    private static final String ADD_Q20 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('19', 'Do I feel creative right now?', 'Yes!', 'No', 'I am okay');";
+    private static final String ADD_Q21 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('20', 'Imagine this: You just lost your phone', 'I will check everywhere to find it', 'This day can`t get anymore worse', '*Sigh*');";
 
     //Calmer Suggestions
     private static final String ADD_SUGG_CALMER1 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('0', 'Calmer', 'Music', 'Lemon Tree - Fools Garden');";
@@ -147,6 +158,23 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(ADD_Q2);
         db.execSQL(ADD_Q3);
         db.execSQL(ADD_Q4);
+        db.execSQL(ADD_Q5);
+        db.execSQL(ADD_Q6);
+        db.execSQL(ADD_Q7);
+        db.execSQL(ADD_Q8);
+        db.execSQL(ADD_Q9);
+        db.execSQL(ADD_Q10);
+        db.execSQL(ADD_Q11);
+        db.execSQL(ADD_Q12);
+        db.execSQL(ADD_Q13);
+        db.execSQL(ADD_Q14);
+        db.execSQL(ADD_Q15);
+        db.execSQL(ADD_Q16);
+        db.execSQL(ADD_Q17);
+        db.execSQL(ADD_Q18);
+        db.execSQL(ADD_Q19);
+        db.execSQL(ADD_Q20);
+        db.execSQL(ADD_Q21);
 
         db.execSQL(ADD_SUGG_CALMER1);
         db.execSQL(ADD_SUGG_CALMER2);
