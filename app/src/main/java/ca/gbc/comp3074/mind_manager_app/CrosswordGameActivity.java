@@ -18,10 +18,12 @@ public class CrosswordGameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_crossword);
 
+        String[] words = {"fear", "wellness"};
+
         final TextView lblResult = findViewById(R.id.lblResultGame);
         final EditText editUserInput = findViewById(R.id.editInputNumberCross);
 
-        final int numberOfWords = 2;
+        final String numberOfWords = "2";
 
         Button btnImDone = findViewById(R.id.btnImDone);
         btnImDone.setOnClickListener(new View.OnClickListener() {
@@ -31,9 +33,10 @@ public class CrosswordGameActivity extends AppCompatActivity {
                 if(editUserInput.getText().toString().equals(numberOfWords)) {
                     lblResult.setText("Congratulations! You did it");
                 }
+                else {
+                    lblResult.setText("Try again");
+                }
             }
         });
     }
-
-
 }

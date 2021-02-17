@@ -16,20 +16,20 @@ public class WelcomeActivity extends AppCompatActivity {
         Button btnIdk = findViewById(R.id.btnIdk);
 
         //Button "I don't know" goes to questionnaire page answer questions to determine their mood(QuestionActivity)
-//        btnIdk.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                openIDontKnow();
-//            }
-//        });
-
-        //    DELETE LATER - JUST TO TEST GAME
         btnIdk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openGame();
+                openIDontKnow();
             }
         });
+
+        //    DELETE LATER - JUST TO TEST GAME
+//        btnIdk.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                openGame();
+//            }
+//        });
 
         //Button Moody goes to the suggestions page (SuggestionsActivity)
         Button Moody = findViewById(R.id.btnMoody);
@@ -123,9 +123,9 @@ public class WelcomeActivity extends AppCompatActivity {
         startActivity(start);
     }
 
-//    DELETE LATER - JUST TO TEST GAME
-private void openGame(){
-    Intent start = new Intent(getApplicationContext(), CrosswordGameActivity.class);
-    startActivity(start);
-}
+    //    DELETE LATER - JUST TO TEST GAME
+    private void openGame(){
+        Intent start = new Intent(getApplicationContext(), CrosswordGameActivity.class);
+        startActivity(start);
+    }
 }
