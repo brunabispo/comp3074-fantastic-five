@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 5;
     private static final String DATABASE_NAME = "mindManager";
 
     // Table Names
@@ -21,14 +21,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_ID = "id";
 
     // ANSWERS Table - column names
+    private static final String KEY_ID_QUESTION = "question_id";
     private static final String KEY_ANSWER_TEXT = "answer_text";
+    private static final String KEY_BORED = "bored_rating";
+    private static final String KEY_ENERGETIC = "energetic_rating";
+    private static final String KEY_HAPPY = "happy_rating";
+    private static final String KEY_SAD = "sad_rating";
+    private static final String KEY_TIRED = "tired_rating";
 
     // QUESTIONS Table - column names
     private static final String KEY_QUESTION_TEXT = "question_text";
-    private static final String KEY_ANSWER1 = "answer1";
-    private static final String KEY_ANSWER2 = "answer2";
-    private static final String KEY_ANSWER3 = "answer3";
-    //private ArrayList<Answer> answers;
 
     // SUGGESTIONS Table - column names
     private static final String KEY_MOOD = "mood";
@@ -43,10 +45,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     //Create tables
     private static final String CREATE_ANSWERS_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_ANSWERS + "("
-            + KEY_ID + " INTEGER PRIMARY KEY," + KEY_ANSWER_TEXT + " TEXT" + ")";
+            + KEY_ID + " INTEGER PRIMARY KEY," + KEY_ID_QUESTION + " INT," + KEY_ANSWER_TEXT + " TEXT," + KEY_BORED + " INT," +
+            KEY_ENERGETIC + " INT," + KEY_HAPPY + " INT," + KEY_SAD + " INT," + KEY_TIRED + " INT" + ")";
 
     private static final String CREATE_QUESTIONS_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_QUESTIONS + "("
-            + KEY_ID + " INTEGER PRIMARY KEY," + KEY_QUESTION_TEXT + " TEXT," + KEY_ANSWER1 + " TEXT," + KEY_ANSWER2 + " TEXT,"+ KEY_ANSWER3 + " TEXT" + ")";
+            + KEY_ID + " INTEGER PRIMARY KEY," + KEY_QUESTION_TEXT + " TEXT" + ")";
 
     private static final String CREATE_SUGGESTIONS_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_SUGGESTIONS + "("
             + KEY_ID + " INTEGER PRIMARY KEY," + KEY_MOOD + " TEXT," + KEY_CATEGORY + " TEXT," + KEY_SUGGESTION + " TEXT" + ")";
@@ -57,27 +60,112 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     //Create starting rows
     //Add questions
-    private static final String ADD_Q1 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('0', 'Do I feel like I want to be alone right now?', 'Yes', 'No', 'I`m fine either way');";
-    private static final String ADD_Q2 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('1', 'Did someone get on my nerves today?', 'Yes', 'No', 'A little bit');";
-    private static final String ADD_Q3 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('2', 'I am full of energy.', 'Yes', 'No', 'I feel like I could literally bounce off the walls');";
-    private static final String ADD_Q4 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('3', 'I feel like going outside.', 'Yes', 'No', 'Yes, but I`m lazy');";
-    private static final String ADD_Q5 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('4', 'I feel so tired right now.', 'Yes', 'No', 'Yes but I want to do SOMETHING');";
-    private static final String ADD_Q6 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('5', 'Have I cried today?', 'Yes, don`t get me started again', 'why? this quiz isn`t THAT bad', 'Nop');";
-    private static final String ADD_Q7 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('6', 'Imagine this: You`re walking down the street and a stranger says hello to you, you will:', 'I will greet them back!', 'I couldn`t care less right now', 'I don`t really know');";
-    private static final String ADD_Q8 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('7', 'I am fed up with people', 'YES!', 'Not really?', 'Well, sometimes');";
-    private static final String ADD_Q9 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('8', 'Do I feel playful right now?', 'Yes!', 'No', 'maybe');";
-    private static final String ADD_Q10 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('9', 'Am I emotional right now?', 'Yes..', 'Not really', 'I am like usual self');";
-    private static final String ADD_Q11 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('10', 'How was my day so far?', 'I had a bad day', 'Great!', 'nothing special much');";
-    private static final String ADD_Q12 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('11', 'Am I looking for adventures?', 'Yes, let`s go!', 'Not really.', 'hmm what do you have in mind?');";
-    private static final String ADD_Q13 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('12', 'How much patience do I have for this questionnaire?', 'I want it to be accurate so I am doing it the right way', '0 patience', 'I am okay');";
-    private static final String ADD_Q14 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('13', 'Am I looking for something new to do?', 'Yes!', 'No', 'hmm.. whatcha got?');";
-    private static final String ADD_Q15 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('14', 'Imagine this: Someone you know asks you to do an EASY favour for them, would you do it: ', 'If it easy, sure why not', 'No.', 'depends how easy it is');";
-    private static final String ADD_Q16 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('15', 'Do you feel sportive right now?', 'Yes!!', 'No', 'depends what kind of sport');";
-    private static final String ADD_Q17 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('16', 'Imagine this: You missed a phone call. What would you do?', 'I will get back to them', 'I don`t feel like taking calls right now', 'it depends on who it is');";
-    private static final String ADD_Q18 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('17', 'Am I concentrated to do whatever right now?', 'Yes, bring it on', 'No, I don`t really care right now', 'Maybe, what is it?');";
-    private static final String ADD_Q19 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('18', 'Do I want mindlessly browse in the internet or watch TV?', 'Sounds good', 'No', 'Don`t mind either way');";
-    private static final String ADD_Q20 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('19', 'Do I feel creative right now?', 'Yes!', 'No', 'I am okay');";
-    private static final String ADD_Q21 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('20', 'Imagine this: You just lost your phone', 'I will check everywhere to find it', 'This day can`t get anymore worse', '*Sigh*');";
+    private static final String ADD_Q1 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('0', 'Do I feel like I want to be alone right now?');";
+    private static final String ADD_Q2 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('1', 'Did someone get on my nerves today?');";
+    private static final String ADD_Q3 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('2', 'I am full of energy.');";
+    private static final String ADD_Q4 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('3', 'I feel like going outside.');";
+    private static final String ADD_Q5 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('4', 'I feel so tired right now.');";
+    private static final String ADD_Q6 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('5', 'Have I cried today?');";
+    private static final String ADD_Q7 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('6', 'Imagine this: You`re walking down the street and a stranger says hello to you, you will:');";
+    private static final String ADD_Q8 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('7', 'I am fed up with people');";
+    private static final String ADD_Q9 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('8', 'Do I feel playful right now?');";
+    private static final String ADD_Q10 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('9', 'Am I emotional right now?');";
+    private static final String ADD_Q11 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('10', 'How was my day so far?');";
+    private static final String ADD_Q12 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('11', 'Am I looking for adventures?');";
+    private static final String ADD_Q13 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('12', 'How much patience do I have for this questionnaire?');";
+    private static final String ADD_Q14 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('13', 'Am I looking for something new to do?');";
+    private static final String ADD_Q15 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('14', 'Imagine this: Someone you know asks you to do an EASY favour for them, would you do it: ');";
+    private static final String ADD_Q16 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('15', 'Do you feel sportive right now?');";
+    private static final String ADD_Q17 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('16', 'Imagine this: You missed a phone call. What would you do?');";
+    private static final String ADD_Q18 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('17', 'Am I concentrated to do whatever right now?');";
+    private static final String ADD_Q19 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('18', 'Do I want mindlessly browse in the internet or watch TV?');";
+    private static final String ADD_Q20 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('19', 'Do I feel creative right now?');";
+    private static final String ADD_Q21 = "INSERT INTO " + TABLE_QUESTIONS + " VALUES('20', 'Imagine this: You just lost your phone, what now?');";
+
+    //Add answers
+    private static final String ADD_Q1_A1 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('0','0', 'Yes',5,3,5,1,2);";
+    private static final String ADD_Q1_A2 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('1','0', 'No',5,3,5,1,2);";
+    private static final String ADD_Q1_A3 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('2','0', 'I`m fine either way', 5,3,5,1,2);";
+
+    private static final String ADD_Q2_A1 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('3','1', 'Yes',5,3,5,1,2);";
+    private static final String ADD_Q2_A2 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('4','1', 'No',5,3,5,1,2);";
+    private static final String ADD_Q2_A3 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('5','1', 'A little bit',5,3,5,1,2);";
+
+    private static final String ADD_Q3_A1 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('6', '2', 'Yes',5,3,5,1,2);";
+    private static final String ADD_Q3_A2 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('7', '2', 'No', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q3_A3 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('8', '2', 'I feel like I could literally bounce off the walls', 2, 3, 4, 5, 6);";
+
+    private static final String ADD_Q4_A1 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('9', '3', 'Yes', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q4_A2 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('10','3', 'No', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q4_A3 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('11','3', 'Yes, but I`m lazy', 2, 3, 4, 5, 6);";
+
+    private static final String ADD_Q5_A1 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('12', '4', 'Yes', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q5_A2 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('13', '4', 'No', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q5_A3 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('14', '4', 'Yes but I want to do SOMETHING', 2, 3, 4, 5, 6);";
+
+    private static final String ADD_Q6_A1 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('15', '5','Yes, don`t get me started again', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q6_A2 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('16', '5','why? this quiz isn`t THAT bad', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q6_A3 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('17', '5','Nop', 2, 3, 4, 5, 6);";
+
+    private static final String ADD_Q7_A1 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('18', '6', 'I will greet them back!', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q7_A2 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('19', '6', 'I couldn`t care less right now', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q7_A3 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('20', '6', 'I don`t really know', 2, 3, 4, 5, 6);";
+
+    private static final String ADD_Q8_A1 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('21', '7', 'YES!', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q8_A2 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('22', '7', 'Not really', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q8_A3 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('23', '7', 'Well, sometimes', 2, 3, 4, 5, 6);";
+
+    private static final String ADD_Q9_A1 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('24', '8', 'Yes!', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q9_A2 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('25', '8', 'No', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q9_A3 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('26', '8', 'maybe', 2, 3, 4, 5, 6);";
+
+    private static final String ADD_Q10_A1 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('27', '9', 'Yes..', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q10_A2 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('28', '9', 'Not really', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q10_A3 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('29', '9', 'I am like usual self', 2, 3, 4, 5, 6);";
+
+    private static final String ADD_Q11_A1 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('30', '10', 'I had a bad day', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q11_A2 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('31', '10', 'Great!', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q11_A3 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('32', '10', 'nothing special much', 2, 3, 4, 5, 6);";
+
+    private static final String ADD_Q12_A1 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('33', '11', 'Yes, let`s go!', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q12_A2 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('34', '11', 'Not really', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q12_A3 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('35', '11', 'hmm what do you have in mind?', 2, 3, 4, 5, 6);";
+
+    private static final String ADD_Q13_A1 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('36', '12', 'I want it to be accurate so I am doing it the right way', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q13_A2 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('37', '12', '0 patience', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q13_A3 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('38', '12', 'I am fine doing it', 2, 3, 4, 5, 6);";
+
+    private static final String ADD_Q14_A1 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('40', '13', 'Yes!', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q14_A2 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('41', '13', 'No', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q14_A3 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('42', '13', 'hmm.. whatcha got?', 2, 3, 4, 5, 6);";
+
+    private static final String ADD_Q15_A1 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('43', '14', 'If it easy, sure why not', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q15_A2 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('44', '14', 'No.', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q15_A3 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('45', '14', 'depends how easy it is and if I get something out of it', 2, 3, 4, 5, 6);";
+
+    private static final String ADD_Q16_A1 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('46', '15', 'Yes!!', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q16_A2 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('47', '15', 'No', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q16_A3 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('48', '15', 'depends what kind of sport', 2, 3, 4, 5, 6);";
+
+    private static final String ADD_Q17_A1 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('49', '16', 'I will get back to them.', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q17_A2 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('50', '16', 'I don`t feel like taking calls right now', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q17_A3 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('51', '16', 'it depends on who it is', 2, 3, 4, 5, 6);";
+
+    private static final String ADD_Q18_A1 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('52', '17', 'Yes, bring it on', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q18_A2 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('53', '17', 'No, I don`t really care right now', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q18_A3 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('54', '17', 'Maybe, what is it?', 2, 3, 4, 5, 6);";
+
+    private static final String ADD_Q19_A1 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('55', '18', 'Sounds good', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q19_A2 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('56', '18', 'No', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q19_A3 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('57', '18', 'Don`t mind either way', 2, 3, 4, 5, 6);";
+
+    private static final String ADD_Q20_A1 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('58', '19', 'Yes!', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q20_A2 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('59', '19', 'No', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q20_A3 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('60', '19', 'I don`t know', 2, 3, 4, 5, 6);";
+
+    private static final String ADD_Q21_A1 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('61', '20', 'I will check everywhere to find it', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q21_A2 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('62', '20', 'This day can`t get anymore worse', 2, 3, 4, 5, 6);";
+    private static final String ADD_Q21_A3 = "INSERT INTO " + TABLE_ANSWERS + " VALUES('63', '20', '*Sigh*', 2, 3, 4, 5, 6);";
 
     //Calmer Suggestions
     private static final String ADD_SUGG_CALMER1 = "INSERT INTO " + TABLE_SUGGESTIONS + " VALUES('0', 'Calmer', 'Music', 'Lemon Tree - Fools Garden');";
@@ -176,6 +264,90 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(ADD_Q20);
         db.execSQL(ADD_Q21);
 
+        db.execSQL(ADD_Q1_A1);
+        db.execSQL(ADD_Q1_A2);
+        db.execSQL(ADD_Q1_A3);
+
+        db.execSQL(ADD_Q2_A1);
+        db.execSQL(ADD_Q2_A2);
+        db.execSQL(ADD_Q2_A3);
+
+        db.execSQL(ADD_Q3_A1);
+        db.execSQL(ADD_Q3_A2);
+        db.execSQL(ADD_Q3_A3);
+
+        db.execSQL(ADD_Q4_A1);
+        db.execSQL(ADD_Q4_A2);
+        db.execSQL(ADD_Q4_A3);
+
+        db.execSQL(ADD_Q5_A1);
+        db.execSQL(ADD_Q5_A2);
+        db.execSQL(ADD_Q5_A3);
+
+        db.execSQL(ADD_Q6_A1);
+        db.execSQL(ADD_Q6_A2);
+        db.execSQL(ADD_Q6_A3);
+
+        db.execSQL(ADD_Q7_A1);
+        db.execSQL(ADD_Q7_A2);
+        db.execSQL(ADD_Q7_A3);
+
+        db.execSQL(ADD_Q8_A1);
+        db.execSQL(ADD_Q8_A2);
+        db.execSQL(ADD_Q8_A3);
+
+        db.execSQL(ADD_Q9_A1);
+        db.execSQL(ADD_Q9_A2);
+        db.execSQL(ADD_Q9_A3);
+
+        db.execSQL(ADD_Q10_A1);
+        db.execSQL(ADD_Q10_A2);
+        db.execSQL(ADD_Q10_A3);
+
+        db.execSQL(ADD_Q11_A1);
+        db.execSQL(ADD_Q11_A2);
+        db.execSQL(ADD_Q11_A3);
+
+        db.execSQL(ADD_Q12_A1);
+        db.execSQL(ADD_Q12_A2);
+        db.execSQL(ADD_Q12_A3);
+
+        db.execSQL(ADD_Q13_A1);
+        db.execSQL(ADD_Q13_A2);
+        db.execSQL(ADD_Q13_A3);
+
+        db.execSQL(ADD_Q14_A1);
+        db.execSQL(ADD_Q14_A2);
+        db.execSQL(ADD_Q14_A3);
+
+        db.execSQL(ADD_Q15_A1);
+        db.execSQL(ADD_Q15_A2);
+        db.execSQL(ADD_Q15_A3);
+
+        db.execSQL(ADD_Q16_A1);
+        db.execSQL(ADD_Q16_A2);
+        db.execSQL(ADD_Q16_A3);
+
+        db.execSQL(ADD_Q17_A1);
+        db.execSQL(ADD_Q17_A2);
+        db.execSQL(ADD_Q17_A3);
+
+        db.execSQL(ADD_Q18_A1);
+        db.execSQL(ADD_Q18_A2);
+        db.execSQL(ADD_Q18_A3);
+
+        db.execSQL(ADD_Q19_A1);
+        db.execSQL(ADD_Q19_A2);
+        db.execSQL(ADD_Q19_A3);
+
+        db.execSQL(ADD_Q20_A1);
+        db.execSQL(ADD_Q20_A2);
+        db.execSQL(ADD_Q20_A3);
+
+        db.execSQL(ADD_Q21_A1);
+        db.execSQL(ADD_Q21_A2);
+        db.execSQL(ADD_Q21_A3);
+
         db.execSQL(ADD_SUGG_CALMER1);
         db.execSQL(ADD_SUGG_CALMER2);
         db.execSQL(ADD_SUGG_CALMER3);
@@ -263,7 +435,28 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close(); // Closing database connection
     }
 
-    // code to get the single suggestion
+    // code to get the single question
+    ArrayList<Answer> getAnswers(int questionId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<Answer> answersExist = new ArrayList<>();
+        try (Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_ANSWERS +
+                " WHERE " + KEY_ID_QUESTION + " = " + questionId, null);) {
+            while (cursor.moveToNext()) {
+                answersExist.add(new Answer(cursor.getInt(0),
+                        cursor.getInt(1),
+                        cursor.getString(2),
+                        cursor.getInt(3),
+                        cursor.getInt(4),
+                        cursor.getInt(5),
+                        cursor.getInt(6),
+                        cursor.getInt(7)));
+            }
+        }
+        // return question
+        return answersExist;
+    }
+
+    // code to get the single question
     Question getQuestion() {
         SQLiteDatabase db = this.getReadableDatabase();
         Question questionExist = null;
@@ -271,13 +464,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 " ORDER BY RANDOM() LIMIT 1", null);) {
             while (cursor.moveToNext()) {
                 if (cursor.isFirst()) {
-                    questionExist = new Question(Integer.parseInt(cursor.getString(0)),
-                            cursor.getString(1), cursor.getString(2),
-                            cursor.getString(3), cursor.getString(4));
+                    int questionId = Integer.parseInt(cursor.getString(0));
+                    ArrayList<Answer> answer = getAnswers(questionId);
+                    questionExist = new Question(questionId, cursor.getString(1),
+                           answer);
                 }
             }
         }
-        // return user
+        // return question
         return questionExist;
     }
 

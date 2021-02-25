@@ -42,46 +42,12 @@ public class QuestionsActivity extends AppCompatActivity {
         RadioButton q4_a2 = findViewById(R.id.rbtn_q4_2);
         RadioButton q4_a3 = findViewById(R.id.rbtn_q4_3);
 
-        /*
-        //question 1 - "Do I feel like I want to be alone right now?"
-        Answer answer1 = new Answer();
-        answer1.setText("Yes");
-        answer1.setEnergeticRating(0);
-        answer1.setBoredRating(5);
-        answer1.setHappyRating(3);
-        answer1.setSadRating(8);
-        answer1.setTiredRating(10);
-
-        Answer answer2 = new Answer();
-        answer2.setText("No");
-        answer2.setEnergeticRating(10);
-        answer2.setBoredRating(5);
-        answer2.setHappyRating(8);
-        answer2.setSadRating(1);
-        answer2.setTiredRating(0);
-
-        Answer answer3 = new Answer();
-        answer3.setText("I'm fine either way");
-        answer3.setEnergeticRating(10);
-        answer3.setBoredRating(5);
-        answer3.setHappyRating(8);
-        answer3.setSadRating(1);
-        answer3.setTiredRating(0);
-
-        ArrayList<Answer> answers = new ArrayList<>();
-        answers.add(answer1);
-        answers.add(answer2);
-
-        Question question1 = new Question();
-        question1.setAnswers(answers);
-        */
-
         // Question 1
         Question q1 = db.getQuestion();
         question1.setText(q1.getQuestionText());
-        q1_a1.setText(q1.getAnswer1());
-        q1_a2.setText(q1.getAnswer2());
-        q1_a3.setText(q1.getAnswer3());
+        q1_a2.setText(q1.getAnswers().get(0).getText());
+        q1_a3.setText(q1.getAnswers().get(1).getText());
+        q1_a1.setText(q1.getAnswers().get(2).getText());
 
         // Question 2
         Question q2;
@@ -89,9 +55,9 @@ public class QuestionsActivity extends AppCompatActivity {
            q2 = db.getQuestion();
         }while(q2.getID() == q1.getID());
         question2.setText(q2.getQuestionText());
-        q2_a1.setText(q2.getAnswer1());
-        q2_a2.setText(q2.getAnswer2());
-        q2_a3.setText(q2.getAnswer3());
+        q2_a2.setText(q2.getAnswers().get(0).getText());
+        q2_a3.setText(q2.getAnswers().get(1).getText());
+        q2_a1.setText(q2.getAnswers().get(2).getText());
 
         // Question 3
         Question q3;
@@ -99,9 +65,9 @@ public class QuestionsActivity extends AppCompatActivity {
             q3 = db.getQuestion();
         }while(q3.getID() == q1.getID() || q3.getID() == q2.getID());
         question3.setText(q3.getQuestionText());
-        q3_a1.setText(q3.getAnswer1());
-        q3_a2.setText(q3.getAnswer2());
-        q3_a3.setText(q3.getAnswer3());
+        q3_a2.setText(q3.getAnswers().get(0).getText());
+        q3_a3.setText(q3.getAnswers().get(1).getText());
+        q3_a1.setText(q3.getAnswers().get(2).getText());
 
         // Question 4
         Question q4;
@@ -109,9 +75,9 @@ public class QuestionsActivity extends AppCompatActivity {
             q4 = db.getQuestion();
         }while(q4.getID() == q1.getID() || q4.getID() == q2.getID() || q4.getID() == q3.getID());
         question4.setText(q4.getQuestionText());
-        q4_a1.setText(q4.getAnswer1());
-        q4_a2.setText(q4.getAnswer2());
-        q4_a3.setText(q4.getAnswer3());
+        q4_a2.setText(q4.getAnswers().get(0).getText());
+        q4_a3.setText(q4.getAnswers().get(1).getText());
+        q4_a1.setText(q4.getAnswers().get(2).getText());
 
         Button btnSubmit = findViewById(R.id.btn_submit);
 

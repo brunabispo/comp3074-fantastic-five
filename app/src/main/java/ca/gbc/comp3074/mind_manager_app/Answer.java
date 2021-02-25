@@ -3,6 +3,7 @@ package ca.gbc.comp3074.mind_manager_app;
 public class Answer{
 
     private int _id;
+    private int question_id;
     private String text;
     private int boredRating;
     private int energeticRating;
@@ -10,20 +11,9 @@ public class Answer{
     private int sadRating;
     private int tiredRating;
 
-    public Answer() {
-    }
-
-    public Answer(String text, int boredRating, int energeticRating, int happyRating, int sadRating, int tiredRating) {
-        this.text = text;
-        this.boredRating = boredRating;
-        this.energeticRating = energeticRating;
-        this.happyRating = happyRating;
-        this.sadRating = sadRating;
-        this.tiredRating = tiredRating;
-    }
-
-    public Answer(int id, String text, int boredRating, int energeticRating, int happyRating, int sadRating, int tiredRating) {
+    public Answer(int id, int question_id, String text, int boredRating, int energeticRating, int happyRating, int sadRating, int tiredRating) {
         this._id = id;
+        this.question_id = question_id;
         this.text = text;
         this.boredRating = boredRating;
         this.energeticRating = energeticRating;
@@ -50,6 +40,14 @@ public class Answer{
 
     public int getBoredRating() {
         return boredRating;
+    }
+
+    public int getQuestion_id() {
+        return question_id;
+    }
+
+    public void setQuestion_id(int question_id) {
+        this.question_id = question_id;
     }
 
     public void setBoredRating(int boredRating) {
