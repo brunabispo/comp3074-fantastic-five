@@ -23,6 +23,14 @@ public class WelcomeActivity extends AppCompatActivity {
             }
         });
 
+        //    DELETE LATER - JUST TO TEST GAME
+//        btnIdk.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                openGame();
+//            }
+//        });
+
         //Button Moody goes to the suggestions page (SuggestionsActivity)
         Button Moody = findViewById(R.id.btnMoody);
         Moody.setOnClickListener(new View.OnClickListener() {
@@ -112,6 +120,12 @@ public class WelcomeActivity extends AppCompatActivity {
         Intent start = new Intent(getApplicationContext(), SuggestionsActivity.class);
         String mood = "Relaxed";
         start.putExtra("Mood", mood);
+        startActivity(start);
+    }
+
+    //    DELETE LATER - JUST TO TEST GAME
+    private void openGame(){
+        Intent start = new Intent(getApplicationContext(), CrosswordGameActivity.class);
         startActivity(start);
     }
 }

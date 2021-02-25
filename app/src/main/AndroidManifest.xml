@@ -25,6 +25,7 @@
         <activity android:name=".AdminQuestionOneActivity" android:parentActivityName=".AdminQuestionnaireActivity"/>
         <activity android:name=".AdminMoodOptionsActivity" android:parentActivityName=".AdminHomeActivity"/>
         <activity android:name=".AdminCategoriesActivity" android:parentActivityName=".AdminHomeActivity"/>
+        <activity android:name=".CrosswordGameActivity" android:parentActivityName=".SuggestionsActivity"/>
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
