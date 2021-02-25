@@ -20,6 +20,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     private static final String KEY_ID = "id";
 
+
     // ANSWERS Table - column names
     private static final String KEY_ID_QUESTION = "question_id";
     private static final String KEY_ANSWER_TEXT = "answer_text";
