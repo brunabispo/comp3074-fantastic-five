@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView46"
+        android:layout_width="249dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="81dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="81dp"
+        android:text="Can you Guess"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/lblQuestion"
+        android:layout_width="252dp"
+        android:layout_height="125dp"
+        android:layout_marginStart="81dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="78dp"
+        android:text="In 2007 the critically acclaimed film There will be Blood premiered. What novel was this film based upon? "
+        android:textAlignment="center"
+        android:textColor="#4CAF50"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView46" />
+
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="78dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="170dp"
+        android:layout_marginTop="23dp"
+        android:text="select"
+        app:layout_constraintStart_toEndOf="@+id/lblanswer1"
+        app:layout_constraintTop_toBottomOf="@+id/lblQuestion" />
+
+    <Button
+        android:id="@+id/btn2"
+        android:layout_width="78dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="30dp"
+        android:text="select"
+        app:layout_constraintStart_toEndOf="@+id/lblanswer2"
+        app:layout_constraintTop_toBottomOf="@+id/btn1" />
+
+    <Button
+        android:id="@+id/btn3"
+        android:layout_width="79dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="20dp"
+        android:text="select"
+        app:layout_constraintStart_toEndOf="@+id/lblanswer3"
+        app:layout_constraintTop_toBottomOf="@+id/btn2" />
+
+    <Button
+        android:id="@+id/btn4"
+        android:layout_width="81dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="16dp"
+        android:text="select"
+        app:layout_constraintStart_toEndOf="@+id/lblanswer4"
+        app:layout_constraintTop_toBottomOf="@+id/btn3" />
+
+    <TextView
+        android:id="@+id/lblanswer1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="61dp"
+        android:layout_marginTop="294dp"
+        android:layout_marginEnd="170dp"
+        android:text="Oil!"
+        app:layout_constraintEnd_toStartOf="@+id/btn1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/lblanswer2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="76dp"
+        android:text="There will be Blood"
+        app:layout_constraintEnd_toStartOf="@+id/btn2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblanswer1" />
+
+    <TextView
+        android:id="@+id/lblanswer3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="129dp"
+        android:text="Black Gold"
+        app:layout_constraintEnd_toStartOf="@+id/btn3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblanswer2" />
+
+    <TextView
+        android:id="@+id/lblanswer4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="101dp"
+        android:text="This is America"
+        app:layout_constraintEnd_toStartOf="@+id/btn4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblanswer3" />
+
+    <TextView
+        android:id="@+id/lblanswer"
+        android:layout_width="121dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="175dp"
+        android:layout_marginTop="275dp"
+        android:layout_marginEnd="196dp"
+        android:layout_marginBottom="174dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.301"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblQuestion" />
+
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        tools:layout_editor_absoluteX="153dp"
+        tools:layout_editor_absoluteY="541dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

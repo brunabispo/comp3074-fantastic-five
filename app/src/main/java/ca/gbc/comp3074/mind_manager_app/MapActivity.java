@@ -8,6 +8,9 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -99,5 +102,39 @@ public class MapActivity  extends FragmentActivity implements OnMapReadyCallback
     private void backToWelcome(){
         Intent start = new Intent(getApplicationContext(), WelcomeActivity.class);
         startActivity(start);
+    }
+
+
+
+    //function to start AboutActivity
+    private void openAbout(){
+        Intent start = new Intent(getApplicationContext(), AboutActivity.class);
+        startActivity(start);
+    }
+
+    private void openlogin(){
+        Intent start = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(start);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inf = getMenuInflater();
+        inf.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.menu_about) {
+            openAbout();
+            return true;
+        }
+        if (item.getItemId() == R.id.menu_main) {
+            openlogin();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

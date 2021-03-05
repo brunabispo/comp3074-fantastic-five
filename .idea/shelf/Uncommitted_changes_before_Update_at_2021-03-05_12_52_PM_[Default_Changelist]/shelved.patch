@@ -1,0 +1,746 @@
+Index: app/src/main/java/ca/gbc/comp3074/mind_manager_app/WelcomeActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ca.gbc.comp3074.mind_manager_app;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\npublic class WelcomeActivity extends AppCompatActivity {\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_welcome);\r\n\r\n        Button btnIdk = findViewById(R.id.btnIdk);\r\n\r\n        //Button \"I don't know\" goes to questionnaire page answer questions to determine their mood(QuestionActivity)\r\n        btnIdk.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                openIDontKnow();\r\n            }\r\n        });\r\n\r\n        //    DELETE LATER - JUST TO TEST GAME\r\n//        btnIdk.setOnClickListener(new View.OnClickListener() {\r\n//            @Override\r\n//            public void onClick(View v) {\r\n//                openGame();\r\n//            }\r\n//        });\r\n\r\n        //Button Moody goes to the suggestions page (SuggestionsActivity)\r\n        Button Moody = findViewById(R.id.btnMoody);\r\n        Moody.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                openMoody();\r\n            }\r\n        });\r\n\r\n        //Button Happier goes to the suggestions page (SuggestionsActivity)\r\n        Button Happier = findViewById(R.id.btnHappier);\r\n        Happier.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                openHappier();\r\n            }\r\n        });\r\n\r\n        //Button Energetic goes to the suggestions page (SuggestionsActivity)\r\n        Button Energetic = findViewById(R.id.btnEnergetic);\r\n        Energetic.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                openEnergetic();\r\n            }\r\n        });\r\n\r\n        //Button Calmer goes to the suggestions page (SuggestionsActivity)\r\n        Button Calmer = findViewById(R.id.btnCalmer); //\r\n        Calmer.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                openCalmer();\r\n            }\r\n        });\r\n\r\n        //Button Relaxed goes to the suggestions page (SuggestionsActivity)\r\n        Button Relaxed = findViewById(R.id.btnRelaxed);\r\n        Relaxed.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                openRelaxed();\r\n            }\r\n        });\r\n    }\r\n\r\n    //function to start QuestionsActivity\r\n    private void openIDontKnow(){\r\n        Intent start = new Intent(getApplicationContext(), QuestionsActivity.class);\r\n        startActivity(start);\r\n    }\r\n\r\n    // Open Calmer suggestions\r\n    private void openCalmer(){\r\n        Intent start = new Intent(getApplicationContext(), SuggestionsActivity.class);\r\n        String mood = \"Calmer\";\r\n        start.putExtra(\"Mood\", mood);\r\n        startActivity(start);\r\n    }\r\n\r\n    // Open Energetic suggestions\r\n    private void openEnergetic(){\r\n        Intent start = new Intent(getApplicationContext(), SuggestionsActivity.class);\r\n        String mood = \"Energetic\";\r\n        start.putExtra(\"Mood\", mood);\r\n        startActivity(start);\r\n    }\r\n\r\n    // Open Happier suggestions\r\n    private void openHappier(){\r\n        Intent start = new Intent(getApplicationContext(), SuggestionsActivity.class);\r\n        String mood = \"Happier\";\r\n        start.putExtra(\"Mood\", mood);\r\n        startActivity(start);\r\n    }\r\n\r\n    // Open Moody suggestions\r\n    private void openMoody(){\r\n        Intent start = new Intent(getApplicationContext(), SuggestionsActivity.class);\r\n        String mood = \"Moody\";\r\n        start.putExtra(\"Mood\", mood);\r\n        startActivity(start);\r\n    }\r\n\r\n    // Open Tired suggestions\r\n    private void openRelaxed(){\r\n        Intent start = new Intent(getApplicationContext(), SuggestionsActivity.class);\r\n        String mood = \"Relaxed\";\r\n        start.putExtra(\"Mood\", mood);\r\n        startActivity(start);\r\n    }\r\n\r\n    //    DELETE LATER - JUST TO TEST GAME\r\n    private void openGame(){\r\n        Intent start = new Intent(getApplicationContext(), CrosswordGameActivity.class);\r\n        startActivity(start);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/ca/gbc/comp3074/mind_manager_app/WelcomeActivity.java	(revision df184b2d57a136c24685077bb88e260303739813)
++++ app/src/main/java/ca/gbc/comp3074/mind_manager_app/WelcomeActivity.java	(date 1614964391822)
+@@ -2,8 +2,13 @@
+ 
+ import android.content.Intent;
+ import android.os.Bundle;
++import android.view.Menu;
++import android.view.MenuInflater;
++import android.view.MenuItem;
+ import android.view.View;
+ import android.widget.Button;
++
++import androidx.annotation.NonNull;
+ import androidx.appcompat.app.AppCompatActivity;
+ 
+ public class WelcomeActivity extends AppCompatActivity {
+@@ -15,7 +20,7 @@
+ 
+         Button btnIdk = findViewById(R.id.btnIdk);
+ 
+-        //Button "I don't know" goes to questionnaire page answer questions to determine their mood(QuestionActivity)
++//        Button "I don't know" goes to questionnaire page answer questions to determine their mood(QuestionActivity)
+         btnIdk.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+@@ -79,7 +84,7 @@
+ 
+     //function to start QuestionsActivity
+     private void openIDontKnow(){
+-        Intent start = new Intent(getApplicationContext(), QuestionsActivity.class);
++        Intent start = new Intent(getApplicationContext(), CrosswordGameActivity.class);
+         startActivity(start);
+     }
+ 
+@@ -128,4 +133,40 @@
+         Intent start = new Intent(getApplicationContext(), CrosswordGameActivity.class);
+         startActivity(start);
+     }
++
++
++/////////////////////////////////////////////////////////////////////////////////////////////////////
++
++
++    //function to start AboutActivity
++    private void openAbout(){
++        Intent start = new Intent(getApplicationContext(), AboutActivity.class);
++        startActivity(start);
++    }
++
++    private void openlogin(){
++        Intent start = new Intent(getApplicationContext(), MainActivity.class);
++        startActivity(start);
++    }
++
++    @Override
++    public boolean onCreateOptionsMenu(Menu menu) {
++        MenuInflater inf = getMenuInflater();
++        inf.inflate(R.menu.main_menu, menu);
++        return true;
++    }
++
++    @Override
++    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
++        if (item.getItemId() == R.id.menu_about) {
++            openAbout();
++            return true;
++        }
++        if (item.getItemId() == R.id.menu_main) {
++            openlogin();
++            return true;
++        }
++
++        return super.onOptionsItemSelected(item);
++    }
+ }
+\ No newline at end of file
+Index: app/src/main/java/ca/gbc/comp3074/mind_manager_app/QuestionsActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ca.gbc.comp3074.mind_manager_app;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\nimport android.widget.RadioButton;\r\nimport android.widget.TextView;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport java.util.ArrayList;\r\n\r\npublic class QuestionsActivity extends AppCompatActivity {\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_questions);\r\n\r\n        //Database instance\r\n        final DatabaseHandler db = new DatabaseHandler(this);\r\n\r\n        TextView question1 = findViewById(R.id.lblq1);\r\n        TextView question2 = findViewById(R.id.lblq2);\r\n        TextView question3 = findViewById(R.id.lblq3);\r\n        TextView question4 = findViewById(R.id.lblq4);\r\n\r\n        RadioButton q1_a1 = findViewById(R.id.rbtn_q1_1);\r\n        RadioButton q1_a2 = findViewById(R.id.rbtn_q1_2);\r\n        RadioButton q1_a3 = findViewById(R.id.rbtn_q1_3);\r\n\r\n        RadioButton q2_a1 = findViewById(R.id.rbtn_q2_1);\r\n        RadioButton q2_a2 = findViewById(R.id.rbtn_q2_2);\r\n        RadioButton q2_a3 = findViewById(R.id.rbtn_q2_3);\r\n\r\n        RadioButton q3_a1 = findViewById(R.id.rbtn_q3_1);\r\n        RadioButton q3_a2 = findViewById(R.id.rbtn_q3_2);\r\n        RadioButton q3_a3 = findViewById(R.id.rbtn_q3_3);\r\n\r\n        RadioButton q4_a1 = findViewById(R.id.rbtn_q4_1);\r\n        RadioButton q4_a2 = findViewById(R.id.rbtn_q4_2);\r\n        RadioButton q4_a3 = findViewById(R.id.rbtn_q4_3);\r\n\r\n        /*\r\n        //question 1 - \"Do I feel like I want to be alone right now?\"\r\n        Answer answer1 = new Answer();\r\n        answer1.setText(\"Yes\");\r\n        answer1.setEnergeticRating(0);\r\n        answer1.setBoredRating(5);\r\n        answer1.setHappyRating(3);\r\n        answer1.setSadRating(8);\r\n        answer1.setTiredRating(10);\r\n\r\n        Answer answer2 = new Answer();\r\n        answer2.setText(\"No\");\r\n        answer2.setEnergeticRating(10);\r\n        answer2.setBoredRating(5);\r\n        answer2.setHappyRating(8);\r\n        answer2.setSadRating(1);\r\n        answer2.setTiredRating(0);\r\n\r\n        Answer answer3 = new Answer();\r\n        answer3.setText(\"I'm fine either way\");\r\n        answer3.setEnergeticRating(10);\r\n        answer3.setBoredRating(5);\r\n        answer3.setHappyRating(8);\r\n        answer3.setSadRating(1);\r\n        answer3.setTiredRating(0);\r\n\r\n        ArrayList<Answer> answers = new ArrayList<>();\r\n        answers.add(answer1);\r\n        answers.add(answer2);\r\n\r\n        Question question1 = new Question();\r\n        question1.setAnswers(answers);\r\n        */\r\n\r\n        // Question 1\r\n        Question q1 = db.getQuestion();\r\n        question1.setText(q1.getQuestionText());\r\n        q1_a1.setText(q1.getAnswer1());\r\n        q1_a2.setText(q1.getAnswer2());\r\n        q1_a3.setText(q1.getAnswer3());\r\n\r\n        // Question 2\r\n        Question q2;\r\n        do {\r\n           q2 = db.getQuestion();\r\n        }while(q2.getID() == q1.getID());\r\n        question2.setText(q2.getQuestionText());\r\n        q2_a1.setText(q2.getAnswer1());\r\n        q2_a2.setText(q2.getAnswer2());\r\n        q2_a3.setText(q2.getAnswer3());\r\n\r\n        // Question 3\r\n        Question q3;\r\n        do {\r\n            q3 = db.getQuestion();\r\n        }while(q3.getID() == q1.getID() || q3.getID() == q2.getID());\r\n        question3.setText(q3.getQuestionText());\r\n        q3_a1.setText(q3.getAnswer1());\r\n        q3_a2.setText(q3.getAnswer2());\r\n        q3_a3.setText(q3.getAnswer3());\r\n\r\n        // Question 4\r\n        Question q4;\r\n        do {\r\n            q4 = db.getQuestion();\r\n        }while(q4.getID() == q1.getID() || q4.getID() == q2.getID() || q4.getID() == q3.getID());\r\n        question4.setText(q4.getQuestionText());\r\n        q4_a1.setText(q4.getAnswer1());\r\n        q4_a2.setText(q4.getAnswer2());\r\n        q4_a3.setText(q4.getAnswer3());\r\n\r\n        Button btnSubmit = findViewById(R.id.btn_submit);\r\n\r\n        //Button Submit goes to the suggestions page (SuggestionsActivitySad)\r\n        btnSubmit.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                openSuggestions();\r\n            }\r\n        });\r\n    }\r\n\r\n    // Open the Suggestions Page\r\n    private void openSuggestions(){\r\n        Intent start = new Intent(getApplicationContext(), SuggestionsActivity.class);\r\n        String mood = \"Moody\";\r\n        start.putExtra(\"Mood\", mood);\r\n        startActivity(start);\r\n    }\r\n\r\n    public void onRadioButtonClicked(View view) {\r\n        // Is the button now checked?\r\n        boolean checked = ((RadioButton) view).isChecked();\r\n\r\n        // Logic to still be implemented\r\n        switch(view.getId()) {\r\n\r\n            case R.id.rbtn_q1_1 & R.id.rbtn_q2_1 & R.id.rbtn_q3_1 & R.id.rbtn_q4_1:\r\n                if(checked){\r\n                    openSuggestions();\r\n                }\r\n                break;\r\n            case R.id.rbtn_q1_2:\r\n                break;\r\n            case R.id.rbtn_q1_3:\r\n                break;\r\n            case R.id.rbtn_q2_2:\r\n                break;\r\n            case R.id.rbtn_q2_3:\r\n                break;\r\n            case R.id.rbtn_q3_2:\r\n                break;\r\n            case R.id.rbtn_q3_3:\r\n                break;\r\n            case R.id.rbtn_q4_2:\r\n                break;\r\n            case R.id.rbtn_q4_3:\r\n                break;\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/ca/gbc/comp3074/mind_manager_app/QuestionsActivity.java	(revision df184b2d57a136c24685077bb88e260303739813)
++++ app/src/main/java/ca/gbc/comp3074/mind_manager_app/QuestionsActivity.java	(date 1614903659572)
+@@ -2,11 +2,15 @@
+ 
+ import android.content.Intent;
+ import android.os.Bundle;
++import android.view.Menu;
++import android.view.MenuInflater;
++import android.view.MenuItem;
+ import android.view.View;
+ import android.widget.Button;
+ import android.widget.RadioButton;
+ import android.widget.TextView;
+ 
++import androidx.annotation.NonNull;
+ import androidx.appcompat.app.AppCompatActivity;
+ 
+ import java.util.ArrayList;
+@@ -162,4 +166,38 @@
+                 break;
+         }
+     }
++
++
++
++    //function to start AboutActivity
++    private void openAbout(){
++        Intent start = new Intent(getApplicationContext(), AboutActivity.class);
++        startActivity(start);
++    }
++
++    private void openlogin(){
++        Intent start = new Intent(getApplicationContext(), MainActivity.class);
++        startActivity(start);
++    }
++
++    @Override
++    public boolean onCreateOptionsMenu(Menu menu) {
++        MenuInflater inf = getMenuInflater();
++        inf.inflate(R.menu.main_menu, menu);
++        return true;
++    }
++
++    @Override
++    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
++        if (item.getItemId() == R.id.menu_about) {
++            openAbout();
++            return true;
++        }
++        if (item.getItemId() == R.id.menu_main) {
++            openlogin();
++            return true;
++        }
++
++        return super.onOptionsItemSelected(item);
++    }
+ }
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_game_crossword.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout\r\n    xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\">\r\n\r\n    <TextView\r\n        android:id=\"@+id/lblResultGame\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"36dp\"\r\n        android:textColor=\"#000000\"\r\n        android:textSize=\"25dp\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.498\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/btnImDone\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/textView42\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"20dp\"\r\n        android:text=\"Crossword Game\"\r\n        android:textAppearance=\"@style/TextAppearance.AppCompat.Display1\"\r\n        android:textColor=\"#000000\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/editInputNumberCross\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginBottom=\"35dp\"\r\n        android:ems=\"10\"\r\n        android:inputType=\"number\"\r\n        app:layout_constraintBottom_toTopOf=\"@+id/btnImDone\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.497\"\r\n        app:layout_constraintStart_toStartOf=\"parent\" />\r\n\r\n    <ImageView\r\n        android:id=\"@+id/imageView2\"\r\n        android:layout_width=\"306dp\"\r\n        android:layout_height=\"244dp\"\r\n        android:layout_marginTop=\"16dp\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/textView42\"\r\n        app:srcCompat=\"@drawable/crossword\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/textView44\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"20dp\"\r\n        android:layout_marginBottom=\"20dp\"\r\n        android:text=\"How many words did you find?\"\r\n        android:textColor=\"#000000\"\r\n        android:textSize=\"25dp\"\r\n        app:layout_constraintBottom_toTopOf=\"@+id/editInputNumberCross\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/imageView2\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/btnImDone\"\r\n        android:layout_width=\"163dp\"\r\n        android:layout_height=\"33dp\"\r\n        android:layout_marginTop=\"35dp\"\r\n        android:text=\"I'm Done\"\r\n        android:textSize=\"13dp\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/editInputNumberCross\" />\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_game_crossword.xml	(revision df184b2d57a136c24685077bb88e260303739813)
++++ app/src/main/res/layout/activity_game_crossword.xml	(date 1614964487148)
+@@ -36,7 +36,6 @@
+         android:layout_height="wrap_content"
+         android:layout_marginBottom="35dp"
+         android:ems="10"
+-        android:inputType="number"
+         app:layout_constraintBottom_toTopOf="@+id/btnImDone"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.497"
+Index: app/src/main/java/ca/gbc/comp3074/mind_manager_app/CrosswordGameActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ca.gbc.comp3074.mind_manager_app;\r\n\r\nimport android.annotation.SuppressLint;\r\nimport android.os.Bundle;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\nimport android.widget.EditText;\r\nimport android.widget.TextView;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport com.facebook.share.widget.ShareButton;\r\n\r\npublic class CrosswordGameActivity extends AppCompatActivity {\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_game_crossword);\r\n\r\n        String[] words = {\"fear\", \"wellness\"};\r\n\r\n        final TextView lblResult = findViewById(R.id.lblResultGame);\r\n        final EditText editUserInput = findViewById(R.id.editInputNumberCross);\r\n\r\n        final String numberOfWords = \"2\";\r\n\r\n        Button btnImDone = findViewById(R.id.btnImDone);\r\n        btnImDone.setOnClickListener(new View.OnClickListener() {\r\n            @SuppressLint(\"SetTextI18n\")\r\n            @Override\r\n            public void onClick(View v) {\r\n                if(editUserInput.getText().toString().equals(numberOfWords)) {\r\n                    lblResult.setText(\"Congratulations! You did it\");\r\n                }\r\n                else {\r\n                    lblResult.setText(\"Try again\");\r\n                }\r\n            }\r\n        });\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/ca/gbc/comp3074/mind_manager_app/CrosswordGameActivity.java	(revision df184b2d57a136c24685077bb88e260303739813)
++++ app/src/main/java/ca/gbc/comp3074/mind_manager_app/CrosswordGameActivity.java	(date 1614966463526)
+@@ -1,16 +1,24 @@
+ package ca.gbc.comp3074.mind_manager_app;
+ 
+ import android.annotation.SuppressLint;
++import android.content.Intent;
+ import android.os.Bundle;
++import android.view.Menu;
++import android.view.MenuInflater;
++import android.view.MenuItem;
+ import android.view.View;
+ import android.widget.Button;
+ import android.widget.EditText;
+ import android.widget.TextView;
+ 
++import androidx.annotation.NonNull;
+ import androidx.appcompat.app.AppCompatActivity;
+ 
+ import com.facebook.share.widget.ShareButton;
+ 
++import java.util.Arrays;
++import java.util.List;
++
+ public class CrosswordGameActivity extends AppCompatActivity {
+ 
+     @Override
+@@ -18,25 +26,69 @@
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_game_crossword);
+ 
+-        String[] words = {"fear", "wellness"};
++        Intent intent = getIntent();
++        final String moodTitle = intent.getStringExtra("Mood");
++
++        String[] moody = {"overwhelm", "emotional", "reflective", "melancholy"};
++        String[] happier = {"cheerful", "ecstatic", "overjoyed", "joyful"};
++        String[] energetic = {"active", "dynamic", "spirited", "tireless"};
++        String[] calmer = {"serene", "soothing", "tranquil", "pacific"};
++        String[] relaxed = {"casual", "laid back", "tranquil", "patient"};
++        final List<String> list = Arrays.asList(moodTitle.toLowerCase());
+ 
+         final TextView lblResult = findViewById(R.id.lblResultGame);
+         final EditText editUserInput = findViewById(R.id.editInputNumberCross);
+ 
+-        final String numberOfWords = "2";
++        // final String numberOfWords = "2";
++        final int numOfWords = list.size();
+ 
+         Button btnImDone = findViewById(R.id.btnImDone);
+         btnImDone.setOnClickListener(new View.OnClickListener() {
++            int counter = 0;
+             @SuppressLint("SetTextI18n")
+             @Override
+             public void onClick(View v) {
+-                if(editUserInput.getText().toString().equals(numberOfWords)) {
+-                    lblResult.setText("Congratulations! You did it");
+-                }
+-                else {
+-                    lblResult.setText("Try again");
+-                }
++//                while(counter != numOfWords) {
++                    if(list.contains(editUserInput.getText().toString().toLowerCase()) && counter < numOfWords) {
++                        counter++;
++                        lblResult.setText("Congratulations! There is more.");
++                    }
++                    if(counter == numOfWords) {
++                        lblResult.setText("Congratulations! You did it!");
++                    }
+             }
+         });
+     }
++
++    //function to start AboutActivity
++    private void openAbout(){
++        Intent start = new Intent(getApplicationContext(), AboutActivity.class);
++        startActivity(start);
++    }
++
++    private void openlogin(){
++        Intent start = new Intent(getApplicationContext(), MainActivity.class);
++        startActivity(start);
++    }
++
++    @Override
++    public boolean onCreateOptionsMenu(Menu menu) {
++        MenuInflater inf = getMenuInflater();
++        inf.inflate(R.menu.main_menu, menu);
++        return true;
++    }
++
++    @Override
++    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
++        if (item.getItemId() == R.id.menu_about) {
++            openAbout();
++            return true;
++        }
++        if (item.getItemId() == R.id.menu_main) {
++            openlogin();
++            return true;
++        }
++
++        return super.onOptionsItemSelected(item);
++    }
+ }
+Index: app/src/main/res/menu/main_menu.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<menu xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:android=\"http://schemas.android.com/apk/res/android\">\r\n\r\n    <item\r\n        android:id=\"@+id/menu_about\"\r\n        android:icon=\"@android:drawable/ic_media_play\"\r\n        android:title=\"About activity\"\r\n        app:showAsAction=\"ifRoom\" />\r\n</menu>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/menu/main_menu.xml	(revision df184b2d57a136c24685077bb88e260303739813)
++++ app/src/main/res/menu/main_menu.xml	(date 1614837757539)
+@@ -6,5 +6,11 @@
+         android:id="@+id/menu_about"
+         android:icon="@android:drawable/ic_media_play"
+         android:title="About activity"
+-        app:showAsAction="ifRoom" />
++        />
++
++    <item
++        android:id="@+id/menu_main"
++        android:icon="@android:drawable/ic_media_play"
++        android:title="Main Login"
++        />
+ </menu>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_welcome.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<ScrollView xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"wrap_content\"\r\n    xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    android:fillViewport=\"true\"\r\n    android:background=\"@drawable/ic_background\"\r\n    android:padding=\"16dp\">\r\n\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        android:orientation=\"vertical\"\r\n        tools:context=\".WelcomeActivity\">\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"71dp\"\r\n            android:orientation=\"horizontal\">\r\n\r\n            <TextView\r\n                android:id=\"@+id/txtWelcome\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:text=\"Welcome to the\"\r\n                android:textAlignment=\"center\"\r\n                android:textColor=\"@color/cardview_dark_background\"\r\n                android:textSize=\"36sp\" />\r\n        </LinearLayout>\r\n\r\n        <TextView\r\n            android:id=\"@+id/textView2\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"53dp\"\r\n            android:text=\"Mind Manager app\"\r\n            android:textAlignment=\"center\"\r\n            android:textColor=\"#FF9800\"\r\n            android:textSize=\"24sp\" />\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"71dp\"\r\n            android:orientation=\"horizontal\">\r\n\r\n            <TextView\r\n                android:id=\"@+id/textView7\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:text=\"Select the one you most relate to right now\"\r\n                android:textAlignment=\"center\"\r\n                android:textColor=\"@color/cardview_dark_background\"\r\n                android:textSize=\"18sp\" />\r\n        </LinearLayout>\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"71dp\"\r\n            android:orientation=\"horizontal\">\r\n\r\n            <Button\r\n                android:id=\"@+id/btnMoody\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:text=\"I WANT TO FEEL MORE 'MOODY'\" />\r\n        </LinearLayout>\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"71dp\"\r\n            android:orientation=\"horizontal\">\r\n\r\n            <Button\r\n                android:id=\"@+id/btnHappier\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:text=\"I WANT TO FEEL HAPPIER\" />\r\n        </LinearLayout>\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"71dp\"\r\n            android:orientation=\"horizontal\">\r\n\r\n            <Button\r\n                android:id=\"@+id/btnEnergetic\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:text=\"I WANT TO FEEL MORE ENERGETIC\" />\r\n        </LinearLayout>\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"71dp\"\r\n            android:orientation=\"horizontal\">\r\n\r\n            <Button\r\n                android:id=\"@+id/btnCalmer\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:text=\"I WANT TO FEEL CALMER\" />\r\n        </LinearLayout>\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"71dp\"\r\n            android:orientation=\"horizontal\">\r\n\r\n            <Button\r\n                android:id=\"@+id/btnRelaxed\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:text=\"I WANT TO FEEL MORE RELAXED\" />\r\n\r\n        </LinearLayout>\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"99dp\"\r\n            android:orientation=\"horizontal\">\r\n\r\n            <Button\r\n                android:id=\"@+id/btnIdk\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:text=\"I DON'T KNOW\" />\r\n        </LinearLayout>\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"match_parent\"\r\n            android:orientation=\"horizontal\"/>\r\n    </LinearLayout>\r\n    </ScrollView>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_welcome.xml	(revision df184b2d57a136c24685077bb88e260303739813)
++++ app/src/main/res/layout/activity_welcome.xml	(date 1614913014453)
+@@ -16,7 +16,7 @@
+ 
+         <LinearLayout
+             android:layout_width="match_parent"
+-            android:layout_height="71dp"
++            android:layout_height="67dp"
+             android:orientation="horizontal">
+ 
+             <TextView
+@@ -32,14 +32,15 @@
+         <TextView
+             android:id="@+id/textView2"
+             android:layout_width="match_parent"
+-            android:layout_height="53dp"
++            android:layout_height="45dp"
+             android:text="Mind Manager app"
+             android:textAlignment="center"
+             android:textColor="#FF9800"
+             android:textSize="24sp" />
++
+         <LinearLayout
+             android:layout_width="match_parent"
+-            android:layout_height="71dp"
++            android:layout_height="52dp"
+             android:orientation="horizontal">
+ 
+             <TextView
+@@ -50,6 +51,13 @@
+                 android:textAlignment="center"
+                 android:textColor="@color/cardview_dark_background"
+                 android:textSize="18sp" />
++
++            <TextView
++                android:id="@+id/textView45"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:layout_weight="1"
++                android:text="TextView" />
+         </LinearLayout>
+ 
+         <LinearLayout
+Index: app/src/main/java/ca/gbc/comp3074/mind_manager_app/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ca.gbc.comp3074.mind_manager_app;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.view.Menu;\r\nimport android.view.MenuInflater;\r\nimport android.view.MenuItem;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\nimport android.widget.EditText;\r\nimport android.widget.TextView;\r\nimport androidx.annotation.NonNull;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\npublic class MainActivity extends AppCompatActivity {\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_main);\r\n\r\n        //Database instance\r\n        final DatabaseHandler db = new DatabaseHandler(this);\r\n\r\n        final EditText username = findViewById(R.id.editUsername);\r\n        final EditText password = findViewById(R.id.editPassword);\r\n        final TextView lblError = findViewById(R.id.lblerrorlogin);\r\n\r\n        //Button Login goes to welcome page to choose a mood(WelcomeActivity)\r\n        Button btnLogin = findViewById(R.id.btnSubmit);\r\n        btnLogin.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                //Execute the query, find if username input from user is existing in data base\r\n                final User userExist = db.getUser(username.getText().toString());\r\n\r\n                if(userExist != null && username.getText().toString().equals(userExist.getUserName()) &&\r\n                        password.getText().toString().equals(userExist.getPassword())){\r\n                    //login: 'benjeff', password: '123_Ben'\r\n                    if((userExist.getRole()).equals(\"admin\")){\r\n                        openAdminHome();\r\n                    } else {\r\n                        openWelcome();\r\n                    }\r\n                }\r\n                else{\r\n                  lblError.setText(\"User name or password invalid\");\r\n                }\r\n            }\r\n        });\r\n\r\n        //Button Register goes to Registration page(RegisterActivity)\r\n        Button btnRegister = findViewById(R.id.btnRegister);\r\n        btnRegister.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                openRegister();\r\n            }\r\n        });\r\n    }\r\n\r\n    //function to start WelcomeActivity\r\n    private void openAdminHome(){\r\n        Intent start = new Intent(getApplicationContext(), AdminHomeActivity.class);\r\n        startActivity(start);\r\n    }\r\n\r\n    //function to start WelcomeActivity\r\n    private void openWelcome(){\r\n        Intent start = new Intent(getApplicationContext(), WelcomeActivity.class);\r\n        startActivity(start);\r\n    }\r\n\r\n    //function to start RegisterActivity\r\n    private void openRegister(){\r\n        Intent start = new Intent(getApplicationContext(), RegisterActivity.class);\r\n        startActivity(start);\r\n    }\r\n\r\n    //function to start AboutActivity\r\n    private void openAbout(){\r\n        Intent start = new Intent(getApplicationContext(), AboutActivity.class);\r\n        startActivity(start);\r\n    }\r\n\r\n    @Override\r\n    public boolean onCreateOptionsMenu(Menu menu) {\r\n        MenuInflater inf = getMenuInflater();\r\n        inf.inflate(R.menu.main_menu, menu);\r\n        return true;\r\n    }\r\n\r\n    @Override\r\n    public boolean onOptionsItemSelected(@NonNull MenuItem item) {\r\n        if (item.getItemId() == R.id.menu_about) {\r\n            openAbout();\r\n            return true;\r\n        }\r\n        return super.onOptionsItemSelected(item);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/ca/gbc/comp3074/mind_manager_app/MainActivity.java	(revision df184b2d57a136c24685077bb88e260303739813)
++++ app/src/main/java/ca/gbc/comp3074/mind_manager_app/MainActivity.java	(date 1614911558788)
+@@ -25,7 +25,6 @@
+         final EditText username = findViewById(R.id.editUsername);
+         final EditText password = findViewById(R.id.editPassword);
+         final TextView lblError = findViewById(R.id.lblerrorlogin);
+-
+         //Button Login goes to welcome page to choose a mood(WelcomeActivity)
+         Button btnLogin = findViewById(R.id.btnSubmit);
+         btnLogin.setOnClickListener(new View.OnClickListener() {
+@@ -41,6 +40,11 @@
+                         openAdminHome();
+                     } else {
+                         openWelcome();
++                        Intent i = new Intent(MainActivity.this, WelcomeActivity.class);
++                        String st = username.getText().toString();
++                        i.putExtra("Value",st);
++                        startActivity(i);
++                        finish();
+                     }
+                 }
+                 else{
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    package=\"ca.gbc.comp3074.mind_manager_app\">\r\n    <uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />\r\n    <uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>\r\n    <uses-permission android:name=\"android.permission.INTERNET\"/>\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/AppTheme\">\r\n        <activity android:name=\".AboutActivity\"\r\n            android:parentActivityName=\".MainActivity\"/>\r\n        <activity android:name=\".QuestionsActivity\" android:parentActivityName=\".WelcomeActivity\"/>\r\n        <activity android:name=\".WelcomeActivity\" android:parentActivityName=\".MainActivity\"/>\r\n        <activity android:name=\".RegisterActivity\" android:parentActivityName=\".MainActivity\"/>\r\n        <activity android:name=\".MainActivity\" />\r\n        <activity android:name=\".MapActivity\" android:parentActivityName=\".WelcomeActivity\"/>\r\n        <activity android:name=\".SuggestionsActivity\" android:parentActivityName=\".WelcomeActivity\"/>\r\n        <activity android:name=\".AdminHomeActivity\"/>\r\n        <activity android:name=\".AdminCurrentUsersActivity\" android:parentActivityName=\".AdminHomeActivity\"/>\r\n        <activity android:name=\".AdminQuestionnaireActivity\" android:parentActivityName=\".AdminHomeActivity\"/>\r\n        <activity android:name=\".AdminQuestionOneActivity\" android:parentActivityName=\".AdminQuestionnaireActivity\"/>\r\n        <activity android:name=\".AdminMoodOptionsActivity\" android:parentActivityName=\".AdminHomeActivity\"/>\r\n        <activity android:name=\".AdminCategoriesActivity\" android:parentActivityName=\".AdminHomeActivity\"/>\r\n        <activity android:name=\".CrosswordGameActivity\" android:parentActivityName=\".SuggestionsActivity\"/>\r\n        <activity android:name=\".SplashActivity\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n        <meta-data android:name=\"com.facebook.sdk.ApplicationId\" android:value=\"@string/facebook_app_id\"/>\r\n        <meta-data\r\n            android:name=\"com.google.android.geo.API_KEY\"\r\n            android:value=\"@string/map_key\"/>\r\n        <provider android:authorities=\"com.facebook.app.FacebookContentProvider200717484986995\"\r\n            android:name = \"com.facebook.FacebookContentProvider\"\r\n            android:exported=\"true\" />\r\n    </application>\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/AndroidManifest.xml	(revision df184b2d57a136c24685077bb88e260303739813)
++++ app/src/main/AndroidManifest.xml	(date 1614961379951)
+@@ -14,19 +14,20 @@
+         <activity android:name=".AboutActivity"
+             android:parentActivityName=".MainActivity"/>
+         <activity android:name=".QuestionsActivity" android:parentActivityName=".WelcomeActivity"/>
+-        <activity android:name=".WelcomeActivity" android:parentActivityName=".MainActivity"/>
++        <activity android:name=".SplashActivity"/>
+         <activity android:name=".RegisterActivity" android:parentActivityName=".MainActivity"/>
+-        <activity android:name=".MainActivity" />
++        <activity android:name=".MainActivity" android:parentActivityName=".WelcomeActivity"/>
+         <activity android:name=".MapActivity" android:parentActivityName=".WelcomeActivity"/>
+         <activity android:name=".SuggestionsActivity" android:parentActivityName=".WelcomeActivity"/>
+         <activity android:name=".AdminHomeActivity"/>
++        <activity android:name=".TriviaGameActivity"/>
+         <activity android:name=".AdminCurrentUsersActivity" android:parentActivityName=".AdminHomeActivity"/>
+         <activity android:name=".AdminQuestionnaireActivity" android:parentActivityName=".AdminHomeActivity"/>
+         <activity android:name=".AdminQuestionOneActivity" android:parentActivityName=".AdminQuestionnaireActivity"/>
+         <activity android:name=".AdminMoodOptionsActivity" android:parentActivityName=".AdminHomeActivity"/>
+         <activity android:name=".AdminCategoriesActivity" android:parentActivityName=".AdminHomeActivity"/>
+         <activity android:name=".CrosswordGameActivity" android:parentActivityName=".SuggestionsActivity"/>
+-        <activity android:name=".SplashActivity">
++        <activity android:name=".WelcomeActivity">
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
+                 <category android:name="android.intent.category.LAUNCHER" />
+Index: app/src/main/java/ca/gbc/comp3074/mind_manager_app/MapActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ca.gbc.comp3074.mind_manager_app;\r\n\r\nimport android.Manifest;\r\nimport android.content.Intent;\r\nimport android.content.pm.PackageManager;\r\nimport android.location.Location;\r\nimport android.location.LocationListener;\r\nimport android.location.LocationManager;\r\nimport android.os.Bundle;\r\nimport android.provider.Settings;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.core.app.ActivityCompat;\r\nimport androidx.core.content.ContextCompat;\r\nimport androidx.fragment.app.FragmentActivity;\r\nimport com.google.android.gms.maps.CameraUpdateFactory;\r\nimport com.google.android.gms.maps.GoogleMap;\r\nimport com.google.android.gms.maps.OnMapReadyCallback;\r\nimport com.google.android.gms.maps.SupportMapFragment;\r\nimport com.google.android.gms.maps.model.LatLng;\r\nimport com.google.android.gms.maps.model.MarkerOptions;\r\n\r\npublic class MapActivity  extends FragmentActivity implements OnMapReadyCallback, LocationListener {\r\n\r\n    private GoogleMap mMap;\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_map);\r\n\r\n        Button btnApply = findViewById(R.id.btnApply);\r\n        btnApply.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                backToWelcome();\r\n            }\r\n        });\r\n\r\n        // Obtain the SupportMapFragment and get notified when the map is ready to be used.\r\n        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()\r\n                .findFragmentById(R.id.map);\r\n        mapFragment.getMapAsync(this);\r\n\r\n        if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)\r\n                == PackageManager.PERMISSION_GRANTED){\r\n            getLocation();\r\n        }else{\r\n            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},1);\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {\r\n        super.onRequestPermissionsResult(requestCode, permissions, grantResults);\r\n        if(requestCode == 1 && permissions.length == 1\r\n                && permissions[0] == Manifest.permission.ACCESS_FINE_LOCATION\r\n                && grantResults [0] == PackageManager.PERMISSION_GRANTED){\r\n            getLocation();\r\n        }\r\n    }\r\n\r\n         void getLocation() {\r\n             if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) ==\r\n                     PackageManager.PERMISSION_GRANTED) {\r\n                 LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);\r\n                 if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {\r\n                     Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);\r\n\r\n                     locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,\r\n                             100, 1, this);\r\n                 } else {\r\n                     Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);\r\n                     startActivity(intent);\r\n                 }\r\n             }\r\n         }\r\n\r\n         @Override\r\n         public void onLocationChanged(@NonNull Location location) {\r\n             if(location != null){\r\n                 LatLng pos = new LatLng (location.getLatitude(), location.getLongitude());\r\n                 if(mMap != null){\r\n                     mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(pos, 14));\r\n                 }\r\n             }\r\n         }\r\n\r\n    @Override\r\n    public void onMapReady(GoogleMap googleMap) {\r\n        mMap = googleMap;\r\n        LatLng casaloma = new LatLng(43.6705, -79.3936);\r\n        mMap.addMarker(new MarkerOptions().position(casaloma).title(\"Marker in Casa Loma\"));\r\n        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(casaloma, 14));\r\n    }\r\n\r\n    private void backToWelcome(){\r\n        Intent start = new Intent(getApplicationContext(), WelcomeActivity.class);\r\n        startActivity(start);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/ca/gbc/comp3074/mind_manager_app/MapActivity.java	(revision df184b2d57a136c24685077bb88e260303739813)
++++ app/src/main/java/ca/gbc/comp3074/mind_manager_app/MapActivity.java	(date 1614903659597)
+@@ -8,6 +8,9 @@
+ import android.location.LocationManager;
+ import android.os.Bundle;
+ import android.provider.Settings;
++import android.view.Menu;
++import android.view.MenuInflater;
++import android.view.MenuItem;
+ import android.view.View;
+ import android.widget.Button;
+ 
+@@ -100,4 +103,38 @@
+         Intent start = new Intent(getApplicationContext(), WelcomeActivity.class);
+         startActivity(start);
+     }
++
++
++
++    //function to start AboutActivity
++    private void openAbout(){
++        Intent start = new Intent(getApplicationContext(), AboutActivity.class);
++        startActivity(start);
++    }
++
++    private void openlogin(){
++        Intent start = new Intent(getApplicationContext(), MainActivity.class);
++        startActivity(start);
++    }
++
++    @Override
++    public boolean onCreateOptionsMenu(Menu menu) {
++        MenuInflater inf = getMenuInflater();
++        inf.inflate(R.menu.main_menu, menu);
++        return true;
++    }
++
++    @Override
++    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
++        if (item.getItemId() == R.id.menu_about) {
++            openAbout();
++            return true;
++        }
++        if (item.getItemId() == R.id.menu_main) {
++            openlogin();
++            return true;
++        }
++
++        return super.onOptionsItemSelected(item);
++    }
+ }
+\ No newline at end of file
+Index: app/src/main/java/ca/gbc/comp3074/mind_manager_app/TriviaGameActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/ca/gbc/comp3074/mind_manager_app/TriviaGameActivity.java	(date 1614964321424)
++++ app/src/main/java/ca/gbc/comp3074/mind_manager_app/TriviaGameActivity.java	(date 1614964321424)
+@@ -0,0 +1,109 @@
++package ca.gbc.comp3074.mind_manager_app;
++
++import android.annotation.SuppressLint;
++import android.content.Intent;
++import android.os.Bundle;
++import android.view.Menu;
++import android.view.MenuInflater;
++import android.view.MenuItem;
++import android.view.View;
++import android.widget.Button;
++import android.widget.EditText;
++import android.widget.TextView;
++
++import androidx.annotation.NonNull;
++import androidx.appcompat.app.AppCompatActivity;
++
++public class TriviaGameActivity extends AppCompatActivity {
++
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        setContentView(R.layout.activity_game_trivia);
++
++        final TextView answer = findViewById(R.id.lblanswer);
++        final TextView question = findViewById(R.id.lblQuestion);
++
++        Button btn1 = findViewById(R.id.btn1);
++        btn1.setOnClickListener(new View.OnClickListener() {
++            @SuppressLint("SetTextI18n")
++            @Override
++            public void onClick(View v) {
++                answer.setText("Correct!");
++            }
++        });
++
++        Button btn2 = findViewById(R.id.btn2);
++        btn2.setOnClickListener(new View.OnClickListener() {
++            @SuppressLint("SetTextI18n")
++            @Override
++            public void onClick(View v) {
++                answer.setText("Incorrect.");
++            }
++        });
++
++        Button btn3 = findViewById(R.id.btn3);
++        btn3.setOnClickListener(new View.OnClickListener() {
++            @SuppressLint("SetTextI18n")
++            @Override
++            public void onClick(View v) {
++                answer.setText("Incorrect.");
++            }
++        });
++
++        Button btn4 = findViewById(R.id.btn4);
++        btn4.setOnClickListener(new View.OnClickListener() {
++            @SuppressLint("SetTextI18n")
++            @Override
++            public void onClick(View v) {
++                answer.setText("Incorrect.");
++            }
++        });
++
++        Button next = findViewById(R.id.btnNext);
++        next.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++
++            }
++        });
++    }
++
++
++
++
++
++
++
++    //function to start AboutActivity
++    private void openAbout(){
++        Intent start = new Intent(getApplicationContext(), AboutActivity.class);
++        startActivity(start);
++    }
++
++    private void openlogin(){
++        Intent start = new Intent(getApplicationContext(), MainActivity.class);
++        startActivity(start);
++    }
++
++    @Override
++    public boolean onCreateOptionsMenu(Menu menu) {
++        MenuInflater inf = getMenuInflater();
++        inf.inflate(R.menu.main_menu, menu);
++        return true;
++    }
++
++    @Override
++    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
++        if (item.getItemId() == R.id.menu_about) {
++            openAbout();
++            return true;
++        }
++        if (item.getItemId() == R.id.menu_main) {
++            openlogin();
++            return true;
++        }
++
++        return super.onOptionsItemSelected(item);
++    }
++}
+Index: app/src/main/res/layout/activity_game_trivia.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_game_trivia.xml	(date 1614962962099)
++++ app/src/main/res/layout/activity_game_trivia.xml	(date 1614962962099)
+@@ -0,0 +1,149 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout
++    xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent">
++
++    <TextView
++        android:id="@+id/textView46"
++        android:layout_width="249dp"
++        android:layout_height="42dp"
++        android:layout_marginStart="81dp"
++        android:layout_marginTop="76dp"
++        android:layout_marginEnd="81dp"
++        android:text="Can you Guess"
++        android:textAlignment="center"
++        android:textSize="24sp"
++        android:textStyle="bold"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent" />
++
++    <TextView
++        android:id="@+id/lblQuestion"
++        android:layout_width="252dp"
++        android:layout_height="125dp"
++        android:layout_marginStart="81dp"
++        android:layout_marginTop="20dp"
++        android:layout_marginEnd="78dp"
++        android:text="In 2007 the critically acclaimed film There will be Blood premiered. What novel was this film based upon? "
++        android:textAlignment="center"
++        android:textColor="#4CAF50"
++        android:textSize="18sp"
++        android:textStyle="bold"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/textView46" />
++
++    <Button
++        android:id="@+id/btn1"
++        android:layout_width="78dp"
++        android:layout_height="37dp"
++        android:layout_marginStart="170dp"
++        android:layout_marginTop="23dp"
++        android:text="select"
++        app:layout_constraintStart_toEndOf="@+id/lblanswer1"
++        app:layout_constraintTop_toBottomOf="@+id/lblQuestion" />
++
++    <Button
++        android:id="@+id/btn2"
++        android:layout_width="78dp"
++        android:layout_height="34dp"
++        android:layout_marginStart="76dp"
++        android:layout_marginTop="30dp"
++        android:text="select"
++        app:layout_constraintStart_toEndOf="@+id/lblanswer2"
++        app:layout_constraintTop_toBottomOf="@+id/btn1" />
++
++    <Button
++        android:id="@+id/btn3"
++        android:layout_width="79dp"
++        android:layout_height="36dp"
++        android:layout_marginStart="128dp"
++        android:layout_marginTop="20dp"
++        android:text="select"
++        app:layout_constraintStart_toEndOf="@+id/lblanswer3"
++        app:layout_constraintTop_toBottomOf="@+id/btn2" />
++
++    <Button
++        android:id="@+id/btn4"
++        android:layout_width="81dp"
++        android:layout_height="34dp"
++        android:layout_marginStart="108dp"
++        android:layout_marginTop="16dp"
++        android:text="select"
++        app:layout_constraintStart_toEndOf="@+id/lblanswer4"
++        app:layout_constraintTop_toBottomOf="@+id/btn3" />
++
++    <TextView
++        android:id="@+id/lblanswer1"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="61dp"
++        android:layout_marginTop="294dp"
++        android:layout_marginEnd="170dp"
++        android:text="Oil!"
++        app:layout_constraintEnd_toStartOf="@+id/btn1"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent" />
++
++    <TextView
++        android:id="@+id/lblanswer2"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="56dp"
++        android:layout_marginTop="40dp"
++        android:layout_marginEnd="76dp"
++        android:text="There will be Blood"
++        app:layout_constraintEnd_toStartOf="@+id/btn2"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/lblanswer1" />
++
++    <TextView
++        android:id="@+id/lblanswer3"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="56dp"
++        android:layout_marginTop="36dp"
++        android:layout_marginEnd="129dp"
++        android:text="Black Gold"
++        app:layout_constraintEnd_toStartOf="@+id/btn3"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/lblanswer2" />
++
++    <TextView
++        android:id="@+id/lblanswer4"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="54dp"
++        android:layout_marginTop="32dp"
++        android:layout_marginEnd="101dp"
++        android:text="This is America"
++        app:layout_constraintEnd_toStartOf="@+id/btn4"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/lblanswer3" />
++
++    <TextView
++        android:id="@+id/lblanswer"
++        android:layout_width="121dp"
++        android:layout_height="20dp"
++        android:layout_marginStart="175dp"
++        android:layout_marginTop="275dp"
++        android:layout_marginEnd="196dp"
++        android:layout_marginBottom="174dp"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.301"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/lblQuestion" />
++
++    <Button
++        android:id="@+id/btnNext"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="Next"
++        tools:layout_editor_absoluteX="153dp"
++        tools:layout_editor_absoluteY="541dp" />
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file

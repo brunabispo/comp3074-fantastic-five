@@ -3,9 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/m_login"
-        android:title="Login" />
+        android:id="@+id/menu_about"
+        android:icon="@android:drawable/ic_media_play"
+        android:title="About activity"
+        />
+
     <item
-        android:id="@+id/m_about"
-        android:title="About" />
+        android:id="@+id/menu_main"
+        android:icon="@android:drawable/ic_media_play"
+        android:title="Main Login"
+        />
 </menu>

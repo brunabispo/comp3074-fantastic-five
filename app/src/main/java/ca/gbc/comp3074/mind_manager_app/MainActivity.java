@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
         final EditText username = findViewById(R.id.editUsername);
         final EditText password = findViewById(R.id.editPassword);
         final TextView lblError = findViewById(R.id.lblerrorlogin);
-
         //Button Login goes to welcome page to choose a mood(WelcomeActivity)
         Button btnLogin = findViewById(R.id.btnSubmit);
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -41,6 +40,11 @@ public class MainActivity extends AppCompatActivity {
                         openAdminHome();
                     } else {
                         openWelcome();
+                        Intent i = new Intent(MainActivity.this, WelcomeActivity.class);
+                        String st = username.getText().toString();
+                        i.putExtra("Value",st);
+                        startActivity(i);
+                        finish();
                     }
                 }
                 else{

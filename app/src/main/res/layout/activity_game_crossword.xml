@@ -36,7 +36,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="35dp"
         android:ems="10"
-        android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/btnImDone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
