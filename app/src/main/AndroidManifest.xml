@@ -4,6 +4,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,10 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AboutActivity"
-            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".AboutActivity" android:parentActivityName=".MainActivity"/>
         <activity android:name=".QuestionsActivity" android:parentActivityName=".WelcomeActivity"/>
-        <activity android:name=".SplashActivity"/>
         <activity android:name=".RegisterActivity" android:parentActivityName=".MainActivity"/>
         <activity android:name=".MainActivity" android:parentActivityName=".WelcomeActivity"/>
         <activity android:name=".MapActivity" android:parentActivityName=".WelcomeActivity"/>
@@ -27,7 +27,8 @@
         <activity android:name=".AdminMoodOptionsActivity" android:parentActivityName=".AdminHomeActivity"/>
         <activity android:name=".AdminCategoriesActivity" android:parentActivityName=".AdminHomeActivity"/>
         <activity android:name=".CrosswordGameActivity" android:parentActivityName=".SuggestionsActivity"/>
-        <activity android:name=".WelcomeActivity">
+        <activity android:name=".WelcomeActivity" android:parentActivityName=".SuggestionsActivity"/>
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

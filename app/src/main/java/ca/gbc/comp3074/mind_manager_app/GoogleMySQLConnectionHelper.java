@@ -21,13 +21,10 @@ public class GoogleMySQLConnectionHelper {
         StrictMode.setThreadPolicy(policy);
 
         Connection connection = null;
-        String connectionURL = null;
 
         try{
-            Class.forName("net.sourceforge.jtds.jdbc.Driver");
-            connectionURL = "jdbc:jtds:sqlserver://" + ip + ":" + port + ";databasename=" + database
-                    + ";user=" + username + ";password=" + password + ";";
-            connection = DriverManager.getConnection(connectionURL);
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection("jdbc:mysql://34.69.115.126:3306/mindmanager","root","georgebrown");
         }
         catch (Exception exception){
             Log.e("Error ", exception.getMessage());
