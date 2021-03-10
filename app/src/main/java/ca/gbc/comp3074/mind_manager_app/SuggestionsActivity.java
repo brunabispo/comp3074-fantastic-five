@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SuggestionsActivity extends ListActivity {
+public class  SuggestionsActivity extends ListActivity {
 
     List<Suggestion> list; // List of suggestions
 
