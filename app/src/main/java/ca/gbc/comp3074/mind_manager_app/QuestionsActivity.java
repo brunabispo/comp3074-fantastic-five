@@ -2,19 +2,13 @@ package ca.gbc.comp3074.mind_manager_app;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 public class QuestionsActivity extends AppCompatActivity {
-
-    Connection connect;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +16,7 @@ public class QuestionsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_questions);
 
         //Database instance
-        final DatabaseHandler db = new DatabaseHandler(this);
+        GoogleMySQLConnectionHelper connectionHelper = new GoogleMySQLConnectionHelper();
 
         TextView question1 = findViewById(R.id.lblq1);
         TextView question2 = findViewById(R.id.lblq2);
@@ -45,64 +39,44 @@ public class QuestionsActivity extends AppCompatActivity {
         RadioButton q4_a2 = findViewById(R.id.rbtn_q4_2);
         RadioButton q4_a3 = findViewById(R.id.rbtn_q4_3);
 
-        try{
-            GoogleMySQLConnectionHelper connectionHelper = new GoogleMySQLConnectionHelper();
-            connect = connectionHelper.connectionclass();
-            if(connect!=null){
-                String query = "SELECT * FROM questions ORDER BY RAND() LIMIT 1";
-                Statement st = connect.createStatement();
-                ResultSet rs = st.executeQuery(query);
-
-                while(rs.next())
-                {
-                    question1.setText(rs.getString(2));
-                }
-                connect.close();
-            }
-            else{
-                question1.setText("Connection with database does not work");
-            }
-        }
-        catch(Exception exception){
-            Log.e("Error: ", exception.getMessage());
-        }
-
         // Question 1
-        Question q1 = db.getQuestion();
-        //question1.setText(q1.getQuestionText());
-        q1_a2.setText(q1.getAnswers().get(0).getText());
-        q1_a3.setText(q1.getAnswers().get(1).getText());
-        q1_a1.setText(q1.getAnswers().get(2).getText());
+        Question q1 = connectionHelper.getRandomQuestion();
+        question1.setText(q1.getQuestionText());
+        q1_a1.setText(q1.getAnswers().get(0).getText());
+        q1_a2.setText(q1.getAnswers().get(1).getText());
+        q1_a3.setText(q1.getAnswers().get(2).getText());
+
 
         // Question 2
         Question q2;
         do {
-           q2 = db.getQuestion();
+           q2 = connectionHelper.getRandomQuestion();
         }while(q2.getID() == q1.getID());
         question2.setText(q2.getQuestionText());
-        q2_a2.setText(q2.getAnswers().get(0).getText());
-        q2_a3.setText(q2.getAnswers().get(1).getText());
-        q2_a1.setText(q2.getAnswers().get(2).getText());
+        q2_a1.setText(q2.getAnswers().get(0).getText());
+        q2_a2.setText(q2.getAnswers().get(1).getText());
+        q2_a3.setText(q2.getAnswers().get(2).getText());
+
 
         // Question 3
         Question q3;
         do {
-            q3 = db.getQuestion();
+            q3 = connectionHelper.getRandomQuestion();
         }while(q3.getID() == q1.getID() || q3.getID() == q2.getID());
         question3.setText(q3.getQuestionText());
-        q3_a2.setText(q3.getAnswers().get(0).getText());
-        q3_a3.setText(q3.getAnswers().get(1).getText());
-        q3_a1.setText(q3.getAnswers().get(2).getText());
+        q3_a1.setText(q3.getAnswers().get(0).getText());
+        q3_a2.setText(q3.getAnswers().get(1).getText());
+        q3_a3.setText(q3.getAnswers().get(2).getText());
 
         // Question 4
         Question q4;
         do {
-            q4 = db.getQuestion();
+            q4 = connectionHelper.getRandomQuestion();
         }while(q4.getID() == q1.getID() || q4.getID() == q2.getID() || q4.getID() == q3.getID());
         question4.setText(q4.getQuestionText());
-        q4_a2.setText(q4.getAnswers().get(0).getText());
-        q4_a3.setText(q4.getAnswers().get(1).getText());
-        q4_a1.setText(q4.getAnswers().get(2).getText());
+        q4_a1.setText(q4.getAnswers().get(0).getText());
+        q4_a2.setText(q4.getAnswers().get(1).getText());
+        q4_a3.setText(q4.getAnswers().get(2).getText());
 
         Button btnSubmit = findViewById(R.id.btn_submit);
 
