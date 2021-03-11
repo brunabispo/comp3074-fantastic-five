@@ -35,7 +35,7 @@ public class  SuggestionsActivity extends ListActivity {
         title.setText("Here are your suggestions for being more " + moodTitle);
 
         //Database instance
-        final DatabaseHandler db = new DatabaseHandler(this);
+        final GoogleMySQLConnectionHelper db = new GoogleMySQLConnectionHelper();
         list = new ArrayList<Suggestion>();
 
         final Suggestion musicSuggestion = new Suggestion();

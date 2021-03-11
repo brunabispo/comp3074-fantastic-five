@@ -1,5 +1,7 @@
 package ca.gbc.comp3074.mind_manager_app;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.StrictMode;
 import android.util.Log;
 import java.sql.Connection;
@@ -13,6 +15,7 @@ public class GoogleMySQLConnectionHelper {
     String username, password, ip, port, database;
     Connection connection = null;
 
+    // make connection with MySQL instance
     public Connection connectionclass(){
         ip = "34.69.115.126";
         port = "3306";
@@ -34,6 +37,31 @@ public class GoogleMySQLConnectionHelper {
         return connection;
     }
 
+    // get a suggestion by mood and category
+    Suggestion getSuggestion(String mood, String category) {
+        Connection connect;
+        Suggestion suggestionExist = null;
+        try {
+            GoogleMySQLConnectionHelper connectionHelper = new GoogleMySQLConnectionHelper();
+            connect = connectionHelper.connectionclass();
+            if (connect != null) {
+                String query = "SELECT * FROM suggestions WHERE mood IN ('" + mood + "') AND " +
+                        "category_name IN ('" + category + "') ORDER BY RAND() LIMIT 1";
+                Statement st = connect.createStatement();
+                ResultSet rs = st.executeQuery(query);
+                while (rs.next()) {
+                    suggestionExist = new Suggestion(rs.getInt(1),rs.getString(2),
+                            rs.getString(3), rs.getString(4));
+                }
+                connect.close();
+            }
+        } catch (Exception exception) {
+            Log.e("Error: ", exception.getMessage());
+        }
+        return suggestionExist;
+    }
+
+    //get the random question
     public Question getRandomQuestion() {
         Connection connect;
         Question randomQuestion = null;
@@ -56,6 +84,7 @@ public class GoogleMySQLConnectionHelper {
         return randomQuestion;
     }
 
+    //get answers for question by questionId
     ArrayList<Answer> getAnswers(int questionId) {
         Connection connect;
         ArrayList<Answer> answers = new ArrayList<>();

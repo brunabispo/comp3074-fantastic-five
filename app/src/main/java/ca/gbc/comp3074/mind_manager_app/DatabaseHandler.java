@@ -435,7 +435,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         //2nd argument is String containing nullColumnHack
         db.close(); // Closing database connection
     }
-
+/*
     // code to get the single question
     ArrayList<Answer> getAnswers(int questionId) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -493,7 +493,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // return suggestion
         return suggestionExist;
     }
-
+*/
     // code to get the single user
     User getUser(String userName) {
         SQLiteDatabase db = this.getReadableDatabase();
