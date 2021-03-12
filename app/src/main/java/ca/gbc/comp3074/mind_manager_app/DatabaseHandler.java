@@ -1,4 +1,4 @@
-
+/*
 package ca.gbc.comp3074.mind_manager_app;
 
 import android.content.ContentValues;
@@ -574,3 +574,4 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return cursor.getCount();
     }
 }
+*/

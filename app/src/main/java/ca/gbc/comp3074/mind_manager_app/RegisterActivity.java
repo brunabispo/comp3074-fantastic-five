@@ -1,7 +1,6 @@
 package ca.gbc.comp3074.mind_manager_app;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,7 +15,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         //Database instance
-        SQLiteDatabase db = this.getWritableDatabase();
+        final GoogleMySQLConnectionHelper db = new GoogleMySQLConnectionHelper();
 
         final TextView editFirstName = findViewById(R.id.editName);
         final TextView editUserName = findViewById(R.id.editUsername);
