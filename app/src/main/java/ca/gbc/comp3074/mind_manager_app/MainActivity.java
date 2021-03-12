@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Database instance
-        final DatabaseHandler db = new DatabaseHandler(this);
+        final GoogleMySQLConnectionHelper db = new GoogleMySQLConnectionHelper();
 
         final EditText username = findViewById(R.id.editUsername);
         final EditText password = findViewById(R.id.editPassword);
@@ -35,16 +35,11 @@ public class MainActivity extends AppCompatActivity {
 
                 if(userExist != null && username.getText().toString().equals(userExist.getUserName()) &&
                         password.getText().toString().equals(userExist.getPassword())){
-                    //login: 'benjeff', password: '123_Ben'
+                    //admin login: 'benjeff', password: '123_Ben'
                     if((userExist.getRole()).equals("admin")){
                         openAdminHome();
                     } else {
-                        openWelcome();
-                        Intent i = new Intent(MainActivity.this, WelcomeActivity.class);
-                        String st = username.getText().toString();
-                        i.putExtra("Value",st);
-                        startActivity(i);
-                        finish();
+                        openWelcome(userExist);
                     }
                 }
                 else{
@@ -70,8 +65,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //function to start WelcomeActivity
-    private void openWelcome(){
+    private void openWelcome(User userExist){
         Intent start = new Intent(getApplicationContext(), WelcomeActivity.class);
+        String username = userExist.getUserName();
+        start.putExtra("username", username);
         startActivity(start);
     }
 

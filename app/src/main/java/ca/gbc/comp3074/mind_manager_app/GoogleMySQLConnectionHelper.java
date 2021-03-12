@@ -1,7 +1,5 @@
 package ca.gbc.comp3074.mind_manager_app;
 
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.StrictMode;
 import android.util.Log;
 import java.sql.Connection;
@@ -106,5 +104,46 @@ public class GoogleMySQLConnectionHelper {
             Log.e("Error: ", exception.getMessage());
         }
         return answers;
+    }
+
+    // get the single user
+    User getUser(String userName) {
+        Connection connect;
+        User userExist = null;
+        try {
+            GoogleMySQLConnectionHelper connectionHelper = new GoogleMySQLConnectionHelper();
+            connect = connectionHelper.connectionclass();
+            if (connect != null) {
+                String query = "SELECT * FROM users WHERE user_name = '" + userName + "'";
+                Statement st = connect.createStatement();
+                ResultSet rs = st.executeQuery(query);
+                while (rs.next()) {
+                    userExist = new User(rs.getString(2), rs.getString(3),
+                            rs.getString(4), rs.getString(5));
+                }
+                connect.close();
+            }
+        } catch (Exception exception) {
+            Log.e("Error: ", exception.getMessage());
+        }
+        return userExist;
+    }
+
+    // add the new user
+    void addUser(User user)  {
+        Connection connect;
+        try {
+            GoogleMySQLConnectionHelper connectionHelper = new GoogleMySQLConnectionHelper();
+            connect = connectionHelper.connectionclass();
+            if (connect != null) {
+                String query = "INSERT INTO users (role, user_name, first_name, password) " +
+                        "VALUES ('user', '" + user.getUserName() + "', '" + user.getFirstName() + "', '" + user.getPassword() + "')";
+                Statement st = connect.createStatement();
+                st.executeUpdate(query);
+                connect.close();
+            }
+        } catch (Exception exception) {
+            Log.e("Error: ", exception.getMessage());
+        }
     }
 }
