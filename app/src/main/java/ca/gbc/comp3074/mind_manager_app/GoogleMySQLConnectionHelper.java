@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 public class GoogleMySQLConnectionHelper {
 
@@ -127,6 +128,29 @@ public class GoogleMySQLConnectionHelper {
             Log.e("Error: ", exception.getMessage());
         }
         return userExist;
+    }
+
+    // code to get all users in a list view
+    public ArrayList<User> getAllUsers() {
+        Connection connect;
+        ArrayList<User> users = new ArrayList<User>();
+        try {
+            GoogleMySQLConnectionHelper connectionHelper = new GoogleMySQLConnectionHelper();
+            connect = connectionHelper.connectionclass();
+            if (connect != null) {
+                String query = "SELECT  * FROM users";
+                Statement st = connect.createStatement();
+                ResultSet rs = st.executeQuery(query);
+                while (rs.next()) {
+                    users.add(new User(rs.getInt(1), rs.getString(2),
+                            rs.getString(3),rs.getString(4), android.R.drawable.ic_delete));
+                }
+                connect.close();
+            }
+        } catch (Exception exception) {
+            Log.e("Error: ", exception.getMessage());
+        }
+        return users;
     }
 
     // add the new user

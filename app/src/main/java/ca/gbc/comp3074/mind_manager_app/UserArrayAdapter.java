@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,21 +16,11 @@ public class UserArrayAdapter extends ArrayAdapter<User> {
 
     private final Context context;
     private final List<User> values;
-    private final int rowLayout;
-    private final int roleId;
-    private final int userNameId;
-    private final int firstNameId;
 
-    public UserArrayAdapter(@NonNull Context context, int resource,
-                                  int roleId, int userNameId,int firstNameId, int passwordId,
-                                  @NonNull List<User> objects) {
-        super(context, resource, userNameId, objects);
+    public UserArrayAdapter(@NonNull Context context, @NonNull List<User> objects) {
+        super(context, R.layout.row_layout_users, objects);
         this.context = context;
         this.values = objects;
-        this.rowLayout = resource;
-        this.roleId = roleId;
-        this.userNameId = userNameId;
-        this.firstNameId = firstNameId;
     }
 
     @NonNull
@@ -39,16 +30,22 @@ public class UserArrayAdapter extends ArrayAdapter<User> {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
 
-        View rowView = inflater.inflate(this.rowLayout, parent, false);
+        View rowView = inflater.inflate(R.layout.row_layout_users, parent, false);
 
-        TextView role = rowView.findViewById(this.roleId);
-        role.setText(this.values.get(position).getRole());
+        //TextView id = rowView.findViewById(R.id.lblID);
+        //id.setText(values.get(position).getID());
 
-        TextView username = rowView.findViewById(this.userNameId);
+        TextView role = rowView.findViewById(R.id.lblRole);
+        role.setText(values.get(position).getRole());
+
+        TextView username = rowView.findViewById(R.id.lblUsername);
         username.setText(this.values.get(position).getUserName());
 
-        TextView firstNameId = rowView.findViewById(this.firstNameId);
+        TextView firstNameId = rowView.findViewById(R.id.lblFirstName);
         firstNameId.setText(this.values.get(position).getFirstName());
+
+        ImageView icon = rowView.findViewById(R.id.icon);
+        icon.setImageResource(values.get(position).getIconResId());
 
         return rowView;
     }
