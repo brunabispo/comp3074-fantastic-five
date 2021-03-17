@@ -82,6 +82,29 @@ public class GoogleMySQLConnectionHelper {
         return randomQuestion;
     }
 
+    // code to get all users in a list view
+    public ArrayList<Question> getAllQuestions() {
+        Connection connect;
+        ArrayList<Question> questions = new ArrayList<Question>();
+        try {
+            GoogleMySQLConnectionHelper connectionHelper = new GoogleMySQLConnectionHelper();
+            connect = connectionHelper.connectionclass();
+            if (connect != null) {
+                String query = "SELECT  * FROM questions";
+                Statement st = connect.createStatement();
+                ResultSet rs = st.executeQuery(query);
+                while (rs.next()) {
+                    questions.add(new Question(rs.getInt(1), rs.getString(2),
+                            android.R.drawable.ic_menu_search, android.R.drawable.ic_delete));
+                }
+                connect.close();
+            }
+        } catch (Exception exception) {
+            Log.e("Error: ", exception.getMessage());
+        }
+        return questions;
+    }
+
     //get answers for question by questionId
     ArrayList<Answer> getAnswers(int questionId) {
         Connection connect;

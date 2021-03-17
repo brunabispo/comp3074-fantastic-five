@@ -15,10 +15,10 @@
 
         <Button
             android:id="@+id/btnLogoutAdminCurrentUsers"
-            android:layout_width="64dp"
+            android:layout_width="70dp"
             android:layout_height="35dp"
-            android:layout_marginStart="307dp"
-            android:layout_marginEnd="13dp"
+            android:layout_marginStart="295dp"
+            android:layout_marginEnd="50dp"
             android:text="Logout"
             android:textSize="10sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -65,7 +65,7 @@
 
             <TextView
                 android:id="@+id/textView48"
-                android:layout_width="81dp"
+                android:layout_width="66dp"
                 android:layout_height="wrap_content"
                 android:text="Role"
                 android:textSize="18sp"
@@ -74,7 +74,7 @@
 
             <TextView
                 android:id="@+id/textView49"
-                android:layout_width="98dp"
+                android:layout_width="93dp"
                 android:layout_height="wrap_content"
                 android:text="Username"
                 android:textSize="18sp"
@@ -83,7 +83,7 @@
 
             <TextView
                 android:id="@+id/textView50"
-                android:layout_width="100dp"
+                android:layout_width="98dp"
                 android:layout_height="wrap_content"
                 android:text="First Name"
                 android:textSize="18sp"
@@ -91,12 +91,11 @@
 
             <TextView
                 android:id="@+id/textView51"
-                android:layout_width="61dp"
+                android:layout_width="82dp"
                 android:layout_height="wrap_content"
                 android:text="Delete"
                 android:textSize="18sp"
                 android:textStyle="bold" />
-
         </LinearLayout>
 
         <ListView
