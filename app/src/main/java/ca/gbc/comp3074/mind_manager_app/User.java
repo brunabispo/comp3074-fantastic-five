@@ -27,14 +27,6 @@ public class User {
         this.iconResId = iconResId;
     }
 
-    public User(int id, String role, String userName, String firstName, String password) {
-        this._id = id;
-        this.role = role;
-        this.userName = userName;
-        this.firstName = firstName;
-        this.password = password;
-    }
-
     public int getID() {
         return _id;
     }

@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import java.util.List;
 
 public class UserArrayAdapter extends ArrayAdapter<User> {
@@ -32,8 +31,8 @@ public class UserArrayAdapter extends ArrayAdapter<User> {
 
         View rowView = inflater.inflate(R.layout.row_layout_users, parent, false);
 
-        //TextView id = rowView.findViewById(R.id.lblID);
-        //id.setText(values.get(position).getID());
+        TextView id = rowView.findViewById(R.id.lblID);
+        id.setText(values.get(position).getID()+"");
 
         TextView role = rowView.findViewById(R.id.lblRole);
         role.setText(values.get(position).getRole());

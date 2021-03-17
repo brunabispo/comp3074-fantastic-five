@@ -7,7 +7,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 
 public class GoogleMySQLConnectionHelper {
 
@@ -161,7 +160,25 @@ public class GoogleMySQLConnectionHelper {
             connect = connectionHelper.connectionclass();
             if (connect != null) {
                 String query = "INSERT INTO users (role, user_name, first_name, password) " +
-                        "VALUES ('user', '" + user.getUserName() + "', '" + user.getFirstName() + "', '" + user.getPassword() + "')";
+                        "VALUES ('" + user.getRole() + "', '" + user.getUserName() + "', '"
+                        + user.getFirstName() + "', '" + user.getPassword() + "')";
+                Statement st = connect.createStatement();
+                st.executeUpdate(query);
+                connect.close();
+            }
+        } catch (Exception exception) {
+            Log.e("Error: ", exception.getMessage());
+        }
+    }
+
+    // Deleting single user
+    public void deleteUser(int userID) {
+        Connection connect;
+        try {
+            GoogleMySQLConnectionHelper connectionHelper = new GoogleMySQLConnectionHelper();
+            connect = connectionHelper.connectionclass();
+            if (connect != null) {
+                String query = "DELETE FROM users WHERE id = " + userID;
                 Statement st = connect.createStatement();
                 st.executeUpdate(query);
                 connect.close();

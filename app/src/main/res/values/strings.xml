@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Mind-Manager-App</string>
     <string name="facebook_app_id">200717484986995</string>
+    <string-array name="roles_array">
+        <item>admin</item>
+        <item>user</item>
+    </string-array>
 </resources>
