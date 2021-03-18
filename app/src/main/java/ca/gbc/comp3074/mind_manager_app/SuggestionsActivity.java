@@ -9,9 +9,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class  SuggestionsActivity extends AppCompatActivity {
+import java.sql.Connection;
 
-    // List<Suggestion> list; // List of suggestions
+public class  SuggestionsActivity extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -34,7 +34,7 @@ public class  SuggestionsActivity extends AppCompatActivity {
 
         //Database instance
         final GoogleMySQLConnectionHelper db = new GoogleMySQLConnectionHelper();
-//        list = new ArrayList<Suggestion>();
+        final Connection connect = db.connectionclass();
         
         TextView lblMusicCategory = findViewById(R.id.lblMusicCategory);
         final TextView lblMusicSuggestion = findViewById(R.id.lblMusicSuggestion);
@@ -60,11 +60,11 @@ public class  SuggestionsActivity extends AppCompatActivity {
         poetrySuggestion.setCategoryName("Reading");
 
         if (moodTitle.equals("Calmer")) {
-            musicSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Music").getSuggestionName());
-            sportSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Sport").getSuggestionName());
-            outDoorSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Outdoors").getSuggestionName());
-            gameSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Games").getSuggestionName());
-            poetrySuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Reading").getSuggestionName());
+            musicSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Music").getSuggestionName());
+            sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
+            outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
+            gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
+            poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
 
             lblMusicSuggestion.setText(musicSuggestion.getSuggestionName());
             lblGameSuggestion.setText(gameSuggestion.getSuggestionName());
@@ -72,11 +72,11 @@ public class  SuggestionsActivity extends AppCompatActivity {
         }
         if (moodTitle.equals("Energetic"))
         {
-            musicSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Music").getSuggestionName());
-            sportSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Sport").getSuggestionName());
-            outDoorSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Outdoors").getSuggestionName());
-            gameSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Games").getSuggestionName());
-            poetrySuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Reading").getSuggestionName());
+            musicSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Music").getSuggestionName());
+            sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
+            outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
+            gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
+            poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
 
             lblMusicSuggestion.setText(musicSuggestion.getSuggestionName());
             lblGameSuggestion.setText(gameSuggestion.getSuggestionName());
@@ -84,11 +84,11 @@ public class  SuggestionsActivity extends AppCompatActivity {
         }
         if (moodTitle.equals("Happier"))
         {
-            musicSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Music").getSuggestionName());
-            sportSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Sport").getSuggestionName());
-            outDoorSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Outdoors").getSuggestionName());
-            gameSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Games").getSuggestionName());
-            poetrySuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Reading").getSuggestionName());
+            musicSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Music").getSuggestionName());
+            sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
+            outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
+            gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
+            poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
 
             lblMusicSuggestion.setText(musicSuggestion.getSuggestionName());
             lblGameSuggestion.setText(gameSuggestion.getSuggestionName());
@@ -97,11 +97,11 @@ public class  SuggestionsActivity extends AppCompatActivity {
         }
         if (moodTitle.equals("Moody"))
         {
-            musicSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Music").getSuggestionName());
-            sportSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Sport").getSuggestionName());
-            outDoorSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Outdoors").getSuggestionName());
-            gameSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Games").getSuggestionName());
-            poetrySuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Reading").getSuggestionName());
+            musicSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Music").getSuggestionName());
+            sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
+            outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
+            gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
+            poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
 
             lblMusicSuggestion.setText(musicSuggestion.getSuggestionName());
             lblGameSuggestion.setText(gameSuggestion.getSuggestionName());
@@ -109,11 +109,11 @@ public class  SuggestionsActivity extends AppCompatActivity {
         }
         if (moodTitle.equals("Relaxed"))
         {
-            musicSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Music").getSuggestionName());
-            sportSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Sport").getSuggestionName());
-            outDoorSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Outdoors").getSuggestionName());
-            gameSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Games").getSuggestionName());
-            poetrySuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Reading").getSuggestionName());
+            musicSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Music").getSuggestionName());
+            sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
+            outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
+            gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
+            poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
 
             lblMusicSuggestion.setText(musicSuggestion.getSuggestionName());
             lblGameSuggestion.setText(gameSuggestion.getSuggestionName());
@@ -125,22 +125,16 @@ public class  SuggestionsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-//                list.remove(musicSuggestion);
-//                list.remove(sportSuggestion);
-//                list.remove(outDoorSuggestion);
-//                list.remove(gameSuggestion);
-//                list.remove(poetrySuggestion);
-
                 lblMusicSuggestion.setText("");
                 lblGameSuggestion.setText("");
                 lblReadingSuggestion.setText("");
 
                 if (moodTitle.equals("Calmer")) {
-                    musicSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Music").getSuggestionName());
-                    sportSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Sport").getSuggestionName());
-                    outDoorSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Outdoors").getSuggestionName());
-                    gameSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Games").getSuggestionName());
-                    poetrySuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Reading").getSuggestionName());
+                    musicSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Music").getSuggestionName());
+                    sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
+                    outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
+                    gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
+                    poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
 
                     lblMusicSuggestion.setText(musicSuggestion.getSuggestionName());
                     lblGameSuggestion.setText(gameSuggestion.getSuggestionName());
@@ -148,11 +142,11 @@ public class  SuggestionsActivity extends AppCompatActivity {
                 }
                 if (moodTitle.equals("Energetic"))
                 {
-                    musicSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Music").getSuggestionName());
-                    sportSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Sport").getSuggestionName());
-                    outDoorSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Outdoors").getSuggestionName());
-                    gameSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Games").getSuggestionName());
-                    poetrySuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Reading").getSuggestionName());
+                    musicSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Music").getSuggestionName());
+                    sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
+                    outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
+                    gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
+                    poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
 
                     lblMusicSuggestion.setText(musicSuggestion.getSuggestionName());
                     lblGameSuggestion.setText(gameSuggestion.getSuggestionName());
@@ -160,11 +154,11 @@ public class  SuggestionsActivity extends AppCompatActivity {
                 }
                 if (moodTitle.equals("Happier"))
                 {
-                    musicSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Music").getSuggestionName());
-                    sportSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Sport").getSuggestionName());
-                    outDoorSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Outdoors").getSuggestionName());
-                    gameSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Games").getSuggestionName());
-                    poetrySuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Reading").getSuggestionName());
+                    musicSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Music").getSuggestionName());
+                    sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
+                    outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
+                    gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
+                    poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
 
                     lblMusicSuggestion.setText(musicSuggestion.getSuggestionName());
                     lblGameSuggestion.setText(gameSuggestion.getSuggestionName());
@@ -172,11 +166,11 @@ public class  SuggestionsActivity extends AppCompatActivity {
                 }
                 if (moodTitle.equals("Moody"))
                 {
-                    musicSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Music").getSuggestionName());
-                    sportSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Sport").getSuggestionName());
-                    outDoorSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Outdoors").getSuggestionName());
-                    gameSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Games").getSuggestionName());
-                    poetrySuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Reading").getSuggestionName());
+                    musicSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Music").getSuggestionName());
+                    sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
+                    outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
+                    gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
+                    poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
 
                     lblMusicSuggestion.setText(musicSuggestion.getSuggestionName());
                     lblGameSuggestion.setText(gameSuggestion.getSuggestionName());
@@ -184,40 +178,18 @@ public class  SuggestionsActivity extends AppCompatActivity {
                 }
                 if (moodTitle.equals("Relaxed"))
                 {
-                    musicSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Music").getSuggestionName());
-                    sportSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Sport").getSuggestionName());
-                    outDoorSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Outdoors").getSuggestionName());
-                    gameSuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Games").getSuggestionName());
-                    poetrySuggestion.setSuggestionName(db.getSuggestion(moodTitle, "Reading").getSuggestionName());
+                    musicSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Music").getSuggestionName());
+                    sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
+                    outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
+                    gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
+                    poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
 
                     lblMusicSuggestion.setText(musicSuggestion.getSuggestionName());
                     lblGameSuggestion.setText(gameSuggestion.getSuggestionName());
                     lblReadingSuggestion.setText(poetrySuggestion.getSuggestionName());
                 }
-
-//                list.add(musicSuggestion);
-//                list.add(sportSuggestion);
-//                list.add(outDoorSuggestion);
-//                list.add(gameSuggestion);
-//                list.add(poetrySuggestion);
-
-//                ArrayAdapter<Suggestion> adapter = new SuggestionArrayAdapter(SuggestionsActivity.this,
-//                        R.layout.row_layout_suggestions, R.id.lblCategory, R.id.lblSuggestion, list);
-//
-//                setListAdapter(adapter);
             }
         });
-//
-//        list.add(musicSuggestion);
-//        list.add(sportSuggestion);
-//        list.add(outDoorSuggestion);
-//        list.add(gameSuggestion);
-//        list.add(poetrySuggestion);
-//
-//        ArrayAdapter<Suggestion> adapter = new SuggestionArrayAdapter(this,
-//                R.layout.row_layout_suggestions, R.id.lblCategory, R.id.lblSuggestion, list);
-//
-//        setListAdapter(adapter);
     }
 
     // Open the Map Page

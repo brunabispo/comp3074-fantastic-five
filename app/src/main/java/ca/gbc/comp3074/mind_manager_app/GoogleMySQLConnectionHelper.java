@@ -36,12 +36,9 @@ public class GoogleMySQLConnectionHelper {
     }
 
     // get a suggestion by mood and category
-    Suggestion getSuggestion(String mood, String category) {
-        Connection connect;
+    Suggestion getSuggestion(Connection connect, String mood, String category) {
         Suggestion suggestionExist = null;
         try {
-            GoogleMySQLConnectionHelper connectionHelper = new GoogleMySQLConnectionHelper();
-            connect = connectionHelper.connectionclass();
             if (connect != null) {
                 String query = "SELECT * FROM suggestions WHERE mood IN ('" + mood + "') AND " +
                         "category_name IN ('" + category + "') ORDER BY RAND() LIMIT 1";
@@ -51,7 +48,6 @@ public class GoogleMySQLConnectionHelper {
                     suggestionExist = new Suggestion(rs.getInt(1),rs.getString(2),
                             rs.getString(3), rs.getString(4));
                 }
-                connect.close();
             }
         } catch (Exception exception) {
             Log.e("Error: ", exception.getMessage());
@@ -60,21 +56,17 @@ public class GoogleMySQLConnectionHelper {
     }
 
     //get the random question
-    public Question getRandomQuestion() {
-        Connection connect;
+    public Question getRandomQuestion(Connection connect) {
         Question randomQuestion = null;
         try {
-            GoogleMySQLConnectionHelper connectionHelper = new GoogleMySQLConnectionHelper();
-            connect = connectionHelper.connectionclass();
             if (connect != null) {
                 String query = "SELECT * FROM questions ORDER BY RAND() LIMIT 1";
                 Statement st = connect.createStatement();
                 ResultSet rs = st.executeQuery(query);
                 while (rs.next()) {
-                    ArrayList<Answer> answers = getAnswers(rs.getInt(1));
+                    ArrayList<Answer> answers = getAnswers(connect, rs.getInt(1));
                     randomQuestion = new Question(rs.getInt(1),rs.getString(2), answers);
                 }
-                connect.close();
             }
         } catch (Exception exception) {
             Log.e("Error: ", exception.getMessage());
@@ -83,12 +75,9 @@ public class GoogleMySQLConnectionHelper {
     }
 
     // code to get all users in a list view
-    public ArrayList<Question> getAllQuestions() {
-        Connection connect;
+    public ArrayList<Question> getAllQuestions(Connection connect) {
         ArrayList<Question> questions = new ArrayList<Question>();
         try {
-            GoogleMySQLConnectionHelper connectionHelper = new GoogleMySQLConnectionHelper();
-            connect = connectionHelper.connectionclass();
             if (connect != null) {
                 String query = "SELECT  * FROM questions";
                 Statement st = connect.createStatement();
@@ -97,7 +86,6 @@ public class GoogleMySQLConnectionHelper {
                     questions.add(new Question(rs.getInt(1), rs.getString(2),
                             android.R.drawable.ic_menu_search, android.R.drawable.ic_delete));
                 }
-                connect.close();
             }
         } catch (Exception exception) {
             Log.e("Error: ", exception.getMessage());
@@ -106,12 +94,9 @@ public class GoogleMySQLConnectionHelper {
     }
 
     //get answers for question by questionId
-    ArrayList<Answer> getAnswers(int questionId) {
-        Connection connect;
+    ArrayList<Answer> getAnswers(Connection connect, int questionId) {
         ArrayList<Answer> answers = new ArrayList<>();
         try {
-            GoogleMySQLConnectionHelper connectionHelper = new GoogleMySQLConnectionHelper();
-            connect = connectionHelper.connectionclass();
             if (connect != null) {
                 String query = "SELECT * FROM answers WHERE question_id = " + questionId;
                 Statement st = connect.createStatement();
@@ -121,7 +106,6 @@ public class GoogleMySQLConnectionHelper {
                             rs.getString(3), rs.getInt(4), rs.getInt(5),
                             rs.getInt(6), rs.getInt(7), rs.getInt(8)));
                 }
-                connect.close();
             }
         } catch (Exception exception) {
             Log.e("Error: ", exception.getMessage());
@@ -130,12 +114,9 @@ public class GoogleMySQLConnectionHelper {
     }
 
     // get the single user
-    User getUser(String userName) {
-        Connection connect;
+    User getUser(Connection connect, String userName) {
         User userExist = null;
         try {
-            GoogleMySQLConnectionHelper connectionHelper = new GoogleMySQLConnectionHelper();
-            connect = connectionHelper.connectionclass();
             if (connect != null) {
                 String query = "SELECT * FROM users WHERE user_name = '" + userName + "'";
                 Statement st = connect.createStatement();
@@ -144,7 +125,6 @@ public class GoogleMySQLConnectionHelper {
                     userExist = new User(rs.getString(2), rs.getString(3),
                             rs.getString(4), rs.getString(5));
                 }
-                connect.close();
             }
         } catch (Exception exception) {
             Log.e("Error: ", exception.getMessage());
@@ -153,12 +133,9 @@ public class GoogleMySQLConnectionHelper {
     }
 
     // code to get all users in a list view
-    public ArrayList<User> getAllUsers() {
-        Connection connect;
+    public ArrayList<User> getAllUsers(Connection connect) {
         ArrayList<User> users = new ArrayList<User>();
         try {
-            GoogleMySQLConnectionHelper connectionHelper = new GoogleMySQLConnectionHelper();
-            connect = connectionHelper.connectionclass();
             if (connect != null) {
                 String query = "SELECT  * FROM users";
                 Statement st = connect.createStatement();
@@ -167,7 +144,6 @@ public class GoogleMySQLConnectionHelper {
                     users.add(new User(rs.getInt(1), rs.getString(2),
                             rs.getString(3),rs.getString(4), android.R.drawable.ic_delete));
                 }
-                connect.close();
             }
         } catch (Exception exception) {
             Log.e("Error: ", exception.getMessage());
@@ -176,18 +152,14 @@ public class GoogleMySQLConnectionHelper {
     }
 
     // add the new user
-    void addUser(User user)  {
-        Connection connect;
+    void addUser(Connection connect, User user)  {
         try {
-            GoogleMySQLConnectionHelper connectionHelper = new GoogleMySQLConnectionHelper();
-            connect = connectionHelper.connectionclass();
             if (connect != null) {
                 String query = "INSERT INTO users (role, user_name, first_name, password) " +
                         "VALUES ('" + user.getRole() + "', '" + user.getUserName() + "', '"
                         + user.getFirstName() + "', '" + user.getPassword() + "')";
                 Statement st = connect.createStatement();
                 st.executeUpdate(query);
-                connect.close();
             }
         } catch (Exception exception) {
             Log.e("Error: ", exception.getMessage());
@@ -195,16 +167,12 @@ public class GoogleMySQLConnectionHelper {
     }
 
     // Deleting single user
-    public void deleteUser(int userID) {
-        Connection connect;
+    public void deleteUser(Connection connect, int userID) {
         try {
-            GoogleMySQLConnectionHelper connectionHelper = new GoogleMySQLConnectionHelper();
-            connect = connectionHelper.connectionclass();
             if (connect != null) {
                 String query = "DELETE FROM users WHERE id = " + userID;
                 Statement st = connect.createStatement();
                 st.executeUpdate(query);
-                connect.close();
             }
         } catch (Exception exception) {
             Log.e("Error: ", exception.getMessage());

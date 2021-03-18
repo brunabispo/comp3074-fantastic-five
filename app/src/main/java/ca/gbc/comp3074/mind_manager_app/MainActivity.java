@@ -12,6 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.sql.Connection;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Database instance
         final GoogleMySQLConnectionHelper db = new GoogleMySQLConnectionHelper();
+        final Connection connect = db.connectionclass();
 
         final EditText username = findViewById(R.id.editUsername);
         final EditText password = findViewById(R.id.editPassword);
@@ -31,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Execute the query, find if username input from user is existing in data base
-                final User userExist = db.getUser(username.getText().toString());
+                final User userExist = db.getUser(connect, username.getText().toString());
 
                 if(userExist != null && username.getText().toString().equals(userExist.getUserName()) &&
                         password.getText().toString().equals(userExist.getPassword())){

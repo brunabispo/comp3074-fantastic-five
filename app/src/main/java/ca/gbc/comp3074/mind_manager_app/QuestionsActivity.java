@@ -8,6 +8,9 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+
 public class QuestionsActivity extends AppCompatActivity {
 
     @Override
@@ -16,7 +19,8 @@ public class QuestionsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_questions);
 
         //Database instance
-        GoogleMySQLConnectionHelper connectionHelper = new GoogleMySQLConnectionHelper();
+        GoogleMySQLConnectionHelper db = new GoogleMySQLConnectionHelper();
+        final Connection connect = db.connectionclass();
 
         TextView question1 = findViewById(R.id.lblq1);
         TextView question2 = findViewById(R.id.lblq2);
@@ -40,7 +44,7 @@ public class QuestionsActivity extends AppCompatActivity {
         RadioButton q4_a3 = findViewById(R.id.rbtn_q4_3);
 
         // Question 1
-        Question q1 = connectionHelper.getRandomQuestion();
+        Question q1 = db.getRandomQuestion(connect);
         question1.setText(q1.getQuestionText());
         q1_a1.setText(q1.getAnswers().get(0).getText());
         q1_a2.setText(q1.getAnswers().get(1).getText());
@@ -50,7 +54,7 @@ public class QuestionsActivity extends AppCompatActivity {
         // Question 2
         Question q2;
         do {
-           q2 = connectionHelper.getRandomQuestion();
+           q2 = db.getRandomQuestion(connect);
         }while(q2.getID() == q1.getID());
         question2.setText(q2.getQuestionText());
         q2_a1.setText(q2.getAnswers().get(0).getText());
@@ -61,7 +65,7 @@ public class QuestionsActivity extends AppCompatActivity {
         // Question 3
         Question q3;
         do {
-            q3 = connectionHelper.getRandomQuestion();
+            q3 = db.getRandomQuestion(connect);
         }while(q3.getID() == q1.getID() || q3.getID() == q2.getID());
         question3.setText(q3.getQuestionText());
         q3_a1.setText(q3.getAnswers().get(0).getText());
@@ -71,7 +75,7 @@ public class QuestionsActivity extends AppCompatActivity {
         // Question 4
         Question q4;
         do {
-            q4 = connectionHelper.getRandomQuestion();
+            q4 = db.getRandomQuestion(connect);
         }while(q4.getID() == q1.getID() || q4.getID() == q2.getID() || q4.getID() == q3.getID());
         question4.setText(q4.getQuestionText());
         q4_a1.setText(q4.getAnswers().get(0).getText());

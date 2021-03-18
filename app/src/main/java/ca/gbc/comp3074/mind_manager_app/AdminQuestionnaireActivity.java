@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.sql.Connection;
 import java.util.List;
 
 public class AdminQuestionnaireActivity extends ListActivity {
@@ -26,8 +27,9 @@ public class AdminQuestionnaireActivity extends ListActivity {
 
         //Database instance
         final GoogleMySQLConnectionHelper db = new GoogleMySQLConnectionHelper();
+        final Connection connect = db.connectionclass();
 
-        printArray(db);
+        printArray(connect, db);
 
         Button btnAddNewQuestion = findViewById(R.id.btnAddQuestion);
         btnAddNewQuestion.setOnClickListener(new View.OnClickListener() {
@@ -47,8 +49,8 @@ public class AdminQuestionnaireActivity extends ListActivity {
     }
 
     //print array of all users
-    private void printArray(GoogleMySQLConnectionHelper db){
-        questions = db.getAllQuestions();
+    private void printArray(Connection connect, GoogleMySQLConnectionHelper db){
+        questions = db.getAllQuestions(connect);
         StringBuilder sb = new StringBuilder();
         int size = questions.size();
         boolean appendSeparator = false;

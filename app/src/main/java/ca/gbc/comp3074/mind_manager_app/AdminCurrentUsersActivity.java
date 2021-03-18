@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.sql.Connection;
 import java.util.List;
 
 public class AdminCurrentUsersActivity extends ListActivity {
@@ -26,15 +27,16 @@ public class AdminCurrentUsersActivity extends ListActivity {
 
         //Database instance
         final GoogleMySQLConnectionHelper db = new GoogleMySQLConnectionHelper();
+        final Connection connect = db.connectionclass();
 
-        printArray(db);
+        printArray(connect, db);
 
         //button add User
         Button btnAdd = findViewById(R.id.btn_add);
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openAdd(db);
+                openAdd(connect, db);
             }
         });
 
@@ -49,15 +51,15 @@ public class AdminCurrentUsersActivity extends ListActivity {
     }
 
     //delete User
-    protected void onListItemClick(ListView l, View v, int position, long id, GoogleMySQLConnectionHelper db) {
+    protected void onListItemClick(Connection connect, ListView l, View v, int position, long id, GoogleMySQLConnectionHelper db) {
         super.onListItemClick(l, v, position, id);
-        db.deleteUser(position);
-        printArray(db);
+        db.deleteUser(connect, position);
+        printArray(connect, db);
     }
 
     //print array of all users
-    private void printArray(GoogleMySQLConnectionHelper db){
-        users = db.getAllUsers();
+    private void printArray(Connection connect, GoogleMySQLConnectionHelper db){
+        users = db.getAllUsers(connect);
         StringBuilder sb = new StringBuilder();
         int size = users.size();
         boolean appendSeparator = false;
@@ -72,12 +74,12 @@ public class AdminCurrentUsersActivity extends ListActivity {
     }
 
     //function add User
-    private void openAdd(GoogleMySQLConnectionHelper db){
+    private void openAdd(Connection connect, GoogleMySQLConnectionHelper db){
         String role = ((EditText) findViewById(R.id.edittxt_role)).getText().toString();
         String username = ((EditText) findViewById(R.id.edittxt_username)).getText().toString();
         String firstName = ((EditText) findViewById(R.id.edittxt_firstName)).getText().toString();
         //Execute the query, find if username input is existing in data base
-        User userExist = db.getUser(username);
+        User userExist = db.getUser(connect, username);
 
         if(userExist != null){
             lblError.setText("This user name is already exist");
@@ -85,8 +87,8 @@ public class AdminCurrentUsersActivity extends ListActivity {
             lblError.setText("");
             //Insert new user
             User user = new User(role, username, firstName, "123_Ben");
-            db.addUser(user);
-            printArray(db);
+            db.addUser(connect, user);
+            printArray(connect, db);
         }
     }
 

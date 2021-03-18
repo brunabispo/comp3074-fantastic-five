@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.sql.Connection;
+
 public class RegisterActivity extends AppCompatActivity {
 
     @Override
@@ -16,6 +18,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         //Database instance
         final GoogleMySQLConnectionHelper db = new GoogleMySQLConnectionHelper();
+        final Connection connect = db.connectionclass();
 
         final TextView editFirstName = findViewById(R.id.editName);
         final TextView editUserName = findViewById(R.id.editUsername);
@@ -28,7 +31,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Execute the query, find if username input from user is existing in data base
-                User userExist = db.getUser(editUserName.getText().toString());
+                User userExist = db.getUser(connect, editUserName.getText().toString());
 
                 if(userExist != null){
                     lblError.setText("This user name is already exist");
@@ -39,7 +42,7 @@ public class RegisterActivity extends AppCompatActivity {
                     //Insert new user
                     User user = new User("user", editUserName.getText().toString()+"",
                             editFirstName.getText().toString()+"", editPassword.getText().toString()+"");
-                    db.addUser(user);
+                    db.addUser(connect, user);
                     backToLogin();
                 }
             }
