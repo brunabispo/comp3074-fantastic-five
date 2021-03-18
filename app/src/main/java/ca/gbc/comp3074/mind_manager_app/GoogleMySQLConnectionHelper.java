@@ -74,6 +74,25 @@ public class GoogleMySQLConnectionHelper {
         return randomQuestion;
     }
 
+    //get the random question
+    public Question getQuestionByID(Connection connect, int id) {
+        Question question = null;
+        try {
+            if (connect != null) {
+                String query = "SELECT * FROM questions WHERE id = " + id;
+                Statement st = connect.createStatement();
+                ResultSet rs = st.executeQuery(query);
+                while (rs.next()) {
+                    ArrayList<Answer> answers = getAnswers(connect, rs.getInt(1));
+                    question = new Question(rs.getInt(1),rs.getString(2), answers);
+                }
+            }
+        } catch (Exception exception) {
+            Log.e("Error: ", exception.getMessage());
+        }
+        return question;
+    }
+
     // code to get all users in a list view
     public ArrayList<Question> getAllQuestions(Connection connect) {
         ArrayList<Question> questions = new ArrayList<Question>();
@@ -83,8 +102,7 @@ public class GoogleMySQLConnectionHelper {
                 Statement st = connect.createStatement();
                 ResultSet rs = st.executeQuery(query);
                 while (rs.next()) {
-                    questions.add(new Question(rs.getInt(1), rs.getString(2),
-                            android.R.drawable.ic_menu_search, android.R.drawable.ic_delete));
+                    questions.add(new Question(rs.getInt(1), rs.getString(2)));
                 }
             }
         } catch (Exception exception) {
@@ -134,7 +152,7 @@ public class GoogleMySQLConnectionHelper {
 
     // code to get all users in a list view
     public ArrayList<User> getAllUsers(Connection connect) {
-        ArrayList<User> users = new ArrayList<User>();
+        ArrayList<User> users = new ArrayList<>();
         try {
             if (connect != null) {
                 String query = "SELECT  * FROM users";
@@ -142,7 +160,7 @@ public class GoogleMySQLConnectionHelper {
                 ResultSet rs = st.executeQuery(query);
                 while (rs.next()) {
                     users.add(new User(rs.getInt(1), rs.getString(2),
-                            rs.getString(3),rs.getString(4), android.R.drawable.ic_delete));
+                            rs.getString(3),rs.getString(4)));
                 }
             }
         } catch (Exception exception) {

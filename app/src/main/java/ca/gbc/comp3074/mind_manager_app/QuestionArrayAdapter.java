@@ -1,10 +1,14 @@
 package ca.gbc.comp3074.mind_manager_app;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -22,27 +26,39 @@ public class QuestionArrayAdapter extends ArrayAdapter<Question> {
         this.values = objects;
     }
 
+    @SuppressLint("SetTextI18n")
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
 
-        View rowView = inflater.inflate(R.layout.row_layout_questions, parent, false);
+        @SuppressLint("ViewHolder") View rowView = inflater.inflate(R.layout.row_layout_questions, parent, false);
 
         TextView id = rowView.findViewById(R.id.lblID);
-        id.setText(values.get(position).getID()+"");
+        final int ID = values.get(position).getID();
+        id.setText(ID+"");
 
         TextView question = rowView.findViewById(R.id.lblQuestions);
         question.setText(values.get(position).getQuestionText());
 
-        ImageView icon1 = rowView.findViewById(R.id.iconView);
-        icon1.setImageResource(values.get(position).getIconIdView());
+        ImageButton btnView = rowView.findViewById(R.id.btn_view);
+        btnView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openAnswers(ID);
+            }
+        });
 
-        ImageView icon2 = rowView.findViewById(R.id.iconDel2);
-        icon2.setImageResource(values.get(position).getIconIdDel());
+        ImageView icon2 = rowView.findViewById(R.id.btn_delete);
 
         return rowView;
+    }
+
+    private void openAnswers(int id){
+        Intent start = new Intent(context.getApplicationContext(), AdminAnswersActivity.class);
+        start.putExtra("id", id);
+        context.startActivity(start);
     }
 }

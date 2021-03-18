@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="#"
+        android:textColor="@color/cardview_dark_background"
         android:textSize="18sp" />
 
     <TextView
@@ -18,7 +19,7 @@
         android:layout_height="wrap_content"
         android:text="Role"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="@color/browser_actions_title_color"
+        android:textColor="@color/cardview_dark_background"
         android:textSize="18sp" />
 
     <TextView
@@ -35,12 +36,18 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="First Name"
+        android:textColor="@color/cardview_dark_background"
         android:textSize="18sp" />
 
-    <ImageView
-        android:id="@+id/icon"
-        android:layout_width="57dp"
-        android:layout_height="23dp"
-        app:srcCompat="@android:drawable/sym_def_app_icon" />
+    <ImageButton
+        android:id="@+id/btn_delete"
+        android:layout_width="113dp"
+        android:layout_height="24dp"
+        android:layout_weight="1"
+        android:background="#00FFFFFF"
+        android:contentDescription="Delete"
+        android:src="@android:drawable/ic_delete"
+        android:textAlignment="center"
+        android:tint="#E91E63" />
 
 </LinearLayout>

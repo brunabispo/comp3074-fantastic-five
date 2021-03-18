@@ -43,9 +43,6 @@ public class UserArrayAdapter extends ArrayAdapter<User> {
         TextView firstNameId = rowView.findViewById(R.id.lblFirstName);
         firstNameId.setText(this.values.get(position).getFirstName());
 
-        ImageView icon = rowView.findViewById(R.id.icon);
-        icon.setImageResource(values.get(position).getIconResId());
-
         return rowView;
     }
 }

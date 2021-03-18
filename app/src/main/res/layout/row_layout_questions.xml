@@ -6,7 +6,7 @@
 
     <TextView
         android:id="@+id/lblID"
-        android:layout_width="47dp"
+        android:layout_width="63dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="#"
@@ -14,24 +14,33 @@
 
     <TextView
         android:id="@+id/lblQuestions"
-        android:layout_width="204dp"
+        android:layout_width="213dp"
         android:layout_height="wrap_content"
         android:text="Question"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/browser_actions_title_color"
         android:textSize="18sp" />
 
-    <ImageView
-        android:id="@+id/iconView"
-        android:layout_width="wrap_content"
-        android:layout_height="22dp"
-        app:srcCompat="@android:drawable/ic_menu_search" />
-
-    <ImageView
-        android:id="@+id/iconDel2"
-        android:layout_width="114dp"
-        android:layout_height="22dp"
+    <ImageButton
+        android:id="@+id/btn_view"
+        android:layout_width="70dp"
+        android:layout_height="24dp"
         android:layout_weight="1"
-        app:srcCompat="@android:drawable/ic_delete" />
+        android:background="#00FDFEFF"
+        android:contentDescription="View"
+        android:src="@android:drawable/ic_menu_search"
+        android:textAlignment="center"
+        android:tint="#2196F3" />
+
+    <ImageButton
+        android:id="@+id/btn_delete"
+        android:layout_width="113dp"
+        android:layout_height="24dp"
+        android:layout_weight="1"
+        android:background="#00FFFFFF"
+        android:contentDescription="Delete"
+        android:src="@android:drawable/ic_delete"
+        android:textAlignment="center"
+        android:tint="#E91E63" />
 
 </LinearLayout>

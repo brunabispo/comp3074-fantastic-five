@@ -7,7 +7,6 @@ public class User {
     private String userName;
     private String firstName;
     private String password;
-    private int iconResId;
 
     public User() {
     }
@@ -19,12 +18,11 @@ public class User {
         this.password = password;
     }
 
-    public User(int id, String role, String userName, String firstName, int iconResId) {
+    public User(int id, String role, String userName, String firstName) {
         this._id = id;
         this.role = role;
         this.userName = userName;
         this.firstName = firstName;
-        this.iconResId = iconResId;
     }
 
     public int getID() {
@@ -65,14 +63,6 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public int getIconResId() {
-        return iconResId;
-    }
-
-    public void setIconResId(int iconResId) {
-        this.iconResId = iconResId;
     }
 
     @Override

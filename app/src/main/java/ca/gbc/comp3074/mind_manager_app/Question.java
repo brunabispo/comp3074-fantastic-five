@@ -7,8 +7,6 @@ public class Question{
     private int _id;
     private String questionText;
     private ArrayList<Answer> answers;
-    private int iconIdView;
-    private int iconIdDel;
 
     public Question(int id, String questionText, ArrayList<Answer> answers) {
         this._id = id;
@@ -16,11 +14,9 @@ public class Question{
         this.answers = answers;
     }
 
-    public Question(int id, String questionText, int iconIdView, int iconIdDel) {
+    public Question(int id, String questionText) {
         this._id = id;
         this.questionText = questionText;
-        this.iconIdView = iconIdView;
-        this.iconIdDel = iconIdDel;
     }
 
     public int getID() {
@@ -45,21 +41,5 @@ public class Question{
 
     public void setAnswers(ArrayList<Answer> answers) {
         this.answers = answers;
-    }
-
-    public int getIconIdView() {
-        return iconIdView;
-    }
-
-    public void setIconIdView(int iconIdView) {
-        this.iconIdView = iconIdView;
-    }
-
-    public int getIconIdDel() {
-        return iconIdDel;
-    }
-
-    public void setIconIdDel(int iconIdDel) {
-        this.iconIdDel = iconIdDel;
     }
 }

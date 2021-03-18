@@ -18,6 +18,11 @@ public class QuestionsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
 
+        Question q1;
+        Question q2;
+        Question q3;
+        Question q4;
+
         //Database instance
         GoogleMySQLConnectionHelper db = new GoogleMySQLConnectionHelper();
         final Connection connect = db.connectionclass();
@@ -44,7 +49,7 @@ public class QuestionsActivity extends AppCompatActivity {
         RadioButton q4_a3 = findViewById(R.id.rbtn_q4_3);
 
         // Question 1
-        Question q1 = db.getRandomQuestion(connect);
+        q1 = db.getRandomQuestion(connect);
         question1.setText(q1.getQuestionText());
         q1_a1.setText(q1.getAnswers().get(0).getText());
         q1_a2.setText(q1.getAnswers().get(1).getText());
@@ -52,9 +57,8 @@ public class QuestionsActivity extends AppCompatActivity {
 
 
         // Question 2
-        Question q2;
         do {
-           q2 = db.getRandomQuestion(connect);
+            q2 = db.getRandomQuestion(connect);
         }while(q2.getID() == q1.getID());
         question2.setText(q2.getQuestionText());
         q2_a1.setText(q2.getAnswers().get(0).getText());
@@ -63,7 +67,6 @@ public class QuestionsActivity extends AppCompatActivity {
 
 
         // Question 3
-        Question q3;
         do {
             q3 = db.getRandomQuestion(connect);
         }while(q3.getID() == q1.getID() || q3.getID() == q2.getID());
@@ -73,7 +76,6 @@ public class QuestionsActivity extends AppCompatActivity {
         q3_a3.setText(q3.getAnswers().get(2).getText());
 
         // Question 4
-        Question q4;
         do {
             q4 = db.getRandomQuestion(connect);
         }while(q4.getID() == q1.getID() || q4.getID() == q2.getID() || q4.getID() == q3.getID());
@@ -83,7 +85,6 @@ public class QuestionsActivity extends AppCompatActivity {
         q4_a3.setText(q4.getAnswers().get(2).getText());
 
         Button btnSubmit = findViewById(R.id.btn_submit);
-
         //Button Submit goes to the suggestions page (SuggestionsActivitySad)
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
