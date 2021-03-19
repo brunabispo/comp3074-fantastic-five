@@ -7,9 +7,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.sql.Connection;
-import java.sql.SQLException;
 
 public class QuestionsActivity extends AppCompatActivity {
 

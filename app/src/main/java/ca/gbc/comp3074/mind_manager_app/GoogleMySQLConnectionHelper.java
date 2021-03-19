@@ -55,6 +55,24 @@ public class GoogleMySQLConnectionHelper {
         return suggestionExist;
     }
 
+    // code to get all users in a list view
+    public ArrayList<Suggestion> getAllCategories(Connection connect) {
+        ArrayList<Suggestion> categories = new ArrayList<>();
+        try {
+            if (connect != null) {
+                String query = "SELECT DISTINCT category_name FROM suggestions";
+                Statement st = connect.createStatement();
+                ResultSet rs = st.executeQuery(query);
+                while (rs.next()) {
+                    categories.add(new Suggestion(rs.getString(1)));
+                }
+            }
+        } catch (Exception exception) {
+            Log.e("Error: ", exception.getMessage());
+        }
+        return categories;
+    }
+
     //get the random question
     public Question getRandomQuestion(Connection connect) {
         Question randomQuestion = null;
@@ -74,7 +92,7 @@ public class GoogleMySQLConnectionHelper {
         return randomQuestion;
     }
 
-    //get the random question
+    //get the question by ID
     public Question getQuestionByID(Connection connect, int id) {
         Question question = null;
         try {

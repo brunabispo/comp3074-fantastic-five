@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.sql.Connection;
 
 public class RegisterActivity extends AppCompatActivity {

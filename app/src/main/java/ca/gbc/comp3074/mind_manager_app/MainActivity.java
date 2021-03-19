@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.sql.Connection;
 
 public class MainActivity extends AppCompatActivity {

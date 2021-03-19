@@ -16,6 +16,10 @@ public class Suggestion {
         this.suggestionName = suggestionName;
     }
 
+    public Suggestion(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
     public Suggestion(int id, String mood, String categoryName, String suggestionName) {
         this._id = id;
         this.mood = mood;

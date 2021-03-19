@@ -14,13 +14,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import java.util.List;
 
-public class QuestionArrayAdapter extends ArrayAdapter<Question> {
+public class CategoryArrayAdapter extends ArrayAdapter<Suggestion> {
 
     private final Context context;
-    private final List<Question> values;
+    private final List<Suggestion> values;
 
-    public QuestionArrayAdapter(@NonNull Context context, @NonNull List<Question> objects) {
-        super(context, R.layout.row_layout_questions, objects);
+    public CategoryArrayAdapter(@NonNull Context context, @NonNull List<Suggestion> objects) {
+        super(context, R.layout.row_layout_categories, objects);
         this.context = context;
         this.values = objects;
     }
@@ -33,20 +33,16 @@ public class QuestionArrayAdapter extends ArrayAdapter<Question> {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
 
-        @SuppressLint("ViewHolder") View rowView = inflater.inflate(R.layout.row_layout_questions, parent, false);
+        @SuppressLint("ViewHolder") View rowView = inflater.inflate(R.layout.row_layout_categories, parent, false);
 
-        TextView id = rowView.findViewById(R.id.lblID);
-        final int ID = values.get(position).getID();
-        id.setText(ID+"");
-
-        TextView question = rowView.findViewById(R.id.lblQuestions);
-        question.setText(values.get(position).getQuestionText());
+        TextView category = rowView.findViewById(R.id.lblCategories);
+        category.setText(values.get(position).getCategoryName());
 
         ImageButton btnView = rowView.findViewById(R.id.btn_view);
         btnView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openAnswers(ID);
+                //openAnswers(ID);
             }
         });
 
