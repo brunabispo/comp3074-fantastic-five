@@ -13,6 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import java.sql.Connection;
 
+import ca.gbc.comp3074.mind_manager_app.Admin.AdminHomeActivity;
+import ca.gbc.comp3074.mind_manager_app.Models.User;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override

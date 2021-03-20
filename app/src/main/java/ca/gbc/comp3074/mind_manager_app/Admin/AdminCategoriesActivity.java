@@ -1,4 +1,4 @@
-package ca.gbc.comp3074.mind_manager_app;
+package ca.gbc.comp3074.mind_manager_app.Admin;
 
 import android.app.ListActivity;
 import android.content.Intent;
@@ -6,23 +6,25 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import java.sql.Connection;
 import java.util.List;
 
-public class AdminCurrentUsersActivity extends ListActivity {
+import ca.gbc.comp3074.mind_manager_app.Models.CategoryArrayAdapter;
+import ca.gbc.comp3074.mind_manager_app.GoogleMySQLConnectionHelper;
+import ca.gbc.comp3074.mind_manager_app.MainActivity;
+import ca.gbc.comp3074.mind_manager_app.Models.Suggestion;
+import ca.gbc.comp3074.mind_manager_app.R;
 
-    List<User> users;
+public class AdminCategoriesActivity extends ListActivity {
+
+    List<Suggestion> categories;
     TextView lblError;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_current_users);
-
-        lblError = findViewById(R.id.lblError2);
+        setContentView(R.layout.activity_admin_categories);
 
         //Database instance
         final GoogleMySQLConnectionHelper db = new GoogleMySQLConnectionHelper();
@@ -30,17 +32,15 @@ public class AdminCurrentUsersActivity extends ListActivity {
 
         printArray(connect, db);
 
-        //button add User
-        Button btnAdd = findViewById(R.id.btn_add);
-        btnAdd.setOnClickListener(new View.OnClickListener() {
+        Button btnAddNewCategory = findViewById(R.id.btnAddCategory);
+        btnAddNewCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openAdd(connect, db);
+                //addNewCategory();
             }
         });
 
-        //button Logout
-        Button btnLogOut = findViewById(R.id.btnLogoutAdminCurrentUsers);
+        Button btnLogOut = findViewById(R.id.btnLogoutAdminCategories);
         btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,36 +49,35 @@ public class AdminCurrentUsersActivity extends ListActivity {
         });
     }
 
-    //delete User
-    protected void onListItemClick(Connection connect, ListView l, View v, int position, long id, GoogleMySQLConnectionHelper db) {
-        super.onListItemClick(l, v, position, id);
-        db.deleteUser(connect, position);
-        printArray(connect, db);
-    }
-
     //print array of all users
     private void printArray(Connection connect, GoogleMySQLConnectionHelper db){
-        users = db.getAllUsers(connect);
+        categories = db.getAllCategories(connect);
         StringBuilder sb = new StringBuilder();
-        int size = users.size();
+        int size = categories.size();
         boolean appendSeparator = false;
         for(int y=0; y < size; y++){
             if (appendSeparator)
                 sb.append(','); // a comma
             appendSeparator = true;
-            sb.append(users.get(y));
+            sb.append(categories.get(y));
         }
-        ArrayAdapter<User> myAdapter = new UserArrayAdapter(this, users);
+        ArrayAdapter<Suggestion> myAdapter = new CategoryArrayAdapter(this, categories);
         setListAdapter(myAdapter);
     }
 
+    /*
+
+    private void addNewCategory(){
+
+    }
+
     //function add User
-    private void openAdd(Connection connect, GoogleMySQLConnectionHelper db){
+    private void addNewSuggestion(GoogleMySQLConnectionHelper db){
         String role = ((EditText) findViewById(R.id.edittxt_role)).getText().toString();
         String username = ((EditText) findViewById(R.id.edittxt_username)).getText().toString();
         String firstName = ((EditText) findViewById(R.id.edittxt_firstName)).getText().toString();
         //Execute the query, find if username input is existing in data base
-        User userExist = db.getUser(connect, username);
+        User userExist = db.getUser(username);
 
         if(userExist != null){
             lblError.setText("This user name is already exist");
@@ -86,12 +85,19 @@ public class AdminCurrentUsersActivity extends ListActivity {
             lblError.setText("");
             //Insert new user
             User user = new User(role, username, firstName, "123_Ben");
-            db.addUser(connect, user);
-            printArray(connect, db);
+            db.addUser(user);
+            printArray(db);
         }
     }
 
-    //function LogOut
+    //delete Suggestion
+    protected void onListItemClick(ListView l, View v, int position, long id, GoogleMySQLConnectionHelper db) {
+        super.onListItemClick(l, v, position, id);
+        db.deleteSuggestion(position);
+        printArray(db);
+    }
+    */
+
     private void openLogOut(){
         Intent start = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(start);

@@ -1,4 +1,4 @@
-package ca.gbc.comp3074.mind_manager_app;
+package ca.gbc.comp3074.mind_manager_app.Admin;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,12 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import java.sql.Connection;
 import java.util.List;
+
+import ca.gbc.comp3074.mind_manager_app.GoogleMySQLConnectionHelper;
+import ca.gbc.comp3074.mind_manager_app.MainActivity;
+import ca.gbc.comp3074.mind_manager_app.Models.Answer;
+import ca.gbc.comp3074.mind_manager_app.Models.Question;
+import ca.gbc.comp3074.mind_manager_app.R;
 
 public class AdminAnswersActivity extends AppCompatActivity {
 

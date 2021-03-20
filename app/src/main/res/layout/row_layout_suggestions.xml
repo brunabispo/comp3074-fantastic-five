@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <ImageView
+    android:layout_width="75dp"
+    android:layout_height="75dp"
+    android:id="@+id/catgoryImage">
+    </ImageView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    </LinearLayout>
 
     <TextView
         android:id="@+id/lblCategory"
@@ -10,7 +24,9 @@
         android:layout_height="wrap_content"
         android:text="CategoryName"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="@color/browser_actions_title_color" />
+        android:textColor="@color/browser_actions_title_color"
+        android:textStyle="bold"
+        android:layout_margin="5dp"/>
 
     <TextView
         android:id="@+id/lblSuggestion"
@@ -18,6 +34,8 @@
         android:layout_height="wrap_content"
         android:text="SuggestionName"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="@color/cardview_dark_background" />
+        android:textColor="@color/cardview_dark_background"
+        android:textStyle="bold"
+        android:layout_margin="5dp"/>
 
 </LinearLayout>

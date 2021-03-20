@@ -19,14 +19,14 @@
         <activity android:name=".MainActivity" android:parentActivityName=".WelcomeActivity"/>
         <activity android:name=".MapActivity" android:parentActivityName=".WelcomeActivity"/>
         <activity android:name=".SuggestionsActivity" android:parentActivityName=".WelcomeActivity"/>
-        <activity android:name=".AdminHomeActivity"/>
-        <activity android:name=".TriviaGameActivity"/>
-        <activity android:name=".AdminCurrentUsersActivity" android:parentActivityName=".AdminHomeActivity"/>
-        <activity android:name=".AdminQuestionnaireActivity" android:parentActivityName=".AdminHomeActivity"/>
-        <activity android:name=".AdminAnswersActivity" android:parentActivityName=".AdminQuestionnaireActivity"/>
-        <activity android:name=".AdminMoodOptionsActivity" android:parentActivityName=".AdminHomeActivity"/>
-        <activity android:name=".AdminCategoriesActivity" android:parentActivityName=".AdminHomeActivity"/>
-        <activity android:name=".CrosswordGameActivity" android:parentActivityName=".SuggestionsActivity"/>
+        <activity android:name=".Admin.AdminHomeActivity"/>
+        <activity android:name=".Games.TriviaGameActivity"/>
+        <activity android:name=".Admin.AdminCurrentUsersActivity" android:parentActivityName=".Admin.AdminHomeActivity"/>
+        <activity android:name=".Admin.AdminQuestionnaireActivity" android:parentActivityName=".Admin.AdminHomeActivity"/>
+        <activity android:name=".Admin.AdminAnswersActivity" android:parentActivityName=".Admin.AdminQuestionnaireActivity"/>
+        <activity android:name=".Admin.AdminMoodOptionsActivity" android:parentActivityName=".Admin.AdminHomeActivity"/>
+        <activity android:name=".Admin.AdminCategoriesActivity" android:parentActivityName=".Admin.AdminHomeActivity"/>
+        <activity android:name=".Games.CrosswordGameActivity" android:parentActivityName=".SuggestionsActivity"/>
         <activity android:name=".WelcomeActivity" android:parentActivityName=".SuggestionsActivity"/>
         <activity android:name=".SplashActivity">
             <intent-filter>

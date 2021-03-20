@@ -1,4 +1,4 @@
-package ca.gbc.comp3074.mind_manager_app;
+package ca.gbc.comp3074.mind_manager_app.Games;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -18,6 +18,10 @@ import com.facebook.share.widget.ShareButton;
 
 import java.util.Arrays;
 import java.util.List;
+
+import ca.gbc.comp3074.mind_manager_app.AboutActivity;
+import ca.gbc.comp3074.mind_manager_app.MainActivity;
+import ca.gbc.comp3074.mind_manager_app.R;
 
 public class CrosswordGameActivity extends AppCompatActivity {
 

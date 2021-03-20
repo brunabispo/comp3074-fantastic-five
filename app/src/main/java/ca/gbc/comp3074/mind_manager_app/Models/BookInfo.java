@@ -1,4 +1,4 @@
-package ca.gbc.comp3074.mind_manager_app;
+package ca.gbc.comp3074.mind_manager_app.Models;
 
 public class BookInfo {
 

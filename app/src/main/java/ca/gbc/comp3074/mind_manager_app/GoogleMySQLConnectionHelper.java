@@ -8,6 +8,11 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import ca.gbc.comp3074.mind_manager_app.Models.Answer;
+import ca.gbc.comp3074.mind_manager_app.Models.Question;
+import ca.gbc.comp3074.mind_manager_app.Models.Suggestion;
+import ca.gbc.comp3074.mind_manager_app.Models.User;
+
 public class GoogleMySQLConnectionHelper {
 
     String username, password, ip, port, database;
@@ -36,7 +41,7 @@ public class GoogleMySQLConnectionHelper {
     }
 
     // get a suggestion by mood and category
-    Suggestion getSuggestion(Connection connect, String mood, String category) {
+    public Suggestion getSuggestion(Connection connect, String mood, String category) {
         Suggestion suggestionExist = null;
         try {
             if (connect != null) {
@@ -130,7 +135,7 @@ public class GoogleMySQLConnectionHelper {
     }
 
     //get answers for question by questionId
-    ArrayList<Answer> getAnswers(Connection connect, int questionId) {
+    public ArrayList<Answer> getAnswers(Connection connect, int questionId) {
         ArrayList<Answer> answers = new ArrayList<>();
         try {
             if (connect != null) {
@@ -150,7 +155,7 @@ public class GoogleMySQLConnectionHelper {
     }
 
     // get the single user
-    User getUser(Connection connect, String userName) {
+    public User getUser(Connection connect, String userName) {
         User userExist = null;
         try {
             if (connect != null) {
@@ -188,7 +193,7 @@ public class GoogleMySQLConnectionHelper {
     }
 
     // add the new user
-    void addUser(Connection connect, User user)  {
+    public void addUser(Connection connect, User user)  {
         try {
             if (connect != null) {
                 String query = "INSERT INTO users (role, user_name, first_name, password) " +

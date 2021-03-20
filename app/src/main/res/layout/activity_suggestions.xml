@@ -14,7 +14,6 @@
         android:orientation="vertical"
         tools:context=".SuggestionsActivity">
 
-
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
@@ -29,7 +28,7 @@
             android:layout_height="wrap_content"
             android:text="Here are your suggestions"
             android:textColor="@color/browser_actions_title_color"
-            android:textSize="36sp" />
+            android:textSize="30sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -47,7 +46,6 @@
                 android:layout_marginEnd="16dp"
                 android:contentDescription="Filter"
                 android:layout_weight="1"/>
-
 
             <ImageButton
                 android:id="@+id/btn_map"
@@ -75,9 +73,9 @@
         </LinearLayout>
 
         <ListView
-            android:id="@android:id/list"
+            android:id="@+id/listView"
             android:layout_width="match_parent"
-            android:layout_height="471dp"
+            android:layout_height="300dp"
             tools:ignore="NestedScrolling" />
     </LinearLayout>
 </ScrollView>

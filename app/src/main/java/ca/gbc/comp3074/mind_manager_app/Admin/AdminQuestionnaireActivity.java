@@ -1,4 +1,4 @@
-package ca.gbc.comp3074.mind_manager_app;
+package ca.gbc.comp3074.mind_manager_app.Admin;
 
 import android.app.ListActivity;
 import android.content.Intent;
@@ -9,6 +9,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import java.sql.Connection;
 import java.util.List;
+
+import ca.gbc.comp3074.mind_manager_app.GoogleMySQLConnectionHelper;
+import ca.gbc.comp3074.mind_manager_app.MainActivity;
+import ca.gbc.comp3074.mind_manager_app.Models.Question;
+import ca.gbc.comp3074.mind_manager_app.Models.QuestionArrayAdapter;
+import ca.gbc.comp3074.mind_manager_app.R;
 
 public class AdminQuestionnaireActivity extends ListActivity {
 

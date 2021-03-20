@@ -1,10 +1,13 @@
-package ca.gbc.comp3074.mind_manager_app;
+package ca.gbc.comp3074.mind_manager_app.Admin;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
+
+import ca.gbc.comp3074.mind_manager_app.MainActivity;
+import ca.gbc.comp3074.mind_manager_app.R;
 
 public class AdminHomeActivity extends AppCompatActivity {
 

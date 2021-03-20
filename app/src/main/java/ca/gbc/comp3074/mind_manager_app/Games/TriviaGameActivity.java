@@ -1,4 +1,4 @@
-package ca.gbc.comp3074.mind_manager_app;
+package ca.gbc.comp3074.mind_manager_app.Games;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -13,6 +13,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import ca.gbc.comp3074.mind_manager_app.AboutActivity;
+import ca.gbc.comp3074.mind_manager_app.MainActivity;
+import ca.gbc.comp3074.mind_manager_app.R;
 
 public class TriviaGameActivity extends AppCompatActivity {
 

@@ -127,6 +127,7 @@
                 android:id="@+id/btnIdk"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#B4E2F4"
                 android:text="I DON'T KNOW" />
         </LinearLayout>
 

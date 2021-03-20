@@ -4,92 +4,66 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 //import com.google.android.gms.common.api.Response;
-
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.sql.Connection;
 
-public class  SuggestionsActivity extends AppCompatActivity {
+import ca.gbc.comp3074.mind_manager_app.Games.CrosswordGameActivity;
+import ca.gbc.comp3074.mind_manager_app.Games.TriviaGameActivity;
+import ca.gbc.comp3074.mind_manager_app.Models.Suggestion;
+import ca.gbc.comp3074.mind_manager_app.Models.SuggestionArrayAdapter;
 
-    private TextView lblReadingSuggestion;
-    private String var = "";
-    private RequestQueue mQueue;// = Volley.newRequestQueue();
+public class SuggestionsActivity extends AppCompatActivity {
 
+    ListView listView;
+
+    final Suggestion musicSuggestion = new Suggestion();
+    final Suggestion sportSuggestion = new Suggestion();
+    final Suggestion outDoorSuggestion = new Suggestion();
+    final Suggestion gameSuggestion = new Suggestion();
+    final Suggestion poetrySuggestion = new Suggestion();
+
+    String categoriesTitle[] = {musicSuggestion.getCategoryName(), sportSuggestion.getCategoryName(),
+            outDoorSuggestion.getCategoryName(), gameSuggestion.getCategoryName(), poetrySuggestion.getCategoryName()};
+
+    String suggestionsName[] = {musicSuggestion.getSuggestionName(), sportSuggestion.getSuggestionName(),
+        outDoorSuggestion.getSuggestionName(), gameSuggestion.getSuggestionName(), poetrySuggestion.getSuggestionName()};
+
+    int images[] = {R.drawable.music, R.drawable.sports, R.drawable.outdoors, R.drawable.games, R.drawable.reading};
 
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_suggestions_2);
+        setContentView(R.layout.activity_suggestions);
 
-        ImageButton btnMap = findViewById(R.id.btn_map);
-        btnMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openMap();
-            }
-        });
+        musicSuggestion.setCategoryName("Music");
+        sportSuggestion.setCategoryName("Sport");
+        outDoorSuggestion.setCategoryName("Outdoors");
+        gameSuggestion.setCategoryName("Games");
+        poetrySuggestion.setCategoryName("Reading");
 
-        TextView title = findViewById(R.id.lblTitle3);
+        listView = findViewById(R.id.listView);
+        final ArrayList<Suggestion> suggestions = new ArrayList<>();
+
+        TextView title = findViewById(R.id.lblTitle);
         Intent intent = getIntent();
         final String moodTitle = intent.getStringExtra("Mood");
-
-        /////////////////////////////////////added
-        final String query = intent.getStringExtra("Mood");
-
-        mQueue = Volley.newRequestQueue(this);
-
-        ////////////////////////////////////added
 
         title.setText("Here are your suggestions for being more " + moodTitle);
 
         //Database instance
         final GoogleMySQLConnectionHelper db = new GoogleMySQLConnectionHelper();
         final Connection connect = db.connectionclass();
-        
-        TextView lblMusicCategory = findViewById(R.id.lblMusicCategory);
-        final TextView lblMusicSuggestion = findViewById(R.id.lblMusicSuggestion);
-        Button btnPlayMusic = findViewById(R.id.btnPlayMusic);
-
-        TextView lblGameCategory = findViewById(R.id.lblGameCategory);
-        final TextView lblGameSuggestion = findViewById(R.id.lblGameSuggestion);
-        Button btnPlayGame = findViewById(R.id.btnPlayGame);
-
-        TextView lblReadingCategory = findViewById(R.id.lblReadingCategory);
-        //final TextView lblReadingSuggestion = findViewById(R.id.lblReadingSuggestion);
-        lblReadingSuggestion = findViewById(R.id.lblReadingSuggestion);
-
-        Button btnPlayReading = findViewById(R.id.btnPlayReading);
-
-
-
-        final Suggestion musicSuggestion = new Suggestion();
-        final Suggestion sportSuggestion = new Suggestion();
-        final Suggestion outDoorSuggestion = new Suggestion();
-        final Suggestion gameSuggestion = new Suggestion();
-        final Suggestion poetrySuggestion = new Suggestion();
-        musicSuggestion.setCategoryName("Music");
-        sportSuggestion.setCategoryName("Sport");
-        outDoorSuggestion.setCategoryName("Outdoors");
-        gameSuggestion.setCategoryName("Games");
-        poetrySuggestion.setCategoryName("Reading");
 
         if (moodTitle.equals("Calmer")) {
             musicSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Music").getSuggestionName());
@@ -97,70 +71,50 @@ public class  SuggestionsActivity extends AppCompatActivity {
             outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
             gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
             poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
-
-            lblMusicSuggestion.setText(musicSuggestion.getSuggestionName());
-            lblGameSuggestion.setText(gameSuggestion.getSuggestionName());
-            //lblReadingSuggestion.setText(poetrySuggestion.getSuggestionName());
-            getBooksInfo(moodTitle);
         }
-        if (moodTitle.equals("Energetic"))
-        {
+
+        if (moodTitle.equals("Energetic")) {
             musicSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Music").getSuggestionName());
             sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
             outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
             gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
             poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
-
-            lblMusicSuggestion.setText(musicSuggestion.getSuggestionName());
-            lblGameSuggestion.setText(gameSuggestion.getSuggestionName());
-            lblReadingSuggestion.setText(poetrySuggestion.getSuggestionName());
         }
-        if (moodTitle.equals("Happier"))
-        {
+
+        if (moodTitle.equals("Happier")) {
             musicSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Music").getSuggestionName());
             sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
             outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
             gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
             poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
-
-            lblMusicSuggestion.setText(musicSuggestion.getSuggestionName());
-            lblGameSuggestion.setText(gameSuggestion.getSuggestionName());
-            lblReadingSuggestion.setText(poetrySuggestion.getSuggestionName());
-
         }
-        if (moodTitle.equals("Moody"))
-        {
+
+        if (moodTitle.equals("Moody")) {
             musicSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Music").getSuggestionName());
             sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
             outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
             gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
             poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
-
-            lblMusicSuggestion.setText(musicSuggestion.getSuggestionName());
-            lblGameSuggestion.setText(gameSuggestion.getSuggestionName());
-            lblReadingSuggestion.setText(poetrySuggestion.getSuggestionName());
         }
-        if (moodTitle.equals("Relaxed"))
-        {
+
+        if (moodTitle.equals("Relaxed")) {
             musicSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Music").getSuggestionName());
             sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
             outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
             gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
             poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
-
-            lblMusicSuggestion.setText(musicSuggestion.getSuggestionName());
-            lblGameSuggestion.setText(gameSuggestion.getSuggestionName());
-            lblReadingSuggestion.setText(poetrySuggestion.getSuggestionName());
         }
 
+        //functionality for btnRandom
         ImageButton btnRandom = findViewById(R.id.btnRandom);
         btnRandom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                lblMusicSuggestion.setText("");
-                lblGameSuggestion.setText("");
-                lblReadingSuggestion.setText("");
+                suggestions.remove(musicSuggestion);
+                suggestions.remove(sportSuggestion);
+                suggestions.remove(outDoorSuggestion);
+                suggestions.remove(gameSuggestion);
+                suggestions.remove(poetrySuggestion);
 
                 if (moodTitle.equals("Calmer")) {
                     musicSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Music").getSuggestionName());
@@ -168,73 +122,97 @@ public class  SuggestionsActivity extends AppCompatActivity {
                     outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
                     gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
                     poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
-
-                    lblMusicSuggestion.setText(musicSuggestion.getSuggestionName());
-                    lblGameSuggestion.setText(gameSuggestion.getSuggestionName());
-                    lblReadingSuggestion.setText(poetrySuggestion.getSuggestionName());
                 }
-                if (moodTitle.equals("Energetic"))
-                {
+
+                if (moodTitle.equals("Energetic")) {
                     musicSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Music").getSuggestionName());
                     sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
                     outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
                     gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
                     poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
-
-                    lblMusicSuggestion.setText(musicSuggestion.getSuggestionName());
-                    lblGameSuggestion.setText(gameSuggestion.getSuggestionName());
-                    lblReadingSuggestion.setText(poetrySuggestion.getSuggestionName());
                 }
-                if (moodTitle.equals("Happier"))
-                {
+
+                if (moodTitle.equals("Happier")) {
                     musicSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Music").getSuggestionName());
                     sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
                     outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
                     gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
                     poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
-
-                    lblMusicSuggestion.setText(musicSuggestion.getSuggestionName());
-                    lblGameSuggestion.setText(gameSuggestion.getSuggestionName());
-                    lblReadingSuggestion.setText(poetrySuggestion.getSuggestionName());
                 }
-                if (moodTitle.equals("Moody"))
-                {
+
+                if (moodTitle.equals("Moody")) {
                     musicSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Music").getSuggestionName());
                     sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
                     outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
                     gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
                     poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
-
-                    lblMusicSuggestion.setText(musicSuggestion.getSuggestionName());
-                    lblGameSuggestion.setText(gameSuggestion.getSuggestionName());
-                    lblReadingSuggestion.setText(poetrySuggestion.getSuggestionName());
                 }
-                if (moodTitle.equals("Relaxed"))
-                {
+
+                if (moodTitle.equals("Relaxed")) {
                     musicSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Music").getSuggestionName());
                     sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
                     outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
                     gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
                     poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
-
-                    lblMusicSuggestion.setText(musicSuggestion.getSuggestionName());
-                    lblGameSuggestion.setText(gameSuggestion.getSuggestionName());
-                    lblReadingSuggestion.setText(poetrySuggestion.getSuggestionName());
                 }
             }
         });
 
+        suggestions.add(musicSuggestion);
+        suggestions.add(sportSuggestion);
+        suggestions.add(outDoorSuggestion);
+        suggestions.add(gameSuggestion);
+        suggestions.add(poetrySuggestion);
 
+        SuggestionArrayAdapter adapter = new SuggestionArrayAdapter(this,R.layout.row_layout_suggestions, suggestions, images);
 
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0){
+                    Intent start = new Intent(getApplicationContext(), TriviaGameActivity.class);
+                    startActivity(start);
+                }
+                if (position == 1){
+                    Intent start = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(start);
+                }
+                if (position == 2){
+                    Intent start = new Intent(getApplicationContext(), QuestionsActivity.class);
+                    startActivity(start);
+                }
+                if (position == 3){
+                    Intent start = new Intent(getApplicationContext(), TriviaGameActivity.class);
+                    startActivity(start);
+                }
+                if (position == 4){
+                    Intent start = new Intent(getApplicationContext(), CrosswordGameActivity.class);
+                    startActivity(start);
+                }
+            }
+        });
 
+        ImageButton btnMap = findViewById(R.id.btn_map);
+        btnMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //openMap();
+            }
+        });
 
-
-
+        /*
+    // Open the Map Page
+    private void openMap(){
+        Intent start = new Intent(getApplicationContext(), MapActivity.class);
+        startActivity(start);
     }
+    */
+        /*
+        final String query = intent.getStringExtra("Mood");
+        //mQueue = Volley.newRequestQueue(this);
 
-
-    /////////////////////////////////////////////////added
-    private void getBooksInfo(String query) {
+        private void getBooksInfo(String query) {
 
         // below is the url for getting data from API in json format.
         String url = "https://www.googleapis.com/books/v1/volumes?q=" + query;
@@ -243,26 +221,26 @@ public class  SuggestionsActivity extends AppCompatActivity {
         // are passing url, get method and getting json object. .
         JsonObjectRequest booksObjrequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
 
-            @Override
-            public void onResponse(JSONObject response) {
-                //   progressBar.setVisibility(View.GONE);
-                // inside on response method we are extracting all our json data.
-                try {
-                    JSONArray itemsArray = response.getJSONArray("items");
-                    //  for(int i = 0;i < itemsArray.length();i++) {
-                    JSONObject itemsObj = itemsArray.getJSONObject(0);
-                    String title = itemsObj.getString("title");
-                    BookInfo bookInfo = new BookInfo(title);
-                    lblReadingSuggestion.append(title);
+        @Override
+        public void onResponse(JSONObject response) {
+            //   progressBar.setVisibility(View.GONE);
+            // inside on response method we are extracting all our json data.
+            try {
+                JSONArray itemsArray = response.getJSONArray("items");
+                //  for(int i = 0;i < itemsArray.length();i++) {
+                JSONObject itemsObj = itemsArray.getJSONObject(0);
+                String title = itemsObj.getString("title");
+                BookInfo bookInfo = new BookInfo(title);
+                //lblReadingSuggestion.append(title);
 
-                    //  }
-                    // var[0] = bookInfo.getTitle();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    // displaying a toast message when we get any error from API
-                    Toast.makeText(SuggestionsActivity.this, "No Data Found" + e, Toast.LENGTH_SHORT).show();
-                }
+                //  }
+                // var[0] = bookInfo.getTitle();
+            } catch (JSONException e) {
+                e.printStackTrace();
+                // displaying a toast message when we get any error from API
+                Toast.makeText(SuggestionsActivity.this, "No Data Found" + e, Toast.LENGTH_SHORT).show();
             }
+        }
 
         }, new Response.ErrorListener() {
             @Override
@@ -272,17 +250,12 @@ public class  SuggestionsActivity extends AppCompatActivity {
             }
         });
 
-        mQueue.add(booksObjrequest);
+        //mQueue.add(booksObjrequest);
         // at last we are adding our json object
         // request in our request queue.
     }
+    */
 
 
-    //////////////////////////////////////////////////////addded
-
-    // Open the Map Page
-    private void openMap(){
-        Intent start = new Intent(getApplicationContext(), MapActivity.class);
-        startActivity(start);
     }
 }

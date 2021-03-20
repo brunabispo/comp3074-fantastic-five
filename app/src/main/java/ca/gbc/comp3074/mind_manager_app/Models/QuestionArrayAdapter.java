@@ -1,4 +1,4 @@
-package ca.gbc.comp3074.mind_manager_app;
+package ca.gbc.comp3074.mind_manager_app.Models;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -13,6 +13,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import java.util.List;
+
+import ca.gbc.comp3074.mind_manager_app.Admin.AdminAnswersActivity;
+import ca.gbc.comp3074.mind_manager_app.R;
 
 public class QuestionArrayAdapter extends ArrayAdapter<Question> {
 
