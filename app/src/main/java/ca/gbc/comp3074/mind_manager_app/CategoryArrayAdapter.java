@@ -38,7 +38,7 @@ public class CategoryArrayAdapter extends ArrayAdapter<Suggestion> {
         TextView category = rowView.findViewById(R.id.lblCategories);
         category.setText(values.get(position).getCategoryName());
 
-        ImageButton btnView = rowView.findViewById(R.id.btn_view);
+        ImageButton btnView = rowView.findViewById(R.id.btn_edit);
         btnView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

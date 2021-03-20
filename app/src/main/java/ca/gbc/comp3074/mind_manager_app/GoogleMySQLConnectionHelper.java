@@ -113,7 +113,7 @@ public class GoogleMySQLConnectionHelper {
 
     // code to get all users in a list view
     public ArrayList<Question> getAllQuestions(Connection connect) {
-        ArrayList<Question> questions = new ArrayList<Question>();
+        ArrayList<Question> questions = new ArrayList<>();
         try {
             if (connect != null) {
                 String query = "SELECT  * FROM questions";

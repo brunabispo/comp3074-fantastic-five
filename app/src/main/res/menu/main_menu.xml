@@ -11,6 +11,5 @@
     <item
         android:id="@+id/menu_main"
         android:icon="@android:drawable/ic_media_play"
-        android:title="Main Login"
-        />
+        android:title="Login" />
 </menu>

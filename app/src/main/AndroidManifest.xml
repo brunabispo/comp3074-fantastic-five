@@ -24,7 +24,6 @@
         <activity android:name=".AdminCurrentUsersActivity" android:parentActivityName=".AdminHomeActivity"/>
         <activity android:name=".AdminQuestionnaireActivity" android:parentActivityName=".AdminHomeActivity"/>
         <activity android:name=".AdminAnswersActivity" android:parentActivityName=".AdminQuestionnaireActivity"/>
-        <activity android:name=".AdminMoodOptionsActivity" android:parentActivityName=".AdminHomeActivity"/>
         <activity android:name=".AdminCategoriesActivity" android:parentActivityName=".AdminHomeActivity"/>
         <activity android:name=".CrosswordGameActivity" android:parentActivityName=".SuggestionsActivity"/>
         <activity android:name=".WelcomeActivity" android:parentActivityName=".SuggestionsActivity"/>

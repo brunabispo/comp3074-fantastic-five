@@ -2,7 +2,7 @@ package ca.gbc.comp3074.mind_manager_app;
 
 public class Answer{
 
-    private int _id;
+    private int id;
     private int question_id;
     private String text;
     private int boredRating;
@@ -12,7 +12,7 @@ public class Answer{
     private int tiredRating;
 
     public Answer(int id, int question_id, String text, int boredRating, int energeticRating, int happyRating, int sadRating, int tiredRating) {
-        this._id = id;
+        this.id = id;
         this.question_id = question_id;
         this.text = text;
         this.boredRating = boredRating;
@@ -22,12 +22,20 @@ public class Answer{
         this.tiredRating = tiredRating;
     }
 
-    public int getID() {
-        return _id;
+    public int getId() {
+        return id;
     }
 
-    public void setID(int _id) {
-        this._id = _id;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getQuestion_id() {
+        return question_id;
+    }
+
+    public void setQuestion_id(int question_id) {
+        this.question_id = question_id;
     }
 
     public String getText() {
@@ -40,14 +48,6 @@ public class Answer{
 
     public int getBoredRating() {
         return boredRating;
-    }
-
-    public int getQuestion_id() {
-        return question_id;
-    }
-
-    public void setQuestion_id(int question_id) {
-        this.question_id = question_id;
     }
 
     public void setBoredRating(int boredRating) {
@@ -84,5 +84,19 @@ public class Answer{
 
     public void setTiredRating(int tiredRating) {
         this.tiredRating = tiredRating;
+    }
+
+    @Override
+    public String toString() {
+        return "Answer{" +
+                "id=" + id +
+                ", question_id=" + question_id +
+                ", text='" + text + '\'' +
+                ", boredRating=" + boredRating +
+                ", energeticRating=" + energeticRating +
+                ", happyRating=" + happyRating +
+                ", sadRating=" + sadRating +
+                ", tiredRating=" + tiredRating +
+                '}';
     }
 }

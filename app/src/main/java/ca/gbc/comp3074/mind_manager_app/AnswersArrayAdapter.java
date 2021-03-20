@@ -8,19 +8,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import java.util.List;
 
-public class QuestionArrayAdapter extends ArrayAdapter<Question> {
+public class AnswersArrayAdapter extends ArrayAdapter<Answer> {
 
     private final Context context;
-    private final List<Question> values;
+    private final List<Answer> values;
+    //private int ID;
 
-    public QuestionArrayAdapter(@NonNull Context context, @NonNull List<Question> objects) {
-        super(context, R.layout.row_layout_questions, objects);
+    public AnswersArrayAdapter(@NonNull Context context, @NonNull List<Answer> objects) {
+        super(context, R.layout.row_layout_answers, objects);
         this.context = context;
         this.values = objects;
     }
@@ -33,22 +33,33 @@ public class QuestionArrayAdapter extends ArrayAdapter<Question> {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
 
-        @SuppressLint("ViewHolder") View rowView = inflater.inflate(R.layout.row_layout_questions, parent, false);
+        @SuppressLint("ViewHolder") View rowView = inflater.inflate(R.layout.row_layout_answers, parent, false);
 
-        final int ID = values.get(position).getID();
+        TextView answer = rowView.findViewById(R.id.lblAnswer);
+        answer.setText(" "+values.get(position).getText());
 
-        TextView question = rowView.findViewById(R.id.lblQuestions);
-        question.setText(values.get(position).getQuestionText());
+        TextView bored_rating = rowView.findViewById(R.id.lblBored);
+        bored_rating.setText(values.get(position).getBoredRating()+"");
+
+        TextView energetic_rating = rowView.findViewById(R.id.lblEnergetic);
+        energetic_rating.setText(values.get(position).getEnergeticRating()+"");
+
+        TextView happy_rating = rowView.findViewById(R.id.lblHappy);
+        happy_rating.setText(values.get(position).getHappyRating()+"");
+
+        TextView sad_rating = rowView.findViewById(R.id.lblSad);
+        sad_rating.setText(values.get(position).getSadRating()+"");
+
+        TextView tired_rating = rowView.findViewById(R.id.lblTired);
+        tired_rating.setText(values.get(position).getTiredRating()+"");
 
         ImageButton btnView = rowView.findViewById(R.id.btn_edit);
         btnView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openAnswers(ID);
+                //openAnswers(ID);
             }
         });
-
-        ImageView icon2 = rowView.findViewById(R.id.btn_delete);
 
         return rowView;
     }

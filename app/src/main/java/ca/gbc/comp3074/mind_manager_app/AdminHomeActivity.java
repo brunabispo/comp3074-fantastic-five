@@ -14,7 +14,6 @@ public class AdminHomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin_home);
 
         Button btnCurrentUsers = findViewById(R.id.btnCurrentUsers);
-        Button btnMoodOptions = findViewById(R.id.btnMoodOptions);
         Button btnQuestionnaire = findViewById(R.id.btnQuestionnaire);
         Button btnCategories = findViewById(R.id.btnCategories);
         Button btnLogOut = findViewById(R.id.btnLogoutAdminHome);
@@ -23,13 +22,6 @@ public class AdminHomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openCurrentUsers();
-            }
-        });
-
-        btnMoodOptions.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openMoodOptions();
             }
         });
 
@@ -57,11 +49,6 @@ public class AdminHomeActivity extends AppCompatActivity {
 
     private void openCurrentUsers(){
         Intent start = new Intent(getApplicationContext(), AdminCurrentUsersActivity.class);
-        startActivity(start);
-    }
-
-    private void openMoodOptions(){
-        Intent start = new Intent(getApplicationContext(), AdminMoodOptionsActivity.class);
         startActivity(start);
     }
 
