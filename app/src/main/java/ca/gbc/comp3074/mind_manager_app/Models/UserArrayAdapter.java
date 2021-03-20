@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import java.sql.Connection;
 import java.util.List;
 
+import ca.gbc.comp3074.mind_manager_app.GoogleMySQLConnectionHelper;
 import ca.gbc.comp3074.mind_manager_app.R;
 
 public class UserArrayAdapter extends ArrayAdapter<User> {

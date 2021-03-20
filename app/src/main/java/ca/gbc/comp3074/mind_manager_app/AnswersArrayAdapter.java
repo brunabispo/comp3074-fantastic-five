@@ -13,6 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import java.util.List;
 
+import ca.gbc.comp3074.mind_manager_app.Admin.AdminAnswersActivity;
+import ca.gbc.comp3074.mind_manager_app.Models.Answer;
+
 public class AnswersArrayAdapter extends ArrayAdapter<Answer> {
 
     private final Context context;
