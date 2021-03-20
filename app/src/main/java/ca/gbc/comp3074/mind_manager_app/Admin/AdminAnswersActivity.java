@@ -1,13 +1,17 @@
 package ca.gbc.comp3074.mind_manager_app.Admin;
 
+import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import java.sql.Connection;
 import java.util.List;
+
+
 
 import ca.gbc.comp3074.mind_manager_app.GoogleMySQLConnectionHelper;
 import ca.gbc.comp3074.mind_manager_app.MainActivity;
@@ -15,7 +19,9 @@ import ca.gbc.comp3074.mind_manager_app.Models.Answer;
 import ca.gbc.comp3074.mind_manager_app.Models.Question;
 import ca.gbc.comp3074.mind_manager_app.R;
 
-public class AdminAnswersActivity extends AppCompatActivity {
+public class AdminAnswersActivity extends ListActivity {
+    List<Answer> answers;
+    TextView lblError;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +34,9 @@ public class AdminAnswersActivity extends AppCompatActivity {
         final Connection connect = db.connectionclass();
 
         Button btnEditQuestionOne = findViewById(R.id.btnAdminEditQuestionOne);
-        Button btnEditAnswerOne = findViewById(R.id.btnAdminEditAnswerOne);
-        Button btnEditAnswerTwo = findViewById(R.id.btnAdminEditAnswerTwo);
-        Button btnEditAnswerThree = findViewById(R.id.btnAdminEditAnswerThree);
+        //Button btnEditAnswerOne = findViewById(R.id.btnAdminEditAnswerOne);
+        //Button btnEditAnswerTwo = findViewById(R.id.btnAdminEditAnswerTwo);
+        //Button btnEditAnswerThree = findViewById(R.id.btnAdminEditAnswerThree);
         Button btnDeleteQuestionOne = findViewById(R.id.btnAdminDeleteQuestionOne);
 
         TextView title = findViewById(R.id.lbl_questionNum);
@@ -42,17 +48,8 @@ public class AdminAnswersActivity extends AppCompatActivity {
         question = db.getQuestionByID(connect, questionID);
         text.setText(question.getQuestionText());
 
-        List<Answer> answers = question.getAnswers();
-
-        TextView answer1 = findViewById(R.id.lbl_answer1);
-        answer1.setText(answers.get(0).getText());
-
-        TextView answer2 = findViewById(R.id.lbl_answer2);
-        answer2.setText(answers.get(1).getText());
-
-        TextView answer3 = findViewById(R.id.lbl_answer3);
-        answer3.setText(answers.get(2).getText());
-
+        List<Answer> answers = db.getAnswers(connect, questionID);
+        printArray(answers);
         Button btnLogOut = findViewById(R.id.btnLogoutAdminAnswers);
         btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +57,22 @@ public class AdminAnswersActivity extends AppCompatActivity {
                 openLogOut();
             }
         });
+    }
+
+
+    //print array of all users
+    private void printArray(List<Answer> answers){
+        StringBuilder sb = new StringBuilder();
+        int size = answers.size();
+        boolean appendSeparator = false;
+        for(int y=0; y < size; y++){
+            if (appendSeparator)
+                sb.append(','); // a comma
+            appendSeparator = true;
+            sb.append(answers.get(y));
+        }
+        ArrayAdapter<Answer> myAdapter = new AnswersArrayAdapter(this, answers);
+        setListAdapter(myAdapter);
     }
 
     private void openLogOut(){

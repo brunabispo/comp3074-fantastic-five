@@ -14,7 +14,7 @@
         android:textSize="18sp" />
 
     <ImageButton
-        android:id="@+id/btn_view"
+        android:id="@+id/btn_edit"
         android:layout_width="70dp"
         android:layout_height="24dp"
         android:layout_weight="1"

@@ -1,4 +1,4 @@
-package ca.gbc.comp3074.mind_manager_app.Models;
+package ca.gbc.comp3074.mind_manager_app;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -8,23 +8,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import java.util.List;
 
-import ca.gbc.comp3074.mind_manager_app.Admin.AdminAnswersActivity;
-import ca.gbc.comp3074.mind_manager_app.Models.Suggestion;
-import ca.gbc.comp3074.mind_manager_app.R;
-
-public class CategoryArrayAdapter extends ArrayAdapter<Suggestion> {
+public class AnswersArrayAdapter extends ArrayAdapter<Answer> {
 
     private final Context context;
-    private final List<Suggestion> values;
+    private final List<Answer> values;
+    //private int ID;
 
-    public CategoryArrayAdapter(@NonNull Context context, @NonNull List<Suggestion> objects) {
-        super(context, R.layout.row_layout_categories, objects);
+    public AnswersArrayAdapter(@NonNull Context context, @NonNull List<Answer> objects) {
+        super(context, R.layout.row_layout_answers, objects);
         this.context = context;
         this.values = objects;
     }
@@ -37,10 +33,25 @@ public class CategoryArrayAdapter extends ArrayAdapter<Suggestion> {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
 
-        @SuppressLint("ViewHolder") View rowView = inflater.inflate(R.layout.row_layout_categories, parent, false);
+        @SuppressLint("ViewHolder") View rowView = inflater.inflate(R.layout.row_layout_answers, parent, false);
 
-        TextView category = rowView.findViewById(R.id.lblCategories);
-        category.setText(values.get(position).getCategoryName());
+        TextView answer = rowView.findViewById(R.id.lblAnswer);
+        answer.setText(" "+values.get(position).getText());
+
+        TextView bored_rating = rowView.findViewById(R.id.lblBored);
+        bored_rating.setText(values.get(position).getBoredRating()+"");
+
+        TextView energetic_rating = rowView.findViewById(R.id.lblEnergetic);
+        energetic_rating.setText(values.get(position).getEnergeticRating()+"");
+
+        TextView happy_rating = rowView.findViewById(R.id.lblHappy);
+        happy_rating.setText(values.get(position).getHappyRating()+"");
+
+        TextView sad_rating = rowView.findViewById(R.id.lblSad);
+        sad_rating.setText(values.get(position).getSadRating()+"");
+
+        TextView tired_rating = rowView.findViewById(R.id.lblTired);
+        tired_rating.setText(values.get(position).getTiredRating()+"");
 
         ImageButton btnView = rowView.findViewById(R.id.btn_edit);
         btnView.setOnClickListener(new View.OnClickListener() {
@@ -49,8 +60,6 @@ public class CategoryArrayAdapter extends ArrayAdapter<Suggestion> {
                 //openAnswers(ID);
             }
         });
-
-        ImageView icon2 = rowView.findViewById(R.id.btn_delete);
 
         return rowView;
     }

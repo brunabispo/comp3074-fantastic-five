@@ -38,14 +38,12 @@ public class QuestionArrayAdapter extends ArrayAdapter<Question> {
 
         @SuppressLint("ViewHolder") View rowView = inflater.inflate(R.layout.row_layout_questions, parent, false);
 
-        TextView id = rowView.findViewById(R.id.lblID);
         final int ID = values.get(position).getID();
-        id.setText(ID+"");
 
         TextView question = rowView.findViewById(R.id.lblQuestions);
         question.setText(values.get(position).getQuestionText());
 
-        ImageButton btnView = rowView.findViewById(R.id.btn_view);
+        ImageButton btnView = rowView.findViewById(R.id.btn_edit);
         btnView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
