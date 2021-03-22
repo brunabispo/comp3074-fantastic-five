@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:fillViewport="true"
+    android:layout_height="match_parent"
     android:background="@drawable/ic_background"
+    android:fillViewport="true"
     android:padding="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         tools:context=".WelcomeActivity">
 
@@ -72,6 +72,7 @@
                 android:layout_height="wrap_content"
                 android:text="I WANT TO FEEL MORE 'MOODY'" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="71dp"
@@ -83,6 +84,7 @@
                 android:layout_height="wrap_content"
                 android:text="I WANT TO FEEL HAPPIER" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="71dp"
@@ -94,6 +96,7 @@
                 android:layout_height="wrap_content"
                 android:text="I WANT TO FEEL MORE ENERGETIC" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="71dp"
@@ -135,6 +138,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"/>
+            android:orientation="horizontal" />
     </LinearLayout>
-    </ScrollView>
+</ScrollView>

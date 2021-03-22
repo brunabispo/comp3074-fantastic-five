@@ -31,7 +31,7 @@ public class AdminQuestionnaireActivity extends ListActivity {
         final Connection connect = db.connectionclass();
 
         printArray(connect, db);
-
+/*
         Button btnAddNewQuestion = findViewById(R.id.btnAddQuestion);
         btnAddNewQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,7 +39,7 @@ public class AdminQuestionnaireActivity extends ListActivity {
                 //addNewQuestion(db);
             }
         });
-
+*/
         Button btnLogOut = findViewById(R.id.btnLogoutAdminQuestionnaire);
         btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
