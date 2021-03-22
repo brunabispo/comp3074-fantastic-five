@@ -1,6 +1,7 @@
 package ca.gbc.comp3074.mind_manager_app.Models;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import java.sql.Connection;
 import java.util.List;
-
+import ca.gbc.comp3074.mind_manager_app.Admin.AdminCurrentUsersActivity;
 import ca.gbc.comp3074.mind_manager_app.GoogleMySQLConnectionHelper;
 import ca.gbc.comp3074.mind_manager_app.R;
 
@@ -35,9 +36,7 @@ public class UserArrayAdapter extends ArrayAdapter<User> {
 
         View rowView = inflater.inflate(R.layout.row_layout_users, parent, false);
 
-        TextView id = rowView.findViewById(R.id.lblID);
         final int ID = values.get(position).getID();
-        id.setText(ID+"");
 
         TextView role = rowView.findViewById(R.id.lblRole);
         role.setText(values.get(position).getRole());
@@ -52,14 +51,19 @@ public class UserArrayAdapter extends ArrayAdapter<User> {
         btnView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //deleteUser(connect, ID, db);
+                deleteUsers(ID);
             }
         });
 
         return rowView;
     }
 
-    private void deleteUser(Connection connect, int id, GoogleMySQLConnectionHelper db){
+    private void deleteUsers(int id){
+        //Database instance
+        final GoogleMySQLConnectionHelper db = new GoogleMySQLConnectionHelper();
+        final Connection connect = db.connectionclass();
         db.deleteUser(connect, id);
+        Intent start = new Intent(context.getApplicationContext(), AdminCurrentUsersActivity.class);
+        context.startActivity(start);
     }
 }

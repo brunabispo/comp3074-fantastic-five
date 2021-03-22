@@ -5,15 +5,6 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/lblID"
-        android:layout_width="57dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="#"
-        android:textColor="@color/cardview_dark_background"
-        android:textSize="18sp" />
-
-    <TextView
         android:id="@+id/lblRole"
         android:layout_width="92dp"
         android:layout_height="wrap_content"

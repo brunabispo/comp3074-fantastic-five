@@ -19,7 +19,8 @@
             android:layout_height="wrap_content"
             android:text="Mind Manager app"
             android:textColor="#FF9800"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/lblTitle"
