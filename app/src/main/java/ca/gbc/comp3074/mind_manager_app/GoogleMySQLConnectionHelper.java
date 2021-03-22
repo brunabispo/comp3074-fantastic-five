@@ -7,7 +7,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-
 import ca.gbc.comp3074.mind_manager_app.Models.Answer;
 import ca.gbc.comp3074.mind_manager_app.Models.Question;
 import ca.gbc.comp3074.mind_manager_app.Models.Suggestion;
@@ -132,6 +131,21 @@ public class GoogleMySQLConnectionHelper {
             Log.e("Error: ", exception.getMessage());
         }
         return questions;
+    }
+
+    // Deleting single question
+    public void deleteQuestion(Connection connect, int questionID) {
+        try {
+            if (connect != null) {
+                String query1 = "DELETE FROM answers WHERE question_id = " + questionID;
+                String query2 = "DELETE FROM questions WHERE id = " + questionID;
+                Statement st = connect.createStatement();
+                st.executeUpdate(query1);
+                st.executeUpdate(query2);
+            }
+        } catch (Exception exception) {
+            Log.e("Error: ", exception.getMessage());
+        }
     }
 
     //get answers for question by questionId

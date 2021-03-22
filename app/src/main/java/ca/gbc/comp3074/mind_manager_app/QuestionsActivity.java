@@ -8,7 +8,6 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import java.sql.Connection;
-
 import ca.gbc.comp3074.mind_manager_app.Models.Question;
 
 public class QuestionsActivity extends AppCompatActivity {
