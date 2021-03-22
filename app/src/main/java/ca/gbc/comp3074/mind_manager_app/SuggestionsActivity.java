@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.RequestQueue;
+
 import java.util.ArrayList;
 
 //import com.google.android.gms.common.api.Response;
@@ -19,12 +21,16 @@ import java.sql.Connection;
 
 import ca.gbc.comp3074.mind_manager_app.Games.CrosswordGameActivity;
 import ca.gbc.comp3074.mind_manager_app.Games.TriviaGameActivity;
+import ca.gbc.comp3074.mind_manager_app.Models.BookDetails;
+import ca.gbc.comp3074.mind_manager_app.Models.BookInfo;
 import ca.gbc.comp3074.mind_manager_app.Models.Suggestion;
 import ca.gbc.comp3074.mind_manager_app.Models.SuggestionArrayAdapter;
 
 public class SuggestionsActivity extends AppCompatActivity {
 
     ListView listView;
+    private RequestQueue mRequestQueue; ///////////added
+    private ArrayList<BookInfo> bookInfoArrayList; /////////////added
 
     final Suggestion musicSuggestion = new Suggestion();
     final Suggestion sportSuggestion = new Suggestion();
@@ -45,7 +51,6 @@ public class SuggestionsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suggestions);
-
         musicSuggestion.setCategoryName("Music");
         sportSuggestion.setCategoryName("Sport");
         outDoorSuggestion.setCategoryName("Outdoors");
@@ -187,7 +192,7 @@ public class SuggestionsActivity extends AppCompatActivity {
                     startActivity(start);
                 }
                 if (position == 4){
-                    Intent start = new Intent(getApplicationContext(), CrosswordGameActivity.class);
+                    Intent start = new Intent(getApplicationContext(), BookDisplayActivity.class);
                     startActivity(start);
                 }
             }
@@ -208,54 +213,9 @@ public class SuggestionsActivity extends AppCompatActivity {
         startActivity(start);
     }
     */
-        /*
-        final String query = intent.getStringExtra("Mood");
-        //mQueue = Volley.newRequestQueue(this);
-
-        private void getBooksInfo(String query) {
-
-        // below is the url for getting data from API in json format.
-        String url = "https://www.googleapis.com/books/v1/volumes?q=" + query;
-
-        // below line is use to make json object request inside that we
-        // are passing url, get method and getting json object. .
-        JsonObjectRequest booksObjrequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-
-        @Override
-        public void onResponse(JSONObject response) {
-            //   progressBar.setVisibility(View.GONE);
-            // inside on response method we are extracting all our json data.
-            try {
-                JSONArray itemsArray = response.getJSONArray("items");
-                //  for(int i = 0;i < itemsArray.length();i++) {
-                JSONObject itemsObj = itemsArray.getJSONObject(0);
-                String title = itemsObj.getString("title");
-                BookInfo bookInfo = new BookInfo(title);
-                //lblReadingSuggestion.append(title);
-
-                //  }
-                // var[0] = bookInfo.getTitle();
-            } catch (JSONException e) {
-                e.printStackTrace();
-                // displaying a toast message when we get any error from API
-                Toast.makeText(SuggestionsActivity.this, "No Data Found" + e, Toast.LENGTH_SHORT).show();
-            }
-        }
-
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                // also displaying error message in toast.
-                Toast.makeText(SuggestionsActivity.this, "Error found is " + error, Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        //mQueue.add(booksObjrequest);
-        // at last we are adding our json object
-        // request in our request queue.
-    }
-    */
 
 
     }
+
+
 }

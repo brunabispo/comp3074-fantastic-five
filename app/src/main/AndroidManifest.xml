@@ -21,6 +21,10 @@
         <activity android:name=".SuggestionsActivity" android:parentActivityName=".WelcomeActivity"/>
         <activity android:name=".Admin.AdminHomeActivity"/>
         <activity android:name=".Games.TriviaGameActivity"/>
+        <activity android:name=".BookDisplayActivity"/>
+        <activity android:name=".Models.BookDetails"/>
+
+
         <activity android:name=".Admin.AdminCurrentUsersActivity" android:parentActivityName=".Admin.AdminHomeActivity"/>
         <activity android:name=".Admin.AdminQuestionnaireActivity" android:parentActivityName=".Admin.AdminHomeActivity"/>
         <activity android:name=".Admin.AdminAnswersActivity" android:parentActivityName=".Admin.AdminQuestionnaireActivity"/>
