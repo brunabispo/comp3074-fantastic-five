@@ -1,5 +1,6 @@
 package ca.gbc.comp3074.mind_manager_app.Models;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -34,7 +35,7 @@ public class UserArrayAdapter extends ArrayAdapter<User> {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
 
-        View rowView = inflater.inflate(R.layout.row_layout_users, parent, false);
+        @SuppressLint("ViewHolder") View rowView = inflater.inflate(R.layout.row_layout_users, parent, false);
 
         final int ID = values.get(position).getID();
 
@@ -47,8 +48,8 @@ public class UserArrayAdapter extends ArrayAdapter<User> {
         TextView firstNameId = rowView.findViewById(R.id.lblFirstName);
         firstNameId.setText(this.values.get(position).getFirstName());
 
-        ImageButton btnView = rowView.findViewById(R.id.btn_delete);
-        btnView.setOnClickListener(new View.OnClickListener() {
+        ImageButton btnDelete = rowView.findViewById(R.id.btn_delete);
+        btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 deleteUsers(ID);

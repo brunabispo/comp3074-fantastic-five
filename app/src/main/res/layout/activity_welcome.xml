@@ -10,7 +10,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".WelcomeActivity">
 
@@ -134,10 +134,5 @@
                 android:background="#B4E2F4"
                 android:text="I DON'T KNOW" />
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal" />
     </LinearLayout>
 </ScrollView>

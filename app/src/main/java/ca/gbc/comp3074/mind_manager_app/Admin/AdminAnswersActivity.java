@@ -7,11 +7,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
-import androidx.appcompat.app.AppCompatActivity;
 import java.sql.Connection;
 import java.util.List;
-
-
 import ca.gbc.comp3074.mind_manager_app.AnswersArrayAdapter;
 import ca.gbc.comp3074.mind_manager_app.GoogleMySQLConnectionHelper;
 import ca.gbc.comp3074.mind_manager_app.MainActivity;

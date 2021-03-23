@@ -9,9 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import java.util.List;
-
 import ca.gbc.comp3074.mind_manager_app.R;
 
 public class SuggestionArrayAdapter extends ArrayAdapter<Suggestion> {

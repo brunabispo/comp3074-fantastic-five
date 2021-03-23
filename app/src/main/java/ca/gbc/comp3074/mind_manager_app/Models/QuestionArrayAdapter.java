@@ -12,9 +12,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import java.util.List;
 
+import java.sql.Connection;
+import java.util.List;
 import ca.gbc.comp3074.mind_manager_app.Admin.AdminAnswersActivity;
+import ca.gbc.comp3074.mind_manager_app.Admin.AdminCurrentUsersActivity;
+import ca.gbc.comp3074.mind_manager_app.Admin.AdminQuestionnaireActivity;
+import ca.gbc.comp3074.mind_manager_app.GoogleMySQLConnectionHelper;
 import ca.gbc.comp3074.mind_manager_app.R;
 
 public class QuestionArrayAdapter extends ArrayAdapter<Question> {
@@ -51,7 +55,13 @@ public class QuestionArrayAdapter extends ArrayAdapter<Question> {
             }
         });
 
-        ImageView icon2 = rowView.findViewById(R.id.btn_delete);
+        ImageButton btnDelete = rowView.findViewById(R.id.btn_delete);
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteUsers(ID);
+            }
+        });
 
         return rowView;
     }
@@ -59,6 +69,15 @@ public class QuestionArrayAdapter extends ArrayAdapter<Question> {
     private void openAnswers(int id){
         Intent start = new Intent(context.getApplicationContext(), AdminAnswersActivity.class);
         start.putExtra("id", id);
+        context.startActivity(start);
+    }
+
+    private void deleteUsers(int id){
+        //Database instance
+        final GoogleMySQLConnectionHelper db = new GoogleMySQLConnectionHelper();
+        final Connection connect = db.connectionclass();
+        db.deleteQuestion(connect, id);
+        Intent start = new Intent(context.getApplicationContext(), AdminQuestionnaireActivity.class);
         context.startActivity(start);
     }
 }

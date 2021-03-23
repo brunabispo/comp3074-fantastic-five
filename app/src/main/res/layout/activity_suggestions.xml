@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:fillViewport="true"
+    android:layout_height="match_parent"
     android:background="@drawable/ic_background"
+    android:fillViewport="true"
     android:padding="16dp">
 
     <LinearLayout
@@ -20,7 +20,8 @@
             android:layout_height="wrap_content"
             android:text="Mind Manager app"
             android:textColor="#FF9800"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/lblTitle"
@@ -32,49 +33,50 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="71dp"
             android:orientation="horizontal">
 
             <ImageButton
                 android:id="@+id/imageButton3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="#C5DDE8"
-                android:textAlignment="textStart"
-                android:tint="#1DB5C8"
-                android:src="@drawable/ic_filter"
                 android:layout_marginEnd="16dp"
+                android:layout_weight="1"
+                android:background="#C5DDE8"
                 android:contentDescription="Filter"
-                android:layout_weight="1"/>
+                android:src="@drawable/ic_filter"
+                android:textAlignment="textStart"
+                android:tint="#1DB5C8" />
 
             <ImageButton
                 android:id="@+id/btn_map"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:background="#C5DDE8"
-                android:textAlignment="center"
-                android:tint="#1DB5C8"
-                android:src="@drawable/ic_location"
                 android:contentDescription="Location"
-                android:layout_weight="1"/>
+                android:src="@drawable/ic_location"
+                android:textAlignment="center"
+                android:tint="#1DB5C8" />
 
             <ImageButton
                 android:id="@+id/btnRandom"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="#C5DDE8"
-                android:textAlignment="viewEnd"
-                android:tint="#1DB5C8"
-                android:src="@drawable/ic_randomize"
                 android:layout_marginStart="16dp"
+                android:layout_weight="1"
+                android:background="#C5DDE8"
                 android:contentDescription="Random"
-                android:layout_weight="1"/>
+                android:src="@drawable/ic_randomize"
+                android:textAlignment="viewEnd"
+                android:tint="#1DB5C8" />
+
         </LinearLayout>
 
         <ListView
             android:id="@+id/listView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             tools:ignore="NestedScrolling" />
     </LinearLayout>
 </ScrollView>

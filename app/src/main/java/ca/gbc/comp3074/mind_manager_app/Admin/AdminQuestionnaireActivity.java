@@ -65,34 +65,6 @@ public class AdminQuestionnaireActivity extends ListActivity {
         setListAdapter(myAdapter);
     }
 
-    /*
-    //function add User
-    private void addNewQuestion(GoogleMySQLConnectionHelper db){
-        String role = ((EditText) findViewById(R.id.edittxt_role)).getText().toString();
-        String username = ((EditText) findViewById(R.id.edittxt_username)).getText().toString();
-        String firstName = ((EditText) findViewById(R.id.edittxt_firstName)).getText().toString();
-        //Execute the query, find if username input is existing in data base
-        User userExist = db.getUser(username);
-
-        if(userExist != null){
-            lblError.setText("This user name is already exist");
-        }else {
-            lblError.setText("");
-            //Insert new user
-            User user = new User(role, username, firstName, "123_Ben");
-            db.addUser(user);
-            printArray(db);
-        }
-    }
-
-    //delete Question
-    protected void onListItemClick(ListView l, View v, int position, long id, GoogleMySQLConnectionHelper db) {
-        super.onListItemClick(l, v, position, id);
-        db.deleteQuestion(position);
-        printArray(db);
-    }
-    */
-
     private void openLogOut(){
         Intent start = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(start);
