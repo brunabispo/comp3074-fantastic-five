@@ -38,7 +38,7 @@ public class SuggestionArrayAdapter extends ArrayAdapter<Suggestion> {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View row = inflater.inflate(this.rowLayout, parent, false);
 
-        ImageView images = row.findViewById(R.id.catgoryImage);
+        ImageView images = row.findViewById(R.id.categoryImage);
         TextView cTitles = row.findViewById(R.id.lblCategory);
         TextView sNames = row.findViewById(R.id.lblSuggestion);
 
