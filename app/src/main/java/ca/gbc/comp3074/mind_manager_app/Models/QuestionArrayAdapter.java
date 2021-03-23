@@ -8,15 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import java.sql.Connection;
 import java.util.List;
 import ca.gbc.comp3074.mind_manager_app.Admin.AdminAnswersActivity;
-import ca.gbc.comp3074.mind_manager_app.Admin.AdminCurrentUsersActivity;
 import ca.gbc.comp3074.mind_manager_app.Admin.AdminQuestionnaireActivity;
 import ca.gbc.comp3074.mind_manager_app.GoogleMySQLConnectionHelper;
 import ca.gbc.comp3074.mind_manager_app.R;

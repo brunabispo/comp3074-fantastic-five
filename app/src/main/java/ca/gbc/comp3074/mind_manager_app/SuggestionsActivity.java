@@ -8,17 +8,11 @@ import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.android.volley.RequestQueue;
-
 import java.util.ArrayList;
-
 //import com.google.android.gms.common.api.Response;
-
 import java.sql.Connection;
-
 import ca.gbc.comp3074.mind_manager_app.Games.CrosswordGameActivity;
 import ca.gbc.comp3074.mind_manager_app.Games.TriviaGameActivity;
 import ca.gbc.comp3074.mind_manager_app.Models.BookDetails;
@@ -197,7 +191,6 @@ public class SuggestionsActivity extends AppCompatActivity {
                 }
             }
         });
-
         ImageButton btnMap = findViewById(R.id.btn_map);
         btnMap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -205,17 +198,11 @@ public class SuggestionsActivity extends AppCompatActivity {
                 //openMap();
             }
         });
+    }
 
-        /*
     // Open the Map Page
     private void openMap(){
         Intent start = new Intent(getApplicationContext(), MapActivity.class);
         startActivity(start);
     }
-    */
-
-
-    }
-
-
 }
