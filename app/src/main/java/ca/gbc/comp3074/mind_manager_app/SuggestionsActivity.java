@@ -26,6 +26,7 @@ public class SuggestionsActivity extends AppCompatActivity {
     private RequestQueue mRequestQueue; ///////////added
     private ArrayList<BookInfo> bookInfoArrayList; /////////////added
     String musicPlayer = "";
+    String musicVideo = "";
     final Suggestion musicSuggestion = new Suggestion();
     final Suggestion sportSuggestion = new Suggestion();
     final Suggestion outDoorSuggestion = new Suggestion();
@@ -119,6 +120,7 @@ public class SuggestionsActivity extends AppCompatActivity {
 
                 if (moodTitle.equals("Calmer")) {
                     musicPlayer= db.getSuggestion(connect, moodTitle, "Music").getSuggestionName();
+                    musicVideo= db.getSuggestion(connect, moodTitle, "Music").getYoutubeLink();
                     musicSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Music").getSuggestionName());
                     sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
                     outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
