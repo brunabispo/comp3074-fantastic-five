@@ -25,8 +25,8 @@ public class SuggestionsActivity extends AppCompatActivity {
     ListView listView;
     private RequestQueue mRequestQueue; ///////////added
     private ArrayList<BookInfo> bookInfoArrayList; /////////////added
-    String musicPlayer = "";
     String musicVideo = "";
+    String title1 = "";
     final Suggestion musicSuggestion = new Suggestion();
     final Suggestion sportSuggestion = new Suggestion();
     final Suggestion outDoorSuggestion = new Suggestion();
@@ -60,14 +60,15 @@ public class SuggestionsActivity extends AppCompatActivity {
         final String moodTitle = intent.getStringExtra("Mood");
 
         title.setText("Here are your suggestions for being more " + moodTitle);
-
         //Database instance
         final GoogleMySQLConnectionHelper db = new GoogleMySQLConnectionHelper();
         final Connection connect = db.connectionclass();
 
+
         if (moodTitle.equals("Calmer")) {
-            musicPlayer= db.getSuggestion(connect, moodTitle, "Music").getSuggestionName();
-            musicPlayer= db.getSuggestion(connect, moodTitle, "Music").getSuggestionName();
+            Suggestion music = db.getSuggestion(connect, moodTitle, "Music");
+            musicVideo= music.getYoutubeLink();
+            musicSuggestion.setSuggestionName(music.getSuggestionName());
             musicSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Music").getSuggestionName());
             sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
             outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
@@ -76,7 +77,9 @@ public class SuggestionsActivity extends AppCompatActivity {
         }
 
         if (moodTitle.equals("Energetic")) {
-            musicSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Music").getSuggestionName());
+            Suggestion music = db.getSuggestion(connect, moodTitle, "Music");
+            musicVideo= music.getYoutubeLink();
+            musicSuggestion.setSuggestionName(music.getSuggestionName());
             sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
             outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
             gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
@@ -84,7 +87,9 @@ public class SuggestionsActivity extends AppCompatActivity {
         }
 
         if (moodTitle.equals("Happier")) {
-            musicSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Music").getSuggestionName());
+            Suggestion music = db.getSuggestion(connect, moodTitle, "Music");
+            musicVideo= music.getYoutubeLink();
+            musicSuggestion.setSuggestionName(music.getSuggestionName());
             sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
             outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
             gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
@@ -92,7 +97,9 @@ public class SuggestionsActivity extends AppCompatActivity {
         }
 
         if (moodTitle.equals("Moody")) {
-            musicSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Music").getSuggestionName());
+            Suggestion music = db.getSuggestion(connect, moodTitle, "Music");
+            musicVideo= music.getYoutubeLink();
+            musicSuggestion.setSuggestionName(music.getSuggestionName());
             sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
             outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
             gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
@@ -100,7 +107,9 @@ public class SuggestionsActivity extends AppCompatActivity {
         }
 
         if (moodTitle.equals("Relaxed")) {
-            musicSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Music").getSuggestionName());
+            Suggestion music = db.getSuggestion(connect, moodTitle, "Music");
+            musicVideo= music.getYoutubeLink();
+            musicSuggestion.setSuggestionName(music.getSuggestionName());
             sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
             outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
             gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
@@ -119,9 +128,9 @@ public class SuggestionsActivity extends AppCompatActivity {
                 suggestions.remove(poetrySuggestion);
 
                 if (moodTitle.equals("Calmer")) {
-                    musicPlayer= db.getSuggestion(connect, moodTitle, "Music").getSuggestionName();
-                    musicVideo= db.getSuggestion(connect, moodTitle, "Music").getYoutubeLink();
-                    musicSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Music").getSuggestionName());
+                    Suggestion music = db.getSuggestion(connect, moodTitle, "Music");
+                    musicVideo= music.getYoutubeLink();
+                    musicSuggestion.setSuggestionName(music.getSuggestionName());
                     sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
                     outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
                     gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
@@ -129,7 +138,9 @@ public class SuggestionsActivity extends AppCompatActivity {
                 }
 
                 if (moodTitle.equals("Energetic")) {
-                    musicSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Music").getSuggestionName());
+                    Suggestion music = db.getSuggestion(connect, moodTitle, "Music");
+                    musicVideo= music.getYoutubeLink();
+                    musicSuggestion.setSuggestionName(music.getSuggestionName());
                     sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
                     outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
                     gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
@@ -137,7 +148,9 @@ public class SuggestionsActivity extends AppCompatActivity {
                 }
 
                 if (moodTitle.equals("Happier")) {
-                    musicSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Music").getSuggestionName());
+                    Suggestion music = db.getSuggestion(connect, moodTitle, "Music");
+                    musicVideo= music.getYoutubeLink();
+                    musicSuggestion.setSuggestionName(music.getSuggestionName());
                     sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
                     outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
                     gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
@@ -145,7 +158,9 @@ public class SuggestionsActivity extends AppCompatActivity {
                 }
 
                 if (moodTitle.equals("Moody")) {
-                    musicSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Music").getSuggestionName());
+                    Suggestion music = db.getSuggestion(connect, moodTitle, "Music");
+                    musicVideo= music.getYoutubeLink();
+                    musicSuggestion.setSuggestionName(music.getSuggestionName());
                     sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
                     outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
                     gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
@@ -153,7 +168,9 @@ public class SuggestionsActivity extends AppCompatActivity {
                 }
 
                 if (moodTitle.equals("Relaxed")) {
-                    musicSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Music").getSuggestionName());
+                    Suggestion music = db.getSuggestion(connect, moodTitle, "Music");
+                    musicVideo= music.getYoutubeLink();
+                    musicSuggestion.setSuggestionName(music.getSuggestionName());
                     sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
                     outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
                     gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
@@ -175,10 +192,11 @@ public class SuggestionsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0){
-                    Intent start1 = new Intent(SuggestionsActivity.this, VideoMain.class);
-                    //start.putExtra("selection",selection);
-                    start1.putExtra("musicPlayer", musicPlayer);
-                    startActivity(start1);
+
+                    Intent i = new Intent(SuggestionsActivity.this, VideoMain.class);
+
+                    i.putExtra("MyParameter", musicVideo);
+                    startActivity(i);
                 }
                 if (position == 1){
                     Intent start = new Intent(getApplicationContext(), MainActivity.class);

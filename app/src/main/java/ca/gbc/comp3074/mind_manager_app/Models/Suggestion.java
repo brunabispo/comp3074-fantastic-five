@@ -21,11 +21,12 @@ public class Suggestion {
         this.categoryName = categoryName;
     }
 
-    public Suggestion(int id, String mood, String categoryName, String suggestionName) {
+    public Suggestion(int id, String mood, String categoryName, String suggestionName, String youtubeLink) {
         this._id = id;
         this.mood = mood;
         this.categoryName = categoryName;
         this.suggestionName = suggestionName;
+        this.youtubeLink = youtubeLink;
     }
 
     public int getID() {

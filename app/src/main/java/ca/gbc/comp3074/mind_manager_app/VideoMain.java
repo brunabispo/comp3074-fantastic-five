@@ -33,20 +33,8 @@ public class VideoMain  extends YouTubeBaseActivity implements YouTubePlayer.OnI
         setContentView(R.layout.music_performer);
         YouTubePlayerView youTubePlayerView = (YouTubePlayerView) findViewById(R.id.youtube_player);
         youTubePlayerView.initialize(API_KEY, this);
-    }
-    public void playVideo(){
-
-        //happy
-        // String selection = intent.getStringExtra("selection");
-        Intent intent = getIntent();
-        String song = intent.getStringExtra("musicPlayer");
-        TextView songEdit = (TextView)findViewById(R.id.txtSong);
-        songEdit.setText(song);
-      //  youtubeVideos.add( new VideoPlayer("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/ru0K8uYEZWw\" frameborder=\"0\" allowfullscreen></iframe>") );
-       // youtubeVideos.add( new VideoPlayer("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/LjhCEhWiKXk\" frameborder=\"0\" allowfullscreen></iframe>") );
-        youtubeVideos.add( new VideoPlayer("<iframe width=\"100%\" height=\"50%\" src=\"https://www.youtube.com/embed/5dbEhBKGOtY\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>") );
-
-        VideoAdapter videoAdapter = new VideoAdapter(youtubeVideos);
+        TextView songEdit = findViewById(R.id.txtSong);
+        songEdit.setText("Video Player");
 
 
     }
@@ -56,10 +44,19 @@ public class VideoMain  extends YouTubeBaseActivity implements YouTubePlayer.OnI
         /** add listeners to YouTubePlayer instance **/
         player.setPlayerStateChangeListener(playerStateChangeListener);
         player.setPlaybackEventListener(playbackEventListener);
-
+        //String song = intent.getStringExtra("musicVideo");
         /** Start buffering **/
         if (!wasRestored) {
-            player.cueVideo(VIDEO_ID);
+            Intent i = getIntent();
+            Bundle extras = i.getExtras();
+            if(extras.containsKey("MyParameter")) {
+                String videoId = i.getStringExtra("MyParameter");
+                //TextView songEdit = findViewById(R.id.txtSong);
+                //TextView idEdit = findViewById(R.id.txtSong);
+                //songEdit.setText(something);
+                player.cueVideo(videoId);
+            }
+
         }
     }
 
