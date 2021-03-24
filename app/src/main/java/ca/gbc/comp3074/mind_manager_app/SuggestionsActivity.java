@@ -25,7 +25,7 @@ public class SuggestionsActivity extends AppCompatActivity {
     ListView listView;
     private RequestQueue mRequestQueue; ///////////added
     private ArrayList<BookInfo> bookInfoArrayList; /////////////added
-
+    String musicPlayer = "";
     final Suggestion musicSuggestion = new Suggestion();
     final Suggestion sportSuggestion = new Suggestion();
     final Suggestion outDoorSuggestion = new Suggestion();
@@ -65,6 +65,8 @@ public class SuggestionsActivity extends AppCompatActivity {
         final Connection connect = db.connectionclass();
 
         if (moodTitle.equals("Calmer")) {
+            musicPlayer= db.getSuggestion(connect, moodTitle, "Music").getSuggestionName();
+            musicPlayer= db.getSuggestion(connect, moodTitle, "Music").getSuggestionName();
             musicSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Music").getSuggestionName());
             sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
             outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
@@ -116,6 +118,7 @@ public class SuggestionsActivity extends AppCompatActivity {
                 suggestions.remove(poetrySuggestion);
 
                 if (moodTitle.equals("Calmer")) {
+                    musicPlayer= db.getSuggestion(connect, moodTitle, "Music").getSuggestionName();
                     musicSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Music").getSuggestionName());
                     sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
                     outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
@@ -170,8 +173,10 @@ public class SuggestionsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0){
-                    Intent start = new Intent(getApplicationContext(), TriviaGameActivity.class);
-                    startActivity(start);
+                    Intent start1 = new Intent(SuggestionsActivity.this, VideoMain.class);
+                    //start.putExtra("selection",selection);
+                    start1.putExtra("musicPlayer", musicPlayer);
+                    startActivity(start1);
                 }
                 if (position == 1){
                     Intent start = new Intent(getApplicationContext(), MainActivity.class);

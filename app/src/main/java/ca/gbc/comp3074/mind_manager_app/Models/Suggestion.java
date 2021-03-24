@@ -6,14 +6,15 @@ public class Suggestion {
     private String mood;
     private String categoryName;
     private String suggestionName;
-
+    private String youtubeLink;
     public Suggestion() {
     }
 
-    public Suggestion(String mood, String categoryName, String suggestionName) {
+    public Suggestion(String mood, String categoryName, String suggestionName, String youtubeLink) {
         this.mood = mood;
         this.categoryName = categoryName;
         this.suggestionName = suggestionName;
+        this.youtubeLink = youtubeLink;
     }
 
     public Suggestion(String categoryName) {
@@ -57,5 +58,13 @@ public class Suggestion {
 
     public void setSuggestionName(String suggestionName) {
         this.suggestionName = suggestionName;
+    }
+
+    public String getYoutubeLink() {
+        return youtubeLink;
+    }
+
+    public void setYoutubeLink(String youtubeLink) {
+        this.youtubeLink = youtubeLink;
     }
 }
