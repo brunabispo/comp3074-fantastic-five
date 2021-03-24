@@ -1,12 +1,10 @@
-package ca.gbc.comp3074.mind_manager_app;
+package ca.gbc.comp3074.mind_manager_app.Music;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.youtube.player.YouTubeBaseActivity;
@@ -20,6 +18,8 @@ import com.google.android.youtube.player.YouTubePlayerView;
 
 
 import java.util.Vector;
+
+import ca.gbc.comp3074.mind_manager_app.R;
 
 public class VideoMain  extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener{
 

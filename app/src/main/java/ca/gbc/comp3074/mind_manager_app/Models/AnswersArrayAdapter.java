@@ -1,4 +1,4 @@
-package ca.gbc.comp3074.mind_manager_app;
+package ca.gbc.comp3074.mind_manager_app.Models;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import java.util.List;
 import ca.gbc.comp3074.mind_manager_app.Admin.AdminAnswersActivity;
 import ca.gbc.comp3074.mind_manager_app.Models.Answer;
+import ca.gbc.comp3074.mind_manager_app.R;
 
 public class AnswersArrayAdapter extends ArrayAdapter<Answer> {
 

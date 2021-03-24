@@ -1,8 +1,7 @@
-package ca.gbc.comp3074.mind_manager_app;
+package ca.gbc.comp3074.mind_manager_app.Reading;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
@@ -25,8 +24,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import ca.gbc.comp3074.mind_manager_app.Models.BookAdapter;
-import ca.gbc.comp3074.mind_manager_app.Models.BookInfo;
+import ca.gbc.comp3074.mind_manager_app.R;
 
 public class BookDisplayActivity extends AppCompatActivity {
 

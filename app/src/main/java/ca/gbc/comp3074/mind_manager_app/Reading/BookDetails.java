@@ -1,4 +1,4 @@
-package ca.gbc.comp3074.mind_manager_app.Models;
+package ca.gbc.comp3074.mind_manager_app.Reading;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -10,8 +10,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 

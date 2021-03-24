@@ -1,4 +1,4 @@
-package ca.gbc.comp3074.mind_manager_app.Models;
+package ca.gbc.comp3074.mind_manager_app.Reading;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;

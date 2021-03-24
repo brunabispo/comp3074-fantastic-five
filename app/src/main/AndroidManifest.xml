@@ -22,8 +22,8 @@
         <activity android:name=".SuggestionsActivity" android:parentActivityName=".WelcomeActivity"/>
         <activity android:name=".Admin.AdminHomeActivity"/>
         <activity android:name=".Games.TriviaGameActivity"/>
-        <activity android:name=".BookDisplayActivity"/>
-        <activity android:name=".Models.BookDetails"/>
+        <activity android:name=".Reading.BookDisplayActivity"/>
+        <activity android:name=".Reading.BookDetails"/>
 
 
         <activity android:name=".Admin.AdminCurrentUsersActivity" android:parentActivityName=".Admin.AdminHomeActivity"/>
@@ -32,7 +32,7 @@
         <activity android:name=".Admin.AdminCategoriesActivity" android:parentActivityName=".Admin.AdminHomeActivity"/>
         <activity android:name=".Games.CrosswordGameActivity" android:parentActivityName=".SuggestionsActivity"/>
         <activity android:name=".WelcomeActivity" android:parentActivityName=".SuggestionsActivity"/>
-        <activity android:name=".VideoMain" android:parentActivityName=".SuggestionsActivity"/>
+        <activity android:name=".Music.VideoMain" android:parentActivityName=".SuggestionsActivity"/>
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -13,12 +13,13 @@ import com.android.volley.RequestQueue;
 import java.util.ArrayList;
 //import com.google.android.gms.common.api.Response;
 import java.sql.Connection;
-import ca.gbc.comp3074.mind_manager_app.Games.CrosswordGameActivity;
+
 import ca.gbc.comp3074.mind_manager_app.Games.TriviaGameActivity;
-import ca.gbc.comp3074.mind_manager_app.Models.BookDetails;
-import ca.gbc.comp3074.mind_manager_app.Models.BookInfo;
+import ca.gbc.comp3074.mind_manager_app.Reading.BookInfo;
 import ca.gbc.comp3074.mind_manager_app.Models.Suggestion;
 import ca.gbc.comp3074.mind_manager_app.Models.SuggestionArrayAdapter;
+import ca.gbc.comp3074.mind_manager_app.Music.VideoMain;
+import ca.gbc.comp3074.mind_manager_app.Reading.BookDisplayActivity;
 
 public class SuggestionsActivity extends AppCompatActivity {
 
