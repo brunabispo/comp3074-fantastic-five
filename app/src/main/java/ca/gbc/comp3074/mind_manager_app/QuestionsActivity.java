@@ -18,8 +18,29 @@ public class QuestionsActivity extends AppCompatActivity {
     private Question q3;
     private Question q4;
 
-    @Override
+    TextView question1;
+    TextView question2;
+    TextView question3;
+    TextView question4;
 
+    RadioButton q1_a1;
+    RadioButton q1_a2;
+    RadioButton q1_a3;
+
+    RadioButton q2_a1;
+    RadioButton q2_a2;
+    RadioButton q2_a3;
+
+    RadioButton q3_a1;
+    RadioButton q3_a2;
+    RadioButton q3_a3;
+
+    RadioButton q4_a1;
+    RadioButton q4_a2;
+    RadioButton q4_a3;
+    RadioButton q4_a4;
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
@@ -28,26 +49,26 @@ public class QuestionsActivity extends AppCompatActivity {
         GoogleMySQLConnectionHelper db = new GoogleMySQLConnectionHelper();
         final Connection connect = db.connectionclass();
 
-        TextView question1 = findViewById(R.id.lblq1);
-        TextView question2 = findViewById(R.id.lblq2);
-        TextView question3 = findViewById(R.id.lblq3);
-        TextView question4 = findViewById(R.id.lblq4);
+        question1 = findViewById(R.id.lblq1);
+        question2 = findViewById(R.id.lblq2);
+        question3 = findViewById(R.id.lblq3);
+        question4 = findViewById(R.id.lblq4);
 
-        RadioButton q1_a1 = findViewById(R.id.rbtn_q1_1);
-        RadioButton q1_a2 = findViewById(R.id.rbtn_q1_2);
-        RadioButton q1_a3 = findViewById(R.id.rbtn_q1_3);
+        q1_a1 = findViewById(R.id.rbtn_q1_1);
+        q1_a2 = findViewById(R.id.rbtn_q1_2);
+        q1_a3 = findViewById(R.id.rbtn_q1_3);
 
-        RadioButton q2_a1 = findViewById(R.id.rbtn_q2_1);
-        RadioButton q2_a2 = findViewById(R.id.rbtn_q2_2);
-        RadioButton q2_a3 = findViewById(R.id.rbtn_q2_3);
+        q2_a1 = findViewById(R.id.rbtn_q2_1);
+        q2_a2 = findViewById(R.id.rbtn_q2_2);
+        q2_a3 = findViewById(R.id.rbtn_q2_3);
 
-        RadioButton q3_a1 = findViewById(R.id.rbtn_q3_1);
-        RadioButton q3_a2 = findViewById(R.id.rbtn_q3_2);
-        RadioButton q3_a3 = findViewById(R.id.rbtn_q3_3);
+        q3_a1 = findViewById(R.id.rbtn_q3_1);
+        q3_a2 = findViewById(R.id.rbtn_q3_2);
+        q3_a3 = findViewById(R.id.rbtn_q3_3);
 
-        RadioButton q4_a1 = findViewById(R.id.rbtn_q4_1);
-        RadioButton q4_a2 = findViewById(R.id.rbtn_q4_2);
-        RadioButton q4_a3 = findViewById(R.id.rbtn_q4_3);
+        q4_a1 = findViewById(R.id.rbtn_q4_1);
+        q4_a2 = findViewById(R.id.rbtn_q4_2);
+        q4_a3 = findViewById(R.id.rbtn_q4_3);
 
         // Question 1
         q1 = db.getRandomQuestion(connect);
@@ -87,24 +108,7 @@ public class QuestionsActivity extends AppCompatActivity {
         Button btnSubmit = findViewById(R.id.btn_submit);
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
-
             public void onClick(View v) {
-                RadioButton q1_a1 = findViewById(R.id.rbtn_q1_1);
-                RadioButton q1_a2 = findViewById(R.id.rbtn_q1_2);
-                RadioButton q1_a3 = findViewById(R.id.rbtn_q1_3);
-
-                RadioButton q2_a1 = findViewById(R.id.rbtn_q2_1);
-                RadioButton q2_a2 = findViewById(R.id.rbtn_q2_2);
-                RadioButton q2_a3 = findViewById(R.id.rbtn_q2_3);
-
-                RadioButton q3_a1 = findViewById(R.id.rbtn_q3_1);
-                RadioButton q3_a2 = findViewById(R.id.rbtn_q3_2);
-                RadioButton q3_a3 = findViewById(R.id.rbtn_q3_3);
-
-                RadioButton q4_a1 = findViewById(R.id.rbtn_q4_1);
-                RadioButton q4_a2 = findViewById(R.id.rbtn_q4_2);
-                RadioButton q4_a3 = findViewById(R.id.rbtn_q4_3);
-
                 int chosenRadioButton1 = checkWhichClicked(q1_a1, q1_a2, q1_a3);
                 int chosenRadioButton2 = checkWhichClicked(q2_a1, q2_a2, q2_a3);
                 int chosenRadioButton3 = checkWhichClicked(q3_a1, q3_a2, q3_a3);
@@ -120,30 +124,6 @@ public class QuestionsActivity extends AppCompatActivity {
         });
     }
 
-    public void onRadioButtonClicked(View view) {
-        RadioButton q1_a1 = findViewById(R.id.rbtn_q1_1);
-        RadioButton q1_a2 = findViewById(R.id.rbtn_q1_2);
-        RadioButton q1_a3 = findViewById(R.id.rbtn_q1_3);
-
-        RadioButton q2_a1 = findViewById(R.id.rbtn_q2_1);
-
-        RadioButton q2_a2 = findViewById(R.id.rbtn_q2_2);
-        RadioButton q2_a3 = findViewById(R.id.rbtn_q2_3);
-
-        RadioButton q3_a1 = findViewById(R.id.rbtn_q3_1);
-        RadioButton q3_a2 = findViewById(R.id.rbtn_q3_2);
-        RadioButton q3_a3 = findViewById(R.id.rbtn_q3_3);
-
-        RadioButton q4_a1 = findViewById(R.id.rbtn_q4_1);
-        RadioButton q4_a2 = findViewById(R.id.rbtn_q4_2);
-        RadioButton q4_a3 = findViewById(R.id.rbtn_q4_3);
-
-        int chosenRadioButton1 = checkWhichClicked(q1_a1, q1_a2, q1_a3);
-        int chosenRadioButton2 = checkWhichClicked(q2_a1, q2_a2, q2_a3);
-        int chosenRadioButton3 = checkWhichClicked(q3_a1, q3_a2, q3_a3);
-        int chosenRadioButton4 = checkWhichClicked(q4_a1, q4_a2, q4_a3);
-
-    }
 
     public void calculateMood(Answer answerSelected, Answer answerSelected2, Answer answerSelected3, Answer answerSelected4){
         int boredRating = answerSelected.getBoredRating() + answerSelected2.getBoredRating()
