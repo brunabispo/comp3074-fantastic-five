@@ -56,20 +56,22 @@ public class QuestionArrayAdapter extends ArrayAdapter<Question> {
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deleteUsers(ID);
+                deleteQuestions(ID);
             }
         });
 
         return rowView;
     }
 
+    //function to start AdminAnswersActivity
     private void openAnswers(int id){
         Intent start = new Intent(context.getApplicationContext(), AdminAnswersActivity.class);
         start.putExtra("id", id);
         context.startActivity(start);
     }
 
-    private void deleteUsers(int id){
+    //function delete Question
+    private void deleteQuestions(int id){
         //Database instance
         final GoogleMySQLConnectionHelper db = new GoogleMySQLConnectionHelper();
         final Connection connect = db.connectionclass();

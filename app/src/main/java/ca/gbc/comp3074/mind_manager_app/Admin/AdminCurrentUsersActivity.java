@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import java.sql.Connection;
 import java.util.List;
@@ -54,13 +53,6 @@ public class AdminCurrentUsersActivity extends ListActivity {
         });
     }
 
-    //delete User
-    protected void onListItemClick(Connection connect, ListView l, View v, int position, long id, GoogleMySQLConnectionHelper db) {
-        super.onListItemClick(l, v, position, id);
-        db.deleteUser(connect, position);
-        printArray(connect, db);
-    }
-
     //print array of all users
     private void printArray(Connection connect, GoogleMySQLConnectionHelper db){
         users = db.getAllUsers(connect);
@@ -90,9 +82,15 @@ public class AdminCurrentUsersActivity extends ListActivity {
         }else {
             lblError.setText("");
             //Insert new user
+            if (!role.equals("admin")){
+                role = "user";
+            }
             User user = new User(role, username, firstName, "123_Ben");
             db.addUser(connect, user);
             printArray(connect, db);
+            ((EditText) findViewById(R.id.edittxt_role)).setText("");
+            ((EditText) findViewById(R.id.edittxt_username)).setText("");
+            ((EditText) findViewById(R.id.edittxt_firstName)).setText("");
         }
     }
 

@@ -2,7 +2,7 @@ package ca.gbc.comp3074.mind_manager_app.Models;
 
 public class User {
 
-    private int _id;
+    private int id;
     private String role;
     private String userName;
     private String firstName;
@@ -19,18 +19,18 @@ public class User {
     }
 
     public User(int id, String role, String userName, String firstName) {
-        this._id = id;
+        this.id = id;
         this.role = role;
         this.userName = userName;
         this.firstName = firstName;
     }
 
     public int getID() {
-        return _id;
+        return id;
     }
 
-    public void setID(int _id) {
-        this._id = _id;
+    public void setID(int id) {
+        this.id = id;
     }
 
     public String getRole() {

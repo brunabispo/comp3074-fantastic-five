@@ -72,6 +72,7 @@ public class AdminAnswersActivity extends ListActivity {
         setListAdapter(myAdapter);
     }
 
+    //function LogOut
     private void openLogOut(){
         Intent start = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(start);

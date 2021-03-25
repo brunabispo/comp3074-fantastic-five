@@ -4,27 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Question{
-    private int _id;
+    private int id;
     private String questionText;
     private ArrayList<Answer> answers;
 
     public Question(int id, String questionText, ArrayList<Answer> answers) {
-        this._id = id;
+        this.id = id;
         this.questionText = questionText;
         this.answers = answers;
     }
 
     public Question(int id, String questionText) {
-        this._id = id;
+        this.id = id;
         this.questionText = questionText;
     }
 
     public int getID() {
-        return _id;
+        return id;
     }
 
-    public void setID(int _id) {
-        this._id = _id;
+    public void setID(int id) {
+        this.id = id;
     }
 
     public String getQuestionText() {

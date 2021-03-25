@@ -5,8 +5,16 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/textView25"
+        android:layout_width="29dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="-"
+        android:textSize="18sp" />
+
+    <TextView
         android:id="@+id/lblQuestions"
-        android:layout_width="213dp"
+        android:layout_width="261dp"
         android:layout_height="wrap_content"
         android:text="Question"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
@@ -15,7 +23,7 @@
 
     <ImageButton
         android:id="@+id/btn_edit"
-        android:layout_width="70dp"
+        android:layout_width="65dp"
         android:layout_height="24dp"
         android:layout_weight="1"
         android:background="#00FDFEFF"
@@ -26,7 +34,7 @@
 
     <ImageButton
         android:id="@+id/btn_delete"
-        android:layout_width="113dp"
+        android:layout_width="65dp"
         android:layout_height="24dp"
         android:layout_weight="1"
         android:background="#00FFFFFF"

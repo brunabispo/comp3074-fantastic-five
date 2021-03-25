@@ -97,6 +97,7 @@ public class AdminCategoriesActivity extends ListActivity {
     }
     */
 
+    //function LogOut
     private void openLogOut(){
         Intent start = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(start);

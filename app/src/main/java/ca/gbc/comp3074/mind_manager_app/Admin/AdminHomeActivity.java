@@ -16,10 +16,6 @@ public class AdminHomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin_home);
 
         Button btnCurrentUsers = findViewById(R.id.btnCurrentUsers);
-        Button btnQuestionnaire = findViewById(R.id.btnQuestionnaire);
-        Button btnCategories = findViewById(R.id.btnCategories);
-        Button btnLogOut = findViewById(R.id.btnLogoutAdminHome);
-
         btnCurrentUsers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -27,6 +23,7 @@ public class AdminHomeActivity extends AppCompatActivity {
             }
         });
 
+        Button btnQuestionnaire = findViewById(R.id.btnQuestionnaire);
         btnQuestionnaire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,6 +31,7 @@ public class AdminHomeActivity extends AppCompatActivity {
             }
         });
 
+        Button btnCategories = findViewById(R.id.btnCategories);
         btnCategories.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,6 +39,7 @@ public class AdminHomeActivity extends AppCompatActivity {
             }
         });
 
+        Button btnLogOut = findViewById(R.id.btnLogoutAdminHome);
         btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

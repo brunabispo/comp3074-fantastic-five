@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.TextView;
 import java.sql.Connection;
 import java.util.List;
 import ca.gbc.comp3074.mind_manager_app.GoogleMySQLConnectionHelper;
@@ -18,7 +17,6 @@ import ca.gbc.comp3074.mind_manager_app.R;
 public class AdminQuestionnaireActivity extends ListActivity {
 
     List<Question> questions;
-    TextView lblError;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,15 +28,17 @@ public class AdminQuestionnaireActivity extends ListActivity {
         final Connection connect = db.connectionclass();
 
         printArray(connect, db);
-/*
+
+        //button add Question
         Button btnAddNewQuestion = findViewById(R.id.btnAddQuestion);
         btnAddNewQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //addNewQuestion(db);
+                addNewQuestion();
             }
         });
-*/
+
+        //button Logout
         Button btnLogOut = findViewById(R.id.btnLogoutAdminQuestionnaire);
         btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +48,7 @@ public class AdminQuestionnaireActivity extends ListActivity {
         });
     }
 
-    //print array of all users
+    //print array of all questions
     private void printArray(Connection connect, GoogleMySQLConnectionHelper db){
         questions = db.getAllQuestions(connect);
         StringBuilder sb = new StringBuilder();
@@ -64,6 +64,13 @@ public class AdminQuestionnaireActivity extends ListActivity {
         setListAdapter(myAdapter);
     }
 
+    //function to start AdminAddNewQuestionActivity
+    private void addNewQuestion(){
+        Intent start = new Intent(getApplicationContext(), AdminAddNewQuestionActivity.class);
+        startActivity(start);
+    }
+
+    //function LogOut
     private void openLogOut(){
         Intent start = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(start);

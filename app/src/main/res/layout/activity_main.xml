@@ -70,6 +70,7 @@
         android:text="Login"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/cardview_dark_background"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

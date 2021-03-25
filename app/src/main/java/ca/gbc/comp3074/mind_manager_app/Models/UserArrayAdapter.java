@@ -59,6 +59,7 @@ public class UserArrayAdapter extends ArrayAdapter<User> {
         return rowView;
     }
 
+    //function delete User
     private void deleteUsers(int id){
         //Database instance
         final GoogleMySQLConnectionHelper db = new GoogleMySQLConnectionHelper();
