@@ -13,7 +13,6 @@ import com.android.volley.RequestQueue;
 import java.util.ArrayList;
 //import com.google.android.gms.common.api.Response;
 import java.sql.Connection;
-
 import ca.gbc.comp3074.mind_manager_app.Games.TriviaGameActivity;
 import ca.gbc.comp3074.mind_manager_app.Reading.BookInfo;
 import ca.gbc.comp3074.mind_manager_app.Models.Suggestion;
@@ -26,20 +25,14 @@ public class SuggestionsActivity extends AppCompatActivity {
     ListView listView;
     private RequestQueue mRequestQueue; ///////////added
     private ArrayList<BookInfo> bookInfoArrayList; /////////////added
-    String musicVideo = "";
     String title1 = "";
+    String musicVideo = "";
     Suggestion musicSuggestion = new Suggestion();
     Suggestion sportSuggestion = new Suggestion();
     Suggestion outDoorSuggestion = new Suggestion();
     Suggestion gameSuggestion = new Suggestion();
     Suggestion poetrySuggestion = new Suggestion();
     Suggestion movieSuggestion = new Suggestion();
-
-    String categoriesTitle[] = {musicSuggestion.getCategoryName(), sportSuggestion.getCategoryName(),
-            outDoorSuggestion.getCategoryName(), gameSuggestion.getCategoryName(), poetrySuggestion.getCategoryName(), movieSuggestion.getCategoryName()};
-
-    String suggestionsName[] = {musicSuggestion.getSuggestionName(), sportSuggestion.getSuggestionName(),
-            outDoorSuggestion.getSuggestionName(), gameSuggestion.getSuggestionName(), poetrySuggestion.getSuggestionName(), movieSuggestion.getSuggestionName()};
 
     int images[] = {R.drawable.music, R.drawable.sports, R.drawable.outdoors, R.drawable.games, R.drawable.reading, R.drawable.music};
 
@@ -66,6 +59,14 @@ public class SuggestionsActivity extends AppCompatActivity {
         //Database instance
         final GoogleMySQLConnectionHelper db = new GoogleMySQLConnectionHelper();
         final Connection connect = db.connectionclass();
+
+        ImageButton btnMap = findViewById(R.id.btn_map);
+        btnMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openMap();
+            }
+        });
 
         if (moodTitle.equals("Calmer")) {
             Suggestion music = db.getSuggestion(connect, moodTitle, "Music");
@@ -189,6 +190,15 @@ public class SuggestionsActivity extends AppCompatActivity {
                     poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
                     movieSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Movie").getSuggestionName());
                 }
+                suggestions.add(musicSuggestion);
+                suggestions.add(sportSuggestion);
+                suggestions.add(outDoorSuggestion);
+                suggestions.add(gameSuggestion);
+                suggestions.add(poetrySuggestion);
+                suggestions.add(movieSuggestion);
+
+                SuggestionArrayAdapter adapter = new SuggestionArrayAdapter(SuggestionsActivity.this, suggestions, images);
+                listView.setAdapter(adapter);
             }
         });
 
@@ -200,8 +210,8 @@ public class SuggestionsActivity extends AppCompatActivity {
         suggestions.add(movieSuggestion);
 
         SuggestionArrayAdapter adapter = new SuggestionArrayAdapter(this, suggestions, images);
-
         listView.setAdapter(adapter);
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -232,13 +242,6 @@ public class SuggestionsActivity extends AppCompatActivity {
                     Intent start = new Intent(getApplicationContext(), BookDisplayActivity.class);
                     startActivity(start);
                 }
-            }
-        });
-        ImageButton btnMap = findViewById(R.id.btn_map);
-        btnMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //openMap();
             }
         });
     }
