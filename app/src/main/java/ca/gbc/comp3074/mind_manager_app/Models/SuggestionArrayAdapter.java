@@ -1,5 +1,6 @@
 package ca.gbc.comp3074.mind_manager_app.Models;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,36 +16,31 @@ import ca.gbc.comp3074.mind_manager_app.R;
 public class SuggestionArrayAdapter extends ArrayAdapter<Suggestion> {
 
     private final Context context;
-    private final int rowLayout;
     private final List<Suggestion> values;
     private final int categoryImages[];
 
-    public SuggestionArrayAdapter(@NonNull Context context, int resource,
-                                  @NonNull List<Suggestion> objects, int[] categoryImages) {
-
-        super(context, resource, objects);
-
+    public SuggestionArrayAdapter(@NonNull Context context, @NonNull List<Suggestion> objects, int[] categoryImages) {
+        super(context, R.layout.row_layout_suggestions, objects);
         this.context = context;
         this.values = objects;
         this.categoryImages = categoryImages;
-        this.rowLayout = resource;
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View row = inflater.inflate(this.rowLayout, parent, false);
+        @SuppressLint("ViewHolder") View rowView = inflater.inflate(R.layout.row_layout_suggestions, parent, false);
 
-        ImageView images = row.findViewById(R.id.catgoryImage);
-        TextView cTitles = row.findViewById(R.id.lblCategory);
-        TextView sNames = row.findViewById(R.id.lblSuggestion);
-
-        //set resources on views
+        ImageView images = rowView.findViewById(R.id.catgoryImage);
         images.setImageResource(categoryImages[position]);
-        cTitles.setText(this.values.get(position).getCategoryName());
-        sNames.setText(this.values.get(position).getSuggestionName());
 
-        return row;
+        TextView categoryTitles = rowView.findViewById(R.id.lblCategory);
+        categoryTitles.setText(values.get(position).getCategoryName());
+
+        TextView suggestionNames = rowView.findViewById(R.id.lblSuggestion);
+        suggestionNames.setText(values.get(position).getSuggestionName());
+
+        return rowView;
     }
 }
