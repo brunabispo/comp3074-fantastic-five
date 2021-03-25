@@ -34,7 +34,7 @@ public class SuggestionsActivity extends AppCompatActivity {
     Suggestion poetrySuggestion = new Suggestion();
     Suggestion movieSuggestion = new Suggestion();
 
-    int images[] = {R.drawable.music, R.drawable.sports, R.drawable.outdoors, R.drawable.games, R.drawable.reading, R.drawable.music};
+    int images[] = {R.drawable.music, R.drawable.sports, R.drawable.outdoors, R.drawable.games, R.drawable.reading, R.drawable.movies};
 
     @SuppressLint("SetTextI18n")
     @Override
