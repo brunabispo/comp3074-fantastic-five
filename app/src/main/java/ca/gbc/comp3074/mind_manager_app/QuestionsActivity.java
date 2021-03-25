@@ -157,7 +157,7 @@ public class QuestionsActivity extends AppCompatActivity {
         if(sumHappyRating > highestRating){
             highestRating = sumHappyRating;
             start = new Intent(getApplicationContext(), SuggestionsActivity.class);
-            String mood = "Happy";
+            String mood = "Happier";
             start.putExtra("Mood", mood);
         }
         if(sumEnergeticRating > highestRating){
