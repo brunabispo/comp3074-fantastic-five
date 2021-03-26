@@ -19,18 +19,18 @@ public class GoogleMySQLConnectionHelper {
 
     // make connection with MySQL instance
     public Connection connectionclass(){
-        ip = "34.69.115.126";
-        port = "3306";
+        ip = "mind-manager-do-user-8581613-0.b.db.ondigitalocean.com";
+        port = "25060";
         database = "mindmanager";
-        username = "root";
-        password = "georgebrown";
+        username = "doadmin";
+        password = "bys508oal0qpna4x";
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://34.69.115.126:3306/mindmanager?characterEncoding=utf8", username, password);
+            connection = DriverManager.getConnection("jdbc:mysql://mind-manager-do-user-8581613-0.b.db.ondigitalocean.com:25060/mindmanager?characterEncoding=utf8", username, password);
         }
         catch (Exception exception){
             Log.e("Error: ", exception.getMessage());
