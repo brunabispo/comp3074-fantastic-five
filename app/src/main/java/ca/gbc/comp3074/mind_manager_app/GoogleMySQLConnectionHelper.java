@@ -115,6 +115,25 @@ public class GoogleMySQLConnectionHelper {
         return question;
     }
 
+    //get the question by ID
+    public Question getQuestionByText(Connection connect, String text) {
+        Question question = null;
+        try {
+            if (connect != null) {
+                String query = "SELECT * FROM questions WHERE question_text = '" + text + "'";
+                Statement st = connect.createStatement();
+                ResultSet rs = st.executeQuery(query);
+                while (rs.next()) {
+                    ArrayList<Answer> answers = getAnswers(connect, rs.getInt(1));
+                    question = new Question(rs.getInt(1),rs.getString(2), answers);
+                }
+            }
+        } catch (Exception exception) {
+            Log.e("Error: ", exception.getMessage());
+        }
+        return question;
+    }
+
     // code to get all users in a list view
     public ArrayList<Question> getAllQuestions(Connection connect) {
         ArrayList<Question> questions = new ArrayList<>();
@@ -131,6 +150,20 @@ public class GoogleMySQLConnectionHelper {
             Log.e("Error: ", exception.getMessage());
         }
         return questions;
+    }
+
+    // add the new question
+    public void addQuestion(Connection connect, Question question)  {
+        try {
+            if (connect != null) {
+                String query = "INSERT INTO questions (question_text) " +
+                        "VALUES ('" + question.getQuestionText() + "')";
+                Statement st = connect.createStatement();
+                st.executeUpdate(query);
+            }
+        } catch (Exception exception) {
+            Log.e("Error: ", exception.getMessage());
+        }
     }
 
     // Deleting single question
@@ -166,6 +199,24 @@ public class GoogleMySQLConnectionHelper {
             Log.e("Error: ", exception.getMessage());
         }
         return answers;
+    }
+
+    // add the new question
+    public void addAnswer(Connection connect, Answer answer)  {
+        try {
+            if (connect != null) {
+                String query = "INSERT INTO answers (question_id, answer_text, bored_rating, " +
+                        "energetic_rating, happy_rating, sad_rating, tired_rating) " +
+                        "VALUES ('" + answer.getQuestion_id() + "', '" + answer.getText() + "', '"
+                        + answer.getBoredRating() + "', '" + answer.getEnergeticRating() +
+                        "', '" + answer.getHappyRating() + "', '" + answer.getSadRating() +
+                        "', '" + answer.getTiredRating() + "')";
+                Statement st = connect.createStatement();
+                st.executeUpdate(query);
+            }
+        } catch (Exception exception) {
+            Log.e("Error: ", exception.getMessage());
+        }
     }
 
     // get the single user

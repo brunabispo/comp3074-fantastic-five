@@ -58,7 +58,7 @@
 
             <TextView
                 android:id="@+id/textView48"
-                android:layout_width="274dp"
+                android:layout_width="258dp"
                 android:layout_height="23dp"
 
                 android:text="  Question"
@@ -75,7 +75,7 @@
 
             <TextView
                 android:id="@+id/textView51"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:text="Delete"
                 android:textSize="18sp"

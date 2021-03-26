@@ -13,14 +13,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import java.util.List;
 import ca.gbc.comp3074.mind_manager_app.Admin.AdminAnswersActivity;
-import ca.gbc.comp3074.mind_manager_app.Models.Answer;
 import ca.gbc.comp3074.mind_manager_app.R;
 
 public class AnswersArrayAdapter extends ArrayAdapter<Answer> {
 
     private final Context context;
     private final List<Answer> values;
-    //private int ID;
 
     public AnswersArrayAdapter(@NonNull Context context, @NonNull List<Answer> objects) {
         super(context, R.layout.row_layout_answers, objects);

@@ -8,15 +8,19 @@ public class Question{
     private String questionText;
     private ArrayList<Answer> answers;
 
-    public Question(int id, String questionText, ArrayList<Answer> answers) {
-        this.id = id;
+    public Question(String questionText) {
         this.questionText = questionText;
-        this.answers = answers;
     }
 
     public Question(int id, String questionText) {
         this.id = id;
         this.questionText = questionText;
+    }
+
+    public Question(int id, String questionText, ArrayList<Answer> answers) {
+        this.id = id;
+        this.questionText = questionText;
+        this.answers = answers;
     }
 
     public int getID() {

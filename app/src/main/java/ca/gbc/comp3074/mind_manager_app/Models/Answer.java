@@ -11,6 +11,16 @@ public class Answer{
     private int sadRating;
     private int tiredRating;
 
+    public Answer(int question_id, String text, int boredRating, int energeticRating, int happyRating, int sadRating, int tiredRating) {
+        this.question_id = question_id;
+        this.text = text;
+        this.boredRating = boredRating;
+        this.energeticRating = energeticRating;
+        this.happyRating = happyRating;
+        this.sadRating = sadRating;
+        this.tiredRating = tiredRating;
+    }
+
     public Answer(int id, int question_id, String text, int boredRating, int energeticRating, int happyRating, int sadRating, int tiredRating) {
         this.id = id;
         this.question_id = question_id;
