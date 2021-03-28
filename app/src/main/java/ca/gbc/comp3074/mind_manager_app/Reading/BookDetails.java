@@ -39,7 +39,6 @@ public class BookDetails extends AppCompatActivity {
         pageTV = findViewById(R.id.idTVNoOfPages);
         publishDateTV = findViewById(R.id.idTVPublishDate);
         previewBtn = findViewById(R.id.idBtnPreview);
-        buyBtn = findViewById(R.id.idBtnBuy);
         bookIV = findViewById(R.id.idIVbook);
 
         // getting the data which we have passed from our adapter class.
@@ -81,21 +80,6 @@ public class BookDetails extends AppCompatActivity {
             }
         });
 
-        // initializing on click listener for buy button.
-        buyBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (buyLink.isEmpty()) {
-                    // below toast message is displaying when buy link is empty.
-                    Toast.makeText(BookDetails.this, "No buy page present for this book", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                // if the link is present we are opening
-                // the link via an intent.
-                Uri uri = Uri.parse(buyLink);
-                Intent i = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(i);
-            }
-        });
+
     }
 }

@@ -19,6 +19,7 @@ import ca.gbc.comp3074.mind_manager_app.Models.Suggestion;
 import ca.gbc.comp3074.mind_manager_app.Models.SuggestionArrayAdapter;
 import ca.gbc.comp3074.mind_manager_app.Music.VideoMain;
 import ca.gbc.comp3074.mind_manager_app.Reading.BookDisplayActivity;
+import ca.gbc.comp3074.mind_manager_app.Games.CrosswordGameActivity;
 
 public class SuggestionsActivity extends AppCompatActivity {
 
@@ -48,6 +49,7 @@ public class SuggestionsActivity extends AppCompatActivity {
         poetrySuggestion.setCategoryName("Reading");
         movieSuggestion.setCategoryName("Movie");
 
+
         listView = findViewById(R.id.listView);
         final ArrayList<Suggestion> suggestions = new ArrayList<>();
 
@@ -76,7 +78,7 @@ public class SuggestionsActivity extends AppCompatActivity {
             sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
             outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
             gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
-            poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
+            poetrySuggestion.setSuggestionNameBook(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
             movieSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Movie").getSuggestionName());
         }
 
@@ -87,7 +89,7 @@ public class SuggestionsActivity extends AppCompatActivity {
             sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
             outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
             gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
-            poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
+            poetrySuggestion.setSuggestionNameBook(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
             movieSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Movie").getSuggestionName());
         }
 
@@ -98,7 +100,7 @@ public class SuggestionsActivity extends AppCompatActivity {
             sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
             outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
             gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
-            poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
+            poetrySuggestion.setSuggestionNameBook(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
             movieSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Movie").getSuggestionName());
         }
 
@@ -109,7 +111,7 @@ public class SuggestionsActivity extends AppCompatActivity {
             sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
             outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
             gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
-            poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
+            poetrySuggestion.setSuggestionNameBook(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
             movieSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Movie").getSuggestionName());
         }
 
@@ -120,7 +122,7 @@ public class SuggestionsActivity extends AppCompatActivity {
             sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
             outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
             gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
-            poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
+            poetrySuggestion.setSuggestionNameBook(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
             movieSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Movie").getSuggestionName());
         }
 
@@ -143,7 +145,7 @@ public class SuggestionsActivity extends AppCompatActivity {
                     sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
                     outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
                     gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
-                    poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
+                    poetrySuggestion.setSuggestionNameBook(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
                     movieSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Movie").getSuggestionName());
                 }
 
@@ -154,7 +156,7 @@ public class SuggestionsActivity extends AppCompatActivity {
                     sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
                     outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
                     gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
-                    poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
+                    poetrySuggestion.setSuggestionNameBook(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
                     movieSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Movie").getSuggestionName());
                 }
 
@@ -165,7 +167,7 @@ public class SuggestionsActivity extends AppCompatActivity {
                     sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
                     outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
                     gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
-                    poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
+                    poetrySuggestion.setSuggestionNameBook(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
                     movieSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Movie").getSuggestionName());
                 }
 
@@ -176,7 +178,7 @@ public class SuggestionsActivity extends AppCompatActivity {
                     sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
                     outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
                     gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
-                    poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
+                    poetrySuggestion.setSuggestionNameBook(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
                     movieSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Movie").getSuggestionName());
                 }
 
@@ -187,7 +189,7 @@ public class SuggestionsActivity extends AppCompatActivity {
                     sportSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Sport").getSuggestionName());
                     outDoorSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Outdoors").getSuggestionName());
                     gameSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Games").getSuggestionName());
-                    poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
+                    poetrySuggestion.setSuggestionNameBook(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
                     movieSuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Movie").getSuggestionName());
                 }
                 suggestions.add(musicSuggestion);
@@ -231,16 +233,26 @@ public class SuggestionsActivity extends AppCompatActivity {
                     startActivity(start);
                 }
                 if (position == 3){
-                    Intent start = new Intent(getApplicationContext(), TriviaGameActivity.class);
+                    Intent start = new Intent(getApplicationContext(), CrosswordGameActivity.class);
+                    String mood = moodTitle;
+                    start.putExtra("Mood", mood);
                     startActivity(start);
+
                 }
                 if (position == 4){
                     Intent start = new Intent(getApplicationContext(), BookDisplayActivity.class);
+                    String mood = moodTitle;
+                    start.putExtra("Mood", mood);
                     startActivity(start);
+
+
                 }
                 if (position == 5){
                     Intent start = new Intent(getApplicationContext(), BookDisplayActivity.class);
                     startActivity(start);
+
+
+
                 }
             }
         });

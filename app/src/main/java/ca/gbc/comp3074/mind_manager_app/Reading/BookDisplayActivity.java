@@ -22,8 +22,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 
+import ca.gbc.comp3074.mind_manager_app.GoogleMySQLConnectionHelper;
+import ca.gbc.comp3074.mind_manager_app.Models.Suggestion;
 import ca.gbc.comp3074.mind_manager_app.R;
 
 public class BookDisplayActivity extends AppCompatActivity {
@@ -39,18 +42,56 @@ public class BookDisplayActivity extends AppCompatActivity {
     private EditText searchEdt;
     private ImageButton searchBtn;
 
+    Suggestion poetrySuggestion = new Suggestion();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
         super.onCreate(savedInstanceState);
+        final GoogleMySQLConnectionHelper db = new GoogleMySQLConnectionHelper();
+        final Connection connect = db.connectionclass();
+
+        poetrySuggestion.setCategoryName("Reading");
+
         setContentView(R.layout.book_display);
         Intent intent = getIntent();
         final String moodTitle = intent.getStringExtra("Mood");
 
+        String bookName = "";
 
-                getBooksInfo("The Lord of The Rings");
+        if (moodTitle.equals("Calmer")) {
+            poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
 
+            bookName = poetrySuggestion.getSuggestionName();
+            getBooksInfo(bookName);
+        }
+
+        if (moodTitle.equals("Energetic")) {
+
+            poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
+            bookName = poetrySuggestion.getSuggestionName();
+            getBooksInfo(bookName);
+        }
+
+        if (moodTitle.equals("Happier")) {
+
+            poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
+            bookName = poetrySuggestion.getSuggestionName();
+            getBooksInfo(bookName);
+        }
+
+        if (moodTitle.equals("Moody")) {
+
+            poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
+            bookName = poetrySuggestion.getSuggestionName();
+            getBooksInfo(bookName);
+        }
+
+        if (moodTitle.equals("Relaxed")) {
+
+            poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
+            bookName = poetrySuggestion.getSuggestionName();
+            getBooksInfo(bookName);
+        }
 
     }
 

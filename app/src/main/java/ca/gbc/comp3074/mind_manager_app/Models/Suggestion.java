@@ -61,6 +61,10 @@ public class Suggestion {
         this.suggestionName = suggestionName;
     }
 
+    public void setSuggestionNameBook(String suggestionName) {
+        this.suggestionName = "Check book out";
+    }
+
     public String getYoutubeLink() {
         return youtubeLink;
     }

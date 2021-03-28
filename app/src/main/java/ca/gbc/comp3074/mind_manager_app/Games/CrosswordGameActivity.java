@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -42,6 +43,11 @@ public class CrosswordGameActivity extends AppCompatActivity {
 
         final TextView lblResult = findViewById(R.id.lblResultGame);
         final EditText editUserInput = findViewById(R.id.editInputNumberCross);
+
+        ImageView crossworPic = findViewById(R.id.crosswordPic);
+
+        // SET AN IMAGE
+//        crossworPic.setImageResource(R.drawable.);
 
         // final String numberOfWords = "2";
         final int numOfWords = list.size();
