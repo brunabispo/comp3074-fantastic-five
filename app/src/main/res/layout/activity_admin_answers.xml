@@ -1,190 +1,626 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ic_background"
-    android:orientation="vertical">
+    android:fillViewport="true"
+    android:padding="16dp">
 
-    <Button
-        android:id="@+id/btnLogoutAdminAnswers"
-        android:layout_width="91dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="16dp"
-        android:text="Logout"
-        android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView21"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:text="Mind Manager app"
-        android:textColor="#FF9800"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/btnLogoutAdminAnswers"
-        app:layout_constraintHorizontal_bias="0.173"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/lbl_questionNum"
-        android:layout_width="321dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Question 1"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/lbl_questionText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.177"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView21"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/lbl_questionText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="Question..."
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toTopOf="@+id/btnAdminEditQuestionOne"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.131"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView21"
-        app:layout_constraintVertical_bias="0.861" />
-
-    <Button
-        android:id="@+id/btnAdminEditQuestionOne"
-        android:layout_width="139dp"
-        android:layout_height="33dp"
-        android:layout_marginBottom="28dp"
-        android:text="Edit Question"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView38"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.941"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogoutAdminAnswers"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/textView38"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="308dp"
-        android:text="Answer Choices:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnAdminDeleteQuestionOne"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.096"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        tools:context=".Admin.AdminAnswersActivity">
 
         <TextView
-            android:id="@+id/textView48"
-            android:layout_width="185dp"
-            android:layout_height="23dp"
-
-            android:text="Answer"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/textView50"
+            android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="bored"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+            android:layout_marginStart="89dp"
+            android:layout_marginEnd="90dp"
+            android:text="Edit Question"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.489"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView20"
+            android:id="@+id/lblError"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="energetic"
+            android:layout_marginTop="4dp"
+            android:textColor="#B52525"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+        <TextView
+            android:id="@+id/lblTextQuestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="36dp"
+            android:text="Text of Question*:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#5A5555"
+            android:textSize="24sp"
             android:textStyle="bold"
-            android:textSize="12sp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
-        <TextView
-            android:id="@+id/textView22"
+        <EditText
+            android:id="@+id/lblNewQuestion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="happy"
-            android:textStyle="bold"
-            android:textSize="12sp" />
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="18dp"
+            android:ems="9"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.458"
+            app:layout_constraintStart_toEndOf="@+id/lblTextQuestion"
+            app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
         <TextView
-            android:id="@+id/textView23"
+            android:id="@+id/textView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="sad"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="40dp"
+            android:text="Answer 1*:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#5A5555"
             android:textStyle="bold"
-            android:textSize="12sp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblTextQuestion" />
+
+        <EditText
+            android:id="@+id/lblAnswer1"
+            android:layout_width="194dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="18dp"
+            android:ems="9"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.851"
+            app:layout_constraintStart_toEndOf="@+id/textView9"
+            app:layout_constraintTop_toBottomOf="@+id/lblNewQuestion" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="406dp"
+            android:layout_height="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView9">
+
+            <TextView
+                android:id="@+id/textView37"
+                android:layout_width="118dp"
+                android:layout_height="wrap_content"
+                android:text="  Rating*:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#5A5555"
+                android:textSize="20sp"
+                tools:layout_editor_absoluteX="21dp"
+                tools:layout_editor_absoluteY="278dp" />
+
+            <EditText
+                android:id="@+id/lblAns1Bored"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="119dp"
+                tools:layout_editor_absoluteY="270dp" />
+
+            <EditText
+                android:id="@+id/lblAns1Energ"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="232dp"
+                tools:layout_editor_absoluteY="272dp" />
+
+            <EditText
+                android:id="@+id/lblAns1Happy"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="346dp"
+                tools:layout_editor_absoluteY="272dp" />
+
+            <EditText
+                android:id="@+id/lblAns1Sad"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="291dp"
+                tools:layout_editor_absoluteY="274dp" />
+
+            <EditText
+                android:id="@+id/lblAns1Tired"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="185dp"
+                tools:layout_editor_absoluteY="274dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+            <TextView
+                android:id="@+id/textView98"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:text="Bored"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#5A5555"
+                android:textSize="16sp"
+                tools:layout_editor_absoluteX="21dp"
+                tools:layout_editor_absoluteY="278dp" />
+
+            <TextView
+                android:id="@+id/lblEnerg"
+                android:layout_width="27dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Energ."
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#5A5555"
+                android:textSize="16sp"
+                tools:layout_editor_absoluteX="21dp"
+                tools:layout_editor_absoluteY="278dp" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="32dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text=" Happy"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#5A5555"
+                android:textSize="16sp"
+                tools:layout_editor_absoluteX="21dp"
+                tools:layout_editor_absoluteY="278dp" />
+
+            <TextView
+                android:id="@+id/textViewSad"
+                android:layout_width="25dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="  Sad"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#5A5555"
+                android:textSize="16sp"
+                tools:layout_editor_absoluteX="21dp"
+                tools:layout_editor_absoluteY="278dp" />
+
+            <TextView
+                android:id="@+id/textViewTired"
+                android:layout_width="17dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tired"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#5A5555"
+                android:textSize="16sp"
+                tools:layout_editor_absoluteX="21dp"
+                tools:layout_editor_absoluteY="278dp" />
+
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/textView24"
+            android:id="@+id/textView11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="tired"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="56dp"
+            android:text="Answer 2*:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#5A5555"
             android:textStyle="bold"
-            android:textSize="12sp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+        <EditText
+            android:id="@+id/lblAnswer2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginEnd="18dp"
+            android:ems="9"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.836"
+            app:layout_constraintStart_toEndOf="@+id/textView11"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="406dp"
+            android:layout_height="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView11">
+
+            <TextView
+                android:id="@+id/textView77"
+                android:layout_width="118dp"
+                android:layout_height="wrap_content"
+                android:text="  Rating*:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#5A5555"
+                android:textSize="20sp"
+                tools:layout_editor_absoluteX="21dp"
+                tools:layout_editor_absoluteY="278dp" />
+
+            <EditText
+                android:id="@+id/lblAns2Bored"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="119dp"
+                tools:layout_editor_absoluteY="270dp" />
+
+            <EditText
+                android:id="@+id/lblAns2Energ"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="232dp"
+                tools:layout_editor_absoluteY="272dp" />
+
+            <EditText
+                android:id="@+id/lblAns2Happy"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="346dp"
+                tools:layout_editor_absoluteY="272dp" />
+
+            <EditText
+                android:id="@+id/lblAns2Sad"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="291dp"
+                tools:layout_editor_absoluteY="274dp" />
+
+            <EditText
+                android:id="@+id/lblAns2Tired"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="185dp"
+                tools:layout_editor_absoluteY="274dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+            <TextView
+                android:id="@+id/textView39"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textView50"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:text="Bored"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#5A5555"
+                android:textSize="16sp"
+                tools:layout_editor_absoluteX="21dp"
+                tools:layout_editor_absoluteY="278dp" />
+
+            <TextView
+                android:id="@+id/textView41"
+                android:layout_width="27dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Energ."
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#5A5555"
+                android:textSize="16sp"
+                tools:layout_editor_absoluteX="21dp"
+                tools:layout_editor_absoluteY="278dp" />
+
+            <TextView
+                android:id="@+id/textView43"
+                android:layout_width="32dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text=" Happy"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#5A5555"
+                android:textSize="16sp"
+                tools:layout_editor_absoluteX="21dp"
+                tools:layout_editor_absoluteY="278dp" />
+
+            <TextView
+                android:id="@+id/textView47"
+                android:layout_width="25dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="  Sad"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#5A5555"
+                android:textSize="16sp"
+                tools:layout_editor_absoluteX="21dp"
+                tools:layout_editor_absoluteY="278dp" />
+
+            <TextView
+                android:id="@+id/textView52"
+                android:layout_width="17dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tired"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#5A5555"
+                android:textSize="16sp"
+                tools:layout_editor_absoluteX="21dp"
+                tools:layout_editor_absoluteY="278dp" />
+
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/textView51"
-            android:layout_width="43dp"
+            android:id="@+id/lblConfirmPass"
+            android:layout_width="113dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="100dp"
+            android:text="Answer 3*:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#5A5555"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+        <EditText
+            android:id="@+id/lblAnswer3"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Edit"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="88dp"
+            android:layout_marginEnd="18dp"
+            android:ems="9"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/lblConfirmPass"
+            app:layout_constraintTop_toBottomOf="@+id/lblAnswer2" />
 
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearLayout8"
+            android:layout_width="406dp"
+            android:layout_height="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblConfirmPass">
 
-    <ListView
-        android:id="@android:id/list"
-        android:layout_width="413dp"
-        android:layout_height="267dp"
-        android:layout_marginTop="420dp"
-        android:layout_marginEnd="53dp"
-        android:layout_marginBottom="515dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.076" />
+            <TextView
+                android:id="@+id/textView44"
+                android:layout_width="118dp"
+                android:layout_height="wrap_content"
+                android:text="  Rating*:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#5A5555"
+                android:textSize="20sp"
+                tools:layout_editor_absoluteX="21dp"
+                tools:layout_editor_absoluteY="278dp" />
 
-    <Button
-        android:id="@+id/btnAdminDeleteQuestionOne"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="Delete Question"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+            <EditText
+                android:id="@+id/lblAns3Bored"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="119dp"
+                tools:layout_editor_absoluteY="270dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <EditText
+                android:id="@+id/lblAns3Energ"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="232dp"
+                tools:layout_editor_absoluteY="272dp" />
+
+            <EditText
+                android:id="@+id/lblAns3Happy"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="346dp"
+                tools:layout_editor_absoluteY="272dp" />
+
+            <EditText
+                android:id="@+id/lblAns3Sad"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="291dp"
+                tools:layout_editor_absoluteY="274dp" />
+
+            <EditText
+                android:id="@+id/lblAns3Tired"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="185dp"
+                tools:layout_editor_absoluteY="274dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout8">
+
+            <TextView
+                android:id="@+id/textView33"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textView34"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:text="Bored"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#5A5555"
+                android:textSize="16sp"
+                tools:layout_editor_absoluteX="21dp"
+                tools:layout_editor_absoluteY="278dp" />
+
+            <TextView
+                android:id="@+id/textView35"
+                android:layout_width="27dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Energ."
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#5A5555"
+                android:textSize="16sp"
+                tools:layout_editor_absoluteX="21dp"
+                tools:layout_editor_absoluteY="278dp" />
+
+            <TextView
+                android:id="@+id/textView36"
+                android:layout_width="32dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text=" Happy"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#5A5555"
+                android:textSize="16sp"
+                tools:layout_editor_absoluteX="21dp"
+                tools:layout_editor_absoluteY="278dp" />
+
+            <TextView
+                android:id="@+id/textView74"
+                android:layout_width="25dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="  Sad"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#5A5555"
+                android:textSize="16sp"
+                tools:layout_editor_absoluteX="21dp"
+                tools:layout_editor_absoluteY="278dp" />
+
+            <TextView
+                android:id="@+id/textView64"
+                android:layout_width="17dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tired"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#5A5555"
+                android:textSize="16sp"
+                tools:layout_editor_absoluteX="21dp"
+                tools:layout_editor_absoluteY="278dp" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="117dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="76dp"
+            android:text="Save"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.51"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblAnswer3" />
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="115dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="20dp"
+            android:text="Cancel"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.506"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnSubmit"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

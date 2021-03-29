@@ -69,7 +69,7 @@
                 android:id="@+id/textView50"
                 android:layout_width="49dp"
                 android:layout_height="wrap_content"
-                android:text="View"
+                android:text="Edit"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
