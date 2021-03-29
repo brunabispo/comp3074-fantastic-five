@@ -33,6 +33,7 @@
         <activity android:name=".Games.CrosswordGameActivity" android:parentActivityName=".SuggestionsActivity"/>
         <activity android:name=".WelcomeActivity" android:parentActivityName=".SuggestionsActivity"/>
         <activity android:name=".Music.VideoMain" android:parentActivityName=".SuggestionsActivity"/>
+        <activity android:name=".Movies.MovieMain" android:parentActivityName=".SuggestionsActivity"/>
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

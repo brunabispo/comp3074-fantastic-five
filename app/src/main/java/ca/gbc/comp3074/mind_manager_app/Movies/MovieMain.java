@@ -1,4 +1,4 @@
-package ca.gbc.comp3074.mind_manager_app.Music;
+package ca.gbc.comp3074.mind_manager_app.Movies;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,23 +19,22 @@ import com.google.android.youtube.player.YouTubePlayerView;
 
 import java.util.Vector;
 
+import ca.gbc.comp3074.mind_manager_app.Music.VideoPlayer;
 import ca.gbc.comp3074.mind_manager_app.R;
 
-public class VideoMain  extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener{
+public class MovieMain  extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener{
 
     public static final String API_KEY = "AIzaSyBXQbm5H8Nzz4CUc_6d4x2VOL-9HKVNJUA";
-    public static final String VIDEO_ID = "5dbEhBKGOtY";
 
     Vector<VideoPlayer> youtubeVideos = new Vector<VideoPlayer>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.music_performer);
-        YouTubePlayerView youTubePlayerView = (YouTubePlayerView) findViewById(R.id.youtube_player);
+        setContentView(R.layout.movie_performer);
+        YouTubePlayerView youTubePlayerView = findViewById(R.id.youtube_player);
         youTubePlayerView.initialize(API_KEY, this);
         TextView songEdit = findViewById(R.id.txtSong);
-        songEdit.setText("Video Player");
-
+        songEdit.setText("Movie Player");
 
     }
 
@@ -49,8 +48,8 @@ public class VideoMain  extends YouTubeBaseActivity implements YouTubePlayer.OnI
         if (!wasRestored) {
             Intent i = getIntent();
             Bundle extras = i.getExtras();
-            if(extras.containsKey("MyParameter")) {
-                String videoId = i.getStringExtra("MyParameter");
+            if(extras.containsKey("MyParameter1")) {
+                String videoId = i.getStringExtra("MyParameter1");
                 //TextView songEdit = findViewById(R.id.txtSong);
                 //TextView idEdit = findViewById(R.id.txtSong);
                 //songEdit.setText(something);
