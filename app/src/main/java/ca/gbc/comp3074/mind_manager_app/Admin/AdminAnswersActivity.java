@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.sql.Connection;
 import java.util.List;
 import ca.gbc.comp3074.mind_manager_app.GoogleMySQLConnectionHelper;
-import ca.gbc.comp3074.mind_manager_app.MainActivity;
 import ca.gbc.comp3074.mind_manager_app.Models.Answer;
 import ca.gbc.comp3074.mind_manager_app.Models.Question;
 import ca.gbc.comp3074.mind_manager_app.R;

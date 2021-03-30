@@ -1,4 +1,5 @@
 package ca.gbc.comp3074.mind_manager_app.Reading;
+
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -6,12 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
-
 import ca.gbc.comp3074.mind_manager_app.R;
 
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder> {
@@ -25,7 +23,6 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
         this.bookInfoArrayList = bookInfoArrayList;
         this.mcontext = mcontext;
     }
-
 
     @NonNull
     @Override

@@ -1,14 +1,12 @@
 package ca.gbc.comp3074.mind_manager_app.Music;
 
 import android.view.ViewGroup;
-
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import java.util.List;
-
 import ca.gbc.comp3074.mind_manager_app.R;
 
 

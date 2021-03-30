@@ -8,11 +8,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.ArrayList;
-
 import ca.gbc.comp3074.mind_manager_app.R;
 
 public class BookDetails extends AppCompatActivity {

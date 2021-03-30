@@ -7,7 +7,12 @@ public class Suggestion {
     private String categoryName;
     private String suggestionName;
     private String youtubeLink;
-     public Suggestion() {
+
+    public Suggestion() {
+    }
+
+    public Suggestion(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     public Suggestion(String mood, String categoryName, String suggestionName, String youtubeLink) {
@@ -15,10 +20,6 @@ public class Suggestion {
         this.categoryName = categoryName;
         this.suggestionName = suggestionName;
         this.youtubeLink = youtubeLink;
-     }
-
-    public Suggestion(String categoryName) {
-        this.categoryName = categoryName;
     }
 
     public Suggestion(int id, String mood, String categoryName, String suggestionName, String youtubeLink) {
@@ -61,10 +62,6 @@ public class Suggestion {
         this.suggestionName = suggestionName;
     }
 
-    public void setSuggestionNameBook(String suggestionName) {
-        this.suggestionName = "Check book out";
-    }
-
     public String getYoutubeLink() {
         return youtubeLink;
     }
@@ -72,6 +69,4 @@ public class Suggestion {
     public void setYoutubeLink(String youtubeLink) {
         this.youtubeLink = youtubeLink;
     }
-
-
 }

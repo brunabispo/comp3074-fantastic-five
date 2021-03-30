@@ -59,7 +59,27 @@ public class GoogleMySQLConnectionHelper {
         return suggestionExist;
     }
 
-    // code to get all users in a list view
+    // get set of suggestions from one category (for filter button)
+    public ArrayList<Suggestion> getSetOfSuggestionsFromOneCategory(Connection connect, String mood, String category) {
+        ArrayList<Suggestion> suggestions = new ArrayList<>();
+        try {
+            if (connect != null) {
+                String query = "SELECT * FROM suggestions WHERE mood IN ('" + mood + "') AND " +
+                        "category_name IN ('" + category + "') ORDER BY RAND() LIMIT 6";
+                Statement st = connect.createStatement();
+                ResultSet rs = st.executeQuery(query);
+                while (rs.next()) {
+                    suggestions.add(new Suggestion(rs.getInt(1),rs.getString(2),
+                            rs.getString(3), rs.getString(4) , rs.getString(5)));
+                }
+            }
+        } catch (Exception exception) {
+            Log.e("Error: ", exception.getMessage());
+        }
+        return suggestions;
+    }
+
+    // get all categories
     public ArrayList<Suggestion> getAllCategories(Connection connect) {
         ArrayList<Suggestion> categories = new ArrayList<>();
         try {
@@ -77,7 +97,7 @@ public class GoogleMySQLConnectionHelper {
         return categories;
     }
 
-    //get the random question
+    //get random question
     public Question getRandomQuestion(Connection connect) {
         Question randomQuestion = null;
         try {
@@ -96,7 +116,7 @@ public class GoogleMySQLConnectionHelper {
         return randomQuestion;
     }
 
-    //get the question by ID
+    //get question by id
     public Question getQuestionByID(Connection connect, int id) {
         Question question = null;
         try {
@@ -115,7 +135,7 @@ public class GoogleMySQLConnectionHelper {
         return question;
     }
 
-    //get the question by ID
+    //get question by question text
     public Question getQuestionByText(Connection connect, String text) {
         Question question = null;
         try {
@@ -134,7 +154,7 @@ public class GoogleMySQLConnectionHelper {
         return question;
     }
 
-    // code to get all users in a list view
+    // get all questions
     public ArrayList<Question> getAllQuestions(Connection connect) {
         ArrayList<Question> questions = new ArrayList<>();
         try {
@@ -152,7 +172,7 @@ public class GoogleMySQLConnectionHelper {
         return questions;
     }
 
-    // add the new question
+    // add new question
     public void addQuestion(Connection connect, Question question)  {
         try {
             if (connect != null) {
@@ -166,7 +186,7 @@ public class GoogleMySQLConnectionHelper {
         }
     }
 
-    // Deleting single question
+    // delete question by id
     public void deleteQuestion(Connection connect, int questionID) {
         try {
             if (connect != null) {
@@ -181,7 +201,7 @@ public class GoogleMySQLConnectionHelper {
         }
     }
 
-    //get answers for question by questionId
+    //get all answers for question by questionId
     public ArrayList<Answer> getAnswers(Connection connect, int questionId) {
         ArrayList<Answer> answers = new ArrayList<>();
         try {
@@ -201,7 +221,7 @@ public class GoogleMySQLConnectionHelper {
         return answers;
     }
 
-    // add the new question
+    // add new answer
     public void addAnswer(Connection connect, Answer answer)  {
         try {
             if (connect != null) {
@@ -219,13 +239,7 @@ public class GoogleMySQLConnectionHelper {
         }
     }
 
-
-
-
-
-
-
-    // get the single user
+    // get user by username
     public User getUser(Connection connect, String userName) {
         User userExist = null;
         try {
@@ -244,7 +258,7 @@ public class GoogleMySQLConnectionHelper {
         return userExist;
     }
 
-    // code to get all users in a list view
+    // get all users
     public ArrayList<User> getAllUsers(Connection connect) {
         ArrayList<User> users = new ArrayList<>();
         try {
@@ -263,7 +277,7 @@ public class GoogleMySQLConnectionHelper {
         return users;
     }
 
-    // add the new user
+    // add new user
     public void addUser(Connection connect, User user)  {
         try {
             if (connect != null) {
@@ -278,7 +292,7 @@ public class GoogleMySQLConnectionHelper {
         }
     }
 
-    // Deleting single user
+    // delete user by id
     public void deleteUser(Connection connect, int userID) {
         try {
             if (connect != null) {

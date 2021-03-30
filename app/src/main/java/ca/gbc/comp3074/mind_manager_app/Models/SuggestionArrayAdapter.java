@@ -33,14 +33,37 @@ public class SuggestionArrayAdapter extends ArrayAdapter<Suggestion> {
         @SuppressLint("ViewHolder") View rowView = inflater.inflate(R.layout.row_layout_suggestions, parent, false);
 
         ImageView images = rowView.findViewById(R.id.catgoryImage);
-        images.setImageResource(categoryImages[position]);
+        String category = values.get(position).getCategoryName();
+        setImage(images, category);
 
         TextView categoryTitles = rowView.findViewById(R.id.lblCategory);
-        categoryTitles.setText(values.get(position).getCategoryName());
+        categoryTitles.setText(category);
 
         TextView suggestionNames = rowView.findViewById(R.id.lblSuggestion);
         suggestionNames.setText(values.get(position).getSuggestionName());
 
         return rowView;
+    }
+
+    private void setImage(ImageView images, String category){
+        switch(category){
+            case "Sport":
+                images.setImageResource(categoryImages[0]);
+                break;
+            case "Reading":
+                images.setImageResource(categoryImages[2]);
+                break;
+            case "Music":
+                images.setImageResource(categoryImages[3]);
+                break;
+            case "Movie":
+                images.setImageResource(categoryImages[4]);
+                break;
+            case "Games":
+                images.setImageResource(categoryImages[5]);
+                break;
+            default:
+                images.setImageResource(categoryImages[1]);
+        }
     }
 }

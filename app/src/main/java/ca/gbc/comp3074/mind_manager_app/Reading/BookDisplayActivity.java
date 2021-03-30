@@ -6,32 +6,22 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.sql.Connection;
 import java.util.ArrayList;
-
-import ca.gbc.comp3074.mind_manager_app.GoogleMySQLConnectionHelper;
-import ca.gbc.comp3074.mind_manager_app.Models.Suggestion;
 import ca.gbc.comp3074.mind_manager_app.R;
 
 public class BookDisplayActivity extends AppCompatActivity {
-
-
 
     // creating variables for our request queue,
     // array list, progressbar, edittext,
@@ -42,64 +32,16 @@ public class BookDisplayActivity extends AppCompatActivity {
     private EditText searchEdt;
     private ImageButton searchBtn;
 
-    Suggestion poetrySuggestion = new Suggestion();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        final GoogleMySQLConnectionHelper db = new GoogleMySQLConnectionHelper();
-        final Connection connect = db.connectionclass();
-
-        poetrySuggestion.setCategoryName("Reading");
 
         setContentView(R.layout.book_display);
         Intent intent = getIntent();
-        final String moodTitle = intent.getStringExtra("Mood");
+        final String bookName = intent.getStringExtra("bookTitle");
 
-        String bookName = "";
-
-        if (moodTitle.equals("Calmer")) {
-            poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
-
-            bookName = poetrySuggestion.getSuggestionName();
-            getBooksInfo(bookName);
-        }
-
-        if (moodTitle.equals("Energetic")) {
-
-            poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
-            bookName = poetrySuggestion.getSuggestionName();
-            getBooksInfo(bookName);
-        }
-
-        if (moodTitle.equals("Happier")) {
-
-            poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
-            bookName = poetrySuggestion.getSuggestionName();
-            getBooksInfo(bookName);
-        }
-
-        if (moodTitle.equals("Moody")) {
-
-            poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
-            bookName = poetrySuggestion.getSuggestionName();
-            getBooksInfo(bookName);
-        }
-
-        if (moodTitle.equals("Relaxed")) {
-
-            poetrySuggestion.setSuggestionName(db.getSuggestion(connect, moodTitle, "Reading").getSuggestionName());
-            bookName = poetrySuggestion.getSuggestionName();
-            getBooksInfo(bookName);
-        }
-
+        getBooksInfo(bookName);
     }
-
-
-
-
-
-
 
     private void getBooksInfo(String query) {
 
