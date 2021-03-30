@@ -5,30 +5,33 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import com.android.volley.RequestQueue;
 import java.util.ArrayList;
-//import com.google.android.gms.common.api.Response;
 import java.sql.Connection;
 import ca.gbc.comp3074.mind_manager_app.Movies.MovieMain;
-import ca.gbc.comp3074.mind_manager_app.Reading.BookInfo;
 import ca.gbc.comp3074.mind_manager_app.Models.Suggestion;
 import ca.gbc.comp3074.mind_manager_app.Models.SuggestionArrayAdapter;
 import ca.gbc.comp3074.mind_manager_app.Music.VideoMain;
 import ca.gbc.comp3074.mind_manager_app.Reading.BookDisplayActivity;
 import ca.gbc.comp3074.mind_manager_app.Games.CrosswordGameActivity;
 
-public class SuggestionsActivity extends AppCompatActivity {
+public class SuggestionsActivity extends AppCompatActivity{
 
     ListView listView;
-    ArrayList<Suggestion> categories;
+    ArrayList<Suggestion> categories = new ArrayList<>();
     ArrayList<Suggestion> suggestions = new ArrayList<>();
-    private RequestQueue mRequestQueue; ///////////added
-    private ArrayList<BookInfo> bookInfoArrayList; /////////////added
+    String moodTitle = "";
 
+    //Database instance
+    final GoogleMySQLConnectionHelper db = new GoogleMySQLConnectionHelper();
+    final Connection connect = db.connectionclass();
+
+    //array of category images
     int[] images = {R.drawable.sports, R.drawable.outdoors, R.drawable.reading, R.drawable.music, R.drawable.movies, R.drawable.games};
 
     @SuppressLint("SetTextI18n")
@@ -39,17 +42,78 @@ public class SuggestionsActivity extends AppCompatActivity {
 
         listView = findViewById(R.id.listView);
 
+        //accept variable "Mood" from Welcome page and set title of the current page
         TextView title = findViewById(R.id.lblTitle);
         Intent intent = getIntent();
-        final String moodTitle = intent.getStringExtra("Mood");
+        moodTitle = intent.getStringExtra("Mood");
         title.setText("Here are your suggestions for being more " + moodTitle);
 
-        //Database instance
-        final GoogleMySQLConnectionHelper db = new GoogleMySQLConnectionHelper();
-        final Connection connect = db.connectionclass();
+        //functionality for btnFilter
+        //create a list of items for the spinner (dropdown list for Filter button)
+        Spinner dropdown = findViewById(R.id.spinner);
+        final String[] items = new String[]{"All categories", "Sport", "Outdoors", "Reading", "Music", "Movie", "Games"};
+        //set adapter for the spinner (dropdown list for Filter button)
+        ArrayAdapter<String> spinerAdapter = new ArrayAdapter<String>(SuggestionsActivity.this, android.R.layout.simple_spinner_dropdown_item, items);
+        spinerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        dropdown.setAdapter(spinerAdapter);
+        dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                switch (items[position]) {
+                    case "All categories":
+                        //set suggestion to each unique category
+                        getSetOfDifferentSuggestions(connect, moodTitle, db);
+                        break;
+                    case "Sport":
+                        //add only one category (user choose it by Filter button)
+                        categories.add(0, new Suggestion("Sport"));
+                        //set 6 different suggestions for only one category and only one mood (by user choice)
+                        suggestions = db.getSetOfSuggestionsFromOneCategory(connect, moodTitle, categories.get(0).getCategoryName()+"");
+                        break;
+                    case "Outdoors":
+                        //add only one category (user choose it by Filter button)
+                        categories.add(0, new Suggestion("Outdoors"));
+                        //set 6 different suggestions for only one category and only one mood (by user choice)
+                        suggestions = db.getSetOfSuggestionsFromOneCategory(connect, moodTitle, categories.get(0).getCategoryName()+"");
+                        break;
+                    case "Reading":
+                        //add only one category (user choose it by Filter button)
+                        categories.add(0, new Suggestion("Reading"));
+                        //set 6 different suggestions for only one category and only one mood (by user choice)
+                        suggestions = db.getSetOfSuggestionsFromOneCategory(connect, moodTitle, categories.get(0).getCategoryName()+"");
+                        break;
+                    case "Music":
+                        //add only one category (user choose it by Filter button)
+                        categories.add(0, new Suggestion("Music"));
+                        //set 6 different suggestions for only one category and only one mood (by user choice)
+                        suggestions = db.getSetOfSuggestionsFromOneCategory(connect, moodTitle, categories.get(0).getCategoryName()+"");
+                        break;
+                    case "Movie":
+                        //add only one category (user choose it by Filter button)
+                        categories.add(0, new Suggestion("Movie"));
+                        //set 6 different suggestions for only one category and only one mood (by user choice)
+                        suggestions = db.getSetOfSuggestionsFromOneCategory(connect, moodTitle, categories.get(0).getCategoryName()+"");
+                        break;
+                    default:
+                        //add only one category (user choose it by Filter button)
+                        categories.add(0, new Suggestion("Games"));
+                        //set 6 different suggestions for only one category and only one mood (by user choice)
+                        suggestions = db.getSetOfSuggestionsFromOneCategory(connect, moodTitle, categories.get(0).getCategoryName()+"");
+                }
 
-        categories = db.getAllCategories(connect);
+                //print result
+                SuggestionArrayAdapter adapter = new SuggestionArrayAdapter(SuggestionsActivity.this, suggestions, images);
+                listView.setAdapter(adapter);
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // TODO Auto-generated method stub
+            }
+        });
+
+        //functionality for btnMap
         ImageButton btnMap = findViewById(R.id.btn_map);
         btnMap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,41 +122,20 @@ public class SuggestionsActivity extends AppCompatActivity {
             }
         });
 
-        getSetOfDifferentSuggestions(connect, moodTitle, db);
-
-        SuggestionArrayAdapter adapter = new SuggestionArrayAdapter(this, suggestions, images);
-        listView.setAdapter(adapter);
-
-        //functionality for btnFilter
-        ImageButton btnFilter = findViewById(R.id.btnFilter);
-        btnFilter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                suggestions.clear();
-                categories.clear();
-                categories.add(0, new Suggestion("Music"));
-                suggestions = db.getSetOfSuggestionsFromOneCategory(connect, moodTitle, "Music");
-
-                SuggestionArrayAdapter adapter = new SuggestionArrayAdapter(SuggestionsActivity.this, suggestions, images);
-                listView.setAdapter(adapter);
-            }
-        });
-
         //functionality for btnRandom
         ImageButton btnRandom = findViewById(R.id.btnRandom);
         btnRandom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                suggestions.clear();
-                categories.clear();
-                categories = db.getAllCategories(connect);
+                //set new suggestion to each unique category
                 getSetOfDifferentSuggestions(connect, moodTitle, db);
-
+                //print result
                 SuggestionArrayAdapter adapter = new SuggestionArrayAdapter(SuggestionsActivity.this, suggestions, images);
                 listView.setAdapter(adapter);
             }
         });
 
+        //Move to next pages by clicking on any suggestion
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -106,17 +149,20 @@ public class SuggestionsActivity extends AppCompatActivity {
                 }
                 if (suggestions.get(position).getCategoryName().equals("Reading")){
                     Intent start = new Intent(getApplicationContext(), BookDisplayActivity.class);
-                    start.putExtra("bookTitle", suggestions.get(position).getSuggestionName());
+                    String bookTitle = suggestions.get(position).getSuggestionName();
+                    start.putExtra("bookTitle", bookTitle);
                     startActivity(start);
                 }
                 if (suggestions.get(position).getCategoryName().equals("Music")){
                     Intent start = new Intent(SuggestionsActivity.this, VideoMain.class);
-                    start.putExtra("MyParameter", suggestions.get(position).getYoutubeLink());
+                    String YoutubeLink = suggestions.get(position).getYoutubeLink();
+                    start.putExtra("MyParameter", YoutubeLink);
                     startActivity(start);
                 }
                 if (suggestions.get(position).getCategoryName().equals("Movie")){
                     Intent start = new Intent(SuggestionsActivity.this, MovieMain.class);
-                    start.putExtra("MyParameter1", suggestions.get(position).getYoutubeLink());
+                    String YoutubeLink = suggestions.get(position).getYoutubeLink();
+                    start.putExtra("MyParameter1", YoutubeLink);
                     startActivity(start);
                 }
                 if (suggestions.get(position).getCategoryName().equals("Games")){
@@ -128,7 +174,13 @@ public class SuggestionsActivity extends AppCompatActivity {
         });
     }
 
+    // Receive set of 6 different suggestions for specific mood (it's function for Random button)
     private void getSetOfDifferentSuggestions(Connection connect, String moodTitle, GoogleMySQLConnectionHelper db){
+        //delete all suggestions
+        suggestions.clear();
+        //find all unique categories
+        categories = db.getAllCategories(connect);
+        //set new suggestion to each unique category
         for(int i=0; i<6; i++){
             Suggestion suggestion = db.getSuggestion(connect, moodTitle, categories.get(i).getCategoryName()+"");
             suggestions.add(suggestion);

@@ -48,6 +48,20 @@
                 android:textAlignment="textStart"
                 android:tint="#1DB5C8" />
 
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="16dp"
+                android:layout_weight="1"
+                android:contentDescription="Filter"
+                android:src="@drawable/ic_filter"
+                android:textAlignment="textStart"
+                android:tint="#1DB5C8"
+                android:background="@android:drawable/btn_dropdown"
+                android:spinnerMode="dropdown"
+                />
+
             <ImageButton
                 android:id="@+id/btn_map"
                 android:layout_width="0dp"
