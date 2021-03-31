@@ -166,8 +166,8 @@ public class SuggestionsActivity extends AppCompatActivity{
                     startActivity(start);
                 }
                 if (suggestions.get(position).getCategoryName().equals("Games")){
-                    Intent start = new Intent(getApplicationContext(), CrosswordGameActivity.class);
-                    start.putExtra("Mood", moodTitle);
+                    Intent start = new Intent(SuggestionsActivity.this, CrosswordGameActivity.class);
+                    start.putExtra("game", moodTitle);
                     startActivity(start);
                 }
             }
