@@ -7,19 +7,25 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class WelcomeActivity extends AppCompatActivity {
+
+    String username = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-        Button btnIdk = findViewById(R.id.btnIdk);
+        Intent intent = getIntent();
+        username = intent.getStringExtra("username");
 
-//        Button "I don't know" goes to questionnaire page answer questions to determine their mood(QuestionActivity)
+        //Button "I don't know" goes to questionnaire page answer questions to determine their mood(QuestionActivity)
+        Button btnIdk = findViewById(R.id.btnIdk);
         btnIdk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,6 +82,7 @@ public class WelcomeActivity extends AppCompatActivity {
     //function to start QuestionsActivity
     private void openIDontKnow(){
         Intent start = new Intent(getApplicationContext(), QuestionsActivity.class);
+        start.putExtra("username", username);
         startActivity(start);
     }
 
@@ -84,6 +91,7 @@ public class WelcomeActivity extends AppCompatActivity {
         Intent start = new Intent(getApplicationContext(), SuggestionsActivity.class);
         String mood = "Calmer";
         start.putExtra("Mood", mood);
+        start.putExtra("username", username);
         startActivity(start);
     }
 
@@ -92,6 +100,7 @@ public class WelcomeActivity extends AppCompatActivity {
         Intent start = new Intent(getApplicationContext(), SuggestionsActivity.class);
         String mood = "Energetic";
         start.putExtra("Mood", mood);
+        start.putExtra("username", username);
         startActivity(start);
     }
 
@@ -100,6 +109,7 @@ public class WelcomeActivity extends AppCompatActivity {
         Intent start = new Intent(getApplicationContext(), SuggestionsActivity.class);
         String mood = "Happier";
         start.putExtra("Mood", mood);
+        start.putExtra("username", username);
         startActivity(start);
     }
 
@@ -108,6 +118,7 @@ public class WelcomeActivity extends AppCompatActivity {
         Intent start = new Intent(getApplicationContext(), SuggestionsActivity.class);
         String mood = "Moody";
         start.putExtra("Mood", mood);
+        start.putExtra("username", username);
         startActivity(start);
     }
 
@@ -116,6 +127,7 @@ public class WelcomeActivity extends AppCompatActivity {
         Intent start = new Intent(getApplicationContext(), SuggestionsActivity.class);
         String mood = "Relaxed";
         start.putExtra("Mood", mood);
+        start.putExtra("username", username);
         startActivity(start);
     }
 

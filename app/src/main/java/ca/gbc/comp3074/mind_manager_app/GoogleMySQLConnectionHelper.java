@@ -60,12 +60,18 @@ public class GoogleMySQLConnectionHelper {
     }
 
     // get set of suggestions from one category (for filter button)
-    public ArrayList<Suggestion> getSetOfSuggestionsFromOneCategory(Connection connect, String mood, String category) {
+    public ArrayList<Suggestion> getSetOfSuggestionsFromOneCategory(Connection connect, String mood, String category, String username) {
         ArrayList<Suggestion> suggestions = new ArrayList<>();
+        String query = "";
         try {
             if (connect != null) {
-                String query = "SELECT * FROM suggestions WHERE mood IN ('" + mood + "') AND " +
-                        "category_name IN ('" + category + "') ORDER BY RAND() LIMIT 6";
+                if (username == null) {
+                    query = "SELECT * FROM suggestions WHERE mood IN ('" + mood + "') AND " +
+                            "category_name IN ('" + category + "') ORDER BY RAND() LIMIT 3";
+                } else{
+                    query = "SELECT * FROM suggestions WHERE mood IN ('" + mood + "') AND " +
+                            "category_name IN ('" + category + "') ORDER BY RAND() LIMIT 6";
+                }
                 Statement st = connect.createStatement();
                 ResultSet rs = st.executeQuery(query);
                 while (rs.next()) {

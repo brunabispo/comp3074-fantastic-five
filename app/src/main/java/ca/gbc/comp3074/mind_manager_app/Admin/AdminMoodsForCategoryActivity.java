@@ -8,20 +8,20 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import java.sql.Connection;
 import java.util.List;
-import ca.gbc.comp3074.mind_manager_app.Models.CategoryArrayAdapter;
 import ca.gbc.comp3074.mind_manager_app.GoogleMySQLConnectionHelper;
 import ca.gbc.comp3074.mind_manager_app.MainActivity;
+import ca.gbc.comp3074.mind_manager_app.Models.CategoryArrayAdapter;
 import ca.gbc.comp3074.mind_manager_app.Models.Suggestion;
 import ca.gbc.comp3074.mind_manager_app.R;
 
-public class AdminCategoriesActivity extends ListActivity {
+public class AdminMoodsForCategoryActivity extends ListActivity {
 
     List<Suggestion> categories;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_categories);
+        setContentView(R.layout.activity_admin_moods_for_category);
 
         //Database instance
         final GoogleMySQLConnectionHelper db = new GoogleMySQLConnectionHelper();
@@ -32,7 +32,6 @@ public class AdminCategoriesActivity extends ListActivity {
 
         printArray(connect, db, images);
 
-        //button Logout
         Button btnLogOut = findViewById(R.id.btnLogoutAdminCategories);
         btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,7 +41,7 @@ public class AdminCategoriesActivity extends ListActivity {
         });
     }
 
-    //print array of all categories
+    //print array of all moods for certain category
     private void printArray(Connection connect, GoogleMySQLConnectionHelper db, int[] images){
         categories = db.getAllCategories(connect);
         StringBuilder sb = new StringBuilder();

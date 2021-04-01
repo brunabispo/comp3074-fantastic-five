@@ -5,7 +5,7 @@
     android:padding="5dp">
 
     <ImageView
-        android:id="@+id/catgoryImage"
+        android:id="@+id/categoryImage"
         android:layout_width="75dp"
         android:layout_height="75dp"></ImageView>
 

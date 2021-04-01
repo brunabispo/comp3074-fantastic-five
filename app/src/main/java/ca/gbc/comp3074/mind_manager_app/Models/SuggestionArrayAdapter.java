@@ -17,7 +17,7 @@ public class SuggestionArrayAdapter extends ArrayAdapter<Suggestion> {
 
     private final Context context;
     private final List<Suggestion> values;
-    private final int categoryImages[];
+    private final int[] categoryImages;
 
     public SuggestionArrayAdapter(@NonNull Context context, @NonNull List<Suggestion> objects, int[] categoryImages) {
         super(context, R.layout.row_layout_suggestions, objects);
@@ -32,7 +32,7 @@ public class SuggestionArrayAdapter extends ArrayAdapter<Suggestion> {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         @SuppressLint("ViewHolder") View rowView = inflater.inflate(R.layout.row_layout_suggestions, parent, false);
 
-        ImageView images = rowView.findViewById(R.id.catgoryImage);
+        ImageView images = rowView.findViewById(R.id.categoryImage);
         String category = values.get(position).getCategoryName();
         setImage(images, category);
 

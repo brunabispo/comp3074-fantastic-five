@@ -29,6 +29,7 @@
         <activity android:name=".Admin.AdminQuestionnaireActivity" android:parentActivityName=".Admin.AdminHomeActivity"/>
         <activity android:name=".Admin.AdminAddNewQuestionActivity" android:parentActivityName=".Admin.AdminQuestionnaireActivity"/>
         <activity android:name=".Admin.AdminAnswersActivity" android:parentActivityName=".Admin.AdminQuestionnaireActivity"/>
+        <activity android:name=".Admin.AdminMoodsForCategoryActivity" android:parentActivityName=".Admin.AdminCategoriesActivity"/>
         <activity android:name=".Admin.AdminCategoriesActivity" android:parentActivityName=".Admin.AdminHomeActivity"/>
         <activity android:name=".Games.CrosswordGameActivity" />
         <activity android:name=".WelcomeActivity" android:parentActivityName=".SuggestionsActivity"/>

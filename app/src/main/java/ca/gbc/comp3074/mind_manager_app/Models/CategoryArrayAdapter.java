@@ -13,21 +13,22 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import java.util.List;
-import ca.gbc.comp3074.mind_manager_app.Admin.AdminAnswersActivity;
+import ca.gbc.comp3074.mind_manager_app.Admin.AdminMoodsForCategoryActivity;
 import ca.gbc.comp3074.mind_manager_app.R;
 
 public class CategoryArrayAdapter extends ArrayAdapter<Suggestion> {
 
     private final Context context;
     private final List<Suggestion> values;
+    private final int[] categoryImages;
 
-    public CategoryArrayAdapter(@NonNull Context context, @NonNull List<Suggestion> objects) {
+    public CategoryArrayAdapter(@NonNull Context context, @NonNull List<Suggestion> objects, int[] categoryImages) {
         super(context, R.layout.row_layout_categories, objects);
         this.context = context;
         this.values = objects;
+        this.categoryImages = categoryImages;
     }
 
-    @SuppressLint("SetTextI18n")
     @NonNull
     @Override
     public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -37,6 +38,10 @@ public class CategoryArrayAdapter extends ArrayAdapter<Suggestion> {
 
         @SuppressLint("ViewHolder") View rowView = inflater.inflate(R.layout.row_layout_categories, parent, false);
 
+        ImageView images = rowView.findViewById(R.id.categoryImage2);
+        String currCategory = values.get(position).getCategoryName();
+        setImage(images, currCategory);
+
         TextView category = rowView.findViewById(R.id.lblCategories);
         category.setText(values.get(position).getCategoryName());
 
@@ -44,18 +49,38 @@ public class CategoryArrayAdapter extends ArrayAdapter<Suggestion> {
         btnView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //openAnswers(ID);
+                openMoodsForCertainCategory(position);
             }
         });
-
-        ImageView icon2 = rowView.findViewById(R.id.btn_delete);
 
         return rowView;
     }
 
-    private void openAnswers(int id){
-        Intent start = new Intent(context.getApplicationContext(), AdminAnswersActivity.class);
-        start.putExtra("id", id);
+    private void setImage(ImageView images, String category){
+        switch(category){
+            case "Sport":
+                images.setImageResource(categoryImages[0]);
+                break;
+            case "Reading":
+                images.setImageResource(categoryImages[2]);
+                break;
+            case "Music":
+                images.setImageResource(categoryImages[3]);
+                break;
+            case "Movie":
+                images.setImageResource(categoryImages[4]);
+                break;
+            case "Games":
+                images.setImageResource(categoryImages[5]);
+                break;
+            default:
+                images.setImageResource(categoryImages[1]);
+        }
+    }
+
+    private void openMoodsForCertainCategory(int position){
+        Intent start = new Intent(context.getApplicationContext(), AdminMoodsForCategoryActivity.class);
+        start.putExtra("id", position);
         context.startActivity(start);
     }
 }

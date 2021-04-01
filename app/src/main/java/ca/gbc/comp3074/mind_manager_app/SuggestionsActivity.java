@@ -26,6 +26,7 @@ public class SuggestionsActivity extends AppCompatActivity{
     ArrayList<Suggestion> categories = new ArrayList<>();
     ArrayList<Suggestion> suggestions = new ArrayList<>();
     String moodTitle = "";
+    String username = "";
 
     //Database instance
     final GoogleMySQLConnectionHelper db = new GoogleMySQLConnectionHelper();
@@ -46,6 +47,8 @@ public class SuggestionsActivity extends AppCompatActivity{
         TextView title = findViewById(R.id.lblTitle);
         Intent intent = getIntent();
         moodTitle = intent.getStringExtra("Mood");
+        username = intent.getStringExtra("username");
+
         title.setText("Here are your suggestions for being more " + moodTitle);
 
         //functionality for btnFilter
@@ -69,37 +72,37 @@ public class SuggestionsActivity extends AppCompatActivity{
                         //add only one category (user choose it by Filter button)
                         categories.add(0, new Suggestion("Sport"));
                         //set 6 different suggestions for only one category and only one mood (by user choice)
-                        suggestions = db.getSetOfSuggestionsFromOneCategory(connect, moodTitle, categories.get(0).getCategoryName()+"");
+                        suggestions = db.getSetOfSuggestionsFromOneCategory(connect, moodTitle, categories.get(0).getCategoryName()+"", username);
                         break;
                     case "Outdoors":
                         //add only one category (user choose it by Filter button)
                         categories.add(0, new Suggestion("Outdoors"));
                         //set 6 different suggestions for only one category and only one mood (by user choice)
-                        suggestions = db.getSetOfSuggestionsFromOneCategory(connect, moodTitle, categories.get(0).getCategoryName()+"");
+                        suggestions = db.getSetOfSuggestionsFromOneCategory(connect, moodTitle, categories.get(0).getCategoryName()+"", username);
                         break;
                     case "Reading":
                         //add only one category (user choose it by Filter button)
                         categories.add(0, new Suggestion("Reading"));
                         //set 6 different suggestions for only one category and only one mood (by user choice)
-                        suggestions = db.getSetOfSuggestionsFromOneCategory(connect, moodTitle, categories.get(0).getCategoryName()+"");
+                        suggestions = db.getSetOfSuggestionsFromOneCategory(connect, moodTitle, categories.get(0).getCategoryName()+"", username);
                         break;
                     case "Music":
                         //add only one category (user choose it by Filter button)
                         categories.add(0, new Suggestion("Music"));
                         //set 6 different suggestions for only one category and only one mood (by user choice)
-                        suggestions = db.getSetOfSuggestionsFromOneCategory(connect, moodTitle, categories.get(0).getCategoryName()+"");
+                        suggestions = db.getSetOfSuggestionsFromOneCategory(connect, moodTitle, categories.get(0).getCategoryName()+"", username);
                         break;
                     case "Movie":
                         //add only one category (user choose it by Filter button)
                         categories.add(0, new Suggestion("Movie"));
                         //set 6 different suggestions for only one category and only one mood (by user choice)
-                        suggestions = db.getSetOfSuggestionsFromOneCategory(connect, moodTitle, categories.get(0).getCategoryName()+"");
+                        suggestions = db.getSetOfSuggestionsFromOneCategory(connect, moodTitle, categories.get(0).getCategoryName()+"", username);
                         break;
                     default:
                         //add only one category (user choose it by Filter button)
                         categories.add(0, new Suggestion("Games"));
                         //set 6 different suggestions for only one category and only one mood (by user choice)
-                        suggestions = db.getSetOfSuggestionsFromOneCategory(connect, moodTitle, categories.get(0).getCategoryName()+"");
+                        suggestions = db.getSetOfSuggestionsFromOneCategory(connect, moodTitle, categories.get(0).getCategoryName()+"", username);
                 }
 
                 //print result
