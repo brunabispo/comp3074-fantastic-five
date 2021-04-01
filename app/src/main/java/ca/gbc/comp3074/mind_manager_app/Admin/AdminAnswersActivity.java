@@ -27,9 +27,10 @@ public class AdminAnswersActivity extends AppCompatActivity {
         //Database instance
         final GoogleMySQLConnectionHelper db = new GoogleMySQLConnectionHelper();
         final Connection connect = db.connectionclass();
+        final TextView lblError = findViewById(R.id.lblError);
 
-        Intent intent = getIntent();
-        int questionID = intent.getIntExtra("id", 1);
+        final Intent intent = getIntent();
+        final int questionID = intent.getIntExtra("id", 1);
 
         final TextView question_text = findViewById(R.id.lblNewQuestion);
 
@@ -54,8 +55,6 @@ public class AdminAnswersActivity extends AppCompatActivity {
         final TextView ans3Happy = findViewById(R.id.lblAns3Happy);
         final TextView ans3Sad = findViewById(R.id.lblAns3Sad);
         final TextView ans3Tired = findViewById(R.id.lblAns3Tired);
-
-        final TextView lblError = findViewById(R.id.lblError);
 
         //Print text of question, answers and ratings for chosen question
         question = db.getQuestionByID(connect, questionID);
@@ -89,14 +88,12 @@ public class AdminAnswersActivity extends AppCompatActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Execute the query, find if username input from user is existing in data base
-                Question questionExist = db.getQuestionByText(connect, question_text.getText().toString());
+                String question_text = ((EditText) findViewById(R.id.lblNewQuestion)).getText().toString();
+                String answer1 = ((EditText) findViewById(R.id.lblAnswer1)).getText().toString();
+                String answer2 = ((EditText) findViewById(R.id.lblAnswer2)).getText().toString();
+                String answer3 = ((EditText) findViewById(R.id.lblAnswer3)).getText().toString();
 
-                if(questionExist != null){
-                    lblError.setText("This question is already exist");
-                }
-                else if (question_text.getText().toString().equals("") || answer1.getText().toString().equals("")
-                        || answer2.getText().toString().equals("") || answer3.getText().toString().equals("")
+               if (question_text.equals("") || answer1.equals("") || answer2.equals("") || answer3.equals("")
                         || ans1Bored.getText().toString().equals("") || ans1Energetic.getText().toString().equals("")
                         || ans1Happy.getText().toString().equals("") || ans1Sad.getText().toString().equals("")
                         || ans1Tired.getText().toString().equals("") || ans2Bored.getText().toString().equals("")
@@ -125,19 +122,17 @@ public class AdminAnswersActivity extends AppCompatActivity {
                     final int ans3Sad = Integer.parseInt(((EditText) findViewById(R.id.lblAns3Sad)).getText().toString());
                     final int ans3Tired = Integer.parseInt(((EditText) findViewById(R.id.lblAns3Tired)).getText().toString());
                     //Insert new question
-                    Question question = new Question(question_text+"");
-                    db.addQuestion(connect, question);
-                    questionExist = db.getQuestionByText(connect, question.getQuestionText()+"");
-                    int questionID = questionExist.getID();
+                    Question questionEdited = new Question(question_text+"");
+                    db.editQuestion(connect, questionEdited, questionID);
                     Answer ans1 = new Answer (questionID, answer1+"",
                             ans1Bored, ans1Energetic, ans1Happy, ans1Sad, ans1Tired);
                     Answer ans2 = new Answer (questionID, answer2+"",
                             ans2Bored, ans2Energetic, ans2Happy, ans2Sad, ans2Tired);
                     Answer ans3 = new Answer (questionID, answer3+"",
                             ans3Bored, ans3Energetic, ans3Happy, ans3Sad, ans3Tired);
-                    db.addAnswer(connect, ans1);
-                    db.addAnswer(connect, ans2);
-                    db.addAnswer(connect, ans3);
+                    db.editAnswer(connect, ans1, answers.get(0).getId());
+                    db.editAnswer(connect, ans2, answers.get(1).getId());
+                    db.editAnswer(connect, ans3, answers.get(2).getId());
                     backToAdminQuestionnaire();
                 }
             }

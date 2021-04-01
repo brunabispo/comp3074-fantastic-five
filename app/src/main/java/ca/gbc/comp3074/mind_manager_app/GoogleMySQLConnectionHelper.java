@@ -186,6 +186,20 @@ public class GoogleMySQLConnectionHelper {
         }
     }
 
+    // edit question
+    public void editQuestion(Connection connect, Question question, int questionID)  {
+        try {
+            if (connect != null) {
+                String query = "UPDATE questions SET question_text = '" +
+                       question.getQuestionText() + "' WHERE id = " + questionID;
+                Statement st = connect.createStatement();
+                st.executeUpdate(query);
+            }
+        } catch (Exception exception) {
+            Log.e("Error: ", exception.getMessage());
+        }
+    }
+
     // delete question by id
     public void deleteQuestion(Connection connect, int questionID) {
         try {
@@ -231,6 +245,22 @@ public class GoogleMySQLConnectionHelper {
                         + answer.getBoredRating() + "', '" + answer.getEnergeticRating() +
                         "', '" + answer.getHappyRating() + "', '" + answer.getSadRating() +
                         "', '" + answer.getTiredRating() + "')";
+                Statement st = connect.createStatement();
+                st.executeUpdate(query);
+            }
+        } catch (Exception exception) {
+            Log.e("Error: ", exception.getMessage());
+        }
+    }
+
+    // edit answer
+    public void editAnswer(Connection connect, Answer answer, int answerID)  {
+        try {
+            if (connect != null) {
+                String query = "UPDATE answers SET answer_text = '" +  answer.getText() + "', " +
+                        "bored_rating = '" + answer.getBoredRating() + "', energetic_rating = '" + answer.getEnergeticRating() +
+                        "', happy_rating = '" + answer.getHappyRating() + "', sad_rating = '" + answer.getSadRating() +
+                        "', tired_rating = '" + answer.getTiredRating() + "' WHERE id = " + answerID;
                 Statement st = connect.createStatement();
                 st.executeUpdate(query);
             }
