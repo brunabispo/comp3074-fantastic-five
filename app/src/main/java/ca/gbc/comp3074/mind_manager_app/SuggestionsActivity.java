@@ -55,7 +55,7 @@ public class SuggestionsActivity extends AppCompatActivity{
         Spinner dropdown = findViewById(R.id.spinner);
         final String[] items = new String[]{"All categories", "Sport", "Outdoors", "Reading", "Music", "Movie", "Games"};
         //set adapter for the spinner (dropdown list for Filter button)
-        ArrayAdapter<String> spinerAdapter = new ArrayAdapter<String>(SuggestionsActivity.this, android.R.layout.simple_spinner_dropdown_item, items);
+        ArrayAdapter<String> spinerAdapter = new ArrayAdapter<>(SuggestionsActivity.this, android.R.layout.simple_spinner_dropdown_item, items);
         spinerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         dropdown.setAdapter(spinerAdapter);
         dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

@@ -11,7 +11,6 @@ import java.sql.Connection;
 import java.util.List;
 import ca.gbc.comp3074.mind_manager_app.GoogleMySQLConnectionHelper;
 import ca.gbc.comp3074.mind_manager_app.MainActivity;
-import ca.gbc.comp3074.mind_manager_app.Models.CategoryArrayAdapter;
 import ca.gbc.comp3074.mind_manager_app.Models.MoodArrayAdapter;
 import ca.gbc.comp3074.mind_manager_app.Models.Suggestion;
 import ca.gbc.comp3074.mind_manager_app.R;
@@ -30,7 +29,7 @@ public class AdminMoodsForCategoryActivity extends ListActivity {
         TextView title = findViewById(R.id.lblTitleMoodsForCategory);
         Intent intent = getIntent();
         categoryTitle = intent.getStringExtra("category");
-        title.setText("Category " + categoryTitle + " sorted by moods");
+        title.setText("Category " + categoryTitle + " \n sorted by moods");
 
         //Database instance
         final GoogleMySQLConnectionHelper db = new GoogleMySQLConnectionHelper();
@@ -62,7 +61,7 @@ public class AdminMoodsForCategoryActivity extends ListActivity {
             appendSeparator = true;
             sb.append(moods.get(y));
         }
-        ArrayAdapter<Suggestion> myAdapter = new MoodArrayAdapter(this, moods, images, categoryTitle);
+        ArrayAdapter<Suggestion> myAdapter = new MoodArrayAdapter(AdminMoodsForCategoryActivity.this, moods, images, categoryTitle);
         setListAdapter(myAdapter);
     }
 

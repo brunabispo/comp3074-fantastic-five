@@ -85,6 +85,26 @@ public class GoogleMySQLConnectionHelper {
         return suggestions;
     }
 
+    // get set of suggestions from one category (for filter button)
+    public ArrayList<Suggestion> getAllSuggestionsOneCategoryOneMood(Connection connect, String mood, String category) {
+        ArrayList<Suggestion> suggestions = new ArrayList<>();
+        try {
+            if (connect != null) {
+                String query = "SELECT * FROM suggestions WHERE mood IN ('" + mood + "') AND " +
+                            "category_name IN ('" + category + "')";
+                Statement st = connect.createStatement();
+                ResultSet rs = st.executeQuery(query);
+                while (rs.next()) {
+                    suggestions.add(new Suggestion(rs.getInt(1),rs.getString(2),
+                            rs.getString(3), rs.getString(4) , rs.getString(5)));
+                }
+            }
+        } catch (Exception exception) {
+            Log.e("Error: ", exception.getMessage());
+        }
+        return suggestions;
+    }
+
     // get 3 random categories
     public ArrayList<Suggestion> getRandomCategories(Connection connect) {
         ArrayList<Suggestion> categories = new ArrayList<>();
@@ -126,11 +146,11 @@ public class GoogleMySQLConnectionHelper {
         ArrayList<Suggestion> moods = new ArrayList<>();
         try {
             if (connect != null) {
-                String query = "SELECT DISTINCT mood FROM suggestions";
+                String query = "SELECT mood, COUNT(id) FROM suggestions GROUP BY mood";
                 Statement st = connect.createStatement();
                 ResultSet rs = st.executeQuery(query);
                 while (rs.next()) {
-                    moods.add(new Suggestion(rs.getString(1)));
+                    moods.add(new Suggestion(rs.getString(1), rs.getInt(2)));
                 }
             }
         } catch (Exception exception) {

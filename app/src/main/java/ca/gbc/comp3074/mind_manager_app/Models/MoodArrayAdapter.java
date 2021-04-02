@@ -13,7 +13,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import java.util.List;
-import ca.gbc.comp3074.mind_manager_app.Admin.AdminMoodsForCategoryActivity;
 import ca.gbc.comp3074.mind_manager_app.Admin.AdminSuggestionsActivity;
 import ca.gbc.comp3074.mind_manager_app.R;
 
@@ -47,6 +46,9 @@ public class MoodArrayAdapter extends ArrayAdapter<Suggestion> {
         TextView mood = rowView.findViewById(R.id.lblMoods);
         mood.setText(values.get(position).getMood());
         final String currMood = values.get(position).getMood();
+
+        TextView currCategory = rowView.findViewById(R.id.lblCurrentCategory);
+        currCategory.setText(category);
 
         ImageButton btnView = rowView.findViewById(R.id.btn_edit);
         btnView.setOnClickListener(new View.OnClickListener() {

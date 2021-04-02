@@ -2,28 +2,24 @@ package ca.gbc.comp3074.mind_manager_app.Models;
 
 public class Suggestion {
 
-    private int _id;
+    private int id;
     private String mood;
     private String categoryName;
     private String suggestionName;
     private String youtubeLink;
-
-    public Suggestion() {
-    }
+    private int quantity;
 
     public Suggestion(String categoryName) {
         this.categoryName = categoryName;
     }
 
-    public Suggestion(String mood, String categoryName, String suggestionName, String youtubeLink) {
+    public Suggestion(String mood, int quantity) {
         this.mood = mood;
-        this.categoryName = categoryName;
-        this.suggestionName = suggestionName;
-        this.youtubeLink = youtubeLink;
+        this.quantity = quantity;
     }
 
     public Suggestion(int id, String mood, String categoryName, String suggestionName, String youtubeLink) {
-        this._id = id;
+        this.id = id;
         this.mood = mood;
         this.categoryName = categoryName;
         this.suggestionName = suggestionName;
@@ -31,11 +27,11 @@ public class Suggestion {
      }
 
     public int getID() {
-        return _id;
+        return id;
     }
 
-    public void setID(int _id) {
-        this._id = _id;
+    public void setID(int id) {
+        this.id = id;
     }
 
     public String getMood() {
@@ -68,5 +64,24 @@ public class Suggestion {
 
     public void setYoutubeLink(String youtubeLink) {
         this.youtubeLink = youtubeLink;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return "Suggestion{" +
+                "id=" + id +
+                ", mood='" + mood + '\'' +
+                ", categoryName='" + categoryName + '\'' +
+                ", suggestionName='" + suggestionName + '\'' +
+                ", youtubeLink='" + youtubeLink + '\'' +
+                '}';
     }
 }

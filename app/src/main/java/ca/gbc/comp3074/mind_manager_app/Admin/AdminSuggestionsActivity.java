@@ -7,19 +7,17 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
-
 import java.sql.Connection;
 import java.util.List;
-
 import ca.gbc.comp3074.mind_manager_app.GoogleMySQLConnectionHelper;
 import ca.gbc.comp3074.mind_manager_app.MainActivity;
-import ca.gbc.comp3074.mind_manager_app.Models.Question;
-import ca.gbc.comp3074.mind_manager_app.Models.QuestionArrayAdapter;
+import ca.gbc.comp3074.mind_manager_app.Models.AdminSuggestionArrayAdapter;
+import ca.gbc.comp3074.mind_manager_app.Models.Suggestion;
 import ca.gbc.comp3074.mind_manager_app.R;
 
 public class AdminSuggestionsActivity extends ListActivity {
 
-    List<Question> questions;
+    List<Suggestion> suggestions;
     String categoryTitle = "";
     String moodTitle = "";
 
@@ -28,12 +26,12 @@ public class AdminSuggestionsActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_suggestions);
 
-        //accept variable "Category" from Admin Category page
+        //accept variables "Category" and "Mood" from Admin Moods for Category page
         TextView title = findViewById(R.id.lblTitleSuggestionsForCategory);
         Intent intent = getIntent();
         categoryTitle = intent.getStringExtra("category");
         moodTitle = intent.getStringExtra("mood");
-        title.setText("Category " + categoryTitle + " Mood " + moodTitle);
+        title.setText("Category: " + categoryTitle + "\n Mood: " + moodTitle);
 
         //Database instance
         final GoogleMySQLConnectionHelper db = new GoogleMySQLConnectionHelper();
@@ -41,17 +39,17 @@ public class AdminSuggestionsActivity extends ListActivity {
 
         printArray(connect, db);
 
-        //button add Question
-        Button btnAddNewQuestion = findViewById(R.id.btnAddQuestion);
-        btnAddNewQuestion.setOnClickListener(new View.OnClickListener() {
+        //button add Suggestion
+        Button btnAddNewSuggestion = findViewById(R.id.btnAddSuggestion);
+        btnAddNewSuggestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addNewQuestion();
+                addNewSuggestion();
             }
         });
 
         //button Logout
-        Button btnLogOut = findViewById(R.id.btnLogoutAdminQuestionnaire);
+        Button btnLogOut = findViewById(R.id.btnLogoutAdmin);
         btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,22 +60,22 @@ public class AdminSuggestionsActivity extends ListActivity {
 
     //print array of all questions
     private void printArray(Connection connect, GoogleMySQLConnectionHelper db){
-        questions = db.getAllQuestions(connect);
+        suggestions = db.getAllSuggestionsOneCategoryOneMood(connect, moodTitle, categoryTitle);
         StringBuilder sb = new StringBuilder();
-        int size = questions.size();
+        int size = suggestions.size();
         boolean appendSeparator = false;
         for(int y=0; y < size; y++){
             if (appendSeparator)
                 sb.append(','); // a comma
             appendSeparator = true;
-            sb.append(questions.get(y));
+            sb.append(suggestions.get(y));
         }
-        ArrayAdapter<Question> myAdapter = new QuestionArrayAdapter(this, questions);
+        ArrayAdapter<Suggestion> myAdapter = new AdminSuggestionArrayAdapter(this, suggestions);
         setListAdapter(myAdapter);
     }
 
-    //function to start AdminAddNewQuestionActivity
-    private void addNewQuestion(){
+    //function to start AdminAddNewSuggestionActivity
+    private void addNewSuggestion(){
         Intent start = new Intent(getApplicationContext(), AdminAddNewQuestionActivity.class);
         startActivity(start);
     }

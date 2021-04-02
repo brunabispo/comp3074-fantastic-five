@@ -27,7 +27,6 @@ public class CategoryArrayAdapter extends ArrayAdapter<Suggestion> {
         this.context = context;
         this.values = objects;
         this.categoryImages = categoryImages;
-
     }
 
     @NonNull
