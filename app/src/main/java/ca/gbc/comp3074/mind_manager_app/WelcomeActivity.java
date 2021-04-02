@@ -90,7 +90,7 @@ public class WelcomeActivity extends AppCompatActivity {
     private void openCalmer(){
         Intent start = new Intent(getApplicationContext(), SuggestionsActivity.class);
         String mood = "Calmer";
-        start.putExtra("Mood", mood);
+        start.putExtra("mood", mood);
         start.putExtra("username", username);
         startActivity(start);
     }
@@ -99,7 +99,7 @@ public class WelcomeActivity extends AppCompatActivity {
     private void openEnergetic(){
         Intent start = new Intent(getApplicationContext(), SuggestionsActivity.class);
         String mood = "Energetic";
-        start.putExtra("Mood", mood);
+        start.putExtra("mood", mood);
         start.putExtra("username", username);
         startActivity(start);
     }
@@ -108,7 +108,7 @@ public class WelcomeActivity extends AppCompatActivity {
     private void openHappier(){
         Intent start = new Intent(getApplicationContext(), SuggestionsActivity.class);
         String mood = "Happier";
-        start.putExtra("Mood", mood);
+        start.putExtra("mood", mood);
         start.putExtra("username", username);
         startActivity(start);
     }
@@ -117,7 +117,7 @@ public class WelcomeActivity extends AppCompatActivity {
     private void openMoody(){
         Intent start = new Intent(getApplicationContext(), SuggestionsActivity.class);
         String mood = "Moody";
-        start.putExtra("Mood", mood);
+        start.putExtra("mood", mood);
         start.putExtra("username", username);
         startActivity(start);
     }
@@ -126,7 +126,7 @@ public class WelcomeActivity extends AppCompatActivity {
     private void openRelaxed(){
         Intent start = new Intent(getApplicationContext(), SuggestionsActivity.class);
         String mood = "Relaxed";
-        start.putExtra("Mood", mood);
+        start.putExtra("mood", mood);
         start.putExtra("username", username);
         startActivity(start);
     }

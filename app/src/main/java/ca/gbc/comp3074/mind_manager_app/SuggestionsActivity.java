@@ -43,12 +43,11 @@ public class SuggestionsActivity extends AppCompatActivity{
 
         listView = findViewById(R.id.listView);
 
-        //accept variable "Mood" from Welcome page and set title of the current page
+        //accept variables "Mood" and "username" from Welcome page and set title of the current page
         TextView title = findViewById(R.id.lblTitle);
         Intent intent = getIntent();
-        moodTitle = intent.getStringExtra("Mood");
+        moodTitle = intent.getStringExtra("mood");
         username = intent.getStringExtra("username");
-
         title.setText("Here are your suggestions for being more " + moodTitle);
 
         //functionality for btnFilter
@@ -66,7 +65,7 @@ public class SuggestionsActivity extends AppCompatActivity{
                 switch (items[position]) {
                     case "All categories":
                         //set suggestion to each unique category
-                        getSetOfDifferentSuggestions(connect, moodTitle, db);
+                        getSetOfDifferentSuggestions(connect, moodTitle, db, username);
                         break;
                     case "Sport":
                         //add only one category (user choose it by Filter button)
@@ -131,7 +130,7 @@ public class SuggestionsActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 //set new suggestion to each unique category
-                getSetOfDifferentSuggestions(connect, moodTitle, db);
+                getSetOfDifferentSuggestions(connect, moodTitle, db, username);
                 //print result
                 SuggestionArrayAdapter adapter = new SuggestionArrayAdapter(SuggestionsActivity.this, suggestions, images);
                 listView.setAdapter(adapter);
@@ -178,14 +177,19 @@ public class SuggestionsActivity extends AppCompatActivity{
     }
 
     // Receive set of 6 different suggestions for specific mood (it's function for Random button)
-    private void getSetOfDifferentSuggestions(Connection connect, String moodTitle, GoogleMySQLConnectionHelper db){
+    private void getSetOfDifferentSuggestions(Connection connect, String moodTitle, GoogleMySQLConnectionHelper db, String username){
         //delete all suggestions
         suggestions.clear();
         //find all unique categories
-        categories = db.getAllCategories(connect);
+        if (username == null) {
+            categories = db.getRandomCategories(connect);
+        } else {
+            categories = db.getAllCategories(connect);
+        }
+        int size = categories.size();
         //set new suggestion to each unique category
-        for(int i=0; i<6; i++){
-            Suggestion suggestion = db.getSuggestion(connect, moodTitle, categories.get(i).getCategoryName()+"");
+        for (int i = 0; i < size; i++) {
+            Suggestion suggestion = db.getSuggestion(connect, moodTitle, categories.get(i).getCategoryName() + "");
             suggestions.add(suggestion);
         }
     }

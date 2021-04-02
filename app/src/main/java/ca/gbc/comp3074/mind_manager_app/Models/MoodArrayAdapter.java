@@ -14,20 +14,22 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import java.util.List;
 import ca.gbc.comp3074.mind_manager_app.Admin.AdminMoodsForCategoryActivity;
+import ca.gbc.comp3074.mind_manager_app.Admin.AdminSuggestionsActivity;
 import ca.gbc.comp3074.mind_manager_app.R;
 
-public class CategoryArrayAdapter extends ArrayAdapter<Suggestion> {
+public class MoodArrayAdapter extends ArrayAdapter<Suggestion> {
 
     private final Context context;
     private final List<Suggestion> values;
     private final int[] categoryImages;
+    private final String category;
 
-    public CategoryArrayAdapter(@NonNull Context context, @NonNull List<Suggestion> objects, int[] categoryImages) {
+    public MoodArrayAdapter(@NonNull Context context, @NonNull List<Suggestion> objects, int[] categoryImages, String category) {
         super(context, R.layout.row_layout_categories, objects);
         this.context = context;
         this.values = objects;
         this.categoryImages = categoryImages;
-
+        this.category = category;
     }
 
     @NonNull
@@ -37,20 +39,20 @@ public class CategoryArrayAdapter extends ArrayAdapter<Suggestion> {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
 
-        @SuppressLint("ViewHolder") View rowView = inflater.inflate(R.layout.row_layout_categories, parent, false);
+        @SuppressLint("ViewHolder") View rowView = inflater.inflate(R.layout.row_layout_moods_for_category, parent, false);
 
         ImageView images = rowView.findViewById(R.id.categoryImage2);
-        final String currCategory = values.get(position).getCategoryName();
-        setImage(images, currCategory);
+        setImage(images, category);
 
-        TextView category = rowView.findViewById(R.id.lblCategories);
-        category.setText(values.get(position).getCategoryName());
+        TextView mood = rowView.findViewById(R.id.lblMoods);
+        mood.setText(values.get(position).getMood());
+        final String currMood = values.get(position).getMood();
 
         ImageButton btnView = rowView.findViewById(R.id.btn_edit);
         btnView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openMoodsForCertainCategory(currCategory);
+                openSuggestionsForCertainCategory(category, currMood);
             }
         });
 
@@ -79,9 +81,10 @@ public class CategoryArrayAdapter extends ArrayAdapter<Suggestion> {
         }
     }
 
-    private void openMoodsForCertainCategory(String currCategory){
-        Intent start = new Intent(context.getApplicationContext(), AdminMoodsForCategoryActivity.class);
-        start.putExtra("category", currCategory);
+    private void openSuggestionsForCertainCategory(String category, String mood){
+        Intent start = new Intent(context.getApplicationContext(), AdminSuggestionsActivity.class);
+        start.putExtra("category", category);
+        start.putExtra("mood", mood);
         context.startActivity(start);
     }
 }

@@ -85,6 +85,24 @@ public class GoogleMySQLConnectionHelper {
         return suggestions;
     }
 
+    // get 3 random categories
+    public ArrayList<Suggestion> getRandomCategories(Connection connect) {
+        ArrayList<Suggestion> categories = new ArrayList<>();
+        try {
+            if (connect != null) {
+                String query = "SELECT DISTINCT category_name FROM suggestions ORDER BY RAND() LIMIT 3";
+                Statement st = connect.createStatement();
+                ResultSet rs = st.executeQuery(query);
+                while (rs.next()) {
+                    categories.add(new Suggestion(rs.getString(1)));
+                }
+            }
+        } catch (Exception exception) {
+            Log.e("Error: ", exception.getMessage());
+        }
+        return categories;
+    }
+
     // get all categories
     public ArrayList<Suggestion> getAllCategories(Connection connect) {
         ArrayList<Suggestion> categories = new ArrayList<>();
@@ -101,6 +119,24 @@ public class GoogleMySQLConnectionHelper {
             Log.e("Error: ", exception.getMessage());
         }
         return categories;
+    }
+
+    // get all moods
+    public ArrayList<Suggestion> getAllMoods(Connection connect) {
+        ArrayList<Suggestion> moods = new ArrayList<>();
+        try {
+            if (connect != null) {
+                String query = "SELECT DISTINCT mood FROM suggestions";
+                Statement st = connect.createStatement();
+                ResultSet rs = st.executeQuery(query);
+                while (rs.next()) {
+                    moods.add(new Suggestion(rs.getString(1)));
+                }
+            }
+        } catch (Exception exception) {
+            Log.e("Error: ", exception.getMessage());
+        }
+        return moods;
     }
 
     //get random question

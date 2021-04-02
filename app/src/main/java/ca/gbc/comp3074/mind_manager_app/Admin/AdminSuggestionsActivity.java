@@ -7,41 +7,51 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+
 import java.sql.Connection;
 import java.util.List;
+
 import ca.gbc.comp3074.mind_manager_app.GoogleMySQLConnectionHelper;
 import ca.gbc.comp3074.mind_manager_app.MainActivity;
-import ca.gbc.comp3074.mind_manager_app.Models.CategoryArrayAdapter;
-import ca.gbc.comp3074.mind_manager_app.Models.MoodArrayAdapter;
-import ca.gbc.comp3074.mind_manager_app.Models.Suggestion;
+import ca.gbc.comp3074.mind_manager_app.Models.Question;
+import ca.gbc.comp3074.mind_manager_app.Models.QuestionArrayAdapter;
 import ca.gbc.comp3074.mind_manager_app.R;
 
-public class AdminMoodsForCategoryActivity extends ListActivity {
+public class AdminSuggestionsActivity extends ListActivity {
 
-    List<Suggestion> moods;
+    List<Question> questions;
     String categoryTitle = "";
+    String moodTitle = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_moods_for_category);
+        setContentView(R.layout.activity_admin_suggestions);
 
         //accept variable "Category" from Admin Category page
-        TextView title = findViewById(R.id.lblTitleMoodsForCategory);
+        TextView title = findViewById(R.id.lblTitleSuggestionsForCategory);
         Intent intent = getIntent();
         categoryTitle = intent.getStringExtra("category");
-        title.setText("Category " + categoryTitle + " sorted by moods");
+        moodTitle = intent.getStringExtra("mood");
+        title.setText("Category " + categoryTitle + " Mood " + moodTitle);
 
         //Database instance
         final GoogleMySQLConnectionHelper db = new GoogleMySQLConnectionHelper();
         final Connection connect = db.connectionclass();
 
-        //array of category images
-        int[] images = {R.drawable.sports, R.drawable.outdoors, R.drawable.reading, R.drawable.music, R.drawable.movies, R.drawable.games};
+        printArray(connect, db);
 
-        printArray(connect, db, images);
+        //button add Question
+        Button btnAddNewQuestion = findViewById(R.id.btnAddQuestion);
+        btnAddNewQuestion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addNewQuestion();
+            }
+        });
 
-        Button btnLogOut = findViewById(R.id.btnLogoutAdminCategories);
+        //button Logout
+        Button btnLogOut = findViewById(R.id.btnLogoutAdminQuestionnaire);
         btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,20 +60,26 @@ public class AdminMoodsForCategoryActivity extends ListActivity {
         });
     }
 
-    //print array of all moods for certain category
-    private void printArray(Connection connect, GoogleMySQLConnectionHelper db, int[] images){
-        moods = db.getAllMoods(connect);
+    //print array of all questions
+    private void printArray(Connection connect, GoogleMySQLConnectionHelper db){
+        questions = db.getAllQuestions(connect);
         StringBuilder sb = new StringBuilder();
-        int size = moods.size();
+        int size = questions.size();
         boolean appendSeparator = false;
         for(int y=0; y < size; y++){
             if (appendSeparator)
                 sb.append(','); // a comma
             appendSeparator = true;
-            sb.append(moods.get(y));
+            sb.append(questions.get(y));
         }
-        ArrayAdapter<Suggestion> myAdapter = new MoodArrayAdapter(this, moods, images, categoryTitle);
+        ArrayAdapter<Question> myAdapter = new QuestionArrayAdapter(this, questions);
         setListAdapter(myAdapter);
+    }
+
+    //function to start AdminAddNewQuestionActivity
+    private void addNewQuestion(){
+        Intent start = new Intent(getApplicationContext(), AdminAddNewQuestionActivity.class);
+        startActivity(start);
     }
 
     //function LogOut
