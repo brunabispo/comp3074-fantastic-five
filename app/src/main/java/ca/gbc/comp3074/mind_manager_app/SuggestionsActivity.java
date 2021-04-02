@@ -27,6 +27,7 @@ public class SuggestionsActivity extends AppCompatActivity{
     ArrayList<Suggestion> suggestions = new ArrayList<>();
     String moodTitle = "";
     String username = "";
+    String firstName = "";
 
     //Database instance
     final GoogleMySQLConnectionHelper db = new GoogleMySQLConnectionHelper();
@@ -48,7 +49,12 @@ public class SuggestionsActivity extends AppCompatActivity{
         Intent intent = getIntent();
         moodTitle = intent.getStringExtra("mood");
         username = intent.getStringExtra("username");
-        title.setText("Here are your suggestions for being more " + moodTitle);
+        firstName = intent.getStringExtra("firstName");
+        if (firstName != null) {
+            title.setText(firstName + "! Here are your suggestions for being more " + moodTitle);
+        }else {
+            title.setText("Here are your suggestions for being more " + moodTitle);
+        }
 
         //functionality for btnFilter
         //create a list of items for the spinner (dropdown list for Filter button)

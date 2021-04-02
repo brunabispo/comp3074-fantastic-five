@@ -72,7 +72,9 @@ public class MainActivity extends AppCompatActivity {
     private void openWelcome(User userExist){
         Intent start = new Intent(getApplicationContext(), WelcomeActivity.class);
         String username = userExist.getUserName();
+        String firstName = userExist.getFirstName();
         start.putExtra("username", username);
+        start.putExtra("firstName", firstName);
         startActivity(start);
     }
 

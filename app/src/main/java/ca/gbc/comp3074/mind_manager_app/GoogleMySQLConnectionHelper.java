@@ -140,6 +140,21 @@ public class GoogleMySQLConnectionHelper {
         }
     }
 
+    // edit suggestion
+    public void editSuggestion(Connection connect, Suggestion suggestion, int suggestionID)  {
+        try {
+            if (connect != null) {
+                String query = "UPDATE suggestions SET suggestion_name = '" +
+                        suggestion.getSuggestionName() + "', youtube_links = '" +
+                        suggestion.getYoutubeLink() + "' WHERE id = " + suggestionID;
+                Statement st = connect.createStatement();
+                st.executeUpdate(query);
+            }
+        } catch (Exception exception) {
+            Log.e("Error: ", exception.getMessage());
+        }
+    }
+
     // delete suggestion by id
     public void deleteSuggestion(Connection connect, int suggestionID) {
         try {

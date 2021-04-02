@@ -7,12 +7,15 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class WelcomeActivity extends AppCompatActivity {
 
     String username = "";
+    String firstName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +24,11 @@ public class WelcomeActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         username = intent.getStringExtra("username");
+        firstName = intent.getStringExtra("firstName");
+        TextView welcomeText = findViewById(R.id.txtWelcome);
+        if (firstName != null) {
+            welcomeText.setText("Hi " + firstName + "! Welcome to the");
+        }
 
         //Button "I don't know" goes to questionnaire page answer questions to determine their mood(QuestionActivity)
         Button btnIdk = findViewById(R.id.btnIdk);
@@ -81,6 +89,7 @@ public class WelcomeActivity extends AppCompatActivity {
     private void openIDontKnow(){
         Intent start = new Intent(getApplicationContext(), QuestionsActivity.class);
         start.putExtra("username", username);
+        start.putExtra("firstName", firstName);
         startActivity(start);
     }
 
@@ -90,6 +99,7 @@ public class WelcomeActivity extends AppCompatActivity {
         String mood = "Calmer";
         start.putExtra("mood", mood);
         start.putExtra("username", username);
+        start.putExtra("firstName", firstName);
         startActivity(start);
     }
 
@@ -99,6 +109,7 @@ public class WelcomeActivity extends AppCompatActivity {
         String mood = "Energetic";
         start.putExtra("mood", mood);
         start.putExtra("username", username);
+        start.putExtra("firstName", firstName);
         startActivity(start);
     }
 
@@ -108,6 +119,7 @@ public class WelcomeActivity extends AppCompatActivity {
         String mood = "Happier";
         start.putExtra("mood", mood);
         start.putExtra("username", username);
+        start.putExtra("firstName", firstName);
         startActivity(start);
     }
 
@@ -117,6 +129,7 @@ public class WelcomeActivity extends AppCompatActivity {
         String mood = "Moody";
         start.putExtra("mood", mood);
         start.putExtra("username", username);
+        start.putExtra("firstName", firstName);
         startActivity(start);
     }
 
@@ -126,6 +139,7 @@ public class WelcomeActivity extends AppCompatActivity {
         String mood = "Relaxed";
         start.putExtra("mood", mood);
         start.putExtra("username", username);
+        start.putExtra("firstName", firstName);
         startActivity(start);
     }
 

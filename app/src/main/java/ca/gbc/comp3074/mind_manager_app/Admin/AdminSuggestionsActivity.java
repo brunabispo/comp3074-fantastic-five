@@ -21,6 +21,10 @@ public class AdminSuggestionsActivity extends ListActivity {
     List<Suggestion> suggestions;
     String categoryTitle = "";
     String moodTitle = "";
+    int idEditedSuggestion = 0;
+    String editSuggestion = "";
+    String youtubeLink = "";
+
     TextView lblError;
 
     @Override
@@ -31,12 +35,20 @@ public class AdminSuggestionsActivity extends ListActivity {
         //accept variables "Category" and "Mood" from Admin Moods for Category page
         TextView title = findViewById(R.id.lblTitleSuggestionsForCategory);
         TextView txtSuggestion = findViewById(R.id.txtSuggestion);
+        TextView txtEditSuggestion = findViewById(R.id.edittxt_suggestion);
+        TextView txtEditYoutubeLink = findViewById(R.id.edittxt_youtubelink);
+
         lblError = findViewById(R.id.lblError);
         Intent intent = getIntent();
         categoryTitle = intent.getStringExtra("category");
         moodTitle = intent.getStringExtra("mood");
+        idEditedSuggestion = intent.getIntExtra("id", 0);
+        editSuggestion = intent.getStringExtra("suggestion");
+        youtubeLink = intent.getStringExtra("youtubeLink");
         title.setText("Category: " + categoryTitle + "\n Mood: " + moodTitle);
         txtSuggestion.setText("New " + moodTitle + " " + categoryTitle + " Suggestion:");
+        txtEditSuggestion.setText(editSuggestion);
+        txtEditYoutubeLink.setText(youtubeLink);
 
         //Database instance
         final GoogleMySQLConnectionHelper db = new GoogleMySQLConnectionHelper();
@@ -44,12 +56,12 @@ public class AdminSuggestionsActivity extends ListActivity {
 
         printArray(connect, db);
 
-        //button add Suggestion
-        Button btnAddNewSuggestion = findViewById(R.id.btnAddSuggestion);
-        btnAddNewSuggestion.setOnClickListener(new View.OnClickListener() {
+        //button Submit
+        Button btnSubmit = findViewById(R.id.btnAddSuggestion);
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addNewSuggestion(connect, db);
+                submit(connect, db);
             }
         });
 
@@ -79,27 +91,42 @@ public class AdminSuggestionsActivity extends ListActivity {
         setListAdapter(myAdapter);
     }
 
-    //function add Suggestion
-    private void addNewSuggestion(Connection connect, GoogleMySQLConnectionHelper db){
+    //function submit
+    private void submit(Connection connect, GoogleMySQLConnectionHelper db) {
         String newSuggestion = ((EditText) findViewById(R.id.edittxt_suggestion)).getText().toString();
         String newYoutubeLink = ((EditText) findViewById(R.id.edittxt_youtubelink)).getText().toString();
-        //Execute the query, find if suggestion input is existing in data base for this mood and category
-        Suggestion suggestionExist = db.getExistedSuggestion(connect, moodTitle, categoryTitle, newSuggestion);
+        if (idEditedSuggestion == 0) {
+            //Execute the query, find if suggestion input is existing in data base for this mood and category
+            Suggestion suggestionExist = db.getExistedSuggestion(connect, moodTitle, categoryTitle, newSuggestion);
 
-        if(suggestionExist != null) {
-            lblError.setText("This suggestion is already exist");
-        }else if(newSuggestion.equals("")){
-                lblError.setText("Field New " + moodTitle + " " + categoryTitle + " Suggestion' should not be empty");
-        }else {
-            lblError.setText("");
-            //Insert new suggestion
-            Suggestion suggestion = new Suggestion(moodTitle, categoryTitle, newSuggestion, newYoutubeLink);
-            db.addSuggestion(connect, suggestion);
-            printArray(connect, db);
-            ((EditText) findViewById(R.id.edittxt_suggestion)).setText("");
-            ((EditText) findViewById(R.id.edittxt_youtubelink)).setText("");
+            if (suggestionExist != null) {
+                lblError.setText("This suggestion is already exist");
+            } else if (newSuggestion.equals("")) {
+                lblError.setText("Field New " + moodTitle + " " + categoryTitle + " Suggestion should not be empty");
+            } else {
+                lblError.setText("");
+                //Insert new suggestion
+                Suggestion suggestion = new Suggestion(moodTitle, categoryTitle, newSuggestion, newYoutubeLink);
+                db.addSuggestion(connect, suggestion);
+                printArray(connect, db);
+                ((EditText) findViewById(R.id.edittxt_suggestion)).setText("");
+                ((EditText) findViewById(R.id.edittxt_youtubelink)).setText("");
+            }
+        } else {
+            if (newSuggestion.equals("")) {
+                lblError.setText("Field New " + moodTitle + " " + categoryTitle + " Suggestion should not be empty");
+            } else {
+                lblError.setText("");
+                //Insert new suggestion
+                Suggestion suggestion = new Suggestion(moodTitle, categoryTitle, newSuggestion, newYoutubeLink);
+                db.editSuggestion(connect, suggestion, idEditedSuggestion);
+                printArray(connect, db);
+                ((EditText) findViewById(R.id.edittxt_suggestion)).setText("");
+                ((EditText) findViewById(R.id.edittxt_youtubelink)).setText("");
+            }
         }
     }
+
     //function LogOut
     private void openLogOut(){
         Intent start = new Intent(getApplicationContext(), MainActivity.class);

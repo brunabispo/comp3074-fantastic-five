@@ -13,6 +13,9 @@ import ca.gbc.comp3074.mind_manager_app.Models.Question;
 
 public class QuestionsActivity extends AppCompatActivity {
 
+    String username = "";
+    String firstName = "";
+
     private Question q1;
     private Question q2;
     private Question q3;
@@ -38,7 +41,6 @@ public class QuestionsActivity extends AppCompatActivity {
     RadioButton q4_a1;
     RadioButton q4_a2;
     RadioButton q4_a3;
-    RadioButton q4_a4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,10 @@ public class QuestionsActivity extends AppCompatActivity {
         //Database instance
         GoogleMySQLConnectionHelper db = new GoogleMySQLConnectionHelper();
         final Connection connect = db.connectionclass();
+
+        Intent intent = getIntent();
+        username = intent.getStringExtra("username");
+        firstName = intent.getStringExtra("firstName");
 
         question1 = findViewById(R.id.lblq1);
         question2 = findViewById(R.id.lblq2);
@@ -152,31 +158,33 @@ public class QuestionsActivity extends AppCompatActivity {
             highestRating = sumBoredRating;
             start = new Intent(getApplicationContext(), SuggestionsActivity.class);
             String mood = "Calmer";
-            start.putExtra("Mood", mood);
+            start.putExtra("mood", mood);
         }
         if(sumHappyRating > highestRating){
             highestRating = sumHappyRating;
             start = new Intent(getApplicationContext(), SuggestionsActivity.class);
             String mood = "Happier";
-            start.putExtra("Mood", mood);
+            start.putExtra("mood", mood);
         }
         if(sumEnergeticRating > highestRating){
             highestRating = sumEnergeticRating;
             start = new Intent(getApplicationContext(), SuggestionsActivity.class);
             String mood = "Energetic";
-            start.putExtra("Mood", mood);
+            start.putExtra("mood", mood);
         }
         if(sumSadRating > highestRating){
             highestRating = sumSadRating;
             start = new Intent(getApplicationContext(), SuggestionsActivity.class);
             String mood = "Moody";
-            start.putExtra("Mood", mood);
+            start.putExtra("mood", mood);
         }
         if(sumTiredRating > highestRating){
             start = new Intent(getApplicationContext(), SuggestionsActivity.class);
             String mood = "Relaxed";
-            start.putExtra("Mood", mood);
+            start.putExtra("mood", mood);
         }
+        start.putExtra("username", username);
+        start.putExtra("firstName", firstName);
         startActivity(start);
     }
 

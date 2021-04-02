@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -50,7 +51,7 @@ public class AdminSuggestionArrayAdapter extends ArrayAdapter<Suggestion> {
         btnView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //openSuggestion(ID);
+                editSuggestion(position, ID, category, mood);
             }
         });
 
@@ -65,10 +66,14 @@ public class AdminSuggestionArrayAdapter extends ArrayAdapter<Suggestion> {
         return rowView;
     }
 
-    //function to start AdminAnswersActivity
-    private void openSuggestion(int id){
-        Intent start = new Intent(context.getApplicationContext(), AdminAnswersActivity.class);
+    //function edit Suggestions
+    private void editSuggestion(int position, int id, String category, String mood){
+        Intent start = new Intent(context.getApplicationContext(), AdminSuggestionsActivity.class);
+        start.putExtra("category", category);
+        start.putExtra("mood", mood);
         start.putExtra("id", id);
+        start.putExtra("suggestion", values.get(position).getSuggestionName());
+        start.putExtra("youtubeLink", values.get(position).getYoutubeLink());
         context.startActivity(start);
     }
 
