@@ -18,6 +18,13 @@ public class Suggestion {
         this.quantity = quantity;
     }
 
+    public Suggestion(String mood, String categoryName, String suggestionName, String youtubeLink) {
+        this.mood = mood;
+        this.categoryName = categoryName;
+        this.suggestionName = suggestionName;
+        this.youtubeLink = youtubeLink;
+    }
+
     public Suggestion(int id, String mood, String categoryName, String suggestionName, String youtubeLink) {
         this.id = id;
         this.mood = mood;

@@ -40,6 +40,8 @@ public class AdminSuggestionArrayAdapter extends ArrayAdapter<Suggestion> {
         @SuppressLint("ViewHolder") View rowView = inflater.inflate(R.layout.row_layout_admin_suggestoins, parent, false);
 
         final int ID = values.get(position).getID();
+        final String category = values.get(position).getCategoryName();
+        final String mood = values.get(position).getMood();
 
         TextView question = rowView.findViewById(R.id.lblSuggestions);
         question.setText(values.get(position).getSuggestionName());
@@ -56,7 +58,7 @@ public class AdminSuggestionArrayAdapter extends ArrayAdapter<Suggestion> {
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //deleteSuggestions(ID);
+                deleteSuggestions(ID, category, mood);
             }
         });
 
@@ -71,12 +73,14 @@ public class AdminSuggestionArrayAdapter extends ArrayAdapter<Suggestion> {
     }
 
     //function delete Suggestions
-    private void deleteSuggestions(int id){
+    private void deleteSuggestions(int id, String category, String mood){
         //Database instance
         final GoogleMySQLConnectionHelper db = new GoogleMySQLConnectionHelper();
         final Connection connect = db.connectionclass();
-        //db.deleteQuestion(connect, id);
         Intent start = new Intent(context.getApplicationContext(), AdminSuggestionsActivity.class);
+        start.putExtra("category", category);
+        start.putExtra("mood", mood);
+        db.deleteSuggestion(connect, id);
         context.startActivity(start);
     }
 }

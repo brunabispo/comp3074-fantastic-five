@@ -85,7 +85,7 @@
         <ListView
             android:id="@android:id/list"
             android:layout_width="match_parent"
-            android:layout_height="425dp"
+            android:layout_height="424dp"
             tools:ignore="NestedScrolling" />
 
         <Button

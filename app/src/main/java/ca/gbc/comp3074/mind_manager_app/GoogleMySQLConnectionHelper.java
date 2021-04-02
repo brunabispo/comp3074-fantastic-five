@@ -39,6 +39,26 @@ public class GoogleMySQLConnectionHelper {
         return connection;
     }
 
+    // get a suggestion by mood, category and text
+    public Suggestion getExistedSuggestion(Connection connect, String mood, String category, String text) {
+        Suggestion suggestionExist = null;
+        try {
+            if (connect != null) {
+                String query = "SELECT * FROM suggestions WHERE mood IN ('" + mood + "') AND " +
+                        "category_name IN ('" + category + "') AND suggestion_name IN ('" + text + "')";
+                Statement st = connect.createStatement();
+                ResultSet rs = st.executeQuery(query);
+                while (rs.next()) {
+                    suggestionExist = new Suggestion(rs.getInt(1),rs.getString(2),
+                            rs.getString(3), rs.getString(4) , rs.getString(5));
+                }
+            }
+        } catch (Exception exception) {
+            Log.e("Error: ", exception.getMessage());
+        }
+        return suggestionExist;
+    }
+
     // get a suggestion by mood and category
     public Suggestion getSuggestion(Connection connect, String mood, String category) {
         Suggestion suggestionExist = null;
@@ -103,6 +123,34 @@ public class GoogleMySQLConnectionHelper {
             Log.e("Error: ", exception.getMessage());
         }
         return suggestions;
+    }
+
+    // add new suggestion
+    public void addSuggestion(Connection connect, Suggestion suggestion)  {
+        try {
+            if (connect != null) {
+                String query = "INSERT INTO suggestions (mood, category_name, suggestion_name, youtube_links) " +
+                        "VALUES ('" + suggestion.getMood() + "', '" + suggestion.getCategoryName() + "', '"
+                        + suggestion.getSuggestionName() + "', '" + suggestion.getYoutubeLink() + "')";
+                Statement st = connect.createStatement();
+                st.executeUpdate(query);
+            }
+        } catch (Exception exception) {
+            Log.e("Error: ", exception.getMessage());
+        }
+    }
+
+    // delete suggestion by id
+    public void deleteSuggestion(Connection connect, int suggestionID) {
+        try {
+            if (connect != null) {
+                String query = "DELETE FROM suggestions WHERE id = " + suggestionID;
+                Statement st = connect.createStatement();
+                st.executeUpdate(query);
+            }
+        } catch (Exception exception) {
+            Log.e("Error: ", exception.getMessage());
+        }
     }
 
     // get 3 random categories

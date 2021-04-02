@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import java.sql.Connection;
 import java.util.List;
@@ -20,6 +21,7 @@ public class AdminSuggestionsActivity extends ListActivity {
     List<Suggestion> suggestions;
     String categoryTitle = "";
     String moodTitle = "";
+    TextView lblError;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +30,13 @@ public class AdminSuggestionsActivity extends ListActivity {
 
         //accept variables "Category" and "Mood" from Admin Moods for Category page
         TextView title = findViewById(R.id.lblTitleSuggestionsForCategory);
+        TextView txtSuggestion = findViewById(R.id.txtSuggestion);
+        lblError = findViewById(R.id.lblError);
         Intent intent = getIntent();
         categoryTitle = intent.getStringExtra("category");
         moodTitle = intent.getStringExtra("mood");
         title.setText("Category: " + categoryTitle + "\n Mood: " + moodTitle);
+        txtSuggestion.setText("New " + moodTitle + " " + categoryTitle + " Suggestion:");
 
         //Database instance
         final GoogleMySQLConnectionHelper db = new GoogleMySQLConnectionHelper();
@@ -44,7 +49,7 @@ public class AdminSuggestionsActivity extends ListActivity {
         btnAddNewSuggestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addNewSuggestion();
+                addNewSuggestion(connect, db);
             }
         });
 
@@ -58,7 +63,7 @@ public class AdminSuggestionsActivity extends ListActivity {
         });
     }
 
-    //print array of all questions
+    //print array of suggestions
     private void printArray(Connection connect, GoogleMySQLConnectionHelper db){
         suggestions = db.getAllSuggestionsOneCategoryOneMood(connect, moodTitle, categoryTitle);
         StringBuilder sb = new StringBuilder();
@@ -74,12 +79,27 @@ public class AdminSuggestionsActivity extends ListActivity {
         setListAdapter(myAdapter);
     }
 
-    //function to start AdminAddNewSuggestionActivity
-    private void addNewSuggestion(){
-        Intent start = new Intent(getApplicationContext(), AdminAddNewQuestionActivity.class);
-        startActivity(start);
-    }
+    //function add Suggestion
+    private void addNewSuggestion(Connection connect, GoogleMySQLConnectionHelper db){
+        String newSuggestion = ((EditText) findViewById(R.id.edittxt_suggestion)).getText().toString();
+        String newYoutubeLink = ((EditText) findViewById(R.id.edittxt_youtubelink)).getText().toString();
+        //Execute the query, find if suggestion input is existing in data base for this mood and category
+        Suggestion suggestionExist = db.getExistedSuggestion(connect, moodTitle, categoryTitle, newSuggestion);
 
+        if(suggestionExist != null) {
+            lblError.setText("This suggestion is already exist");
+        }else if(newSuggestion.equals("")){
+                lblError.setText("Field New " + moodTitle + " " + categoryTitle + " Suggestion' should not be empty");
+        }else {
+            lblError.setText("");
+            //Insert new suggestion
+            Suggestion suggestion = new Suggestion(moodTitle, categoryTitle, newSuggestion, newYoutubeLink);
+            db.addSuggestion(connect, suggestion);
+            printArray(connect, db);
+            ((EditText) findViewById(R.id.edittxt_suggestion)).setText("");
+            ((EditText) findViewById(R.id.edittxt_youtubelink)).setText("");
+        }
+    }
     //function LogOut
     private void openLogOut(){
         Intent start = new Intent(getApplicationContext(), MainActivity.class);
