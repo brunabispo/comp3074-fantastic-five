@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
@@ -69,9 +70,20 @@ public class SuggestionsActivity extends AppCompatActivity{
         Spinner dropdown = findViewById(R.id.spinner);
         final String[] items = new String[]{"All categories", "Sport", "Outdoors", "Reading", "Music", "Movie", "Games"};
         //set adapter for the spinner (dropdown list for Filter button)
-        ArrayAdapter<String> spinerAdapter = new ArrayAdapter<>(SuggestionsActivity.this, android.R.layout.simple_spinner_dropdown_item, items);
-        spinerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        dropdown.setAdapter(spinerAdapter);
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(SuggestionsActivity.this, android.R.layout.simple_spinner_dropdown_item, items){
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                // this part is needed for hiding the original view
+                View view = super.getView(position, convertView, parent);
+                view.setVisibility(View.GONE);
+
+                return view;
+            }
+        };
+
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        dropdown.setAdapter(spinnerAdapter);
+
         dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,
