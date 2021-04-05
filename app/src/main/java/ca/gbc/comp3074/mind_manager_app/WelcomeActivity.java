@@ -12,6 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.snackbar.Snackbar;
+
 public class WelcomeActivity extends AppCompatActivity {
 
     String username = "";
@@ -83,7 +85,9 @@ public class WelcomeActivity extends AppCompatActivity {
                 openRelaxed();
             }
         });
+
     }
+
 
     //function to start QuestionsActivity
     private void openIDontKnow(){
@@ -154,6 +158,11 @@ public class WelcomeActivity extends AppCompatActivity {
         startActivity(start);
     }
 
+    private void openDisclaimer(){
+        Intent start = new Intent(getApplicationContext(), Disclaimer.class);
+        startActivity(start);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inf = getMenuInflater();
@@ -169,6 +178,10 @@ public class WelcomeActivity extends AppCompatActivity {
         }
         if (item.getItemId() == R.id.menu_main) {
             openlogin();
+            return true;
+        }
+        if (item.getItemId() == R.id.disclaimer) {
+            openDisclaimer();
             return true;
         }
 

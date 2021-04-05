@@ -11,6 +11,9 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.ArrayList;
 import java.sql.Connection;
 import ca.gbc.comp3074.mind_manager_app.Movies.MovieMain;
@@ -143,6 +146,9 @@ public class SuggestionsActivity extends AppCompatActivity{
             }
         });
 
+        displayPopup();
+
+
         //Move to next pages by clicking on any suggestion
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -180,6 +186,12 @@ public class SuggestionsActivity extends AppCompatActivity{
                 }
             }
         });
+    }
+
+
+    public void displayPopup(){
+        Snackbar snackbar = Snackbar.make(findViewById(R.id.rootLayout),R.string.warning, Snackbar.LENGTH_LONG);
+        snackbar.show();
     }
 
     // Receive set of 6 different suggestions for specific mood (it's function for Random button)

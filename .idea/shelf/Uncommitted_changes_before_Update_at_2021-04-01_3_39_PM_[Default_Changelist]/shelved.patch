@@ -1,0 +1,60 @@
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_2021-03-24_1_09_PM__Default_Changelist_.xml
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_Update_at_2021-03-24_1_09_PM__Default_Changelist_.xml	(revision 67edcd403b01984407a08baaab6a2daa7605868a)
++++ .idea/shelf/Uncommitted_changes_before_Update_at_2021-03-24_1_09_PM__Default_Changelist_.xml	(revision 67edcd403b01984407a08baaab6a2daa7605868a)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_2021-03-24_1_09_PM_[Default_Changelist]" date="1616605796337" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-03-24_1_09_PM_[Default_Changelist]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 2021-03-24 1:09 PM [Default Changelist]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_2021-03-24_1_09_PM_[Default_Changelist]/shelved.patch
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_Update_at_2021-03-24_1_09_PM_[Default_Changelist]/shelved.patch	(revision 67edcd403b01984407a08baaab6a2daa7605868a)
++++ .idea/shelf/Uncommitted_changes_before_Update_at_2021-03-24_1_09_PM_[Default_Changelist]/shelved.patch	(revision 67edcd403b01984407a08baaab6a2daa7605868a)
+@@ -1,45 +0,0 @@
+-Index: app/build.gradle
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>apply plugin: 'com.android.application'\r\n\r\nandroid {\r\n    compileSdkVersion 30\r\n    buildToolsVersion \"30.0.2\"\r\n\r\n    defaultConfig {\r\n        applicationId \"ca.gbc.comp3074.mind_manager_app\"\r\n        minSdkVersion 26\r\n        targetSdkVersion 30\r\n        versionCode 1\r\n        versionName \"1.0\"\r\n        testInstrumentationRunner \"androidx.test.runner.AndroidJUnitRunner\"\r\n    }\r\n\r\n    buildTypes {\r\n        release {\r\n            minifyEnabled false\r\n            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'\r\n        }\r\n    }\r\n}\r\n\r\ndependencies {\r\n    implementation fileTree(dir: \"libs\", include: [\"*.jar\"])\r\n    implementation 'com.codepath.libraries:asynchttpclient:0.0.8'\r\n    implementation 'com.squareup.picasso:picasso:2.5.2'\r\n    implementation 'com.android.volley:volley:1.1.1'\r\n    implementation 'androidx.appcompat:appcompat:1.2.0'\r\n    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'\r\n    implementation 'com.facebook.android:facebook-share:5.15.3'\r\n    implementation 'com.google.android.gms:play-services-maps:17.0.0'\r\n    implementation files('libs/mysql-connector.jar')\r\n    implementation 'androidx.recyclerview:recyclerview:1.1.0'\r\n    testImplementation 'junit:junit:4.13.1'\r\n    androidTestImplementation 'androidx.test.ext:junit:1.1.2'\r\n    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'\r\n}
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/build.gradle	(revision 3ef16272fdf26a66d91305a276ebb300e529c262)
+-+++ app/build.gradle	(date 1616558817718)
+-@@ -24,7 +24,7 @@
+- dependencies {
+-     implementation fileTree(dir: "libs", include: ["*.jar"])
+-     implementation 'com.codepath.libraries:asynchttpclient:0.0.8'
+--    implementation 'com.squareup.picasso:picasso:2.5.2'
+-+    implementation 'com.squareup.picasso:picasso:2.71828'
+-     implementation 'com.android.volley:volley:1.1.1'
+-     implementation 'androidx.appcompat:appcompat:1.2.0'
+-     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+-Index: app/src/main/java/ca/gbc/comp3074/mind_manager_app/Models/BookAdapter.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>package ca.gbc.comp3074.mind_manager_app.Models;\r\nimport android.content.Context;\r\nimport android.content.Intent;\r\nimport android.view.LayoutInflater;\r\nimport android.view.View;\r\nimport android.view.ViewGroup;\r\nimport android.widget.ImageView;\r\nimport android.widget.TextView;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.recyclerview.widget.RecyclerView;\r\n\r\nimport java.util.ArrayList;\r\n\r\nimport ca.gbc.comp3074.mind_manager_app.R;\r\n\r\npublic class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder> {\r\n\r\n    // creating variables for arraylist and context.\r\n    private ArrayList<BookInfo> bookInfoArrayList;\r\n    private Context mcontext;\r\n\r\n    // creating constructor for array list and context.\r\n    public BookAdapter(ArrayList<BookInfo> bookInfoArrayList, Context mcontext) {\r\n        this.bookInfoArrayList = bookInfoArrayList;\r\n        this.mcontext = mcontext;\r\n    }\r\n\r\n\r\n    @NonNull\r\n    @Override\r\n    public BookViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {\r\n        // inflating our layout for item of recycler view item.\r\n        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.book_rv_item, parent, false);\r\n        return new BookViewHolder(view);\r\n    }\r\n\r\n    @Override\r\n    public void onBindViewHolder(@NonNull BookViewHolder holder, int position) {\r\n\r\n        // inside on bind view holder method we are\r\n        // setting ou data to each UI component.\r\n        final BookInfo bookInfo = bookInfoArrayList.get(position);\r\n        holder.nameTV.setText(bookInfo.getTitle());\r\n        holder.publisherTV.setText(bookInfo.getPublisher());\r\n        holder.pageCountTV.setText(\"No of Pages : \" + bookInfo.getPageCount());\r\n        holder.dateTV.setText(bookInfo.getPublishedDate());\r\n\r\n        // below line is use to set image from URL in our image view.\r\n        //Picasso.get().load(bookInfo.getThumbnail()).into(holder.bookIV);\r\n\r\n       //  below line is use to add on click listener for our item of recycler view.\r\n        holder.itemView.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                // inside on click listener method we are calling a new activity\r\n                // and passing all the data of that item in next intent.\r\n                Intent i = new Intent(mcontext, BookDetails.class);\r\n                i.putExtra(\"title\", bookInfo.getTitle());\r\n                i.putExtra(\"subtitle\", bookInfo.getSubtitle());\r\n                i.putExtra(\"authors\", bookInfo.getAuthors());\r\n                i.putExtra(\"publisher\", bookInfo.getPublisher());\r\n                i.putExtra(\"publishedDate\", bookInfo.getPublishedDate());\r\n                i.putExtra(\"description\", bookInfo.getDescription());\r\n                i.putExtra(\"pageCount\", bookInfo.getPageCount());\r\n                i.putExtra(\"thumbnail\", bookInfo.getThumbnail());\r\n                i.putExtra(\"previewLink\", bookInfo.getPreviewLink());\r\n                i.putExtra(\"infoLink\", bookInfo.getInfoLink());\r\n                i.putExtra(\"buyLink\", bookInfo.getBuyLink());\r\n\r\n                // after passing that data we are\r\n                // starting our new intent.\r\n                mcontext.startActivity(i);\r\n            }\r\n        });\r\n    }\r\n\r\n    @Override\r\n    public int getItemCount() {\r\n        // inside get item count method we\r\n        // are returning the size of our array list.\r\n        return bookInfoArrayList.size();\r\n    }\r\n\r\n    public class BookViewHolder extends RecyclerView.ViewHolder {\r\n        // below line is use to initialize\r\n        // our text view and image views.\r\n        TextView nameTV, publisherTV, pageCountTV, dateTV;\r\n        ImageView bookIV;\r\n\r\n        public BookViewHolder(View itemView) {\r\n            super(itemView);\r\n            nameTV = itemView.findViewById(R.id.idTVBookTitle);\r\n            publisherTV = itemView.findViewById(R.id.idTVpublisher);\r\n            pageCountTV = itemView.findViewById(R.id.idTVPageCount);\r\n            dateTV = itemView.findViewById(R.id.idTVDate);\r\n            bookIV = itemView.findViewById(R.id.idIVbook);\r\n        }\r\n    }\r\n}\r\n\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/src/main/java/ca/gbc/comp3074/mind_manager_app/Models/BookAdapter.java	(revision 3ef16272fdf26a66d91305a276ebb300e529c262)
+-+++ app/src/main/java/ca/gbc/comp3074/mind_manager_app/Models/BookAdapter.java	(date 1616558728330)
+-@@ -10,6 +10,8 @@
+- import androidx.annotation.NonNull;
+- import androidx.recyclerview.widget.RecyclerView;
+- 
+-+import com.squareup.picasso.Picasso;
+-+
+- import java.util.ArrayList;
+- 
+- import ca.gbc.comp3074.mind_manager_app.R;
+-@@ -47,7 +49,7 @@
+-         holder.dateTV.setText(bookInfo.getPublishedDate());
+- 
+-         // below line is use to set image from URL in our image view.
+--        //Picasso.get().load(bookInfo.getThumbnail()).into(holder.bookIV);
+-+        Picasso.get().load(bookInfo.getThumbnail()).into(holder.bookIV);
+- 
+-        //  below line is use to add on click listener for our item of recycler view.
+-         holder.itemView.setOnClickListener(new View.OnClickListener() {

@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/ic_background"
     android:fillViewport="true"
+    android:id="@+id/rootLayout"
     android:padding="16dp">
 
     <LinearLayout
