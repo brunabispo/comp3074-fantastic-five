@@ -2,10 +2,15 @@ package ca.gbc.comp3074.mind_manager_app;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import java.sql.Connection;
 import ca.gbc.comp3074.mind_manager_app.Models.Answer;
@@ -200,5 +205,49 @@ public class QuestionsActivity extends AppCompatActivity {
             return 2;
         }
         return 0;
+    }
+
+
+
+
+    //function to start AboutActivity
+    private void openAbout(){
+        Intent start = new Intent(getApplicationContext(), AboutActivity.class);
+        startActivity(start);
+    }
+
+    private void openlogin(){
+        Intent start = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(start);
+    }
+
+    private void openDisclaimer(){
+        Intent start = new Intent(getApplicationContext(), Disclaimer.class);
+        startActivity(start);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inf = getMenuInflater();
+        inf.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.menu_about) {
+            openAbout();
+            return true;
+        }
+        if (item.getItemId() == R.id.menu_main) {
+            openlogin();
+            return true;
+        }
+        if (item.getItemId() == R.id.disclaimer) {
+            openDisclaimer();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
