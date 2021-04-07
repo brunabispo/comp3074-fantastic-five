@@ -171,11 +171,15 @@ public class SuggestionsActivity extends AppCompatActivity{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (suggestions.get(position).getCategoryName().equals("Sport")){
-                    Intent start = new Intent(getApplicationContext(), QuestionsActivity.class);
+                    Intent start = new Intent(getApplicationContext(), MapActivity_Sports.class);
+                    String sportTitle = suggestions.get(position).getYoutubeLink();
+                    start.putExtra("sportTitle", sportTitle);
                     startActivity(start);
                 }
                 if (suggestions.get(position).getCategoryName().equals("Outdoors")){
-                    Intent start = new Intent(getApplicationContext(), MainActivity.class);
+                    Intent start = new Intent(getApplicationContext(), MapActivity_Outdoors.class);
+                    String outdoorTitle = suggestions.get(position).getYoutubeLink();
+                    start.putExtra("outdoorTitle", outdoorTitle);
                     startActivity(start);
                 }
                 if (suggestions.get(position).getCategoryName().equals("Reading")){

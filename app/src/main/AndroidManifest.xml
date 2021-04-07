@@ -36,6 +36,8 @@
         <activity android:name=".WelcomeActivity" android:parentActivityName=".SuggestionsActivity"/>
         <activity android:name=".Music.VideoMain" android:parentActivityName=".SuggestionsActivity"/>
         <activity android:name=".Movies.MovieMain" android:parentActivityName=".SuggestionsActivity"/>
+        <activity android:name=".MapActivity_Outdoors"/>
+        <activity android:name=".MapActivity_Sports"/>
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
