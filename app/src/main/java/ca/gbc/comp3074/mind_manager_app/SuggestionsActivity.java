@@ -141,15 +141,6 @@ public class SuggestionsActivity extends AppCompatActivity{
             }
         });
 
-        //functionality for btnMap
-        ImageButton btnMap = findViewById(R.id.btn_map);
-        btnMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openMap();
-            }
-        });
-
         //functionality for btnRandom
         ImageButton btnRandom = findViewById(R.id.btnRandom);
         btnRandom.setOnClickListener(new View.OnClickListener() {
@@ -232,15 +223,6 @@ public class SuggestionsActivity extends AppCompatActivity{
             suggestions.add(suggestion);
         }
     }
-
-    // Open the Map Page
-    private void openMap(){
-        Intent start = new Intent(getApplicationContext(), MapActivity.class);
-        startActivity(start);
-    }
-
-
-
 
 
     //function to start AboutActivity

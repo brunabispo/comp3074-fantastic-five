@@ -19,7 +19,6 @@
         <activity android:name=".QuestionsActivity" android:parentActivityName=".WelcomeActivity"/>
         <activity android:name=".RegisterActivity" android:parentActivityName=".MainActivity"/>
         <activity android:name=".MainActivity" android:parentActivityName=".WelcomeActivity"/>
-        <activity android:name=".MapActivity" android:parentActivityName=".WelcomeActivity"/>
         <activity android:name=".SuggestionsActivity" android:parentActivityName=".WelcomeActivity"/>
         <activity android:name=".Admin.AdminHomeActivity"/>
         <activity android:name=".Reading.BookDisplayActivity"/>

@@ -41,7 +41,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="16dp"
-                android:layout_weight="1"
+                android:layout_weight="0.3"
                 android:popupBackground="#C5DDE8"
                 android:src="@drawable/ic_filter"
                 android:textAlignment="textStart"
@@ -51,22 +51,11 @@
                 />
 
             <ImageButton
-                android:id="@+id/btn_map"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="#C5DDE8"
-                android:contentDescription="Location"
-                android:src="@drawable/ic_location"
-                android:textAlignment="center"
-                android:tint="#1DB5C8" />
-
-            <ImageButton
                 android:id="@+id/btnRandom"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="16dp"
-                android:layout_weight="1"
+                android:layout_weight="0.3"
                 android:background="#C5DDE8"
                 android:contentDescription="Random"
                 android:src="@drawable/ic_randomize"
